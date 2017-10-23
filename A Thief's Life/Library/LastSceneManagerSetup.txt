@@ -1,1 +1,4 @@
-sceneSetups: []
+sceneSetups:
+- path: Assets/Scene/A Thief's Life (FRANCESCO).unity
+  isLoaded: 1
+  isActive: 1
