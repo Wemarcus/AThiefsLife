@@ -1,0 +1,230 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using System.Linq;
+
+namespace Grid{
+/* classe per la gestione delle operazioni a basso livello per la griglia di gioco*/
+public class GridMath : MonoBehaviour {
+
+		public static void ChangeBlockColour(Color color, GameObject block){	
+			Renderer rend = block.GetComponent<Renderer> ();
+			rend.material.color = color;
+		}
+
+		public static void RevertBlockColour(GameObject block){
+			Renderer rend = block.GetComponent<Renderer> ();
+			Node n = block.GetComponent<Node> ();
+			if (n) {
+				rend.material = n.thisMaterial;
+			}
+		}
+
+		public static void ChangeBlocksColour(Color color, List<GameObject> blockList){
+			foreach (GameObject block in blockList) {
+				ChangeBlockColour (color, block);
+			}
+		}
+
+		public static void RevertBlocksColour(List<GameObject> blockList){
+			foreach(GameObject block in blockList){
+				RevertBlockColour (block);
+			}
+		}
+
+		public static List<GameObject> FindBlockType(GameObject[,] blockList,BlockType type){
+			List<GameObject> blocks = new List<GameObject> ();
+			foreach (GameObject i in blockList) {
+				if(i){
+					Node n = i.GetComponent<Node>();
+					if (n.blockType == type)
+						blocks.Add (i);
+				}
+			}
+			return blocks;
+		}
+
+		public static List<GameObject> FindSpawnPoints(GameObject[,] blockList){
+			List<GameObject> spawns = new List<GameObject> ();
+			foreach (GameObject i in blockList) {
+				if(i){
+					Node n = i.GetComponent<Node>();
+					if (n.AllySpawn)
+						spawns.Add (i);
+				}
+			}
+			return spawns;
+		}
+
+		public static GameObject[,] FindGrid(int c, int r){
+			List<GameObject> gridList;
+			GameObject[,] grid = new GameObject[c,r];
+			gridList = new List<GameObject>(GameObject.FindGameObjectsWithTag("Walkable"));
+			foreach (GameObject i in gridList) {
+				int x = (int)i.transform.position.x;
+				int z = (int)i.transform.position.z;
+				grid [x,z] = i;
+		}
+			return grid;
+	}
+
+		public static void FindBlockNeighbours(GameObject block, GameObject[,] grid){
+			if (block) {
+				Node n = block.GetComponent<Node> ();
+				if (n)
+					n.FindNeighbours (grid);
+			}
+		}
+
+		public static void SetGridNeighbours(GameObject[,] grid){
+			foreach (GameObject block in grid) {
+				FindBlockNeighbours (block,grid);
+			}
+		}
+
+		public static void ChangeBlockType(GameObject block, BlockType type){
+			if (block) {
+				Node n = block.GetComponent<Node> ();
+				if (n)
+					n.blockType = type;
+			}
+		}
+
+		public static List<GameObject> FindPlayers(){
+			List<GameObject> players = new List<GameObject> ();
+			players = GameObject.FindGameObjectsWithTag("Player").ToList();
+			return players;
+		}
+
+		public static List<GameObject> FindEnemies(){
+			List<GameObject> enemies = new List<GameObject> ();
+			enemies = GameObject.FindGameObjectsWithTag ("Enemy").ToList ();
+			return enemies;
+		}
+
+		public static bool PlayerIsActive(List<GameObject> players,GameObject player){
+			bool flag = false;
+			if (players.Contains (player))
+				flag = true;
+			return flag;
+		}
+
+		public static List<GameObject> DepthVisit(GameObject block, int depth, int currentDepth){
+			if (currentDepth == 0) {
+				Node thisNode = block.GetComponent<Node> ();
+				thisNode.visited = true;
+			}
+			List<GameObject> graph = new List<GameObject> ();
+			Node n = block.GetComponentInParent<Node> ();
+			foreach (GameObject node in n.Neighbours) {
+				Node currentNode = node.GetComponent<Node> ();
+				if (currentNode.visited == false && currentDepth<depth) {
+					//visit node
+					graph.Add(node);
+					currentNode.visited = true;
+				}
+				if(currentDepth<depth)
+				graph.AddRange( DepthVisit (node, depth, currentDepth+1));
+			}
+			return graph;
+		}
+
+		public static List<GameObject> DepthVisitWalkable(GameObject block, int depth, int currentDepth){
+			if (currentDepth == 0) {
+				Node thisNode = block.GetComponent<Node> ();
+				thisNode.visited = true;
+			}
+			List<GameObject> graph = new List<GameObject> ();
+			Node n = block.GetComponentInParent<Node> ();
+			foreach (GameObject node in n.Neighbours) {
+				Node currentNode = node.GetComponent<Node> ();
+				if (currentNode.visited == false && currentDepth<depth && currentNode.blockType == BlockType.Walkable) {
+					//visit node
+					graph.Add(node);
+					currentNode.visited = true;
+				}
+				if(currentDepth<depth && currentNode.blockType == BlockType.Walkable)
+					graph.AddRange( DepthVisitWalkable (node, depth, currentDepth+1));
+			}
+			return graph;
+		}
+
+		public static void SetBlockListUnvisited(List<GameObject> blockList){
+			Node n;
+			foreach (GameObject node in blockList) {
+				n = node.GetComponent<Node> ();
+				n.visited = false;
+			}
+		}
+
+		public static void SetBlockUnvisited(GameObject block){
+			Node n = block.GetComponent<Node> ();
+			n.visited = false;
+		}
+
+		public static List<GameObject> FindBlocksInRange(GameObject block, int depth){
+			List<GameObject> blockList = new List<GameObject> ();
+			blockList = DepthVisit (block, depth, 0);
+			SetBlockListUnvisited (blockList);
+			SetBlockUnvisited (block);
+			return blockList;
+		}
+
+		public static List<GameObject> FindWalkPathInRange(GameObject block, int depth){
+			List<GameObject> blockList = new List<GameObject> ();
+			blockList = DepthVisitWalkable (block, depth, 0);
+			SetBlockListUnvisited (blockList);
+			SetBlockUnvisited (block);
+			//Debug.Log (blockList.Count ());
+			return blockList;
+		}
+
+		public static GameObject GetPlayerBlock(GameObject player){
+			return (player.transform.parent.gameObject);
+		}
+
+		public static GameObject GetEnemyBlock(GameObject enemy){
+			return (enemy.transform.parent.gameObject);
+		}
+
+		public static int GetPlayerMoveRange(GameObject player){
+			Player plr = player.GetComponent<Player> ();
+			int range = plr.getMoveRange ();
+			return range;
+		}
+
+		public static void MovePlayerToBlock(GameObject player, GameObject block){
+			Vector3 localS = player.transform.localScale;
+			Grid.GridMath.ChangeBlockType (Grid.GridMath.GetPlayerBlock (player), BlockType.Walkable);
+			player.transform.SetParent (block.transform);
+			player.transform.localPosition = new Vector3 (0, 1.5f, 0);
+			player.transform.localScale = localS;
+			Grid.GridMath.ChangeBlockType (block, BlockType.Player);
+		}
+
+		// TODO TODO TODO
+		public static void MoveEnemyToBlock(GameObject enemy, GameObject block){
+			Vector3 localS = enemy.transform.localScale;
+			Grid.GridMath.ChangeBlockType (Grid.GridMath.GetEnemyBlock (enemy), BlockType.Walkable);
+			enemy.transform.SetParent (block.transform);
+			enemy.transform.localPosition = new Vector3 (0, 1.5f, 0);
+			enemy.transform.localScale = localS;
+			Grid.GridMath.ChangeBlockType (block, BlockType.Enemy);
+		}
+
+		public static void RemovePlayerFromList(GameObject player, List<GameObject> playerList){
+			playerList.Remove (player);
+		}
+
+		public static void ResetPlayers(List<GameObject> players){
+			foreach (GameObject plr in players) {
+				ResetPlayer (plr);
+			}
+		}
+
+		public static void ResetPlayer(GameObject player){
+			Player plr = player.GetComponent<Player> ();
+			plr.ResetTurn ();
+		}
+}
+}
