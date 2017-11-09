@@ -67,4 +67,8 @@ public class UIHandler : MonoBehaviour {
 			AttackBtn.gameObject.SetActive (false);
 		}
 	}
+
+	public void ReloadPlayerList(){
+		FindObjectOfType<MapHandler> ().players = Grid.GridMath.FindPlayers ();	
+	}
 }

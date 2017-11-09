@@ -46,8 +46,12 @@ public class MapHandler : MonoBehaviour {
 	}
 
 	public IEnumerator EndAiTurn(){
-		players = GridFunc.ResetPlayersActions();
 		yield return 2f;
+		players = GridFunc.ResetPlayersActions();
+		if (players.Count > 0) {
+			SelectPlayer (players [0]);
+			ChangeInputState (InputState.Decision);
+		}
 		ChangeState (GameState.AllyTurn);
 	}
 
@@ -116,10 +120,32 @@ public class MapHandler : MonoBehaviour {
 		}*/
 	}
 
+	public void ProvideDamageToPlayer(GameObject playerTrg, int damage){
+		Player plr = playerTrg.GetComponent<Player> ();
+		plr.currentHP -= damage;
+		if(plr.currentHP <= 0){
+			players.Clear ();
+			GridMath.ChangeBlockType (GridMath.GetPlayerBlock (playerTrg), BlockType.Walkable);
+			Destroy (playerTrg);
+		}
+	}
+
+	public void ProvideDamageToEnemy(GameObject enemy,int damage){
+		Enemy enem = enemy.GetComponent<Enemy> ();
+		Player plr = selectedPlayer.GetComponent<Player> ();
+		enem.currentHP -= damage;
+		if (enem.currentHP <= 0) {
+			targetList.Remove (enemy);
+			GridMath.ChangeBlockType (GridMath.GetEnemyBlock(enemy), BlockType.Walkable);
+			Destroy (enemy);
+		}
+	}
+
 	public void HitEnemy(GameObject enemy){
 		if (targetList.Contains (enemy)) {
 			Debug.Log ("hit");
 			Player plr = selectedPlayer.GetComponent<Player> ();
+			ProvideDamageToEnemy (enemy, plr.firstWeapon.getDamage());
 			plr.attacked = true;
 			ChangeInputState (InputState.Decision);
 			if (plr.IsDone ()) {

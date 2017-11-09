@@ -9,10 +9,13 @@ public class Player : MonoBehaviour {
 	public int currentHP;
 	public bool moved;
 	public bool attacked;
+	public Weapon firstWeapon;
+	public Weapon secondWeapon;
 
 	// Use this for initialization
 
 	void Start () {
+		currentHP = maxHP;
 	}
 	
 	// Update is called once per frame

@@ -8,9 +8,14 @@ public class Enemy : MonoBehaviour {
 	public int moveRange = 3;
 	public int maxHP;
 	public int currentHP;
+	public int damage;
 	public AiType ait;
-	public List<GameObject> players;
+	public List<GameObject> playersTrg;
 	public List<GameObject> MoveSpots;
+
+	public void Start(){
+		currentHP = maxHP;
+	}
 
 	public void RunAI(){
 		switch (ait) {
@@ -21,15 +26,16 @@ public class Enemy : MonoBehaviour {
 	}
 
 	private void BasicAI(){
-		players = GridMath.FindPlayers ();
-		players = GridFunc.HittablePlayers (this.gameObject, players);
+		playersTrg = GridMath.FindPlayers ();
+		playersTrg = GridFunc.HittablePlayers (this.gameObject, playersTrg);
 		MoveSpots = GridMath.FindWalkPathInRange (this.transform.parent.gameObject, moveRange);
 		Debug.Log (MoveSpots.Count);
 		GameObject target;
 		GameObject MoveSpot;
-		if (players.Count > 0) {
+		if (playersTrg.Count > 0) {
 			//hit
-			target = players[Random.Range(0,players.Count)];
+			target = playersTrg[Random.Range(0,playersTrg.Count)];
+			FindObjectOfType<MapHandler> ().ProvideDamageToPlayer (target, damage);
 			Debug.Log ("sto colpendo:" + target.name); // calcolo del danno TODO
 			//then move
 			Debug.Log ("ho colpito:" + target.name + "ora mi muovo");
@@ -41,13 +47,14 @@ public class Enemy : MonoBehaviour {
 			MoveSpot = MoveSpots[Random.Range(0,MoveSpots.Count)];
 			GridMath.MoveEnemyToBlock (this.gameObject, MoveSpot);
 			//try to hit
-			players = GridFunc.HittablePlayers(this.gameObject,players);
-			if (players.Count > 0) {
-				target = players[Random.Range(0,players.Count)];
+			playersTrg = GridFunc.HittablePlayers(this.gameObject,playersTrg);
+			if (playersTrg.Count > 0) {
+				target = playersTrg[Random.Range(0,playersTrg.Count)];
 				Debug.Log ("posso colpire:" + target.name);
 				//Hit
-				target = players[Random.Range(0,players.Count)];
+				target = playersTrg[Random.Range(0,playersTrg.Count)];
 				Debug.Log ("sto colpendo:" + target.name); // calcolo del danno TODO
+				FindObjectOfType<MapHandler> ().ProvideDamageToPlayer (target, damage);
 			}
 		}
 	}

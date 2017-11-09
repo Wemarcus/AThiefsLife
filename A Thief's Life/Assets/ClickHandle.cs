@@ -38,9 +38,11 @@ public class ClickHandle : MonoBehaviour {
 	}
 
 	IEnumerator ScaleMe(Transform objTr) {
-		objTr.localScale *= 1.2f;
-		yield return new WaitForSeconds(0.1f);
-		objTr.localScale /= 1.2f;
+		if (objTr) 
+			objTr.localScale *= 1.2f;
+			yield return new WaitForSeconds (0.1f);
+		if (objTr) 
+			objTr.localScale /= 1.2f;
 	}
 	public void BuildClickDelegate(GameObject hitted){
 		click = null;

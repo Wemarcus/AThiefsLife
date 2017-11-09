@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 23311595998046808}
   - component: {fileID: 54008793501535942}
   - component: {fileID: 114231235198311342}
+  - component: {fileID: 114785855828903154}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -111,11 +112,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7acee2dd129481a469a9ef664c3f486f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveRange: 3
-  maxHP: 0
+  moveRange: 5
+  maxHP: 15
   currentHP: 0
   moved: 0
   attacked: 1
+  firstWeapon: {fileID: 114785855828903154}
+  secondWeapon: {fileID: 0}
+--- !u!114 &114785855828903154
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1402832747455194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bae2017c347714d459b9673fd9ea0d26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 5
 --- !u!136 &136186482059762302
 CapsuleCollider:
   m_ObjectHideFlags: 1

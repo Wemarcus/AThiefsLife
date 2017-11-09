@@ -111,6 +111,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b55aeb1e05ee354e8fc2547ba42a1c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveRange: 3
+  maxHP: 20
+  currentHP: 0
+  damage: 5
+  ait: 0
+  playersTrg: []
+  MoveSpots: []
 --- !u!136 &136743192276118066
 CapsuleCollider:
   m_ObjectHideFlags: 1
