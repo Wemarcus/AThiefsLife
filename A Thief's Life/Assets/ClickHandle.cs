@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Grid;
+using UnityEngine.EventSystems;
 
 /* classe che gestisce i click dell'utente */
 
@@ -24,6 +25,11 @@ public class ClickHandle : MonoBehaviour {
 		
 	// Update is called once per frame
 	void Update () {
+		if (EventSystem.current.IsPointerOverGameObject(-1))    // is the touch on the GUI
+		{
+			// GUI Action
+			return;
+		}
 		if (Input.GetMouseButtonDown (0) && enable) { 
 			RaycastHit hit; 
 			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition); 
@@ -35,6 +41,10 @@ public class ClickHandle : MonoBehaviour {
 				RunDelegate (hitted);
 			}
 		}
+	}
+
+	void OnMouseOver(){
+		Debug.Log (gameObject.name);
 	}
 
 	IEnumerator ScaleMe(Transform objTr) {
@@ -49,7 +59,7 @@ public class ClickHandle : MonoBehaviour {
 		switch (gs) {
 		case GameState.Spawn:
 			Node nd = hitted.GetComponent<Node> ();
-			if (nd && nd.AllySpawn)
+			if (nd && nd.AllySpawn && nd.blockType == BlockType.Walkable)
 				click += SpawnFuncBuild;
 			break;
 		case GameState.AllyTurn:

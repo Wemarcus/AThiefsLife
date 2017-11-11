@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveRange: 5
-  maxHP: 15
+  maxHP: 20
   currentHP: 0
   moved: 0
   attacked: 1

@@ -18,6 +18,8 @@ public class MapHandler : MonoBehaviour {
 	public InputState inputS;
 	public GameObject selectedPlayer;
 
+	public GameObject PlayerPin;
+
 	public delegate void ChangeStateDelegate (GameState gState);
 	public event ChangeStateDelegate changeStateEvent;
 
@@ -59,6 +61,10 @@ public class MapHandler : MonoBehaviour {
 		GridFunc.SpawnFirstPlayer (players, block);
 		if(players.Count <= 0) {
 			players = GridFunc.ResetPlayersActions();
+			if (players.Count > 0) {
+				SelectPlayer (players [0]);
+				ChangeInputState (InputState.Decision);
+			}
 			GridFunc.HideSpawnPoints (grid);
 			ChangeState(GameState.AllyTurn);
 		}
@@ -83,6 +89,7 @@ public class MapHandler : MonoBehaviour {
 		ChangeInputState (InputState.Decision);
 		if (plr.IsDone ()) {
 			Grid.GridMath.RemovePlayerFromList (selectedPlayer, players);
+			SelectPlayer (null);
 			ChangeInputState (InputState.Nothing);
 		}
 		if (CheckAllyEndTurn ()) {
@@ -97,6 +104,7 @@ public class MapHandler : MonoBehaviour {
 	}
 
 	public void SelectNothing(GameObject block){
+		SelectPlayer (null);
 		ChangeInputState (InputState.Nothing);
 	}
 
@@ -130,9 +138,24 @@ public class MapHandler : MonoBehaviour {
 		}
 	}
 
+	public void PassTurn(){
+		Player plr = selectedPlayer.GetComponent<Player> ();
+		plr.attacked = true;
+		plr.moved = true;
+		if(players.Contains(selectedPlayer)){
+			players.Remove(selectedPlayer);
+			ChangeInputState (InputState.Nothing);
+		}
+		SelectPlayer (null);
+		if (CheckAllyEndTurn ()) {
+			ChangeState (GameState.EnemyTurn);
+			ChangeInputState (InputState.Nothing);
+		}
+	}
+
 	public void ProvideDamageToEnemy(GameObject enemy,int damage){
 		Enemy enem = enemy.GetComponent<Enemy> ();
-		Player plr = selectedPlayer.GetComponent<Player> ();
+		//Player plr = selectedPlayer.GetComponent<Player> ();
 		enem.currentHP -= damage;
 		if (enem.currentHP <= 0) {
 			targetList.Remove (enemy);
@@ -150,6 +173,7 @@ public class MapHandler : MonoBehaviour {
 			ChangeInputState (InputState.Decision);
 			if (plr.IsDone ()) {
 				Grid.GridMath.RemovePlayerFromList (selectedPlayer, players);
+				SelectPlayer (null);
 				ChangeInputState (InputState.Nothing);
 			}
 			if (CheckAllyEndTurn ()) {
@@ -179,6 +203,7 @@ public class MapHandler : MonoBehaviour {
 	}
 
 	public void SelectPlayer(GameObject player){
+		SpawnPin (player);
 		selectedPlayer = player;
 		if (selectPlayerEvent != null)
 			selectPlayerEvent (player);
@@ -189,5 +214,10 @@ public class MapHandler : MonoBehaviour {
 			return true;
 		else
 			return false;
+	}
+
+	public void SpawnPin(GameObject player){
+		if (player && player != selectedPlayer)
+			Instantiate (PlayerPin);
 	}
 }
