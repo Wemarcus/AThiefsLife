@@ -130,7 +130,7 @@ public class MapHandler : MonoBehaviour {
 
 	public void ProvideDamageToPlayer(GameObject playerTrg, int damage){
 		Player plr = playerTrg.GetComponent<Player> ();
-		plr.currentHP -= damage;
+		plr.DealDamage (damage);
 		if(plr.currentHP <= 0){
 			players.Clear ();
 			GridMath.ChangeBlockType (GridMath.GetPlayerBlock (playerTrg), BlockType.Walkable);
@@ -138,7 +138,13 @@ public class MapHandler : MonoBehaviour {
 		}
 	}
 
-	public void PassTurn(){
+	public void PassAllyTurn(){
+		ChangeInputState (InputState.Nothing);
+		ChangeState (GameState.EnemyTurn);
+		SelectPlayer (null);
+	}
+
+	public void PassPlayerTurn(){
 		Player plr = selectedPlayer.GetComponent<Player> ();
 		plr.attacked = true;
 		plr.moved = true;
@@ -156,7 +162,7 @@ public class MapHandler : MonoBehaviour {
 	public void ProvideDamageToEnemy(GameObject enemy,int damage){
 		Enemy enem = enemy.GetComponent<Enemy> ();
 		//Player plr = selectedPlayer.GetComponent<Player> ();
-		enem.currentHP -= damage;
+		enem.DealDamage(damage);
 		if (enem.currentHP <= 0) {
 			targetList.Remove (enemy);
 			GridMath.ChangeBlockType (GridMath.GetEnemyBlock(enemy), BlockType.Walkable);

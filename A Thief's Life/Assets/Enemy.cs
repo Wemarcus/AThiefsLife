@@ -12,9 +12,17 @@ public class Enemy : MonoBehaviour {
 	public AiType ait;
 	public List<GameObject> playersTrg;
 	public List<GameObject> MoveSpots;
+	public TextMesh visualHP;
 
 	public void Start(){
 		currentHP = maxHP;
+		visualHP = this.GetComponentInChildren<TextMesh> ();
+		visualHP.text = currentHP.ToString ();
+	}
+
+	public void DealDamage(int damage){
+		currentHP -= damage;
+		visualHP.text = currentHP.ToString();
 	}
 
 	public void RunAI(){

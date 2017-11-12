@@ -51,7 +51,7 @@ public class UIHandler : MonoBehaviour {
 	}
 
 	public void OnClickPass(){
-		mh.PassTurn ();
+		mh.PassAllyTurn ();
 	}
 		
 	private void UpdateUI(){

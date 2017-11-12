@@ -11,11 +11,14 @@ public class Player : MonoBehaviour {
 	public bool attacked;
 	public Weapon firstWeapon;
 	public Weapon secondWeapon;
+	public TextMesh visualHP;
 
 	// Use this for initialization
 
 	void Start () {
 		currentHP = maxHP;
+		visualHP = this.GetComponentInChildren<TextMesh> ();
+		visualHP.text = currentHP.ToString();
 	}
 	
 	// Update is called once per frame
@@ -25,6 +28,11 @@ public class Player : MonoBehaviour {
 
 	public int getMoveRange (){
 		return moveRange;
+	}
+
+	public void DealDamage(int damage){
+		currentHP -= damage;
+		visualHP.text = currentHP.ToString();
 	}
 
 	void OnCollisioneEnter(Collision collision)
