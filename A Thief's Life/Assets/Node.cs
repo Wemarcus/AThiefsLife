@@ -11,14 +11,24 @@ public class Node : MonoBehaviour {
 	public Material thisMaterial;
 	public BlockType blockType;
 	public bool visited = false;
+	MapHandler mh;
 
 	// Use this for initialization
 	void Start () {
+		mh = FindObjectOfType<MapHandler> ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
+	}
+
+	void OnMouseEnter(){
+		Debug.Log ("entro in" + this.gameObject.name);
+	}
+
+	void OnMouseExit(){
+		Debug.Log ("esco da" + this.gameObject.name);
 	}
 
 	public void FindNeighbours(GameObject[,] grid){

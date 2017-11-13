@@ -149,6 +149,27 @@ public class GridMath : MonoBehaviour {
 			return graph;
 		}
 
+		public static List<GameObject> FindPathTo(GameObject block, int depth, int currentDepth, GameObject playerblock){//TODO da fare
+			//visita nodo, se è player, ritorna path
+			List<GameObject> graph = new List<GameObject>();
+			Node thisNode = block.GetComponent<Node>();
+			if (thisNode.visited == false && currentDepth < depth && thisNode.blockType == BlockType.Walkable) {
+				thisNode.visited = true;
+				graph.Add (block);
+				if (block == playerblock)
+					return graph;
+				//se non è player, visita gli altri nodi
+				Node n = block.GetComponentInParent<Node> ();
+				foreach (GameObject node in n.Neighbours) {
+					Node currentNode = node.GetComponent<Node> ();
+					if (currentDepth < depth && currentNode.blockType == BlockType.Walkable)
+						graph.AddRange (DepthVisitWalkable (node, depth, currentDepth + 1));
+				}
+			}
+			return graph;
+		}
+
+
 		public static void SetBlockListUnvisited(List<GameObject> blockList){
 			Node n;
 			foreach (GameObject node in blockList) {
