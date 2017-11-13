@@ -43,7 +43,7 @@ public class ClickHandle : MonoBehaviour {
 		}
 	}
 
-	void OnMouseOver(){
+	void OnMouseOver(){ // TODO delete
 		Debug.Log (gameObject.name);
 	}
 

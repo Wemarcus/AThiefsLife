@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Grid;
+using MessagePopUp;
+
 /* classe che gestisce la partita e la griglia di gioco*/
 public class MapHandler : MonoBehaviour {
 
@@ -19,6 +21,9 @@ public class MapHandler : MonoBehaviour {
 	public GameObject selectedPlayer;
 
 	public GameObject PlayerPin;
+	public GameObject EnemyPin;
+
+	public UnityEngine.UI.Text popUp;
 
 	public delegate void ChangeStateDelegate (GameState gState);
 	public event ChangeStateDelegate changeStateEvent;
@@ -71,6 +76,7 @@ public class MapHandler : MonoBehaviour {
 	}
 
 	public void ShowCurrentPlayerMovement(GameObject player){
+		StartCoroutine (MessagePopUp.MessagePopUp.ShowMessage("Choose where to move your character",popUp));
 		SelectPlayer (player);
 		ChangeInputState (InputState.Movement);
 		Grid.GridMath.ChangeBlocksColour(Color.blue,Grid.GridMath.FindWalkPathInRange(Grid.GridMath.GetPlayerBlock(player),Grid.GridMath.GetPlayerMoveRange(player)));
@@ -112,20 +118,17 @@ public class MapHandler : MonoBehaviour {
 		targetList = GridFunc.FindEnemyOnMap (grid);
 		targetList = GridFunc.HittableEnemies (player, targetList);
 		Debug.Log (targetList.Count);
-		if (targetList.Count > 0)
-		ChangeInputState (InputState.Attack);
-		/*Debug.Log (enemylist.Count);
-		Ray ray;
-		RaycastHit hit;
-		GameObject hitted;
-		foreach (GameObject enemy in enemylist) {
-			ray = new Ray (player.transform.position, enemy.transform.position);
-			Debug.DrawRay(player.transform.position, (enemy.transform.position - player.transform.position).normalized,Color.red,4f);
-			if (Physics.Raycast (player.transform.position, (enemy.transform.position - player.transform.position).normalized,out hit)) {
-				hitted = hit.transform.gameObject;
-				Debug.Log (hitted.name);
-			}
-		}*/
+		EnemyPin enPin;
+		foreach (GameObject enemy in targetList) {
+			enPin = Instantiate (EnemyPin).GetComponent<EnemyPin> ();
+			enPin.SetupPin (enemy);
+		}
+		if (targetList.Count > 0) {
+			StartCoroutine (MessagePopUp.MessagePopUp.ShowMessage ("Choose an enemy to hit", popUp));
+			ChangeInputState (InputState.Attack);
+		} else {
+			StartCoroutine (MessagePopUp.MessagePopUp.ShowMessage ("There is any enemy in your line of sight", popUp));
+		}
 	}
 
 	public void ProvideDamageToPlayer(GameObject playerTrg, int damage){
