@@ -43,6 +43,9 @@ GameObject:
   - component: {fileID: 54008793501535942}
   - component: {fileID: 114231235198311342}
   - component: {fileID: 114785855828903154}
+  - component: {fileID: 114999438874514396}
+  - component: {fileID: 114424294327720346}
+  - component: {fileID: 114486487116124300}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -205,8 +208,36 @@ MonoBehaviour:
   moved: 0
   attacked: 1
   firstWeapon: {fileID: 114785855828903154}
-  secondWeapon: {fileID: 0}
+  secondWeapon: {fileID: 114999438874514396}
+  firstAction: {fileID: 114424294327720346}
+  secondAction: {fileID: 114486487116124300}
   visualHP: {fileID: 0}
+--- !u!114 &114424294327720346
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1402832747455194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2aea279d7f517c42aa7c95c7f2a6558, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  cooldown: 2
+--- !u!114 &114486487116124300
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1402832747455194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2aea279d7f517c42aa7c95c7f2a6558, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1
+  cooldown: 2
 --- !u!114 &114567141956780490
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -229,7 +260,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bae2017c347714d459b9673fd9ea0d26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wpnType: 0
   damage: 5
+  range: 0
+--- !u!114 &114999438874514396
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1402832747455194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bae2017c347714d459b9673fd9ea0d26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wpnType: 0
+  damage: 2
+  range: 0
 --- !u!136 &136186482059762302
 CapsuleCollider:
   m_ObjectHideFlags: 1
