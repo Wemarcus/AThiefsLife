@@ -16,6 +16,9 @@ public class UIHandler : MonoBehaviour {
 
 	public UnityEngine.UI.Button MoveBtn;
 	public UnityEngine.UI.Button AttackBtn;
+	public UnityEngine.UI.Button AttackBtn2;
+	public UnityEngine.UI.Button ActionBtn;
+	public UnityEngine.UI.Button ActionBtn2;
 	public UnityEngine.UI.Button PassTurnBtn;
 
 	void OnEnable(){
@@ -46,8 +49,24 @@ public class UIHandler : MonoBehaviour {
 		mh.ShowCurrentPlayerMovement (player);
 	}
 
-	public void OnClickAttack(){
-		mh.TargetEnemy (player);
+	public void OnClickAttack1(){ //TODO aggiustare typeofattack
+		Player plr = player.GetComponent<Player>();
+		mh.WeaponTarget (player,plr.firstWeapon);
+	}
+
+	public void OnClickAttack2(){ //TODO aggiustare typeofattack
+		Player plr = player.GetComponent<Player>();
+		mh.WeaponTarget (player,plr.secondWeapon);
+	}
+
+	public void OnClickAction1(){
+		Player plr = player.GetComponent<Player> ();
+		plr.firstAction.PerformAction ();
+	}
+
+	public void OnClickAction2(){
+		Player plr = player.GetComponent<Player> ();
+		plr.secondAction.PerformAction ();
 	}
 
 	public void OnClickPass(){
@@ -57,25 +76,36 @@ public class UIHandler : MonoBehaviour {
 	private void UpdateUI(){
 		MoveBtn.gameObject.SetActive (false);
 		AttackBtn.gameObject.SetActive (false);
+		AttackBtn2.gameObject.SetActive (false);
+		ActionBtn.gameObject.SetActive (false);
+		ActionBtn2.gameObject.SetActive (false);
 		PassTurnBtn.gameObject.SetActive (false);
 
 		if (inpS == InputState.Decision && player != null) {
 				Player plr = player.GetComponent<Player> ();
 				if (plr && !plr.moved)
 					MoveBtn.gameObject.SetActive (true);
-				if (plr && !plr.attacked)
-					AttackBtn.gameObject.SetActive (true);
+			if (plr && !plr.attacked) {
+				AttackBtn.gameObject.SetActive (true);
+				AttackBtn2.gameObject.SetActive (true);
+			}
+			if (plr) {
+				ActionBtn.gameObject.SetActive (true);
+				ActionBtn2.gameObject.SetActive (true);
+			}
 				if (plr && (!plr.moved || !plr.attacked))
 					PassTurnBtn.gameObject.SetActive (true);
 		}
 		if (inpS == InputState.Nothing) {
 			MoveBtn.gameObject.SetActive (false);
 			AttackBtn.gameObject.SetActive (false);
+			AttackBtn2.gameObject.SetActive (false);
 			PassTurnBtn.gameObject.SetActive (false);
 		}
 		if (inpS == InputState.Movement) {
 			MoveBtn.gameObject.SetActive (false);
 			AttackBtn.gameObject.SetActive (false);
+			AttackBtn2.gameObject.SetActive (false);
 			PassTurnBtn.gameObject.SetActive (false);
 		}
 	}

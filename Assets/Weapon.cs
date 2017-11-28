@@ -4,10 +4,19 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour {
 
+	public WeaponType wpnType;
 	public int damage;
+	public int range;
 
 	public int getDamage(){
 		return damage;
 	}
+
+	public int getRange(){
+		return range;
+	}
 		
+	public WeaponType getWeaponType(){
+		return wpnType;
+	}
 }

@@ -19,6 +19,7 @@ public class MapHandler : MonoBehaviour {
 	public GameState gs;
 	public InputState inputS;
 	public GameObject selectedPlayer;
+	public Weapon selectedWeapon;
 
 	public GameObject PlayerPin;
 	public GameObject EnemyPin;
@@ -114,6 +115,15 @@ public class MapHandler : MonoBehaviour {
 		ChangeInputState (InputState.Nothing);
 	}
 
+	public void WeaponTarget(GameObject player, Weapon wpn){
+		selectedWeapon = wpn;
+		if (wpn.getWeaponType() == WeaponType.Single)
+			TargetEnemy (player);
+		if (wpn.getWeaponType () == WeaponType.AoE) {
+			Debug.Log ("TODO AOE DAMAGE"); // TODO
+		}
+	}
+
 	public void TargetEnemy(GameObject player){
 		targetList = GridFunc.FindEnemyOnMap (grid);
 		targetList = GridFunc.HittableEnemies (player, targetList);
@@ -177,7 +187,7 @@ public class MapHandler : MonoBehaviour {
 		if (targetList.Contains (enemy)) {
 			Debug.Log ("hit");
 			Player plr = selectedPlayer.GetComponent<Player> ();
-			ProvideDamageToEnemy (enemy, plr.firstWeapon.getDamage());
+			ProvideDamageToEnemy (enemy,selectedWeapon.getDamage());
 			plr.attacked = true;
 			ChangeInputState (InputState.Decision);
 			if (plr.IsDone ()) {

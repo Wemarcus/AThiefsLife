@@ -11,6 +11,8 @@ public class Player : MonoBehaviour {
 	public bool attacked;
 	public Weapon firstWeapon;
 	public Weapon secondWeapon;
+	public Actions firstAction;
+	public Actions secondAction;
 	public TextMesh visualHP;
 
 	// Use this for initialization

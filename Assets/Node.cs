@@ -8,6 +8,7 @@ public class Node : MonoBehaviour {
 
 	[Header("Node Settings")]
 	public bool AllySpawn;
+	public GameObject obstacle;
 	public Material thisMaterial;
 	public BlockType blockType;
 	public bool visited = false;
