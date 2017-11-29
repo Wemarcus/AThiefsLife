@@ -201,7 +201,9 @@ public class GridMath : MonoBehaviour {
 		}
 
 		public static GameObject GetPlayerBlock(GameObject player){
-			return (player.transform.parent.gameObject);
+			//return (player.transform.parent.gameObject); TODO
+			Player plr = player.GetComponent<Player>();
+			return (plr.playerBlock);
 		}
 
 		public static GameObject GetEnemyBlock(GameObject enemy){
@@ -217,9 +219,14 @@ public class GridMath : MonoBehaviour {
 		public static void MovePlayerToBlock(GameObject player, GameObject block){
 			Vector3 localS = player.transform.localScale;
 			Grid.GridMath.ChangeBlockType (Grid.GridMath.GetPlayerBlock (player), BlockType.Walkable);
-			player.transform.SetParent (block.transform);
-			player.transform.localPosition = new Vector3 (0, 1.5f, 0);
-			player.transform.localScale = localS;
+			//player.transform.SetParent (block.transform);
+			Player plr = player.GetComponent<Player>();
+			plr.playerBlock = block;
+			UnityStandardAssets.Characters.ThirdPerson.AICharacterControl charcontrol = player.GetComponent<UnityStandardAssets.Characters.ThirdPerson.AICharacterControl> ();
+			charcontrol.target = block.transform;
+			// fine nuovo pezzo
+			//player.transform.localPosition = new Vector3 (0, 1.5f, 0);
+			//player.transform.localScale = localS;
 			Grid.GridMath.ChangeBlockType (block, BlockType.Player);
 		}
 

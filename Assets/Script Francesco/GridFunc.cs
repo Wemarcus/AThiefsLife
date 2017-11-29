@@ -8,7 +8,12 @@ public class GridFunc : MonoBehaviour {
 
 		public static void SpawnFirstPlayer(List<GameObject> players, GameObject block){
 			if (players.Count > 0) {
-				Instantiate (players [0], block.transform);
+				//Instantiate (players [0], block.transform);
+				GameObject newPlayer = Instantiate(players[0]);
+				newPlayer.transform.position = block.transform.position;
+				Player plr = newPlayer.GetComponent<Player> ();
+				plr.playerBlock = block;
+				//fine nuovo pezzo
 				players.RemoveAt (0);
 				Grid.GridMath.ChangeBlockType (block, BlockType.Player);
 			}

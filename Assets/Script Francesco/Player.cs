@@ -15,6 +15,8 @@ public class Player : MonoBehaviour {
 	public Actions secondAction;
 	public TextMesh visualHP;
 
+	public GameObject playerBlock;
+
 	// Use this for initialization
 
 	void Start () {
