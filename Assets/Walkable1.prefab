@@ -50,11 +50,11 @@ MeshRenderer:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1978829112164506}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
+  m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: 4ed4b815f8ea11c4787ab1e2eae75dec, type: 2}
@@ -110,6 +110,6 @@ MonoBehaviour:
   Neighbours: []
   AllySpawn: 0
   obstacle: {fileID: 0}
-  thisMaterial: {fileID: 2100000, guid: d1319a4873841a740833560bfe3210ea, type: 2}
+  thisMaterial: {fileID: 2100000, guid: 4ed4b815f8ea11c4787ab1e2eae75dec, type: 2}
   blockType: 0
   visited: 0

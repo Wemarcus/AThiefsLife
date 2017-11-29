@@ -11,7 +11,7 @@ public class PlayerPin : MonoBehaviour {
 	void Start () {
 		mh = FindObjectOfType<MapHandler> ();
 		currentPlayerMarked = mh.selectedPlayer;
-		this.transform.position = new Vector3 (mh.selectedPlayer.transform.position.x,mh.selectedPlayer.transform.position.y+2,mh.selectedPlayer.transform.position.z);
+		this.transform.position = new Vector3 (mh.selectedPlayer.transform.position.x,mh.selectedPlayer.transform.position.y+3,mh.selectedPlayer.transform.position.z);
 		this.gameObject.transform.parent = mh.selectedPlayer.transform;
 	}
 	
