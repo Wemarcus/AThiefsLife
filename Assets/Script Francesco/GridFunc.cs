@@ -22,11 +22,13 @@ public class GridFunc : MonoBehaviour {
 		public static void HideSpawnPoints(GameObject[,] grid){
 			List<GameObject> spawns = Grid.GridMath.FindSpawnPoints (grid);
 			Grid.GridMath.RevertBlocksColour (spawns);
+			Grid.GridMath.DeactivateBlocksMesh (spawns);
 		}
 
 		public static void ShowSpawnPoints(GameObject[,] grid){
 			List<GameObject> spawns = Grid.GridMath.FindSpawnPoints (grid);
 			Grid.GridMath.ChangeBlocksColour (Color.blue, spawns);
+			Grid.GridMath.ActivateBlocksMesh (spawns);
 		}
 
 		public static List<GameObject> ResetPlayersActions(){
@@ -36,7 +38,7 @@ public class GridFunc : MonoBehaviour {
 		}
 
 		public static List<GameObject> FindEnemyOnMap(GameObject[,] grid){
-			List<GameObject> list = GridMath.FindBlockType (grid, BlockType.Enemy);
+			List<GameObject> list = GridMath.FindEnemies (); //GridMath.FindBlockType (grid, BlockType.Enemy);
 			List<GameObject> enemyList = new List<GameObject> ();
 			foreach (GameObject enemy in list) {
 				enemyList.Add (enemy.transform.GetChild (0).gameObject);
@@ -48,13 +50,36 @@ public class GridFunc : MonoBehaviour {
 			RaycastHit hit;
 			GameObject hitted;
 			List<GameObject> hittableEnemies = new List<GameObject> ();
+			Player plr = player.GetComponent<Player> ();
 			foreach (GameObject enemy in enemies) {
-				Debug.DrawRay (player.transform.position, (enemy.transform.position - player.transform.position).normalized, Color.red, 4f);
-				if (Physics.Raycast (player.transform.position, (enemy.transform.position - player.transform.position).normalized, out hit)) {
+				Debug.DrawRay (plr.head.transform.position, (enemy.transform.position - player.transform.position).normalized, Color.red, 4f);
+				if (Physics.Raycast (plr.head.transform.position, (enemy.transform.position - player.transform.position).normalized, out hit)) {
 					hitted = hit.transform.gameObject;
+					Debug.Log (hitted.name);
 					if (hitted.gameObject == enemy)
 						hittableEnemies.Add (enemy);
 				}
+			}
+			return hittableEnemies;
+		}
+
+		public static List<GameObject> HittableEnemiesPlus (GameObject player, List<GameObject> enemies){
+			Debug.Log ("nemici in scena :" + enemies.Count);
+			RaycastHit[] hits;
+			Ray ray;
+			GameObject hitted;	
+			List<GameObject> hittableEnemies = new List<GameObject> ();
+			foreach (GameObject enemy in enemies) {
+				//Debug.DrawRay (player.transform.position, (enemy.transform.position - player.transform.position).normalized, Color.red, 4f);
+				ray = new Ray(player.transform.position,(enemy.transform.position - player.transform.position).normalized);
+				Debug.DrawRay (player.transform.position, (enemy.transform.position - player.transform.position).normalized, Color.red, 10f);
+				hits = Physics.RaycastAll (ray, 100f);
+					foreach (RaycastHit hit in hits) {
+						hitted = hit.transform.gameObject;
+						Debug.Log ("sto hittando :" + hitted.name);
+					if (hitted.gameObject == enemy)
+							hittableEnemies.Add (enemy);
+					}
 			}
 			return hittableEnemies;
 		}
@@ -67,6 +92,7 @@ public class GridFunc : MonoBehaviour {
 				Debug.DrawRay (enemy.transform.position, (player.transform.position - enemy.transform.position).normalized, Color.red, 4f);
 				if (Physics.Raycast (enemy.transform.position, (player.transform.position - enemy.transform.position).normalized, out hit)) {
 					hitted = hit.transform.gameObject;
+					Debug.Log (hitted.name);
 					if (hitted.gameObject == player)
 						hittablePlayers.Add (player);
 				}

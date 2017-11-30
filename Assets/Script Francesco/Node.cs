@@ -12,6 +12,7 @@ public class Node : MonoBehaviour {
 	public Material thisMaterial;
 	public BlockType blockType;
 	public bool visited = false;
+	public int depth=0;
 	MapHandler mh;
 
 	// Use this for initialization
@@ -24,13 +25,13 @@ public class Node : MonoBehaviour {
 		
 	}
 
-	void OnMouseEnter(){
+	/*void OnMouseEnter(){
 		Debug.Log ("entro in" + this.gameObject.name);
 	}
 
 	void OnMouseExit(){
 		Debug.Log ("esco da" + this.gameObject.name);
-	}
+	}*/
 
 	public void FindNeighbours(GameObject[,] grid){
 		FindRightNeighbour (grid);

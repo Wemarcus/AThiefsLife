@@ -20,6 +20,28 @@ public class GridMath : MonoBehaviour {
 			}
 		}
 
+		public static void ActivateBlockMesh(GameObject block){
+			MeshRenderer mr = block.GetComponent<MeshRenderer> ();
+			mr.enabled = true;
+		}
+
+		public static void ActivateBlocksMesh(List<GameObject> blockList){
+			foreach (GameObject block in blockList){
+				ActivateBlockMesh(block);
+			}
+		}
+
+		public static void DeactivateBlockMesh(GameObject block){
+			MeshRenderer mr = block.GetComponent<MeshRenderer> ();
+			mr.enabled = false;
+		}
+
+		public static void DeactivateBlocksMesh(List<GameObject> blockList){
+			foreach (GameObject block in blockList){
+				DeactivateBlockMesh(block);
+			}
+		}
+
 		public static void ChangeBlocksColour(Color color, List<GameObject> blockList){
 			foreach (GameObject block in blockList) {
 				ChangeBlockColour (color, block);
@@ -149,6 +171,31 @@ public class GridMath : MonoBehaviour {
 			return graph;
 		}
 
+		public static List<GameObject> DepthVisitWalkable2(GameObject block, int depth, int currentDepth){
+			if (currentDepth == 0) {
+				Node thisNode = block.GetComponent<Node> ();
+				thisNode.visited = true;
+			}
+			List<GameObject> graph = new List<GameObject> ();
+			Node n = block.GetComponentInParent<Node> ();
+			graph = visitNeighbours (graph, block, depth, currentDepth + 1);
+			return graph;
+		}
+
+		public static List<GameObject> visitNeighbours(List<GameObject> graph,GameObject block, int depth, int currentDepth){
+			Node n = block.GetComponentInParent<Node> ();
+			n.visited = true;
+			n.depth = currentDepth;
+			graph.Add (block);
+			foreach (GameObject node in n.Neighbours) {
+				Node currentNode = node.GetComponent<Node> ();
+				if ((currentNode.visited == false && currentDepth <= depth && currentNode.blockType == BlockType.Walkable)|| currentNode.depth > currentDepth && currentNode.blockType == BlockType.Walkable) {
+					visitNeighbours (graph, node, depth, currentDepth + 1);
+				}
+			}
+			return graph;
+		}
+
 		public static List<GameObject> FindPathTo(GameObject block, int depth, int currentDepth, GameObject playerblock){//TODO da fare
 			//visita nodo, se è player, ritorna path
 			List<GameObject> graph = new List<GameObject>();
@@ -188,16 +235,26 @@ public class GridMath : MonoBehaviour {
 			blockList = DepthVisit (block, depth, 0);
 			SetBlockListUnvisited (blockList);
 			SetBlockUnvisited (block);
+			ResetDepth (blockList);
 			return blockList;
 		}
 
 		public static List<GameObject> FindWalkPathInRange(GameObject block, int depth){
 			List<GameObject> blockList = new List<GameObject> ();
-			blockList = DepthVisitWalkable (block, depth, 0);
+			blockList = DepthVisitWalkable2 (block, depth, 0);
+			blockList.Remove (block);
 			SetBlockListUnvisited (blockList);
 			SetBlockUnvisited (block);
 			//Debug.Log (blockList.Count ());
 			return blockList;
+		}
+
+		public static void ResetDepth(List<GameObject> blocklist){
+			Node n;
+			foreach (GameObject block in blocklist){
+				n = block.GetComponent<Node> ();
+				n.depth = 0;
+			}
 		}
 
 		public static GameObject GetPlayerBlock(GameObject player){
@@ -207,7 +264,9 @@ public class GridMath : MonoBehaviour {
 		}
 
 		public static GameObject GetEnemyBlock(GameObject enemy){
-			return (enemy.transform.parent.gameObject);
+			Enemy enm = enemy.GetComponent<Enemy> ();
+			return (enm.block);
+			//return (enemy.transform.parent.gameObject);
 		}
 
 		public static int GetPlayerMoveRange(GameObject player){
@@ -232,11 +291,16 @@ public class GridMath : MonoBehaviour {
 
 		// TODO TODO TODO
 		public static void MoveEnemyToBlock(GameObject enemy, GameObject block){
-			Vector3 localS = enemy.transform.localScale;
+			//Vector3 localS = enemy.transform.localScale;
 			Grid.GridMath.ChangeBlockType (Grid.GridMath.GetEnemyBlock (enemy), BlockType.Walkable);
-			enemy.transform.SetParent (block.transform);
-			enemy.transform.localPosition = new Vector3 (0, 1.5f, 0);
-			enemy.transform.localScale = localS;
+			//enemy.transform.SetParent (block.transform);
+			//enemy.transform.localPosition = new Vector3 (0, 1.5f, 0);
+			//enemy.transform.localScale = localS;
+			Enemy enm = enemy.GetComponent<Enemy>();
+			enm.block = block;
+			UnityStandardAssets.Characters.ThirdPerson.AICharacterControl charcontrol = enemy.GetComponent<UnityStandardAssets.Characters.ThirdPerson.AICharacterControl> ();
+			charcontrol.target = block.transform;
+			//fine nuovo pezzo
 			Grid.GridMath.ChangeBlockType (block, BlockType.Enemy);
 		}
 
