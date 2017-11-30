@@ -24,6 +24,8 @@ public class MapHandler : MonoBehaviour {
 	public GameObject PlayerPin;
 	public GameObject EnemyPin;
 
+	public GameObject CurrentTarget;
+
 	public UnityEngine.UI.Text popUp;
 
 	public delegate void ChangeStateDelegate (GameState gState);
@@ -135,15 +137,19 @@ public class MapHandler : MonoBehaviour {
 
 	public void TargetEnemy(GameObject player){
 		targetList = GridFunc.FindEnemyOnMap (grid);
-		targetList = GridFunc.HittableEnemiesPlus (player, targetList);
-		Debug.Log (targetList.Count);
+		targetList = GridFunc.HittableEnemies (player, targetList);
+		//Debug.Log (targetList.Count);
 		EnemyPin enPin;
-		foreach (GameObject enemy in targetList) {
+		/*foreach (GameObject enemy in targetList) {
 			enPin = Instantiate (EnemyPin).GetComponent<EnemyPin> ();
 			enPin.SetupPin (enemy);
-		}
+		}*/
 		if (targetList.Count > 0) {
 			StartCoroutine (MessagePopUp.MessagePopUp.ShowMessage ("Choose an enemy to hit", popUp));
+			enPin = Instantiate (EnemyPin).GetComponent<EnemyPin> ();
+			enPin.SetupPin (targetList[0]);
+			CurrentTarget = (targetList [0]);
+			Grid.GridMath.RotateCharacter (selectedPlayer, targetList [0]);
 			ChangeInputState (InputState.Attack);
 		} else {
 			StartCoroutine (MessagePopUp.MessagePopUp.ShowMessage ("There is any enemy in your line of sight", popUp));
@@ -193,7 +199,7 @@ public class MapHandler : MonoBehaviour {
 	}
 
 	public void HitEnemy(GameObject enemy){
-		if (targetList.Contains (enemy)) {
+		if (CurrentTarget == enemy){//targetList.Contains (enemy)) {
 			Debug.Log ("hit");
 			Player plr = selectedPlayer.GetComponent<Player> ();
 			ProvideDamageToEnemy (enemy,selectedWeapon.getDamage());

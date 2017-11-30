@@ -16,6 +16,7 @@ public class Player : MonoBehaviour {
 	public TextMesh visualHP;
 	public GameObject head;
 	public GameObject playerBlock;
+	public GameObject ShootPoint;
 
 	// Use this for initialization
 

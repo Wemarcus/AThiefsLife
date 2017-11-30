@@ -14,6 +14,8 @@ public class Enemy : MonoBehaviour {
 	public List<GameObject> MoveSpots;
 	public GameObject block;
 	public TextMesh visualHP;
+	public GameObject head;
+	public List<GameObject> HitZone;
 
 	public void Start(){
 		currentHP = maxHP;

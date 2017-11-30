@@ -41,7 +41,7 @@ public class GridFunc : MonoBehaviour {
 			List<GameObject> list = GridMath.FindEnemies (); //GridMath.FindBlockType (grid, BlockType.Enemy);
 			List<GameObject> enemyList = new List<GameObject> ();
 			foreach (GameObject enemy in list) {
-				enemyList.Add (enemy.transform.GetChild (0).gameObject);
+				enemyList.Add (enemy);//.transform.GetChild (0).gameObject);
 			}
 			return enemyList;
 		}
@@ -51,28 +51,55 @@ public class GridFunc : MonoBehaviour {
 			GameObject hitted;
 			List<GameObject> hittableEnemies = new List<GameObject> ();
 			Player plr = player.GetComponent<Player> ();
+			Enemy enm;
+			int percentage;
 			foreach (GameObject enemy in enemies) {
-				Debug.DrawRay (plr.head.transform.position, (enemy.transform.position - player.transform.position).normalized, Color.red, 4f);
-				if (Physics.Raycast (plr.head.transform.position, (enemy.transform.position - player.transform.position).normalized, out hit)) {
+				enm = enemy.GetComponent<Enemy> ();
+				Debug.DrawRay (plr.head.transform.position, (enm.head.transform.position - plr.head.transform.position).normalized, Color.red, 4f);
+				if (Physics.Raycast (plr.head.transform.position, (enm.head.transform.position - plr.head.transform.position).normalized, out hit)) {
 					hitted = hit.transform.gameObject;
 					Debug.Log (hitted.name);
-					if (hitted.gameObject == enemy)
+					if (hitted.gameObject == enemy) {
 						hittableEnemies.Add (enemy);
+						//percentage = CalculateEnemyHitPercentage (plr, enm);
+						//Debug.Log(percentage);
+					}
 				}
 			}
 			return hittableEnemies;
 		}
 
+		public static int CalculateEnemyHitPercentage(Player player, Enemy enemy){
+			//spara dall'arma ai 4 punti del corpo 4 raycast
+			int percentage = 0;
+			RaycastHit hit;
+			GameObject hitted;
+			foreach (GameObject hitPoint in enemy.HitZone) {
+				Debug.DrawRay (player.ShootPoint.transform.position, (hitPoint.transform.position - player.ShootPoint.transform.position).normalized, Color.red, 4f);
+				if (Physics.Raycast (player.ShootPoint.transform.position, (hitPoint.transform.position - player.ShootPoint.transform.position).normalized, out hit)) {
+					hitted = hit.transform.gameObject;
+					if (hitted.gameObject == enemy.gameObject)
+						percentage += 100/enemy.HitZone.Count;
+				}
+			}
+			Debug.Log (percentage);
+			return percentage;
+		}
+
 		public static List<GameObject> HittableEnemiesPlus (GameObject player, List<GameObject> enemies){
 			Debug.Log ("nemici in scena :" + enemies.Count);
+			Debug.Log (enemies [0]);
 			RaycastHit[] hits;
 			Ray ray;
 			GameObject hitted;	
+			Player plr = player.GetComponent<Player> ();
+			Enemy enm;
 			List<GameObject> hittableEnemies = new List<GameObject> ();
 			foreach (GameObject enemy in enemies) {
+				enm = enemy.GetComponent<Enemy> ();
 				//Debug.DrawRay (player.transform.position, (enemy.transform.position - player.transform.position).normalized, Color.red, 4f);
-				ray = new Ray(player.transform.position,(enemy.transform.position - player.transform.position).normalized);
-				Debug.DrawRay (player.transform.position, (enemy.transform.position - player.transform.position).normalized, Color.red, 10f);
+				ray = new Ray(plr.head.transform.position,(enm.head.transform.position - plr.head.transform.position).normalized);
+				Debug.DrawRay (plr.head.transform.position, (enm.head.transform.position - plr.head.transform.position).normalized, Color.red, 10f);
 				hits = Physics.RaycastAll (ray, 100f);
 					foreach (RaycastHit hit in hits) {
 						hitted = hit.transform.gameObject;
@@ -88,9 +115,12 @@ public class GridFunc : MonoBehaviour {
 			RaycastHit hit;
 			GameObject hitted;
 			List<GameObject> hittablePlayers = new List<GameObject> ();
+			Enemy enm = enemy.GetComponent<Enemy> ();
+			Player plr;
 			foreach (GameObject player in players) {
-				Debug.DrawRay (enemy.transform.position, (player.transform.position - enemy.transform.position).normalized, Color.red, 4f);
-				if (Physics.Raycast (enemy.transform.position, (player.transform.position - enemy.transform.position).normalized, out hit)) {
+				plr = player.GetComponent<Player> ();
+				Debug.DrawRay (enm.head.transform.position, (plr.head.transform.position - enm.head.transform.position).normalized, Color.red, 4f);
+				if (Physics.Raycast (enm.head.transform.position, (plr.head.transform.position - enm.head.transform.position).normalized, out hit)) {
 					hitted = hit.transform.gameObject;
 					Debug.Log (hitted.name);
 					if (hitted.gameObject == player)

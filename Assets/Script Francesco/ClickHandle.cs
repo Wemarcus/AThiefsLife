@@ -35,10 +35,40 @@ public class ClickHandle : MonoBehaviour {
 			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition); 
 			GameObject hitted;
 			if (Physics.Raycast (ray, out hit, 100.0f)) {
-				StartCoroutine(ScaleMe(hit.transform));
+				//StartCoroutine(ScaleMe(hit.transform));
 				hitted = hit.transform.gameObject;
 				BuildClickDelegate (hitted);
 				RunDelegate (hitted);
+			}
+		}
+		if (inpS == InputState.Attack) {
+			int index;
+			if (Input.GetKeyDown (KeyCode.LeftArrow) && enable) {
+				MapHandler mh = FindObjectOfType<MapHandler> ();
+				index = mh.targetList.IndexOf (mh.CurrentTarget);
+				if (index - 1 >= 0 && mh.targetList.Count > 1) {
+					mh.CurrentTarget = mh.targetList [index - 1];
+					Grid.GridMath.RotateCharacter (mh.selectedPlayer, mh.CurrentTarget);
+				} else if(mh.targetList.Count >1) {
+					mh.CurrentTarget = mh.targetList [mh.targetList.Count - 1];
+					Grid.GridMath.RotateCharacter (mh.selectedPlayer, mh.CurrentTarget);
+				}
+				EnemyPin enPin = Instantiate (mh.EnemyPin).GetComponent<EnemyPin> ();
+				enPin.SetupPin (mh.CurrentTarget);
+			}
+
+			if (Input.GetKeyDown (KeyCode.RightArrow) && enable) {
+				MapHandler mh = FindObjectOfType<MapHandler> ();
+				index = mh.targetList.IndexOf (mh.CurrentTarget);
+				if (index + 1 < mh.targetList.Count  && mh.targetList.Count > 1) {
+					mh.CurrentTarget = mh.targetList [index + 1];
+					Grid.GridMath.RotateCharacter (mh.selectedPlayer, mh.CurrentTarget);
+				} else if(mh.targetList.Count >1) {
+					mh.CurrentTarget = mh.targetList [0];
+					Grid.GridMath.RotateCharacter (mh.selectedPlayer, mh.CurrentTarget);
+				}
+				EnemyPin enPin = Instantiate (mh.EnemyPin).GetComponent<EnemyPin> ();
+				enPin.SetupPin (mh.CurrentTarget);
 			}
 		}
 	}

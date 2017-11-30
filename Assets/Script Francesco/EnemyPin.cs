@@ -21,7 +21,7 @@ public class EnemyPin : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (mh.inputS != InputState.Attack)
+		if (mh.CurrentTarget != currentEnemyMarked.gameObject || mh.inputS != InputState.Attack)//mh.inputS != InputState.Attack)
 			Destroy (this.gameObject);
 	}
 }

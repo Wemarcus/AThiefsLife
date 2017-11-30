@@ -112,6 +112,10 @@ public class GridMath : MonoBehaviour {
 			}
 		}
 
+		public static void RotateCharacter(GameObject character, GameObject destination){
+			character.transform.LookAt (destination.transform);
+		}
+
 		public static List<GameObject> FindPlayers(){
 			List<GameObject> players = new List<GameObject> ();
 			players = GameObject.FindGameObjectsWithTag("Player").ToList();
