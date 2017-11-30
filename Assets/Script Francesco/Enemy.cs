@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour {
 	public AiType ait;
 	public List<GameObject> playersTrg;
 	public List<GameObject> MoveSpots;
+	public GameObject block;
 	public TextMesh visualHP;
 
 	public void Start(){
@@ -36,7 +37,7 @@ public class Enemy : MonoBehaviour {
 	private void BasicAI(){
 		playersTrg = GridMath.FindPlayers ();
 		playersTrg = GridFunc.HittablePlayers (this.gameObject, playersTrg);
-		MoveSpots = GridMath.FindWalkPathInRange (this.transform.parent.gameObject, moveRange);
+		MoveSpots = GridMath.FindWalkPathInRange (block, moveRange);
 		Debug.Log (MoveSpots.Count);
 		GameObject target;
 		GameObject MoveSpot;

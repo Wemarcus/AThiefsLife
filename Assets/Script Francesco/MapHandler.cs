@@ -80,16 +80,25 @@ public class MapHandler : MonoBehaviour {
 		StartCoroutine (MessagePopUp.MessagePopUp.ShowMessage("Choose where to move your character",popUp));
 		SelectPlayer (player);
 		ChangeInputState (InputState.Movement);
-		Grid.GridMath.ChangeBlocksColour(Color.blue,Grid.GridMath.FindWalkPathInRange(Grid.GridMath.GetPlayerBlock(player),Grid.GridMath.GetPlayerMoveRange(player)));
+		List<GameObject> pathList = Grid.GridMath.FindWalkPathInRange(Grid.GridMath.GetPlayerBlock(player),Grid.GridMath.GetPlayerMoveRange(player));
+		//Grid.GridMath.ChangeBlocksColour (Color.blue,pathList);
+		Grid.GridMath.ActivateBlocksMesh (pathList);
+		//Grid.GridMath.ChangeBlocksColour(Color.blue,Grid.GridMath.FindWalkPathInRange(Grid.GridMath.GetPlayerBlock(player),Grid.GridMath.GetPlayerMoveRange(player)));
 	}
 
 	public void HideCurrentPlayerMovement(){
-		Grid.GridMath.RevertBlocksColour(Grid.GridMath.FindWalkPathInRange(Grid.GridMath.GetPlayerBlock(selectedPlayer),Grid.GridMath.GetPlayerMoveRange(selectedPlayer)));
+		List<GameObject> pathList = Grid.GridMath.FindWalkPathInRange(Grid.GridMath.GetPlayerBlock(selectedPlayer),Grid.GridMath.GetPlayerMoveRange(selectedPlayer));
+		//Grid.GridMath.RevertBlocksColour (pathList);
+		Grid.GridMath.DeactivateBlocksMesh (pathList);
+		//Grid.GridMath.RevertBlocksColour(Grid.GridMath.FindWalkPathInRange(Grid.GridMath.GetPlayerBlock(selectedPlayer),Grid.GridMath.GetPlayerMoveRange(selectedPlayer)));
 		ChangeInputState (InputState.Nothing);
 	}
 
 	public void MoveCurrentPlayerTo(GameObject block){
-		Grid.GridMath.RevertBlocksColour(Grid.GridMath.FindWalkPathInRange(Grid.GridMath.GetPlayerBlock(selectedPlayer),Grid.GridMath.GetPlayerMoveRange(selectedPlayer)));
+		List<GameObject> pathList = Grid.GridMath.FindWalkPathInRange(Grid.GridMath.GetPlayerBlock(selectedPlayer),Grid.GridMath.GetPlayerMoveRange(selectedPlayer));
+		//Grid.GridMath.RevertBlocksColour (pathList);
+		Grid.GridMath.DeactivateBlocksMesh (pathList);
+		//Grid.GridMath.RevertBlocksColour(Grid.GridMath.FindWalkPathInRange(Grid.GridMath.GetPlayerBlock(selectedPlayer),Grid.GridMath.GetPlayerMoveRange(selectedPlayer)));
 		Grid.GridMath.MovePlayerToBlock (selectedPlayer, block);
 		Player plr = selectedPlayer.GetComponent<Player> ();
 		plr.moved = true;
@@ -126,7 +135,7 @@ public class MapHandler : MonoBehaviour {
 
 	public void TargetEnemy(GameObject player){
 		targetList = GridFunc.FindEnemyOnMap (grid);
-		targetList = GridFunc.HittableEnemies (player, targetList);
+		targetList = GridFunc.HittableEnemiesPlus (player, targetList);
 		Debug.Log (targetList.Count);
 		EnemyPin enPin;
 		foreach (GameObject enemy in targetList) {
