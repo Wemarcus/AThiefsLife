@@ -17,6 +17,8 @@ public class Player : MonoBehaviour {
 	public GameObject head;
 	public GameObject playerBlock;
 	public GameObject ShootPoint;
+	public GameObject FirstWeaponPhs;
+	public List<GameObject> HitZone;
 
 	// Use this for initialization
 

@@ -198,11 +198,38 @@ public class MapHandler : MonoBehaviour {
 		}
 	}
 
+	public void FireBulletToEnemy(GameObject target, GameObject starting,int damage){
+		Player plr = selectedPlayer.GetComponent<Player> ();
+		Enemy enm = target.GetComponent<Enemy> ();
+		int rand = UnityEngine.Random.Range (0, enm.HitZone.Count - 1);
+		GameObject bullet = (GameObject)Instantiate(selectedWeapon.bulletPrefab,plr.ShootPoint.transform.position,plr.ShootPoint.transform.rotation);
+		BuildBullet (bullet, damage, BulletTag.friendly);
+		// Add velocity to the bullet
+		bullet.GetComponent<Rigidbody>().velocity = (enm.HitZone[rand].transform.position - starting.transform.position)* 4f;     
+	}
+
+	public void FireBulletToPlayer(GameObject target, GameObject starting, int damage){
+		Player plr = target.GetComponent<Player> ();
+		Enemy enm = starting.GetComponent<Enemy> ();
+		int rand = UnityEngine.Random.Range (0, plr.HitZone.Count - 1);
+		GameObject bullet = (GameObject)Instantiate(enm.bulletPrefab,enm.shootPoint.transform.position,enm.shootPoint.transform.rotation);
+		BuildBullet (bullet, damage, BulletTag.foe);
+		// Add velocity to the bullet
+		bullet.GetComponent<Rigidbody>().velocity = (plr.HitZone[rand].transform.position - enm.shootPoint.transform.position)* 4f;    
+	}
+
+	public void BuildBullet(GameObject bullet, int damage, BulletTag bt){
+		BulletDamage bd = bullet.GetComponent<BulletDamage> ();
+		bd.damage = damage;
+		bd.bulletTag = bt;
+	}
+
 	public void HitEnemy(GameObject enemy){
 		if (CurrentTarget == enemy){//targetList.Contains (enemy)) {
 			Debug.Log ("hit");
 			Player plr = selectedPlayer.GetComponent<Player> ();
-			ProvideDamageToEnemy (enemy,selectedWeapon.getDamage());
+			//ProvideDamageToEnemy (enemy,selectedWeapon.getDamage());
+			FireBulletToEnemy(enemy,plr.ShootPoint,selectedWeapon.getDamage());
 			plr.attacked = true;
 			ChangeInputState (InputState.Decision);
 			if (plr.IsDone ()) {

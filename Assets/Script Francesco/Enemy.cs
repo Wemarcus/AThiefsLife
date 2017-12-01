@@ -16,6 +16,8 @@ public class Enemy : MonoBehaviour {
 	public TextMesh visualHP;
 	public GameObject head;
 	public List<GameObject> HitZone;
+	public GameObject bulletPrefab;
+	public GameObject shootPoint;
 
 	public void Start(){
 		currentHP = maxHP;
@@ -40,13 +42,14 @@ public class Enemy : MonoBehaviour {
 		playersTrg = GridMath.FindPlayers ();
 		playersTrg = GridFunc.HittablePlayers (this.gameObject, playersTrg);
 		MoveSpots = GridMath.FindWalkPathInRange (block, moveRange);
-		Debug.Log (MoveSpots.Count);
+		//Debug.Log (MoveSpots.Count);
 		GameObject target;
 		GameObject MoveSpot;
 		if (playersTrg.Count > 0) {
 			//hit
 			target = playersTrg[Random.Range(0,playersTrg.Count)];
-			FindObjectOfType<MapHandler> ().ProvideDamageToPlayer (target, damage);
+			//FindObjectOfType<MapHandler> ().ProvideDamageToPlayer (target, damage);
+			FindObjectOfType<MapHandler>().FireBulletToPlayer(target,this.gameObject,damage);
 			Debug.Log ("sto colpendo:" + target.name); // calcolo del danno TODO
 			//then move
 			Debug.Log ("ho colpito:" + target.name + "ora mi muovo");
@@ -65,7 +68,8 @@ public class Enemy : MonoBehaviour {
 				//Hit
 				target = playersTrg[Random.Range(0,playersTrg.Count)];
 				Debug.Log ("sto colpendo:" + target.name); // calcolo del danno TODO
-				FindObjectOfType<MapHandler> ().ProvideDamageToPlayer (target, damage);
+				//FindObjectOfType<MapHandler> ().ProvideDamageToPlayer (target, damage);
+				FindObjectOfType<MapHandler>().FireBulletToPlayer(target,this.gameObject,damage);
 			}
 		}
 	}

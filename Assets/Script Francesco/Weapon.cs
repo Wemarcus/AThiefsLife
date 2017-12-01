@@ -7,6 +7,7 @@ public class Weapon : MonoBehaviour {
 	public WeaponType wpnType;
 	public int damage;
 	public int range;
+	public GameObject bulletPrefab;
 
 	public int getDamage(){
 		return damage;
