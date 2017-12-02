@@ -35,7 +35,16 @@ public class Enemy : MonoBehaviour {
 		case AiType.basic:
 			BasicAI ();
 			break;
+		case AiType.onlymovement:
+			OnlyMovementAI ();
+			break;
 		}
+	}
+
+	private void OnlyMovementAI(){
+		GameObject MoveSpot;
+		MoveSpot = MoveSpots[Random.Range(0,MoveSpots.Count)];
+		GridMath.MoveEnemyToBlock (this.gameObject, MoveSpot);
 	}
 
 	private void BasicAI(){
