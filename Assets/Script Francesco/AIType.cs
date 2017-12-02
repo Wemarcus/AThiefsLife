@@ -1,3 +1,4 @@
 ﻿public enum AiType{
-	basic
+	basic,
+	onlymovement
 }
