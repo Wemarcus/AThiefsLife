@@ -26,6 +26,8 @@ public class MapHandler : MonoBehaviour {
 
 	public GameObject CurrentTarget;
 
+	public int turnCount;
+
 	public UnityEngine.UI.Text popUp;
 
 	public delegate void ChangeStateDelegate (GameState gState);
@@ -36,6 +38,9 @@ public class MapHandler : MonoBehaviour {
 
 	public delegate void SelectedPlayerDelegate (GameObject player);
 	public event SelectedPlayerDelegate selectPlayerEvent;
+
+	public delegate void NextRound(int n);
+	public event NextRound nextRoundEvent;
 
 	// Use this for initialization
 	void Start () {
@@ -53,6 +58,7 @@ public class MapHandler : MonoBehaviour {
 		GridFunc.ShowSpawnPoints (grid);
 		ChangeState(GameState.Spawn);
 		ChangeInputState (InputState.Nothing);
+		NextTurn (0);
 	}
 
 	public IEnumerator EndAiTurn(){
@@ -63,6 +69,7 @@ public class MapHandler : MonoBehaviour {
 			ChangeInputState (InputState.Decision);
 		}
 		ChangeState (GameState.AllyTurn);
+		NextTurn (turnCount);
 	}
 
 	public void Spawn(GameObject block){
@@ -270,13 +277,20 @@ public class MapHandler : MonoBehaviour {
 			selectPlayerEvent (player);
 	}
 
+	public void NextTurn(int n){
+		if (nextRoundEvent != null) {
+			turnCount += 1;
+			nextRoundEvent (n);
+		}
+	}
+
 	public bool CheckAllyEndTurn(){
 		if (players.Count <= 0)
 			return true;
 		else
 			return false;
 	}
-
+		
 	public void SpawnPin(GameObject player){
 		if (player && player != selectedPlayer)
 			Instantiate (PlayerPin);

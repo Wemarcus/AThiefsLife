@@ -279,12 +279,28 @@ public class GridMath : MonoBehaviour {
 			return range;
 		}
 
+		public static void RemovePlayerFromBlock(GameObject player){
+			Player plr = player.GetComponent<Player>();
+			GameObject block = GetPlayerBlock (player);
+			Node n = block.GetComponent<Node> ();
+			if(n)
+			n.player = null;
+		}
+
+		public static void SetBlockToPlayer(GameObject player, GameObject block){
+			Player plr = player.GetComponent<Player>();
+			Node n = block.GetComponent<Node> ();
+			n.player = player;
+		}
+
 		public static void MovePlayerToBlock(GameObject player, GameObject block){
 			Vector3 localS = player.transform.localScale;
 			Grid.GridMath.ChangeBlockType (Grid.GridMath.GetPlayerBlock (player), BlockType.Walkable);
+			RemovePlayerFromBlock (player);
 			//player.transform.SetParent (block.transform);
 			Player plr = player.GetComponent<Player>();
 			plr.playerBlock = block;
+			SetBlockToPlayer (player, block);
 			UnityStandardAssets.Characters.ThirdPerson.AICharacterControl charcontrol = player.GetComponent<UnityStandardAssets.Characters.ThirdPerson.AICharacterControl> ();
 			charcontrol.target = block.transform;
 			// fine nuovo pezzo

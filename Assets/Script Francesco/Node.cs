@@ -11,6 +11,7 @@ public class Node : MonoBehaviour {
 	public GameObject obstacle;
 	public Material thisMaterial;
 	public BlockType blockType;
+	public GameObject player;
 	public bool visited = false;
 	public int depth=0;
 	MapHandler mh;
