@@ -248,6 +248,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4048029656804488}
   - component: {fileID: 137275053225757652}
+  - component: {fileID: 114217493981901168}
   m_Layer: 0
   m_Name: Character_Male_Shirt_01
   m_TagString: Untagged
@@ -518,6 +519,7 @@ GameObject:
   - component: {fileID: 4053525535645312}
   - component: {fileID: 33335531336209658}
   - component: {fileID: 23977327032735676}
+  - component: {fileID: 114496978579827582}
   m_Layer: 0
   m_Name: SM_Item_Hair_Eyebrow_Woman_01
   m_TagString: Untagged
@@ -919,6 +921,7 @@ GameObject:
   - component: {fileID: 4398387711208986}
   - component: {fileID: 33083398869258498}
   - component: {fileID: 23043499844700568}
+  - component: {fileID: 114543642095567910}
   m_Layer: 0
   m_Name: SM_Item_Hair_Man_01
   m_TagString: Untagged
@@ -1012,6 +1015,7 @@ GameObject:
   - component: {fileID: 4911611441457060}
   - component: {fileID: 33408917277147722}
   - component: {fileID: 23514309170520422}
+  - component: {fileID: 114111205821648424}
   m_Layer: 0
   m_Name: SM_Item_Hair_Eyebrow_Man_01
   m_TagString: Untagged
@@ -1464,7 +1468,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1318428742111022}
   m_LocalRotation: {x: -0, y: 0.9965674, z: -0, w: 0.08278536}
-  m_LocalPosition: {x: 3.7395492, y: -1.7439866, z: 3.5658984}
+  m_LocalPosition: {x: 4.23, y: -1.7439866, z: 0.64}
   m_LocalScale: {x: 1.0000002, y: 1, z: 1.0000002}
   m_Children:
   - {fileID: 4860019634914066}
@@ -2838,6 +2842,21 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114111205821648424
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1780068921364744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: 1
+  eraseRenderer: 0
+  originalLayer: 0
+  originalMaterials: []
 --- !u!114 &114180298590254032
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2850,6 +2869,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+--- !u!114 &114217493981901168
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1186715230297940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: 1
+  eraseRenderer: 0
+  originalLayer: 0
+  originalMaterials: []
+--- !u!114 &114496978579827582
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1367269665476212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: 1
+  eraseRenderer: 0
+  originalLayer: 0
+  originalMaterials: []
+--- !u!114 &114543642095567910
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1699258265276838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: 1
+  eraseRenderer: 0
+  originalLayer: 0
+  originalMaterials: []
 --- !u!114 &114625929573312568
 MonoBehaviour:
   m_ObjectHideFlags: 1

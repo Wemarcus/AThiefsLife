@@ -570,6 +570,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4094762653005054}
   - component: {fileID: 137068709306616604}
+  - component: {fileID: 114713999588764982}
   m_Layer: 0
   m_Name: Character_Male_SWAT_01
   m_TagString: Untagged
@@ -1790,7 +1791,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1835600789843276}
   m_LocalRotation: {x: -0, y: 0.9965674, z: -0, w: 0.08278536}
-  m_LocalPosition: {x: 1.58, y: -1.7439866, z: 3.21}
+  m_LocalPosition: {x: 6.51, y: -1.7439866, z: 4.04}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4502904917599270}
@@ -3150,6 +3151,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Sphere: {fileID: 1630926885244136}
+--- !u!114 &114713999588764982
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1525946535154804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: 2
+  eraseRenderer: 0
+  originalLayer: 0
+  originalMaterials: []
 --- !u!114 &114867207625153528
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4161,7 +4177,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: f04942e08dde08841a595b470733fbc8, type: 3}
-  m_Color: {r: 0.8161765, g: 0.78099644, b: 0.3060662, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

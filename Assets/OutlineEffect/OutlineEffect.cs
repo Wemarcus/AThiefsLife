@@ -96,11 +96,11 @@ namespace cakeslice
 
         Material GetMaterialFromID(int ID)
         {
-            if(ID == 0)
+            if (ID == 0)
                 return outline1Material;
-            else if(ID == 1)
+            else if (ID == 1)
                 return outline2Material;
-            else
+            else 
                 return outline3Material;
         }
         List<Material> materialBuffer = new List<Material>();
@@ -358,7 +358,7 @@ namespace cakeslice
                 outlineShaderMaterial.SetColor("_LineColor1", lineColor0 * lineColor0);
                 outlineShaderMaterial.SetColor("_LineColor2", lineColor1 * lineColor1);
                 outlineShaderMaterial.SetColor("_LineColor3", lineColor2 * lineColor2);
-                if(flipY)
+                if (flipY)
                     outlineShaderMaterial.SetInt("_FlipY", 1);
                 else
                     outlineShaderMaterial.SetInt("_FlipY", 0);
