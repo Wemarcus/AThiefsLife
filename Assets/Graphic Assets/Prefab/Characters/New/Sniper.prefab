@@ -2949,7 +2949,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1753506187080716}
   m_LocalRotation: {x: -0, y: 0.9965674, z: -0, w: 0.08278536}
-  m_LocalPosition: {x: 40.70271, y: -0.019999977, z: 70.16888}
+  m_LocalPosition: {x: 39.20167, y: -0.019999975, z: 70.45998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4612683838578132}
@@ -4476,6 +4476,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Sphere: {fileID: 1520701042827126}
+  MyTurn: 0
 --- !u!114 &114119291223208680
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4648,8 +4649,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7acee2dd129481a469a9ef664c3f486f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveRange: 3
-  maxHP: 0
+  moveRange: 6
+  maxHP: 180
   currentHP: 0
   moved: 0
   attacked: 0
@@ -4667,6 +4668,7 @@ MonoBehaviour:
   - {fileID: 1243911140760836}
   - {fileID: 1723822733781884}
   - {fileID: 1759855156873530}
+  isBoss: 0
 --- !u!114 &114682895975222318
 MonoBehaviour:
   m_ObjectHideFlags: 1

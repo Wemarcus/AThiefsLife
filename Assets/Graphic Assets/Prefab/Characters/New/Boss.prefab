@@ -1922,7 +1922,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1195218664010720}
   m_LocalRotation: {x: -0, y: 0.9965674, z: -0, w: 0.08278536}
-  m_LocalPosition: {x: 40.70271, y: -0.019999977, z: 70.16888}
+  m_LocalPosition: {x: 40.375153, y: -0.019999973, z: 71.02297}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4910163628965944}
@@ -5243,6 +5243,7 @@ MonoBehaviour:
   - {fileID: 1597907405304902}
   - {fileID: 1961598729035900}
   - {fileID: 1875209719135952}
+  isBoss: 1
 --- !u!114 &114290914275444730
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5319,6 +5320,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Sphere: {fileID: 1639206587802410}
+  MyTurn: 0
 --- !u!114 &114392043982617072
 MonoBehaviour:
   m_ObjectHideFlags: 1
