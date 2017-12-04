@@ -7,12 +7,14 @@ public class UIHandler : MonoBehaviour {
 
 	public GameState gs;
 	public InputState inpS = InputState.Nothing;
+	public int turnCount;
 	public GameObject player;
 	public MapHandler mh;
 	public bool enable = true;
 
 	public UnityEngine.UI.Text gameStateText;
 	public UnityEngine.UI.Text inputStateText;
+	public UnityEngine.UI.Text TurnText;
 
 	public UnityEngine.UI.Button MoveBtn;
 	public UnityEngine.UI.Button AttackBtn;
@@ -25,6 +27,7 @@ public class UIHandler : MonoBehaviour {
 		mh.changeStateEvent += ChangeState;
 		mh.changeInputStateEvent += ChangeInputState;
 		mh.selectPlayerEvent += ChangeSelectedPlayer;
+		mh.nextRoundEvent += ChangeTurnCount;
 	}
 
 	public void ChangeState(GameState gameS){
@@ -38,6 +41,12 @@ public class UIHandler : MonoBehaviour {
 		inputStateText.text = inptS.ToString ();
 		UpdateUI ();
 
+	}
+
+	public void ChangeTurnCount(int n){
+		turnCount = n;
+		TurnText.text = turnCount.ToString ();
+		UpdateUI ();
 	}
 
 	public void ChangeSelectedPlayer(GameObject player2){

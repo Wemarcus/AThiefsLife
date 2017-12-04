@@ -43,7 +43,9 @@ public class Enemy : MonoBehaviour {
 
 	private void OnlyMovementAI(){
 		GameObject MoveSpot;
+		MoveSpots = GridMath.FindWalkPathInRange (block, moveRange);
 		MoveSpot = MoveSpots[Random.Range(0,MoveSpots.Count)];
+		if(MoveSpot)
 		GridMath.MoveEnemyToBlock (this.gameObject, MoveSpot);
 	}
 
@@ -63,11 +65,13 @@ public class Enemy : MonoBehaviour {
 			//then move
 			Debug.Log ("ho colpito:" + target.name + "ora mi muovo");
 			MoveSpot = MoveSpots[Random.Range(0,MoveSpots.Count)];
+			if(MoveSpot)
 			GridMath.MoveEnemyToBlock (this.gameObject, MoveSpot);
 		} else {
 			// move
 			Debug.Log ("non potevo colpire nessuno, mi muovo");
 			MoveSpot = MoveSpots[Random.Range(0,MoveSpots.Count)];
+			if(MoveSpot)
 			GridMath.MoveEnemyToBlock (this.gameObject, MoveSpot);
 			//try to hit
 			playersTrg = GridFunc.HittablePlayers(this.gameObject,playersTrg);

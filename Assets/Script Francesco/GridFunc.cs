@@ -13,6 +13,7 @@ public class GridFunc : MonoBehaviour {
 				newPlayer.transform.position = block.transform.position;
 				Player plr = newPlayer.GetComponent<Player> ();
 				plr.playerBlock = block;
+				Grid.GridMath.SetBlockToPlayer (newPlayer, block);
 				//fine nuovo pezzo
 				players.RemoveAt (0);
 				Grid.GridMath.ChangeBlockType (block, BlockType.Player);
