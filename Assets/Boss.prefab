@@ -4593,6 +4593,7 @@ MonoBehaviour:
   - {fileID: 1188642157381180}
   - {fileID: 1822176307732546}
   - {fileID: 1025823218168760}
+  isBoss: 1
 --- !u!114 &114365444422123464
 MonoBehaviour:
   m_ObjectHideFlags: 1

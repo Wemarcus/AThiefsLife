@@ -19,6 +19,7 @@ public class Player : MonoBehaviour {
 	public GameObject ShootPoint;
 	public GameObject FirstWeaponPhs;
 	public List<GameObject> HitZone;
+	public bool isBoss;
 
 	// Use this for initialization
 

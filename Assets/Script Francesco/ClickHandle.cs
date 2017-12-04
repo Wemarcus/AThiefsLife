@@ -47,10 +47,12 @@ public class ClickHandle : MonoBehaviour {
 				MapHandler mh = FindObjectOfType<MapHandler> ();
 				index = mh.targetList.IndexOf (mh.CurrentTarget);
 				if (index - 1 >= 0 && mh.targetList.Count > 1) {
-					mh.CurrentTarget = mh.targetList [index - 1];
+					//mh.CurrentTarget = mh.targetList [index - 1];
+					mh.ChangeTarget(mh.targetList[index-1]);
 					Grid.GridMath.RotateCharacter (mh.selectedPlayer, mh.CurrentTarget);
 				} else if(mh.targetList.Count >1) {
-					mh.CurrentTarget = mh.targetList [mh.targetList.Count - 1];
+					//mh.CurrentTarget = mh.targetList [mh.targetList.Count - 1];
+					mh.ChangeTarget(mh.targetList[mh.targetList.Count-1]);
 					Grid.GridMath.RotateCharacter (mh.selectedPlayer, mh.CurrentTarget);
 				}
 				EnemyPin enPin = Instantiate (mh.EnemyPin).GetComponent<EnemyPin> ();
@@ -61,10 +63,12 @@ public class ClickHandle : MonoBehaviour {
 				MapHandler mh = FindObjectOfType<MapHandler> ();
 				index = mh.targetList.IndexOf (mh.CurrentTarget);
 				if (index + 1 < mh.targetList.Count  && mh.targetList.Count > 1) {
-					mh.CurrentTarget = mh.targetList [index + 1];
+					//mh.CurrentTarget = mh.targetList [index + 1];
+					mh.ChangeTarget(mh.targetList[index+1]);
 					Grid.GridMath.RotateCharacter (mh.selectedPlayer, mh.CurrentTarget);
 				} else if(mh.targetList.Count >1) {
-					mh.CurrentTarget = mh.targetList [0];
+					//mh.CurrentTarget = mh.targetList [0];
+					mh.ChangeTarget(mh.targetList[0]);
 					Grid.GridMath.RotateCharacter (mh.selectedPlayer, mh.CurrentTarget);
 				}
 				EnemyPin enPin = Instantiate (mh.EnemyPin).GetComponent<EnemyPin> ();

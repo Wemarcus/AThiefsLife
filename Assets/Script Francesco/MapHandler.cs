@@ -39,6 +39,9 @@ public class MapHandler : MonoBehaviour {
 	public delegate void SelectedPlayerDelegate (GameObject player);
 	public event SelectedPlayerDelegate selectPlayerEvent;
 
+	public delegate void CurrentTargetDelegate (GameObject newTarget);
+	public event CurrentTargetDelegate currentTargetEvent;
+
 	public delegate void NextRound(int n);
 	public event NextRound nextRoundEvent;
 
@@ -129,7 +132,8 @@ public class MapHandler : MonoBehaviour {
 	}
 
 	public void SelectNothing(GameObject block){
-		SelectPlayer (null);
+		//SelectPlayer (null);
+		ChangeTarget (null);
 		ChangeInputState (InputState.Nothing);
 	}
 
@@ -155,7 +159,8 @@ public class MapHandler : MonoBehaviour {
 			StartCoroutine (MessagePopUp.MessagePopUp.ShowMessage ("Choose an enemy to hit", popUp));
 			enPin = Instantiate (EnemyPin).GetComponent<EnemyPin> ();
 			enPin.SetupPin (targetList[0]);
-			CurrentTarget = (targetList [0]);
+			//CurrentTarget = (targetList [0]);
+			ChangeTarget(targetList[0]);
 			Grid.GridMath.RotateCharacter (selectedPlayer, targetList [0]);
 			ChangeInputState (InputState.Attack);
 		} else {
@@ -238,6 +243,7 @@ public class MapHandler : MonoBehaviour {
 			//ProvideDamageToEnemy (enemy,selectedWeapon.getDamage());
 			FireBulletToEnemy(enemy,plr.ShootPoint,selectedWeapon.getDamage());
 			plr.attacked = true;
+			ChangeTarget (null);
 			ChangeInputState (InputState.Decision);
 			if (plr.IsDone ()) {
 				Grid.GridMath.RemovePlayerFromList (selectedPlayer, players);
@@ -281,6 +287,13 @@ public class MapHandler : MonoBehaviour {
 		if (nextRoundEvent != null) {
 			turnCount += 1;
 			nextRoundEvent (n);
+		}
+	}
+
+	public void ChangeTarget(GameObject newTarget){
+		if (currentTargetEvent != null) {
+			CurrentTarget = newTarget;
+			currentTargetEvent (newTarget);
 		}
 	}
 

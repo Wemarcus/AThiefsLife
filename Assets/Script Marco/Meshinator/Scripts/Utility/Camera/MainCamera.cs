@@ -23,6 +23,9 @@ public class MainCamera : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
+		MapHandler mh = FindObjectOfType<MapHandler> ();
+		mh.currentTargetEvent += ChangeTargetWithEnemy;
+		mh.selectPlayerEvent += ChangeTargetWithPlayer;
 		Vector3 angles = transform.eulerAngles;
 	    x = angles.y;
 	    y = angles.x;
@@ -35,7 +38,27 @@ public class MainCamera : MonoBehaviour
 		float[] distances = new float[32];
 		gameObject.GetComponent<Camera>().layerCullDistances = distances;
 	}
-	
+
+	void ChangeTargetWithEnemy(GameObject newTarget){
+		Enemy enm;
+		MapHandler mh;
+		if (newTarget) {
+			enm = newTarget.GetComponent<Enemy> ();
+			target = enm.head.transform;
+		} else {
+			mh = FindObjectOfType<MapHandler> ();
+			ChangeTargetWithPlayer (mh.selectedPlayer);
+		}
+	}
+
+	void ChangeTargetWithPlayer(GameObject newTarget){
+		Player plr;
+		if(newTarget){
+			plr = newTarget.GetComponent<Player> ();
+			target = plr.head.transform;
+		}
+	}
+
 	void FixedUpdate()
 	{
 		// Figure out what direction the camera is looking, so we can using arrowkeys or
