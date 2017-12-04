@@ -5,14 +5,19 @@ using UnityEngine;
 public class Agent_Animation : MonoBehaviour {
 
     public GameObject Sphere;
+    public bool MyTurn; // se True = mio turno, se False = turno avversario
     //private Animator agent;
+
 
     private void OnTriggerEnter(Collider other)
     {
         switch (other.tag)
         {
             case "Cover":
-                Sphere.SetActive(true);
+                if (!MyTurn)
+                {
+                    Sphere.SetActive(true);
+                }
                 break;
         }
     }
