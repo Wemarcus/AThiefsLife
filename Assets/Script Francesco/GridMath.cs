@@ -21,8 +21,12 @@ public class GridMath : MonoBehaviour {
 		}
 
 		public static void ActivateBlockMesh(GameObject block){
-			MeshRenderer mr = block.GetComponent<MeshRenderer> ();
-			mr.enabled = true;
+			/*MeshRenderer mr = block.GetComponent<MeshRenderer> ();
+			mr.enabled = true;*/
+			if (block.GetComponent<cakeslice.Outline>() != null) {
+				cakeslice.Outline outline = block.GetComponent<cakeslice.Outline> ();
+				outline.enabled = true;
+			}
 		}
 
 		public static void ActivateBlocksMesh(List<GameObject> blockList){
@@ -32,8 +36,12 @@ public class GridMath : MonoBehaviour {
 		}
 
 		public static void DeactivateBlockMesh(GameObject block){
-			MeshRenderer mr = block.GetComponent<MeshRenderer> ();
-			mr.enabled = false;
+			/*MeshRenderer mr = block.GetComponent<MeshRenderer> ();
+			mr.enabled = false;*/
+			if (block.GetComponent<cakeslice.Outline> () != null) {
+				cakeslice.Outline outline = block.GetComponent<cakeslice.Outline> ();
+				outline.enabled = false;
+			}
 		}
 
 		public static void DeactivateBlocksMesh(List<GameObject> blockList){
