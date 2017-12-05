@@ -43,6 +43,8 @@ public class AddForce : MonoBehaviour {
                             Debug.Log("Collision Detected");
                         }
                     }
+                    // in prova..
+                    Destroy(this.gameObject);
                 }
                 break;
         }
