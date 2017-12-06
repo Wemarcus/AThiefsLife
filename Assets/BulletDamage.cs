@@ -7,7 +7,9 @@ public class BulletDamage : MonoBehaviour {
 	public int damage;
 	public BulletTag bulletTag;
 
-	void OnCollisionEnter(Collision collision){
+    // MODIFICA MARCO => necessario passaggio all'OnTriggerEnter per animazioni..
+
+	/*void OnCollisionEnter(Collision collision){
 		Debug.Log ("proiettile collide con :" + collision.gameObject);
 		if (collision.gameObject.tag == "Enemy" && bulletTag == BulletTag.friendly) {
 			DealDamageToEnemy (collision.gameObject);
@@ -17,9 +19,24 @@ public class BulletDamage : MonoBehaviour {
 			DealDamageToPlayer (collision.gameObject);
 			Destroy (this.gameObject);
 		}
-	}
+	}*/
 
-	void DealDamageToPlayer( GameObject playerTrg){
+    void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("proiettile collide con :" + other.gameObject);
+        if (other.gameObject.tag == "Enemy" && bulletTag == BulletTag.friendly)
+        {
+            DealDamageToEnemy(other.gameObject);
+            Destroy(this.gameObject);
+        }
+        if (other.gameObject.tag == "Player" && bulletTag == BulletTag.foe)
+        {
+            DealDamageToPlayer(other.gameObject);
+            Destroy(this.gameObject);
+        }
+    }
+
+    void DealDamageToPlayer( GameObject playerTrg){
 		Player plr = playerTrg.GetComponent<Player> ();
 		MapHandler mh = FindObjectOfType<MapHandler> ();
 		plr.DealDamage (damage);
