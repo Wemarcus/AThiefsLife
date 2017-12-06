@@ -198,11 +198,38 @@ public class GridMath : MonoBehaviour {
 			Node n = block.GetComponentInParent<Node> ();
 			n.visited = true;
 			n.depth = currentDepth;
+			if(!graph.Contains(block))
 			graph.Add (block);
 			foreach (GameObject node in n.Neighbours) {
 				Node currentNode = node.GetComponent<Node> ();
 				if ((currentNode.visited == false && currentDepth <= depth && currentNode.blockType == BlockType.Walkable)|| currentNode.depth > currentDepth && currentNode.blockType == BlockType.Walkable) {
 					visitNeighbours (graph, node, depth, currentDepth + 1);
+				}
+			}
+			return graph;
+		}
+
+		public static List<GameObject> DepthVisitWalkAndPlayers(GameObject block, int depth, int currentDepth){
+			if (currentDepth == 0) {
+				Node thisNode = block.GetComponent<Node> ();
+				thisNode.visited = true;
+			}
+			List<GameObject> graph = new List<GameObject> ();
+			Node n = block.GetComponentInParent<Node> ();
+			graph = visitNeighboursWalkAndPlayers (graph, block, depth, currentDepth + 1);
+			return graph;
+		}
+
+		public static List<GameObject> visitNeighboursWalkAndPlayers(List<GameObject> graph,GameObject block, int depth, int currentDepth){
+			Node n = block.GetComponentInParent<Node> ();
+			n.visited = true;
+			n.depth = currentDepth;
+			if(!graph.Contains(block))
+			graph.Add (block);
+			foreach (GameObject node in n.Neighbours) {
+				Node currentNode = node.GetComponent<Node> ();
+				if ((currentNode.visited == false && currentDepth <= depth && (currentNode.blockType == BlockType.Walkable ||currentNode.blockType == BlockType.Player))|| currentNode.depth > currentDepth && (currentNode.blockType == BlockType.Walkable || currentNode.blockType == BlockType.Player)) {
+					visitNeighboursWalkAndPlayers (graph, node, depth, currentDepth + 1);
 				}
 			}
 			return graph;
@@ -214,6 +241,7 @@ public class GridMath : MonoBehaviour {
 			Node thisNode = block.GetComponent<Node>();
 			if (thisNode.visited == false && currentDepth < depth && thisNode.blockType == BlockType.Walkable) {
 				thisNode.visited = true;
+				if(!graph.Contains(block))
 				graph.Add (block);
 				if (block == playerblock)
 					return graph;
@@ -255,6 +283,16 @@ public class GridMath : MonoBehaviour {
 			List<GameObject> blockList = new List<GameObject> ();
 			blockList = DepthVisitWalkable2 (block, depth, 0);
 			blockList.Remove (block);
+			SetBlockListUnvisited (blockList);
+			ResetDepth (blockList); // AGGIUNTA PER TEST
+			SetBlockUnvisited (block);
+			//Debug.Log (blockList.Count ());
+			return blockList;
+		}
+
+		public static List<GameObject> FindWalkPathInRangeWithPlayers(GameObject block, int depth){
+			List<GameObject> blockList = new List<GameObject> ();
+			blockList = DepthVisitWalkAndPlayers (block, depth, 0);
 			SetBlockListUnvisited (blockList);
 			SetBlockUnvisited (block);
 			//Debug.Log (blockList.Count ());

@@ -2,5 +2,6 @@
 	Nothing,
 	Decision,
 	Movement,
-	Attack
+	Attack,
+	Abilty
 }

@@ -20,6 +20,7 @@ public class MapHandler : MonoBehaviour {
 	public InputState inputS;
 	public GameObject selectedPlayer;
 	public Weapon selectedWeapon;
+	public Actions selectedAction;
 
 	public GameObject PlayerPin;
 	public GameObject EnemyPin;
@@ -106,9 +107,17 @@ public class MapHandler : MonoBehaviour {
 		ChangeInputState (InputState.Nothing);
 	}
 
+	public void RevertAbility(GameObject player){
+		List<GameObject> pathList = Grid.GridMath.FindWalkPathInRangeWithPlayers(Grid.GridMath.GetPlayerBlock(selectedPlayer),Grid.GridMath.GetPlayerMoveRange(selectedPlayer));
+		Grid.GridMath.DeactivateBlocksMesh (pathList);
+		Grid.GridMath.ResetDepth (pathList);
+		ChangeInputState (InputState.Nothing);
+	}
+
 	public void MoveCurrentPlayerTo(GameObject block){
 		List<GameObject> pathList = Grid.GridMath.FindWalkPathInRange(Grid.GridMath.GetPlayerBlock(selectedPlayer),Grid.GridMath.GetPlayerMoveRange(selectedPlayer));
 		//Grid.GridMath.RevertBlocksColour (pathList);
+		Grid.GridMath.ResetDepth(pathList); // AGGIUNTO NUOVO PER RESET
 		Grid.GridMath.DeactivateBlocksMesh (pathList);
 		//Grid.GridMath.RevertBlocksColour(Grid.GridMath.FindWalkPathInRange(Grid.GridMath.GetPlayerBlock(selectedPlayer),Grid.GridMath.GetPlayerMoveRange(selectedPlayer)));
 		Grid.GridMath.MovePlayerToBlock (selectedPlayer, block);
@@ -124,6 +133,10 @@ public class MapHandler : MonoBehaviour {
 			ChangeState (GameState.EnemyTurn);
 			ChangeInputState (InputState.Nothing);
 		}
+	}
+
+	public void PerformAction(GameObject player){
+		selectedAction.RunAction (selectedPlayer);
 	}
 
 	public void OpenPlayerMenu(GameObject player){

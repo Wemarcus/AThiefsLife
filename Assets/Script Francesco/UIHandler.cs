@@ -70,12 +70,12 @@ public class UIHandler : MonoBehaviour {
 
 	public void OnClickAction1(){
 		Player plr = player.GetComponent<Player> ();
-		plr.firstAction.PerformAction ();
+		plr.firstAction.PerformAction (player);
 	}
 
 	public void OnClickAction2(){
 		Player plr = player.GetComponent<Player> ();
-		plr.secondAction.PerformAction ();
+		plr.secondAction.PerformAction (player);
 	}
 
 	public void OnClickPass(){
@@ -98,11 +98,11 @@ public class UIHandler : MonoBehaviour {
 				AttackBtn.gameObject.SetActive (true);
 				AttackBtn2.gameObject.SetActive (true);
 			}
-			if (plr) {
+			if (plr && !plr.actionDone) {
 				ActionBtn.gameObject.SetActive (true);
 				ActionBtn2.gameObject.SetActive (true);
 			}
-				if (plr && (!plr.moved || !plr.attacked))
+			if (plr && (!plr.moved || !plr.attacked || !plr.actionDone))
 					PassTurnBtn.gameObject.SetActive (true);
 		}
 		if (inpS == InputState.Nothing) {

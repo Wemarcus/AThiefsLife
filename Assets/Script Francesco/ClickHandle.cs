@@ -122,6 +122,14 @@ public class ClickHandle : MonoBehaviour {
 				click += Hit;
 				break;
 			}
+			if (hitted.tag == "Walkable" && inpS == InputState.Abilty && Grid.GridMath.FindWalkPathInRangeWithPlayers (Grid.GridMath.GetPlayerBlock (player), Grid.GridMath.GetPlayerMoveRange (player)).Contains (hitted)) {
+				click += PerformAction;
+				break;
+			}
+			if (hitted.tag == "Walkable" && inpS == InputState.Abilty && !Grid.GridMath.FindWalkPathInRangeWithPlayers (Grid.GridMath.GetPlayerBlock (player), Grid.GridMath.GetPlayerMoveRange (player)).Contains (hitted)) {
+				click += RevertAbility;
+				break;
+			}
 			break;
 		}
 	}
@@ -131,6 +139,10 @@ public class ClickHandle : MonoBehaviour {
 			click (block);
 			click = null;
 		}
+	}
+
+	public void RevertAbility(GameObject player){
+		FindObjectOfType<MapHandler> ().RevertAbility (player);
 	}
 
 	public void Hit(GameObject enemy){
@@ -151,6 +163,10 @@ public class ClickHandle : MonoBehaviour {
 
 	public void SpawnFuncBuild(GameObject block){
 		FindObjectOfType<MapHandler> ().Spawn (block);
+	}
+
+	public void PerformAction(GameObject player){
+		FindObjectOfType<MapHandler> ().PerformAction (player);
 	}
 
 	public void SelectPlayer(GameObject player){

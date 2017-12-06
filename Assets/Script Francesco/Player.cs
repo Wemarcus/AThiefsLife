@@ -9,6 +9,7 @@ public class Player : MonoBehaviour {
 	public int currentHP;
 	public bool moved;
 	public bool attacked;
+	public bool actionDone;
 	public Weapon firstWeapon;
 	public Weapon secondWeapon;
 	public Actions firstAction;
@@ -20,6 +21,7 @@ public class Player : MonoBehaviour {
 	public GameObject FirstWeaponPhs;
 	public List<GameObject> HitZone;
 	public bool isBoss;
+	public bool shield;
 
 	// Use this for initialization
 
@@ -39,7 +41,24 @@ public class Player : MonoBehaviour {
 	}
 
 	public void DealDamage(int damage){
+		Shield sh;
+		float floatdamage;
+		if (this.gameObject.GetComponent<Shield> ()) {
+			sh = this.gameObject.GetComponent<Shield> ();
+			floatdamage = (float)damage;
+			floatdamage = floatdamage / 100;
+			floatdamage = floatdamage * (100 - sh.shieldPercentage);
+			damage = (int)floatdamage;
+		}
 		currentHP -= damage;
+		visualHP.text = currentHP.ToString();
+	}
+
+	public void Heal(int heal){
+		currentHP += heal;
+		if (currentHP > maxHP) {
+			currentHP = maxHP;
+		}
 		visualHP.text = currentHP.ToString();
 	}
 
@@ -52,10 +71,11 @@ public class Player : MonoBehaviour {
 	public void ResetTurn(){
 		moved = false;
 		attacked = false;
+		actionDone = false;
 	}
 
 	public bool IsDone(){
-		if (moved && attacked)
+		if (moved && attacked && actionDone)
 			return true;
 		else
 			return false;
