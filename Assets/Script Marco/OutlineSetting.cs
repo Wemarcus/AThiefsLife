@@ -8,7 +8,9 @@ public class OutlineSetting : MonoBehaviour {
 
         if (GetComponent<cakeslice.Outline>() != null)
         {
-            GetComponent<cakeslice.Outline>().enabled = false;
+			if (!this.gameObject.GetComponent<Node> ().AllySpawn) {
+				GetComponent<cakeslice.Outline> ().enabled = false;
+			}
         }
 	}
 	

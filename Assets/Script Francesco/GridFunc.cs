@@ -6,12 +6,13 @@ namespace Grid{
 	
 public class GridFunc : MonoBehaviour {
 
-		public static void SpawnFirstPlayer(List<GameObject> players, GameObject block){
+		public static void SpawnFirstPlayer(List<GameObject> players, GameObject block, GameObject spawnpoint){
 			if (players.Count > 0) {
 				//Instantiate (players [0], block.transform);
 				GameObject newPlayer = Instantiate(players[0]);
-				newPlayer.transform.position = block.transform.position;
+				newPlayer.transform.position = spawnpoint.transform.position;
 				Player plr = newPlayer.GetComponent<Player> ();
+				Grid.GridMath.SetPlayerTarget (newPlayer,block);
 				plr.playerBlock = block;
 				Grid.GridMath.SetBlockToPlayer (newPlayer, block);
 				//fine nuovo pezzo

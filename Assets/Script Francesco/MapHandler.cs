@@ -13,6 +13,7 @@ public class MapHandler : MonoBehaviour {
 	public int ColumnH = 100;
 	public int RowH = 100;
 	//prefab players
+	public GameObject spawnpoint;
 	public List<GameObject> players;
 	public List<GameObject> targetList;
 	//Stato di gioco
@@ -77,7 +78,7 @@ public class MapHandler : MonoBehaviour {
 	}
 
 	public void Spawn(GameObject block){
-		GridFunc.SpawnFirstPlayer (players, block);
+		GridFunc.SpawnFirstPlayer (players, block,spawnpoint);
 		if(players.Count <= 0) {
 			players = GridFunc.ResetPlayersActions();
 			if (players.Count > 0) {

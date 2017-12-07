@@ -35,6 +35,13 @@ public class GridMath : MonoBehaviour {
 			}
 		}
 
+		public static void SetPlayerTarget(GameObject player, GameObject target){
+			if (player.GetComponent<UnityStandardAssets.Characters.ThirdPerson.AICharacterControl> ()) {
+				UnityStandardAssets.Characters.ThirdPerson.AICharacterControl charcontrol = player.GetComponent<UnityStandardAssets.Characters.ThirdPerson.AICharacterControl> ();
+				charcontrol.target = target.transform;
+			}
+		}
+
 		public static void DeactivateBlockMesh(GameObject block){
 			/*MeshRenderer mr = block.GetComponent<MeshRenderer> ();
 			mr.enabled = false;*/
