@@ -9,6 +9,7 @@ public class Agent_Animation : MonoBehaviour {
     public bool firing; // utilizzata per sparare con l'arma primaria
     public bool grenade; // utilizzata per lanciare la bomba
     public bool death; // utilizzata per morire
+    public bool cover; // utilizzata per il sistema di copertura
 
     // Variabili da settare nell'inspector
     public GameObject Sphere;
@@ -23,6 +24,9 @@ public class Agent_Animation : MonoBehaviour {
     // Variabili utilizzate solo in questo script
     private Animator agent;
     private float time;
+    private MapHandler mh;
+
+    // SUGGERIMENTI
 	/*	Per prendere il blocco del player:  Grid.GridMath.GetPlayerBlock(GameObject player);
 	 *
 	 *	Per prendere il blocco del nemico:  Grid.GridMath.GetEnemyBlock(GameObject enemy);
@@ -31,12 +35,13 @@ public class Agent_Animation : MonoBehaviour {
 	 * 
 	 *  .isCover = true o false dentro al blocco (node)
 	 */ 
+
     private void Start()
     {
-		MapHandler mh;
 		mh = FindObjectOfType<MapHandler> ();
 		mh.changeStateEvent += SetTurnBool;
         agent = GetComponent<Animator>();
+        MyTurn = true;
     }
 
     private void Update()
@@ -71,47 +76,29 @@ public class Agent_Animation : MonoBehaviour {
             grenade = false;
             agent.SetTrigger("Grenade");
         }
+
+        if (MyTurn)
+        {
+            Sphere.SetActive(false);
+        }
+        else if (!MyTurn && cover)
+        {
+            Sphere.SetActive(true);
+        } else if (!MyTurn && !cover)
+        {
+            Sphere.SetActive(false);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         switch (other.tag)
         {
-            case "Cover":
-                Sphere.SetActive(true);
-                break;
-
             case "Bullet":
                 agent.SetTrigger("HitReaction");
                 blood.SetActive(true);
                 time = 1.00f;
                 StartCoroutine(Blood(time));
-                break;
-        }
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        switch (other.tag)
-        {
-            case "Cover":
-                if (MyTurn)
-                {
-                    Sphere.SetActive(false);
-                } else
-                {
-                    Sphere.SetActive(true);
-                }
-                break;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        switch (other.tag)
-        {
-            case "Cover":
-                Sphere.SetActive(false);
                 break;
         }
     }
@@ -200,12 +187,15 @@ public class Agent_Animation : MonoBehaviour {
 		if (gs == GameState.AllyTurn && gameObject.GetComponent<Player>()) {
 			MyTurn = true;
 		}
+
 		if (gs == GameState.EnemyTurn && gameObject.GetComponent<Enemy> ()) {
 			MyTurn = true;
 		}
+
 		if (gs == GameState.AllyTurn && gameObject.GetComponent<Enemy>()) {
 			MyTurn = false;
 		}
+
 		if (gs == GameState.EnemyTurn && gameObject.GetComponent<Player> ()) {
 			MyTurn = false;
 		}
