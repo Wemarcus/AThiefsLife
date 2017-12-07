@@ -255,6 +255,8 @@ public class MapHandler : MonoBehaviour {
 	public void FireBulletToEnemy(GameObject target, GameObject starting,int damage){
 		Player plr = selectedPlayer.GetComponent<Player> ();
 		Enemy enm = target.GetComponent<Enemy> ();
+		Agent_Animation aa = plr.gameObject.GetComponent<Agent_Animation> ();
+		aa.firing = true;
 		int rand = UnityEngine.Random.Range (0, enm.HitZone.Count - 1);
 		GameObject bullet = (GameObject)Instantiate(selectedWeapon.bulletPrefab,plr.ShootPoint.transform.position,plr.ShootPoint.transform.rotation);
 		if (plr.gameObject.GetComponent<DamagePowerUp> ()) {
@@ -274,6 +276,8 @@ public class MapHandler : MonoBehaviour {
 	public void FireBulletToPlayer(GameObject target, GameObject starting, int damage){
 		Player plr = target.GetComponent<Player> ();
 		Enemy enm = starting.GetComponent<Enemy> ();
+		Agent_Animation aa = enm.gameObject.GetComponent<Agent_Animation> ();
+		aa.firing = true;
 		int rand = UnityEngine.Random.Range (0, plr.HitZone.Count - 1);
 		GameObject bullet = (GameObject)Instantiate(enm.bulletPrefab,enm.shootPoint.transform.position,enm.shootPoint.transform.rotation);
 		BuildBullet (bullet, damage, BulletTag.foe);

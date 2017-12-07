@@ -23,9 +23,19 @@ public class Agent_Animation : MonoBehaviour {
     // Variabili utilizzate solo in questo script
     private Animator agent;
     private float time;
-
+	/*	Per prendere il blocco del player:  Grid.GridMath.GetPlayerBlock(GameObject player);
+	 *
+	 *	Per prendere il blocco del nemico:  Grid.GridMath.GetEnemyBlock(GameObject enemy);
+	 *
+	 *  Prendere il componente Node
+	 * 
+	 *  .isCover = true o false dentro al blocco (node)
+	 */ 
     private void Start()
     {
+		MapHandler mh;
+		mh = FindObjectOfType<MapHandler> ();
+		mh.changeStateEvent += SetTurnBool;
         agent = GetComponent<Animator>();
     }
 
@@ -185,4 +195,19 @@ public class Agent_Animation : MonoBehaviour {
         yield return new WaitForSeconds(t);
         blood.SetActive(false);
     }
+
+	private void SetTurnBool(GameState gs){
+		if (gs == GameState.AllyTurn && gameObject.GetComponent<Player>()) {
+			MyTurn = true;
+		}
+		if (gs == GameState.EnemyTurn && gameObject.GetComponent<Enemy> ()) {
+			MyTurn = true;
+		}
+		if (gs == GameState.AllyTurn && gameObject.GetComponent<Enemy>()) {
+			MyTurn = false;
+		}
+		if (gs == GameState.EnemyTurn && gameObject.GetComponent<Player> ()) {
+			MyTurn = false;
+		}
+	}
 }

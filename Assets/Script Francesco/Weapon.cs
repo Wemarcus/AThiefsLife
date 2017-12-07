@@ -52,6 +52,9 @@ public class Weapon : MonoBehaviour {
 	public void Flash(GameObject enemy){
 		Debug.Log ("sono in flash");
 		Enemy enm = enemy.GetComponent<Enemy> ();
+		Player plr = FindObjectOfType<MapHandler> ().selectedPlayer.GetComponent<Player> ();
+		Agent_Animation aa = plr.gameObject.GetComponent<Agent_Animation> ();
+		aa.grenade = true;
 		GameObject bomb = (GameObject)Instantiate (bombPrefab, enm.head.transform);
 		Flash fh = bomb.AddComponent (typeof(Flash)) as Flash;
 		fh.SetBomb (range, cdDuration);
@@ -60,6 +63,9 @@ public class Weapon : MonoBehaviour {
 	public void Gas(GameObject enemy){
 		Debug.Log ("sono in gas");
 		Enemy enm = enemy.GetComponent<Enemy> ();
+		Player plr = FindObjectOfType<MapHandler> ().selectedPlayer.GetComponent<Player> ();
+		Agent_Animation aa = plr.gameObject.GetComponent<Agent_Animation> ();
+		aa.grenade = true;
 		GameObject bomb = (GameObject)Instantiate (bombPrefab, enm.head.transform);
 		Gas gs = bomb.AddComponent (typeof(Gas)) as Gas;
 		gs.SetBomb (damage, range, cdDuration);
@@ -68,6 +74,9 @@ public class Weapon : MonoBehaviour {
 	public void Frag(GameObject enemy){
 		Debug.Log ("sono in frag");
 		Enemy enm = enemy.GetComponent<Enemy> ();
+		Player plr = FindObjectOfType<MapHandler> ().selectedPlayer.GetComponent<Player> ();
+		Agent_Animation aa = plr.gameObject.GetComponent<Agent_Animation> ();
+		aa.grenade = true;
 		GameObject bomb = (GameObject)Instantiate (bombPrefab, enm.head.transform);
 		Frag frg = bomb.AddComponent (typeof(Frag)) as Frag;
 		frg.SetBomb (damage, range);

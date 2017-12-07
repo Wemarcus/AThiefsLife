@@ -14,6 +14,7 @@ public class Node : MonoBehaviour {
 	public GameObject player;
 	public bool visited = false;
 	public int depth=0;
+	public bool isCover;
 	MapHandler mh;
 
 	// Use this for initialization
