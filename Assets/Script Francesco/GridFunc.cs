@@ -124,7 +124,7 @@ public class GridFunc : MonoBehaviour {
 				if (Physics.Raycast (enm.head.transform.position, (plr.head.transform.position - enm.head.transform.position).normalized, out hit)) {
 					hitted = hit.transform.gameObject;
 					Debug.Log (hitted.name);
-					if (hitted.gameObject == player)
+					if (hitted.gameObject == player && !hitted.GetComponent<Hide>())
 						hittablePlayers.Add (player);
 				}
 			}

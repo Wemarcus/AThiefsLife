@@ -36,6 +36,21 @@ public class Actions : MonoBehaviour {
 		case ActionsType.Shield:
 			cooldown = 2;
 			break;
+		case ActionsType.DoubleAttack:
+			cooldown = 2;
+			break;
+		case ActionsType.PowerUpDamageSelf:
+			cooldown = 2;
+			break;
+		case ActionsType.PowerUpDamageTeam:
+			cooldown = 2;
+			break;
+		case ActionsType.Hide:
+			cooldown = 2;
+			break;
+		case ActionsType.Killer:
+			cooldown = 2;
+			break;
 		}
 	}
 
@@ -51,6 +66,21 @@ public class Actions : MonoBehaviour {
 		case ActionsType.Shield:
 			ShieldSetup (player);
 			break;
+		case ActionsType.DoubleAttack:
+			DoubleAttack (player);
+			break;
+		case ActionsType.PowerUpDamageSelf:
+			PowerUpSelf (player);
+			break;
+		case ActionsType.PowerUpDamageTeam:
+			PowerUpDamageTeamSetup (player);
+			break;
+		case ActionsType.Hide:
+			HideSelf (player);
+			break;
+		case ActionsType.Killer:
+			KillerSelf (player);
+			break;
 		}
 	}
 
@@ -62,8 +92,90 @@ public class Actions : MonoBehaviour {
 		case ActionsType.Shield:
 			ShieldTeam(player);
 			break;
+		case ActionsType.PowerUpDamageTeam:
+			PowerUpTeam (player);
+			break;
 		}
 	}	
+
+	void HideSelf(GameObject player){
+		Player plr = player.GetComponent<Player> ();
+		if (cooldown >= 2) {
+			Hide hd = player.AddComponent (typeof(Hide)) as Hide;
+			hd.SetCD (1);
+			cooldown = 0;
+			plr.actionDone = true;
+			mh.ChangeInputState (InputState.Decision);
+			CheckIfPlayerIsDone (player);
+		}
+	}
+
+	void KillerSelf(GameObject player){
+		Player plr = player.GetComponent<Player> ();
+		if (cooldown >= 2) {
+			Killer kl = player.AddComponent (typeof(Killer)) as Killer;
+			kl.SetCD (1);
+			cooldown = 0;
+			plr.actionDone = true;
+			mh.ChangeInputState (InputState.Decision);
+			CheckIfPlayerIsDone (player);
+		}
+	}
+
+	void PowerUpDamageTeamSetup(GameObject player){
+		if (cooldown >= 2) {
+			List<GameObject> pathList = Grid.GridMath.FindWalkPathInRangeWithPlayers (Grid.GridMath.GetPlayerBlock (player), Grid.GridMath.GetPlayerMoveRange (player));
+			Grid.GridMath.ActivateBlocksMesh (pathList);
+			mh.ChangeInputState (InputState.Abilty);
+			mh.selectedAction = this;
+		}
+	}
+
+	void PowerUpSelf(GameObject player){
+		Player plr = player.GetComponent<Player> ();
+		if (cooldown >= 2) {
+			DamagePowerUp dp = player.AddComponent (typeof(DamagePowerUp)) as DamagePowerUp;
+			dp.SetDamageModifier (1, 30);
+			cooldown = 0;
+			plr.actionDone = true;
+			mh.ChangeInputState (InputState.Decision);
+			CheckIfPlayerIsDone (player);
+		}
+	}
+
+	void PowerUpTeam(GameObject player){
+		List<GameObject> pathList = Grid.GridMath.FindWalkPathInRangeWithPlayers(Grid.GridMath.GetPlayerBlock(player),Grid.GridMath.GetPlayerMoveRange(player));
+		Node n;
+		Player p;
+		foreach (GameObject block in pathList) {
+			n = block.GetComponent<Node> ();
+			if (n.player) {
+				p = n.player.GetComponent<Player>();
+				DamagePowerUp dp = p.gameObject.AddComponent (typeof(DamagePowerUp)) as DamagePowerUp;
+				dp.SetDamageModifier (1, 20);
+			}
+			p = player.GetComponent<Player> ();
+			p.actionDone = true;
+		}
+		Grid.GridMath.DeactivateBlocksMesh (pathList);
+		Grid.GridMath.ResetDepth (pathList);
+		mh.selectedAction = null;
+		cooldown = 0;
+		mh.ChangeInputState (InputState.Decision);
+		CheckIfPlayerIsDone (player);
+	}
+
+	void DoubleAttack(GameObject player){
+		Player plr = player.GetComponent<Player> ();
+		if (cooldown >= 2) {
+			DoubleAttack da = player.AddComponent (typeof(DoubleAttack)) as DoubleAttack;
+			da.SetCD (1);
+			cooldown = 0;
+			plr.actionDone = true;
+			mh.ChangeInputState (InputState.Decision);
+			CheckIfPlayerIsDone (player);
+		}
+	}
 
 	void HealSelf(GameObject player){
 		Player plr;
@@ -87,6 +199,7 @@ public class Actions : MonoBehaviour {
 			mh.selectedAction = this;
 		}
 	}
+
 	void ShieldSetup(GameObject player){
 		if (cooldown >= 2) {
 			List<GameObject> pathList = Grid.GridMath.FindWalkPathInRangeWithPlayers (Grid.GridMath.GetPlayerBlock (player), Grid.GridMath.GetPlayerMoveRange (player));

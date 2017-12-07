@@ -56,7 +56,7 @@ public class Enemy : MonoBehaviour {
 		//Debug.Log (MoveSpots.Count);
 		GameObject target;
 		GameObject MoveSpot;
-		if (playersTrg.Count > 0) {
+		if (playersTrg.Count > 0 && !this.GetComponent<Confusion>()) {
 			//hit
 			target = playersTrg[Random.Range(0,playersTrg.Count)];
 			//FindObjectOfType<MapHandler> ().ProvideDamageToPlayer (target, damage);
@@ -75,7 +75,7 @@ public class Enemy : MonoBehaviour {
 			GridMath.MoveEnemyToBlock (this.gameObject, MoveSpot);
 			//try to hit
 			playersTrg = GridFunc.HittablePlayers(this.gameObject,playersTrg);
-			if (playersTrg.Count > 0) {
+			if (playersTrg.Count > 0 && !this.GetComponent<Confusion>()) {
 				target = playersTrg[Random.Range(0,playersTrg.Count)];
 				Debug.Log ("posso colpire:" + target.name);
 				//Hit

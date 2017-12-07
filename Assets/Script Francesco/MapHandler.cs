@@ -154,8 +154,36 @@ public class MapHandler : MonoBehaviour {
 		selectedWeapon = wpn;
 		if (wpn.getWeaponType() == WeaponType.Single)
 			TargetEnemy (player);
-		if (wpn.getWeaponType () == WeaponType.AoE) {
-			Debug.Log ("TODO AOE DAMAGE"); // TODO
+		if (wpn.getWeaponType () == WeaponType.AoE && wpn.type != AoEType.c4) {
+			TargetEnemy (player);
+		}
+		if(wpn.getWeaponType() == WeaponType.AoE && wpn.type == AoEType.c4){
+			PlaceC4 (player, wpn);
+		}
+	}
+
+	public void PlaceC4(GameObject player,Weapon wpn){
+		Player plr = selectedPlayer.GetComponent<Player> ();
+		GameObject c4 = (GameObject)Instantiate (wpn.bombPrefab);
+		c4.transform.position = new Vector3 (player.transform.position.x, 0.25f, player.transform.position.z);
+		c4 compc4 = c4.GetComponent<c4> ();
+		compc4.Setc4 (wpn.damage, wpn.range);
+		if (selectedPlayer.GetComponent<DoubleAttack> ()) {
+			DoubleAttack da = selectedPlayer.GetComponent<DoubleAttack> ();
+			Destroy (da);
+		} else {
+			plr.attacked = true;
+		}
+		ChangeTarget (null);
+		ChangeInputState (InputState.Decision);
+		if (plr.IsDone ()) {
+			Grid.GridMath.RemovePlayerFromList (selectedPlayer, players);
+			SelectPlayer (null);
+			ChangeInputState (InputState.Nothing);
+		}
+		if (CheckAllyEndTurn ()) {
+			ChangeState (GameState.EnemyTurn);
+			ChangeInputState (InputState.Nothing);
 		}
 	}
 
@@ -228,6 +256,15 @@ public class MapHandler : MonoBehaviour {
 		Enemy enm = target.GetComponent<Enemy> ();
 		int rand = UnityEngine.Random.Range (0, enm.HitZone.Count - 1);
 		GameObject bullet = (GameObject)Instantiate(selectedWeapon.bulletPrefab,plr.ShootPoint.transform.position,plr.ShootPoint.transform.rotation);
+		if (plr.gameObject.GetComponent<DamagePowerUp> ()) {
+			float damage2 = damage;
+			damage2 = damage2 / 100;
+			damage2 = damage2 * (100 + plr.gameObject.GetComponent<DamagePowerUp> ().damagePercentage);
+			damage = (int)damage2;
+		}
+		if (plr.gameObject.GetComponent<Killer> ()) {
+			damage = 999;
+		}
 		BuildBullet (bullet, damage, BulletTag.friendly);
 		// Add velocity to the bullet
 		bullet.GetComponent<Rigidbody>().velocity = (enm.HitZone[rand].transform.position - starting.transform.position)* 4f;     
@@ -250,11 +287,45 @@ public class MapHandler : MonoBehaviour {
 	}
 
 	public void HitEnemy(GameObject enemy){
+		if (selectedWeapon.wpnType == WeaponType.Single) {
+			HitSingleTarget (enemy);
+		}
+		if(selectedWeapon.wpnType == WeaponType.AoE){
+			Debug.Log("AOE attack");
+			HitAoE (enemy);
+		}
+	}
+
+	public void HitSingleTarget(GameObject enemy){
 		if (CurrentTarget == enemy){//targetList.Contains (enemy)) {
 			Debug.Log ("hit");
 			Player plr = selectedPlayer.GetComponent<Player> ();
 			//ProvideDamageToEnemy (enemy,selectedWeapon.getDamage());
 			FireBulletToEnemy(enemy,plr.ShootPoint,selectedWeapon.getDamage());
+			if (selectedPlayer.GetComponent<DoubleAttack> ()) {
+				DoubleAttack da = selectedPlayer.GetComponent<DoubleAttack> ();
+				Destroy (da);
+			} else {
+				plr.attacked = true;
+			}
+			ChangeTarget (null);
+			ChangeInputState (InputState.Decision);
+			if (plr.IsDone ()) {
+				Grid.GridMath.RemovePlayerFromList (selectedPlayer, players);
+				SelectPlayer (null);
+				ChangeInputState (InputState.Nothing);
+			}
+			if (CheckAllyEndTurn ()) {
+				ChangeState (GameState.EnemyTurn);
+				ChangeInputState (InputState.Nothing);
+			}
+		}
+	}
+
+	public void HitAoE(GameObject enemy){
+		if (CurrentTarget == enemy) {
+			Player plr = selectedPlayer.GetComponent<Player> ();
+			selectedWeapon.PerformAction (enemy);
 			plr.attacked = true;
 			ChangeTarget (null);
 			ChangeInputState (InputState.Decision);

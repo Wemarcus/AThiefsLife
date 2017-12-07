@@ -21,7 +21,6 @@ public class Player : MonoBehaviour {
 	public GameObject FirstWeaponPhs;
 	public List<GameObject> HitZone;
 	public bool isBoss;
-	public bool shield;
 
 	// Use this for initialization
 
