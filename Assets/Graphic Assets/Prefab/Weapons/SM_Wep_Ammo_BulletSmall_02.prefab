@@ -10,10 +10,9 @@ GameObject:
   - component: {fileID: 488282}
   - component: {fileID: 3376932}
   - component: {fileID: 2334072}
-  - component: {fileID: 114648453717612978}
-  - component: {fileID: 64544800037024202}
   - component: {fileID: 114518906058786402}
   - component: {fileID: 54576151715661414}
+  - component: {fileID: 136003456921183298}
   m_Layer: 0
   m_Name: SM_Wep_Ammo_BulletSmall_02
   m_TagString: Bullet
@@ -100,21 +99,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!64 &64544800037024202
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155826}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 1
-  m_InflateMesh: 0
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: fd95426bba28ccf499f67c106d23cf59, type: 3}
+  m_CollisionDetection: 2
 --- !u!114 &114518906058786402
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -128,16 +113,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0
   bulletTag: 0
---- !u!114 &114648453717612978
-MonoBehaviour:
+  radius: 1
+  power: 0.05
+--- !u!136 &136003456921183298
+CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 155826}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f3638928007ed94a9143d84f2b0bb10, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  radius: 0.1
-  power: 200
+  m_Radius: 0.0068473867
+  m_Height: 0.039765008
+  m_Direction: 1
+  m_Center: {x: 0, y: -0.0016400181, z: 0}

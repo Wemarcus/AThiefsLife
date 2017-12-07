@@ -10,17 +10,13 @@ public class AddForce : MonoBehaviour {
     public float power = 10.0F;
     private bool block;
 
-    /*void Start()
-    {
-        rb = GetComponent<Rigidbody>();
-    }*/
-
     
     private void OnTriggerEnter(Collider other)
     {
         switch (other.tag)
         {
             case "Glass":
+                Debug.Log("VETRO URTATO!");
                 if (!block)
                 {
                     block = true;
@@ -38,8 +34,8 @@ public class AddForce : MonoBehaviour {
                                 rb.useGravity = true;
                                 rb.isKinematic = false;
                             }
-                            //rb.AddExplosionForce(power, explosionPos, radius, 20.0F);
-                            rb.AddForce(transform.forward * 500, ForceMode.Acceleration);
+                            rb.AddExplosionForce(power, explosionPos, radius, 20.0F);
+                            //rb.AddForce(transform.forward * 500, ForceMode.Acceleration);
                             Debug.Log("Collision Detected");
                         }
                     }
