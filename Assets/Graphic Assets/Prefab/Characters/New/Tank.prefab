@@ -4309,7 +4309,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!82 &82785691454407250
 AudioSource:
   m_ObjectHideFlags: 1
@@ -4500,6 +4500,10 @@ MonoBehaviour:
   damage: 4
   range: 0
   bulletPrefab: {fileID: 155826, guid: 0f41e8d90a6f5134f9d1fb9bcac7a543, type: 2}
+  type: 0
+  cooldown: 0
+  bombPrefab: {fileID: 0}
+  cdDuration: 0
 --- !u!114 &114239066631734118
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4610,6 +4614,7 @@ MonoBehaviour:
   currentHP: 0
   moved: 0
   attacked: 0
+  actionDone: 0
   firstWeapon: {fileID: 114972003268774718}
   secondWeapon: {fileID: 114179200417295582}
   firstAction: {fileID: 114312885797278726}
@@ -4685,6 +4690,10 @@ MonoBehaviour:
   damage: 5
   range: 0
   bulletPrefab: {fileID: 155826, guid: 0f41e8d90a6f5134f9d1fb9bcac7a543, type: 2}
+  type: 0
+  cooldown: 0
+  bombPrefab: {fileID: 0}
+  cdDuration: 0
 --- !u!114 &114973158652402028
 MonoBehaviour:
   m_ObjectHideFlags: 1
