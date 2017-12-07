@@ -4243,7 +4243,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!82 &82234654937374818
 AudioSource:
   m_ObjectHideFlags: 1
@@ -4399,6 +4399,7 @@ MonoBehaviour:
   sound: {fileID: 82234654937374818}
   is_sniper: 0
   is_doctor: 1
+  is_tank: 0
 --- !u!114 &114083828787176130
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4507,6 +4508,7 @@ MonoBehaviour:
   currentHP: 0
   moved: 0
   attacked: 0
+  actionDone: 0
   firstWeapon: {fileID: 114469348024566248}
   secondWeapon: {fileID: 114633605780666700}
   firstAction: {fileID: 114093507964809434}
@@ -4567,6 +4569,10 @@ MonoBehaviour:
   damage: 10
   range: 0
   bulletPrefab: {fileID: 155826, guid: 0f41e8d90a6f5134f9d1fb9bcac7a543, type: 2}
+  type: 0
+  cooldown: 0
+  bombPrefab: {fileID: 0}
+  cdDuration: 0
 --- !u!114 &114474476827236490
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4627,6 +4633,10 @@ MonoBehaviour:
   damage: 10
   range: 0
   bulletPrefab: {fileID: 155826, guid: 0f41e8d90a6f5134f9d1fb9bcac7a543, type: 2}
+  type: 0
+  cooldown: 0
+  bombPrefab: {fileID: 0}
+  cdDuration: 0
 --- !u!114 &114649017943294622
 MonoBehaviour:
   m_ObjectHideFlags: 1
