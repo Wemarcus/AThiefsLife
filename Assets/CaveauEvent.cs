@@ -10,22 +10,29 @@ public class CaveauEvent : MonoBehaviour {
 	public GameObject Door;
 	public bool EventTriggered;
 	public float speed;
-	public Transform doorStartTrasnf;
 	public bool SlerpDoor;
 
-	// Use this for initialization
-	void Start () {
+    // Parte Marco
+    public GameObject drill;
+    public GameObject effect;
+    public float rotation; //rotazione della porta
+    private Vector3 defaultRot;
+    private Vector3 openRot;
+
+    // Use this for initialization
+    void Start () {
 		MapHandler mh = FindObjectOfType<MapHandler> ();
 		mh.nextRoundEvent += TurnPassed;
-		doorStartTrasnf = Door.transform;
-	}
+        defaultRot = Door.transform.eulerAngles;
+        openRot = new Vector3(defaultRot.x, defaultRot.y + rotation, defaultRot.z);
+    }
 	
 	// Update is called once per frame
 	void Update () {
 		checkIfSomeoneIsOn ();
 		if (SlerpDoor) {
-			Door.transform.rotation = Quaternion.Slerp (doorStartTrasnf.rotation, new Quaternion (0, 180, 0, 0), speed * Time.deltaTime);
-		}
+            Door.transform.eulerAngles = Vector3.Slerp(Door.transform.eulerAngles, openRot, Time.deltaTime * speed);
+        }
 	}
 
 	void checkIfSomeoneIsOn(){
@@ -33,12 +40,19 @@ public class CaveauEvent : MonoBehaviour {
 		if (!EventTriggered) {
 			foreach (GameObject block in blockListTrigger) {
 				n = block.GetComponent<Node> ();
-				if (n.player != null) {
-					//start event
-					Debug.Log ("starto evento");
-					EventTriggered = true;
+                if (n.player != null)
+                {
+                    //start event
+                    Debug.Log("starto evento");
+                    EventTriggered = true;
+                    drill.SetActive(true);
 
-				}
+                    // fare funzione in grid math invece del foreach
+                    foreach (GameObject go in blockListTrigger)
+                    {
+                        go.GetComponent<cakeslice.Outline>().color = 2;
+                    }
+                }
 			}
 		}
 	}
@@ -52,6 +66,7 @@ public class CaveauEvent : MonoBehaviour {
 				Grid.GridMath.ChangeBlockType (block, BlockType.Obstacle);
 			}
 			SlerpDoor = true;
+            effect.SetActive(false);
 		}
 	}
 }
