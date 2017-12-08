@@ -28,6 +28,8 @@ public class MapHandler : MonoBehaviour {
 
 	public GameObject CurrentTarget;
 
+	public bool PerformingAction;
+
 	public int turnCount;
 
 	public UnityEngine.UI.Text popUp;
@@ -43,6 +45,9 @@ public class MapHandler : MonoBehaviour {
 
 	public delegate void CurrentTargetDelegate (GameObject newTarget);
 	public event CurrentTargetDelegate currentTargetEvent;
+
+	public delegate void AnimationDelegate (bool isAction);
+	public event AnimationDelegate animationEvent;
 
 	public delegate void NextRound(int n);
 	public event NextRound nextRoundEvent;
@@ -213,11 +218,11 @@ public class MapHandler : MonoBehaviour {
 	public void ProvideDamageToPlayer(GameObject playerTrg, int damage){
 		Player plr = playerTrg.GetComponent<Player> ();
 		plr.DealDamage (damage);
-		if(plr.currentHP <= 0){
+		/*if(plr.currentHP <= 0){
 			players.Clear ();
 			GridMath.ChangeBlockType (GridMath.GetPlayerBlock (playerTrg), BlockType.Walkable);
 			Destroy (playerTrg);
-		}
+		}*/
 	}
 
 	public void PassAllyTurn(){
@@ -245,11 +250,11 @@ public class MapHandler : MonoBehaviour {
 		Enemy enem = enemy.GetComponent<Enemy> ();
 		//Player plr = selectedPlayer.GetComponent<Player> ();
 		enem.DealDamage(damage);
-		if (enem.currentHP <= 0) {
+		/*if (enem.currentHP <= 0) {
 			targetList.Remove (enemy);
 			GridMath.ChangeBlockType (GridMath.GetEnemyBlock(enemy), BlockType.Walkable);
 			Destroy (enemy);
-		}
+		}*/
 	}
 
 	public void FireBulletToEnemy(GameObject target, GameObject starting,int damage){
@@ -383,6 +388,13 @@ public class MapHandler : MonoBehaviour {
 		if (currentTargetEvent != null) {
 			CurrentTarget = newTarget;
 			currentTargetEvent (newTarget);
+		}
+	}
+
+	public void AnimationPerforming(bool b){
+		PerformingAction = b;
+		if (animationEvent != null) {
+			animationEvent (b);
 		}
 	}
 

@@ -51,6 +51,12 @@ public class Player : MonoBehaviour {
 		}
 		currentHP -= damage;
 		visualHP.text = currentHP.ToString();
+		if (currentHP <= 0) {
+			FindObjectOfType<MapHandler>().players.Clear ();
+			Grid.GridMath.ChangeBlockType (Grid.GridMath.GetPlayerBlock (this.gameObject), BlockType.Walkable);
+			gameObject.GetComponent<Agent_Animation> ().death = true;
+			//Destroy (playerTrg);
+		}
 	}
 
 	public void Heal(int heal){

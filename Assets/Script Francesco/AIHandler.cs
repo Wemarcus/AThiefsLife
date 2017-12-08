@@ -17,12 +17,24 @@ public class AIHandler : MonoBehaviour {
 		if (IsEnemyTurn ()) {
 			Debug.Log ("turno nemico");
 			enemyList = Grid.GridMath.FindEnemies ();
-			Enemy enem;
-			foreach (GameObject enemy in enemyList) {
+			//Enemy enem;
+			RunNextAI ();
+			/*foreach (GameObject enemy in enemyList) {
 				enem = enemy.GetComponent<Enemy> ();
 				enem.RunAI ();
 			}
-			StartCoroutine(mh.EndAiTurn ());
+			StartCoroutine(mh.EndAiTurn ());*/
+		}
+	}
+
+	public void RunNextAI(){
+		Enemy enem;
+		if (enemyList.Count > 0) {
+			enem = enemyList [0].GetComponent<Enemy> ();
+			enem.RunAI ();
+			enemyList.RemoveAt (0);
+		} else {
+			StartCoroutine (mh.EndAiTurn ());
 		}
 	}
 

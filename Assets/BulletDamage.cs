@@ -132,21 +132,21 @@ public class BulletDamage : MonoBehaviour {
 		Player plr = playerTrg.GetComponent<Player> ();
 		MapHandler mh = FindObjectOfType<MapHandler> ();
 		plr.DealDamage (damage);
-		if (plr.currentHP <= 0) {
+		/*if (plr.currentHP <= 0) {
 			mh.players.Clear ();
 			Grid.GridMath.ChangeBlockType (Grid.GridMath.GetPlayerBlock (playerTrg), BlockType.Walkable);
 			Destroy (playerTrg);
-		}
+		}*/
 	}
 
 	void DealDamageToEnemy(GameObject enemy){
 		Enemy enm = enemy.GetComponent<Enemy> ();
 		enm.DealDamage (damage);
 		MapHandler mh = FindObjectOfType<MapHandler> ();
-		if (enm.currentHP <= 0) {
+		/*if (enm.currentHP <= 0) {
 			mh.targetList.Remove (enemy);
 			Grid.GridMath.ChangeBlockType (Grid.GridMath.GetEnemyBlock (enemy), BlockType.Walkable);
 			Destroy (enemy);
-		}
+		}*/
 	}
 }
