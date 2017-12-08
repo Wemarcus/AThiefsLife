@@ -4591,6 +4591,7 @@ MonoBehaviour:
   firing: 0
   grenade: 0
   death: 0
+  cover: 0
   Sphere: {fileID: 1520701042827126}
   bullet: {fileID: 0}
   sparks: {fileID: 1741847862607402}
@@ -4610,7 +4611,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2aea279d7f517c42aa7c95c7f2a6558, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
+  type: 7
   cooldown: 0
 --- !u!114 &114173118457871620
 MonoBehaviour:
@@ -4758,7 +4759,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2aea279d7f517c42aa7c95c7f2a6558, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
+  type: 6
   cooldown: 0
 --- !u!114 &114626455375740410
 MonoBehaviour:
@@ -4804,8 +4805,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wpnType: 0
-  damage: 10
-  range: 0
+  damage: 60
+  range: 30
   bulletPrefab: {fileID: 155826, guid: 0f41e8d90a6f5134f9d1fb9bcac7a543, type: 2}
   type: 0
   cooldown: 0
@@ -4852,14 +4853,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bae2017c347714d459b9673fd9ea0d26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wpnType: 0
-  damage: 6
-  range: 0
+  wpnType: 1
+  damage: 0
+  range: 20
   bulletPrefab: {fileID: 155826, guid: 0f41e8d90a6f5134f9d1fb9bcac7a543, type: 2}
-  type: 0
-  cooldown: 0
-  bombPrefab: {fileID: 0}
-  cdDuration: 0
+  type: 2
+  cooldown: 2
+  bombPrefab: {fileID: 1093675971612594, guid: 9c2a67cb0bdd6d342a7696b5a37efc95, type: 2}
+  cdDuration: 1
 --- !u!114 &114752146946705490
 MonoBehaviour:
   m_ObjectHideFlags: 1
