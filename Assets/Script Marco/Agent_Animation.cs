@@ -50,6 +50,7 @@ public class Agent_Animation : MonoBehaviour {
         {
             death = false;
             agent.SetBool("Death", true);
+			FindObjectOfType<MapHandler> ().AnimationPerforming (true);
             time = 3.1f;
             StartCoroutine(Death(time));
         }
@@ -58,6 +59,7 @@ public class Agent_Animation : MonoBehaviour {
         {
             firing = false;
             agent.SetBool("Firing", true);
+			FindObjectOfType<MapHandler> ().AnimationPerforming (true);
 
             if (is_sniper)
             {
@@ -75,6 +77,7 @@ public class Agent_Animation : MonoBehaviour {
         {
             grenade = false;
             agent.SetTrigger("Grenade");
+			FindObjectOfType<MapHandler> ().AnimationPerforming (true);
         }
 
         if (MyTurn)
@@ -106,6 +109,8 @@ public class Agent_Animation : MonoBehaviour {
     private IEnumerator Death(float t)
     {
         yield return new WaitForSeconds(t);
+		mh.changeStateEvent -= SetTurnBool;
+		FindObjectOfType<MapHandler> ().AnimationPerforming (false);
         Destroy(this.gameObject);
     }
 
@@ -138,6 +143,7 @@ public class Agent_Animation : MonoBehaviour {
 
         yield return new WaitForSeconds(t);
         agent.SetBool("Firing", false);
+		FindObjectOfType<MapHandler> ().AnimationPerforming (false);
 
         if (bullet != null)
         {
@@ -198,6 +204,12 @@ public class Agent_Animation : MonoBehaviour {
 
 		if (gs == GameState.EnemyTurn && gameObject.GetComponent<Player> ()) {
 			MyTurn = false;
+		}
+		if(gameObject.GetComponent<Player>()){
+			cover = Grid.GridMath.GetPlayerBlock (gameObject).GetComponent<Node>().isCover;
+		}
+		if(gameObject.GetComponent<Enemy>()){
+			cover = Grid.GridMath.GetEnemyBlock (gameObject).GetComponent<Node>().isCover;
 		}
 	}
 }

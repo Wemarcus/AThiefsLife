@@ -9,6 +9,7 @@ public class UIHandler : MonoBehaviour {
 	public InputState inpS = InputState.Nothing;
 	public int turnCount;
 	public GameObject player;
+	public bool animPerform;
 	public MapHandler mh;
 	public bool enable = true;
 
@@ -28,6 +29,7 @@ public class UIHandler : MonoBehaviour {
 		mh.changeInputStateEvent += ChangeInputState;
 		mh.selectPlayerEvent += ChangeSelectedPlayer;
 		mh.nextRoundEvent += ChangeTurnCount;
+		mh.animationEvent += AnimationPerform;
 	}
 
 	public void ChangeState(GameState gameS){
@@ -46,6 +48,11 @@ public class UIHandler : MonoBehaviour {
 	public void ChangeTurnCount(int n){
 		turnCount = n;
 		TurnText.text = turnCount.ToString ();
+		UpdateUI ();
+	}
+
+	public void AnimationPerform(bool b){
+		animPerform = b;
 		UpdateUI ();
 	}
 
@@ -90,32 +97,34 @@ public class UIHandler : MonoBehaviour {
 		ActionBtn2.gameObject.SetActive (false);
 		PassTurnBtn.gameObject.SetActive (false);
 
-		if (inpS == InputState.Decision && player != null) {
+		if (!animPerform) {
+			if (inpS == InputState.Decision && player != null) {
 				Player plr = player.GetComponent<Player> ();
 				if (plr && !plr.moved)
 					MoveBtn.gameObject.SetActive (true);
-			if (plr && !plr.attacked) {
-				AttackBtn.gameObject.SetActive (true);
-				AttackBtn2.gameObject.SetActive (true);
-			}
-			if (plr && !plr.actionDone) {
-				ActionBtn.gameObject.SetActive (true);
-				ActionBtn2.gameObject.SetActive (true);
-			}
-			if (plr && (!plr.moved || !plr.attacked || !plr.actionDone))
+				if (plr && !plr.attacked) {
+					AttackBtn.gameObject.SetActive (true);
+					AttackBtn2.gameObject.SetActive (true);
+				}
+				if (plr && !plr.actionDone) {
+					ActionBtn.gameObject.SetActive (true);
+					ActionBtn2.gameObject.SetActive (true);
+				}
+				if (plr && (!plr.moved || !plr.attacked || !plr.actionDone))
 					PassTurnBtn.gameObject.SetActive (true);
-		}
-		if (inpS == InputState.Nothing) {
-			MoveBtn.gameObject.SetActive (false);
-			AttackBtn.gameObject.SetActive (false);
-			AttackBtn2.gameObject.SetActive (false);
-			PassTurnBtn.gameObject.SetActive (false);
-		}
-		if (inpS == InputState.Movement) {
-			MoveBtn.gameObject.SetActive (false);
-			AttackBtn.gameObject.SetActive (false);
-			AttackBtn2.gameObject.SetActive (false);
-			PassTurnBtn.gameObject.SetActive (false);
+			}
+			if (inpS == InputState.Nothing) {
+				MoveBtn.gameObject.SetActive (false);
+				AttackBtn.gameObject.SetActive (false);
+				AttackBtn2.gameObject.SetActive (false);
+				PassTurnBtn.gameObject.SetActive (false);
+			}
+			if (inpS == InputState.Movement) {
+				MoveBtn.gameObject.SetActive (false);
+				AttackBtn.gameObject.SetActive (false);
+				AttackBtn2.gameObject.SetActive (false);
+				PassTurnBtn.gameObject.SetActive (false);
+			}
 		}
 	}
 

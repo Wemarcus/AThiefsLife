@@ -42,6 +42,14 @@ public class GridMath : MonoBehaviour {
 			}
 		}
 
+		public static bool IsCover(GameObject block){
+			Node n = block.GetComponent<Node> ();
+			if (!n) {
+				return false;
+			}
+				return n.isCover;
+		}
+
 		public static void DeactivateBlockMesh(GameObject block){
 			/*MeshRenderer mr = block.GetComponent<MeshRenderer> ();
 			mr.enabled = false;*/
