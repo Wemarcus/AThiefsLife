@@ -116,6 +116,9 @@ public class Agent_Animation : MonoBehaviour {
         yield return new WaitForSeconds(t);
 		mh.changeStateEvent -= SetTurnBool;
 		FindObjectOfType<MapHandler> ().AnimationPerforming (false);
+		if (FindObjectOfType<MapHandler> ().selectedPlayer == this.gameObject) {
+			FindObjectOfType<MapHandler> ().SelectPlayer(mh.players[0]);
+		}
         Destroy(this.gameObject);
     }
 

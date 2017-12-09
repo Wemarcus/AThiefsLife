@@ -55,6 +55,15 @@ public class Weapon : MonoBehaviour {
 		Player plr = FindObjectOfType<MapHandler> ().selectedPlayer.GetComponent<Player> ();
 		Agent_Animation aa = plr.gameObject.GetComponent<Agent_Animation> ();
 		aa.grenade = true;
+		StartCoroutine (SpawnFlash (enemy));
+		/*GameObject bomb = (GameObject)Instantiate (bombPrefab, enm.head.transform);
+		Flash fh = bomb.AddComponent (typeof(Flash)) as Flash;
+		fh.SetBomb (range, cdDuration);*/
+	}
+
+	private IEnumerator SpawnFlash(GameObject enemy){
+		yield return new WaitForSeconds (2f);
+		Enemy enm = enemy.GetComponent<Enemy> ();
 		GameObject bomb = (GameObject)Instantiate (bombPrefab, enm.head.transform);
 		Flash fh = bomb.AddComponent (typeof(Flash)) as Flash;
 		fh.SetBomb (range, cdDuration);
@@ -66,6 +75,15 @@ public class Weapon : MonoBehaviour {
 		Player plr = FindObjectOfType<MapHandler> ().selectedPlayer.GetComponent<Player> ();
 		Agent_Animation aa = plr.gameObject.GetComponent<Agent_Animation> ();
 		aa.grenade = true;
+		StartCoroutine (SpawnGas (enemy));
+		/*GameObject bomb = (GameObject)Instantiate (bombPrefab, enm.head.transform);
+		Gas gs = bomb.AddComponent (typeof(Gas)) as Gas;
+		gs.SetBomb (damage, range, cdDuration);*/
+	}
+
+	private IEnumerator SpawnGas(GameObject enemy){
+		yield return new WaitForSeconds (2f);
+		Enemy enm = enemy.GetComponent<Enemy> ();
 		GameObject bomb = (GameObject)Instantiate (bombPrefab, enm.head.transform);
 		Gas gs = bomb.AddComponent (typeof(Gas)) as Gas;
 		gs.SetBomb (damage, range, cdDuration);
@@ -77,6 +95,15 @@ public class Weapon : MonoBehaviour {
 		Player plr = FindObjectOfType<MapHandler> ().selectedPlayer.GetComponent<Player> ();
 		Agent_Animation aa = plr.gameObject.GetComponent<Agent_Animation> ();
 		aa.grenade = true;
+		StartCoroutine (SpawnFrag (enemy));
+		/*GameObject bomb = (GameObject)Instantiate (bombPrefab, enm.head.transform);
+		Frag frg = bomb.AddComponent (typeof(Frag)) as Frag;
+		frg.SetBomb (damage, range);*/
+	}
+
+	private IEnumerator SpawnFrag(GameObject enemy){
+		yield return new WaitForSeconds (2f);
+		Enemy enm = enemy.GetComponent<Enemy> ();
 		GameObject bomb = (GameObject)Instantiate (bombPrefab, enm.head.transform);
 		Frag frg = bomb.AddComponent (typeof(Frag)) as Frag;
 		frg.SetBomb (damage, range);

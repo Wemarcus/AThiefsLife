@@ -61,6 +61,7 @@ public class MainCamera : MonoBehaviour
 
 	void FixedUpdate()
 	{
+		/*
 		// Figure out what direction the camera is looking, so we can using arrowkeys or
 		// WASD to move it around correctly
 		Vector3 direction = target.position - transform.position;
@@ -88,7 +89,7 @@ public class MainCamera : MonoBehaviour
 		if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
 		{
 			target.position -= rightAngleDirection * panFactor;
-		}
+		}*/
 	}
 	
 	void LateUpdate ()
@@ -113,10 +114,11 @@ public class MainCamera : MonoBehaviour
 
 		// Position the camera appropriately all the time
 		Quaternion rotation = Quaternion.Euler((float)y, (float)x, 0.0f);
-	    Vector3 position = rotation * new Vector3(0.0f, 0.0f, (float)-distance) + target.position;
-	        
-	    transform.rotation = rotation;
-	    transform.position = position;
+		if (target) {
+			Vector3 position = rotation * new Vector3 (0.0f, 0.0f, (float)-distance) + target.position;
+			transform.rotation = rotation;
+			transform.position = position;
+		}
     }
 	
 	static double ClampAngle(double angle, double min, double max)

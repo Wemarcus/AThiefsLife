@@ -41,39 +41,71 @@ public class ClickHandle : MonoBehaviour {
 				RunDelegate (hitted);
 			}
 		}
-		if (inpS == InputState.Attack) {
-			int index;
-			if (Input.GetKeyDown (KeyCode.LeftArrow) && enable) {
-				MapHandler mh = FindObjectOfType<MapHandler> ();
-				index = mh.targetList.IndexOf (mh.CurrentTarget);
-				if (index - 1 >= 0 && mh.targetList.Count > 1) {
-					//mh.CurrentTarget = mh.targetList [index - 1];
-					mh.ChangeTarget(mh.targetList[index-1]);
-					Grid.GridMath.RotateCharacter (mh.selectedPlayer, mh.CurrentTarget);
-				} else if(mh.targetList.Count >1) {
-					//mh.CurrentTarget = mh.targetList [mh.targetList.Count - 1];
-					mh.ChangeTarget(mh.targetList[mh.targetList.Count-1]);
-					Grid.GridMath.RotateCharacter (mh.selectedPlayer, mh.CurrentTarget);
-				}
-				EnemyPin enPin = Instantiate (mh.EnemyPin).GetComponent<EnemyPin> ();
-				enPin.SetupPin (mh.CurrentTarget);
-			}
+		if (inpS == InputState.Attack && gs == GameState.AllyTurn) {
+			ChangeEnemyTarget ();
+		}
+		if (inpS == InputState.Decision || inpS == InputState.Nothing && gs == GameState.AllyTurn) {
+			SwitchSelectedPlayer ();
+		}
+	}
 
-			if (Input.GetKeyDown (KeyCode.RightArrow) && enable) {
-				MapHandler mh = FindObjectOfType<MapHandler> ();
-				index = mh.targetList.IndexOf (mh.CurrentTarget);
-				if (index + 1 < mh.targetList.Count  && mh.targetList.Count > 1) {
-					//mh.CurrentTarget = mh.targetList [index + 1];
-					mh.ChangeTarget(mh.targetList[index+1]);
-					Grid.GridMath.RotateCharacter (mh.selectedPlayer, mh.CurrentTarget);
-				} else if(mh.targetList.Count >1) {
-					//mh.CurrentTarget = mh.targetList [0];
-					mh.ChangeTarget(mh.targetList[0]);
-					Grid.GridMath.RotateCharacter (mh.selectedPlayer, mh.CurrentTarget);
-				}
-				EnemyPin enPin = Instantiate (mh.EnemyPin).GetComponent<EnemyPin> ();
-				enPin.SetupPin (mh.CurrentTarget);
+	void SwitchSelectedPlayer(){
+		int index;
+		if (Input.GetKeyDown (KeyCode.LeftArrow) && enable) {
+			FindObjectOfType<MapHandler> ().ChangeInputState (InputState.Decision);
+			MapHandler mh = FindObjectOfType<MapHandler> ();
+			index = mh.players.IndexOf (mh.selectedPlayer);
+			if (index - 1 >= 0 && mh.players.Count > 1) {
+				mh.SelectPlayer(mh.players[index-1]);
+			} else if(mh.players.Count >1) {
+				mh.SelectPlayer(mh.players[mh.players.Count-1]);
 			}
+		}
+
+		if (Input.GetKeyDown (KeyCode.RightArrow) && enable) {
+			FindObjectOfType<MapHandler> ().ChangeInputState (InputState.Decision);
+			MapHandler mh = FindObjectOfType<MapHandler> ();
+			index = mh.players.IndexOf (mh.selectedPlayer);
+			if (index + 1 < mh.players.Count && mh.players.Count > 1) {
+				mh.SelectPlayer (mh.players [index + 1]);
+			} else if (mh.players.Count > 1) {
+				mh.SelectPlayer (mh.players [0]);
+			}
+		}
+	}
+
+	void ChangeEnemyTarget(){
+		int index;
+		if (Input.GetKeyDown (KeyCode.LeftArrow) && enable) {
+			MapHandler mh = FindObjectOfType<MapHandler> ();
+			index = mh.targetList.IndexOf (mh.CurrentTarget);
+			if (index - 1 >= 0 && mh.targetList.Count > 1) {
+				//mh.CurrentTarget = mh.targetList [index - 1];
+				mh.ChangeTarget(mh.targetList[index-1]);
+				Grid.GridMath.RotateCharacter (mh.selectedPlayer, mh.CurrentTarget);
+			} else if(mh.targetList.Count >1) {
+				//mh.CurrentTarget = mh.targetList [mh.targetList.Count - 1];
+				mh.ChangeTarget(mh.targetList[mh.targetList.Count-1]);
+				Grid.GridMath.RotateCharacter (mh.selectedPlayer, mh.CurrentTarget);
+			}
+			EnemyPin enPin = Instantiate (mh.EnemyPin).GetComponent<EnemyPin> ();
+			enPin.SetupPin (mh.CurrentTarget);
+		}
+
+		if (Input.GetKeyDown (KeyCode.RightArrow) && enable) {
+			MapHandler mh = FindObjectOfType<MapHandler> ();
+			index = mh.targetList.IndexOf (mh.CurrentTarget);
+			if (index + 1 < mh.targetList.Count  && mh.targetList.Count > 1) {
+				//mh.CurrentTarget = mh.targetList [index + 1];
+				mh.ChangeTarget(mh.targetList[index+1]);
+				Grid.GridMath.RotateCharacter (mh.selectedPlayer, mh.CurrentTarget);
+			} else if(mh.targetList.Count >1) {
+				//mh.CurrentTarget = mh.targetList [0];
+				mh.ChangeTarget(mh.targetList[0]);
+				Grid.GridMath.RotateCharacter (mh.selectedPlayer, mh.CurrentTarget);
+			}
+			EnemyPin enPin = Instantiate (mh.EnemyPin).GetComponent<EnemyPin> ();
+			enPin.SetupPin (mh.CurrentTarget);
 		}
 	}
 

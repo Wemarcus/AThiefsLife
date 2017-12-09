@@ -168,12 +168,23 @@ public class MapHandler : MonoBehaviour {
 		}
 	}
 
-	public void PlaceC4(GameObject player,Weapon wpn){
-		Player plr = selectedPlayer.GetComponent<Player> ();
+	private IEnumerator PlaceC4Cor(Weapon wpn, GameObject player){
+		yield return new WaitForSeconds (2.0f);
 		GameObject c4 = (GameObject)Instantiate (wpn.bombPrefab);
-		c4.transform.position = new Vector3 (player.transform.position.x, 0.25f, player.transform.position.z);
+		c4.transform.position = new Vector3 (player.transform.position.x, player.transform.position.y +0.1f, player.transform.position.z);
 		c4 compc4 = c4.GetComponent<c4> ();
 		compc4.Setc4 (wpn.damage, wpn.range);
+	}
+
+	public void PlaceC4(GameObject player,Weapon wpn){
+		Player plr = selectedPlayer.GetComponent<Player> ();
+		/*GameObject c4 = (GameObject)Instantiate (wpn.bombPrefab);
+		c4.transform.position = new Vector3 (player.transform.position.x, player.transform.position.y +0.1f, player.transform.position.z);
+		c4 compc4 = c4.GetComponent<c4> ();
+		compc4.Setc4 (wpn.damage, wpn.range);*/
+		Agent_Animation aa = plr.gameObject.GetComponent<Agent_Animation> ();
+		aa.grenade = true;
+		StartCoroutine(PlaceC4Cor(wpn,player));
 		if (selectedPlayer.GetComponent<DoubleAttack> ()) {
 			DoubleAttack da = selectedPlayer.GetComponent<DoubleAttack> ();
 			Destroy (da);

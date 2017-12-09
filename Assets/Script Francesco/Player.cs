@@ -52,7 +52,10 @@ public class Player : MonoBehaviour {
 		currentHP -= damage;
 		visualHP.text = currentHP.ToString();
 		if (currentHP <= 0) {
-			FindObjectOfType<MapHandler>().players.Clear ();
+			FindObjectOfType<MapHandler> ().players.Remove (this.gameObject);
+			if (FindObjectOfType<MapHandler> ().players.Count <= 0 && FindObjectOfType<MapHandler>().gs == GameState.AllyTurn) {
+				FindObjectOfType<MapHandler> ().ChangeState (GameState.EnemyTurn);
+			}
 			Grid.GridMath.ChangeBlockType (Grid.GridMath.GetPlayerBlock (this.gameObject), BlockType.Walkable);
 			gameObject.GetComponent<Agent_Animation> ().death = true;
 			//Destroy (playerTrg);

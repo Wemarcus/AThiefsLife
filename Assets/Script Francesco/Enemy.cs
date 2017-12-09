@@ -37,6 +37,7 @@ public class Enemy : MonoBehaviour {
 	}
 
 	public void RunAI(){
+		FindObjectOfType<MainCamera> ().target = this.transform;
 		switch (ait) {
 		case AiType.basic:
 			StartCoroutine( BasicAICor ());
