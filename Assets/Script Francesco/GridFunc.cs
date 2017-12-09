@@ -48,20 +48,22 @@ public class GridFunc : MonoBehaviour {
 			return enemyList;
 		}
 
-		public static List<GameObject> HittableEnemies (GameObject player, List<GameObject> enemies){
+		public static List<GameObject> HittableEnemies (GameObject player, List<GameObject> enemies, int range){
 			RaycastHit hit;
 			GameObject hitted;
 			List<GameObject> hittableEnemies = new List<GameObject> ();
 			Player plr = player.GetComponent<Player> ();
 			Enemy enm;
 			int percentage;
+			float dist;
 			foreach (GameObject enemy in enemies) {
 				enm = enemy.GetComponent<Enemy> ();
 				Debug.DrawRay (plr.head.transform.position, (enm.head.transform.position - plr.head.transform.position).normalized, Color.red, 4f);
 				if (Physics.Raycast (plr.head.transform.position, (enm.head.transform.position - plr.head.transform.position).normalized, out hit)) {
 					hitted = hit.transform.gameObject;
 					Debug.Log (hitted.name);
-					if (hitted.gameObject == enemy) {
+					dist = Vector3.Distance(player.transform.position, enemy.transform.position);
+					if (hitted.gameObject == enemy && dist < range) {
 						hittableEnemies.Add (enemy);
 						//percentage = CalculateEnemyHitPercentage (plr, enm);
 						//Debug.Log(percentage);
@@ -113,19 +115,21 @@ public class GridFunc : MonoBehaviour {
 			return hittableEnemies;
 		}
 
-		public static List<GameObject> HittablePlayers (GameObject enemy, List<GameObject> players){
+		public static List<GameObject> HittablePlayers (GameObject enemy, List<GameObject> players, int range){
 			RaycastHit hit;
 			GameObject hitted;
 			List<GameObject> hittablePlayers = new List<GameObject> ();
 			Enemy enm = enemy.GetComponent<Enemy> ();
 			Player plr;
+			float dist;
 			foreach (GameObject player in players) {
 				plr = player.GetComponent<Player> ();
 				Debug.DrawRay (enm.head.transform.position, (plr.head.transform.position - enm.head.transform.position).normalized, Color.red, 4f);
 				if (Physics.Raycast (enm.head.transform.position, (plr.head.transform.position - enm.head.transform.position).normalized, out hit)) {
 					hitted = hit.transform.gameObject;
+					dist = Vector3.Distance(enemy.transform.position, player.transform.position);
 					Debug.Log (hitted.name);
-					if (hitted.gameObject == player && !hitted.GetComponent<Hide>())
+					if (hitted.gameObject == player && !hitted.GetComponent<Hide>() && dist < range)
 						hittablePlayers.Add (player);
 				}
 			}

@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour {
 	public int maxHP;
 	public int currentHP;
 	public int damage;
+	public int range;
 	public AiType ait;
 	public List<GameObject> playersTrg;
 	public List<GameObject> MoveSpots;
@@ -58,7 +59,7 @@ public class Enemy : MonoBehaviour {
 
 	private void BasicAI(){
 		playersTrg = GridMath.FindPlayers ();
-		playersTrg = GridFunc.HittablePlayers (this.gameObject, playersTrg);
+		playersTrg = GridFunc.HittablePlayers (this.gameObject, playersTrg,range);
 		MoveSpots = GridMath.FindWalkPathInRange (block, moveRange);
 		//Debug.Log (MoveSpots.Count);
 		GameObject target;
@@ -81,7 +82,7 @@ public class Enemy : MonoBehaviour {
 			if(MoveSpot)
 			GridMath.MoveEnemyToBlock (this.gameObject, MoveSpot);
 			//try to hit
-			playersTrg = GridFunc.HittablePlayers(this.gameObject,playersTrg);
+			playersTrg = GridFunc.HittablePlayers(this.gameObject,playersTrg,range);
 			if (playersTrg.Count > 0 && !this.GetComponent<Confusion>()) {
 				target = playersTrg[Random.Range(0,playersTrg.Count)];
 				Debug.Log ("posso colpire:" + target.name);
@@ -100,9 +101,28 @@ public class Enemy : MonoBehaviour {
 		}
 		GameObject MoveSpot;
 		MoveSpots = GridMath.FindWalkPathInRange (block, moveRange);
-		MoveSpot = MoveSpots[Random.Range(0,MoveSpots.Count)];
+
+		List<GameObject> sortedMoveSpots = new List<GameObject> ();
+		Node n;
+		foreach (GameObject elem in MoveSpots) {
+			n = elem.GetComponent<Node> ();
+			if (n.isCover)
+				sortedMoveSpots.Add (elem);
+		}
+		if (sortedMoveSpots.Count > 0) {
+			MoveSpot = sortedMoveSpots[Random.Range(0,sortedMoveSpots.Count-1)];
+			if(MoveSpot)
+				GridMath.MoveEnemyToBlock (this.gameObject, MoveSpot);
+		} else {
+			MoveSpot = MoveSpots[Random.Range(0,MoveSpots.Count-1)];
+			if(MoveSpot)
+				GridMath.MoveEnemyToBlock (this.gameObject, MoveSpot);
+			
+		}
+
+		/*MoveSpot = MoveSpots[Random.Range(0,MoveSpots.Count-1)];
 		if(MoveSpot)
-			GridMath.MoveEnemyToBlock (this.gameObject, MoveSpot);
+			GridMath.MoveEnemyToBlock (this.gameObject, MoveSpot);*/
 		
 		while (FindObjectOfType<MapHandler> ().PerformingAction) {
 			yield return  new WaitForSeconds(1f);
@@ -114,7 +134,7 @@ public class Enemy : MonoBehaviour {
 
 	private IEnumerator BasicAICor(){
 		playersTrg = GridMath.FindPlayers ();
-		playersTrg = GridFunc.HittablePlayers (this.gameObject, playersTrg);
+		playersTrg = GridFunc.HittablePlayers (this.gameObject, playersTrg,range);
 		MoveSpots = GridMath.FindWalkPathInRange (block, moveRange);
 		//Debug.Log (MoveSpots.Count);
 		GameObject target;
@@ -140,11 +160,28 @@ public class Enemy : MonoBehaviour {
 				yield return new WaitForSeconds(1f);
 			}
 
-			MoveSpot = MoveSpots[Random.Range(0,MoveSpots.Count)];
+			List<GameObject> sortedMoveSpots = new List<GameObject> ();
+			Node n;
+			foreach (GameObject elem in MoveSpots) {
+				n = elem.GetComponent<Node> ();
+				if (n.isCover)
+					sortedMoveSpots.Add (elem);
+			}
+			if (sortedMoveSpots.Count > 0) {
+				MoveSpot = sortedMoveSpots[Random.Range(0,sortedMoveSpots.Count-1)];
+				if(MoveSpot)
+					GridMath.MoveEnemyToBlock (this.gameObject, MoveSpot);
+			} else {
+				MoveSpot = MoveSpots[Random.Range(0,MoveSpots.Count-1)];
+				if(MoveSpot)
+					GridMath.MoveEnemyToBlock (this.gameObject, MoveSpot);
+
+			}
+			/*MoveSpot = MoveSpots[Random.Range(0,MoveSpots.Count)];
 			if (MoveSpot) {
 				GridMath.MoveEnemyToBlock (this.gameObject, MoveSpot);
 				yield return  new WaitForSeconds(1f);
-			}
+			}*/
 			
 			while (FindObjectOfType<MapHandler> ().PerformingAction) {
 				yield return  new WaitForSeconds(1f);
@@ -153,18 +190,37 @@ public class Enemy : MonoBehaviour {
 		} else {
 			// move
 			Debug.Log ("non potevo colpire nessuno, mi muovo");
-			MoveSpot = MoveSpots[Random.Range(0,MoveSpots.Count)];
+
+			List<GameObject> sortedMoveSpots = new List<GameObject> ();
+			Node n;
+			foreach (GameObject elem in MoveSpots) {
+				n = elem.GetComponent<Node> ();
+				if (n.isCover)
+					sortedMoveSpots.Add (elem);
+			}
+			if (sortedMoveSpots.Count > 0) {
+				MoveSpot = sortedMoveSpots[Random.Range(0,sortedMoveSpots.Count-1)];
+				if(MoveSpot)
+					GridMath.MoveEnemyToBlock (this.gameObject, MoveSpot);
+			} else {
+				MoveSpot = MoveSpots[Random.Range(0,MoveSpots.Count-1)];
+				if(MoveSpot)
+					GridMath.MoveEnemyToBlock (this.gameObject, MoveSpot);
+
+			}
+
+			/*MoveSpot = MoveSpots[Random.Range(0,MoveSpots.Count)];
 			if (MoveSpot) {
 				GridMath.MoveEnemyToBlock (this.gameObject, MoveSpot);
 				yield return  new WaitForSeconds(1f);
-			}
+			}*/
 			//try to hit
 
 			while (FindObjectOfType<MapHandler> ().PerformingAction) {
 				yield return  new WaitForSeconds(1f);
 			}
 
-			playersTrg = GridFunc.HittablePlayers(this.gameObject,playersTrg);
+			playersTrg = GridFunc.HittablePlayers(this.gameObject,playersTrg,range);
 			if (playersTrg.Count > 0 && !this.GetComponent<Confusion>()) {
 				target = playersTrg[Random.Range(0,playersTrg.Count)];
 				Debug.Log ("posso colpire:" + target.name);

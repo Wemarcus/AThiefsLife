@@ -206,7 +206,7 @@ public class MapHandler : MonoBehaviour {
 
 	public void TargetEnemy(GameObject player){
 		targetList = GridFunc.FindEnemyOnMap (grid);
-		targetList = GridFunc.HittableEnemies (player, targetList);
+		targetList = GridFunc.HittableEnemies (player, targetList, selectedWeapon.range);
 		//Debug.Log (targetList.Count);
 		EnemyPin enPin;
 		/*foreach (GameObject enemy in targetList) {
