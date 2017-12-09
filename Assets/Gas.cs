@@ -49,6 +49,7 @@ public class Gas : MonoBehaviour {
 				gd.SetDamageOverTime (cooldown, damage);
 			}
 		}
-		Destroy (this.gameObject);
+        //modifica MARCO
+		//Destroy (this.gameObject);
 	}
 }

@@ -45,6 +45,7 @@ public class Flash : MonoBehaviour {
 				cf.SetConfusionDuration (cooldown);
 			}
 		}
-		Destroy (this.gameObject);
+        //Modifica Marco
+		//Destroy (this.gameObject);
 	}
 }

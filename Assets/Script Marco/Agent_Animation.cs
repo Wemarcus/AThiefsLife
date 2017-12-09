@@ -26,16 +26,6 @@ public class Agent_Animation : MonoBehaviour {
     private float time;
     private MapHandler mh;
 
-    // SUGGERIMENTI
-	/*	Per prendere il blocco del player:  Grid.GridMath.GetPlayerBlock(GameObject player);
-	 *
-	 *	Per prendere il blocco del nemico:  Grid.GridMath.GetEnemyBlock(GameObject enemy);
-	 *
-	 *  Prendere il componente Node
-	 * 
-	 *  .isCover = true o false dentro al blocco (node)
-	 */ 
-
     private void Start()
     {
 		mh = FindObjectOfType<MapHandler> ();
@@ -76,8 +66,23 @@ public class Agent_Animation : MonoBehaviour {
         if (grenade)
         {
             grenade = false;
-            agent.SetTrigger("Grenade");
-			FindObjectOfType<MapHandler> ().AnimationPerforming (true);
+
+            if (is_tank)
+            {
+                Debug.Log("Sono un tank e piazzo un C4");
+                time = 5.10f;
+                agent.SetBool("C4", true);
+                FindObjectOfType<MapHandler>().AnimationPerforming(true);
+            }
+            else
+            {
+                Debug.Log("Non sono un tank e lancio una bomba");
+                time = 3.20f;
+                agent.SetBool("Grenade", true);
+                FindObjectOfType<MapHandler>().AnimationPerforming(true);
+            }
+
+            StartCoroutine(Grenade(time));
         }
 
         if (MyTurn)
@@ -112,6 +117,24 @@ public class Agent_Animation : MonoBehaviour {
 		mh.changeStateEvent -= SetTurnBool;
 		FindObjectOfType<MapHandler> ().AnimationPerforming (false);
         Destroy(this.gameObject);
+    }
+
+    private IEnumerator Grenade(float t)
+    {
+        yield return new WaitForSeconds(t);
+
+        if (is_tank)
+        {
+            Debug.Log("Sono un tank e finisco animazione");
+            agent.SetBool("C4", false);
+            FindObjectOfType<MapHandler>().AnimationPerforming(false);
+        }
+        else
+        {
+            Debug.Log("Non sono un tank e finisco animazione");
+            agent.SetBool("Grenade", false);
+            FindObjectOfType<MapHandler>().AnimationPerforming(false);
+        }
     }
 
     private IEnumerator Firing(float t)

@@ -4636,7 +4636,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 155826, guid: 0f41e8d90a6f5134f9d1fb9bcac7a543, type: 2}
   type: 1
   cooldown: 2
-  bombPrefab: {fileID: 1398018781678904, guid: ca282236e11fdef46904b9266ce130d5, type: 2}
+  bombPrefab: {fileID: 1543882540386452, guid: ca282236e11fdef46904b9266ce130d5, type: 2}
   cdDuration: 1
 --- !u!114 &114649017943294622
 MonoBehaviour:

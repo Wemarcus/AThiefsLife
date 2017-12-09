@@ -42,6 +42,7 @@ public class Frag : MonoBehaviour {
 				e.DealDamage (damage);
 			}
 		}
-		Destroy (this.gameObject);
+        //Modifica Marco
+		//Destroy (this.gameObject);
 	}
 }

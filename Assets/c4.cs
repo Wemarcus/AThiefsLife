@@ -5,7 +5,7 @@ using UnityEngine;
 public class c4 : MonoBehaviour {
 
 	MapHandler mh;
-	int cooldown = 0;
+	public int cooldown = 0;
 	int damage;
 	int range;
 
@@ -51,7 +51,8 @@ public class c4 : MonoBehaviour {
 					e.DealDamage (damage);
 				}
 			}
-			Destroy (this.gameObject);
+            //Modifica Marco
+			//Destroy (this.gameObject);
 		}
 	}
 }
