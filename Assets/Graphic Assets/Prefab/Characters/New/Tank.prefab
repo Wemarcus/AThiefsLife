@@ -4500,6 +4500,7 @@ MonoBehaviour:
   damage: 50
   range: 20
   bulletPrefab: {fileID: 155826, guid: 0f41e8d90a6f5134f9d1fb9bcac7a543, type: 2}
+  wpnImage: {fileID: 21300000, guid: 2bcf9bedba78a0740a234e272334d595, type: 3}
   type: 3
   cooldown: 2
   bombPrefab: {fileID: 1923195545495368, guid: 15e196a9d05462542b442cd85e997867, type: 2}
@@ -4532,6 +4533,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 4
   cooldown: 0
+  ActionImage: {fileID: 21300000, guid: 0c7e5f6a29cd96845ba4effd1c04d737, type: 3}
 --- !u!114 &114338110522747610
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4545,6 +4547,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 5
   cooldown: 0
+  ActionImage: {fileID: 21300000, guid: 3af5b9685e1854f4cb9c26385689eaf7, type: 3}
 --- !u!114 &114501267771084386
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4692,6 +4695,7 @@ MonoBehaviour:
   damage: 50
   range: 20
   bulletPrefab: {fileID: 155826, guid: 0f41e8d90a6f5134f9d1fb9bcac7a543, type: 2}
+  wpnImage: {fileID: 21300000, guid: c46a5270ee772ce499ad5ffab63d8b83, type: 3}
   type: 0
   cooldown: 0
   bombPrefab: {fileID: 0}

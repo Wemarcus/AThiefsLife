@@ -24,4 +24,8 @@ public class Hide : MonoBehaviour {
 		cooldown = cd;
 	}
 
+	public void OnDestroy(){
+		mh = FindObjectOfType<MapHandler> ();
+		mh.nextRoundEvent -= CoolDown;
+	}
 }

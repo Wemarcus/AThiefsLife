@@ -24,4 +24,9 @@ public class Killer : MonoBehaviour {
 		cooldown = cd;
 	}
 
+	public void OnDestroy(){
+		mh = FindObjectOfType<MapHandler> ();
+		mh.nextRoundEvent -= CoolDown;
+	}
+
 }

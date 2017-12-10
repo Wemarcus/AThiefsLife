@@ -99,28 +99,39 @@ public class UIHandler : MonoBehaviour {
 
 		if (!animPerform) {
 			if (inpS == InputState.Decision && player != null) {
+				Sprite img;
 				Player plr = player.GetComponent<Player> ();
 				if (plr && !plr.moved)
 					MoveBtn.gameObject.SetActive (true);
 				if (plr && !plr.attacked) {
-					AttackBtn.image = player.GetComponent<Player> ().firstWeapon.wpnImage;
+					img = AttackBtn.gameObject.GetComponent<Sprite> ();
+					img = player.GetComponent<Player> ().firstWeapon.wpnImage;
+					AttackBtn.GetComponent<Image> ().sprite = img;
 					AttackBtn.gameObject.SetActive (true);
-					AttackBtn2.image = player.GetComponent<Player> ().secondWeapon.wpnImage;
+					img = AttackBtn2.gameObject.GetComponent<Sprite> ();
+					img = player.GetComponent<Player> ().secondWeapon.wpnImage;
+					AttackBtn2.GetComponent<Image> ().sprite = img;
 					AttackBtn2.gameObject.SetActive (true);
 				}
 				if (plr && !plr.actionDone) {
+					img = ActionBtn.gameObject.GetComponent<Sprite> ();
+					img = player.GetComponent<Player> ().firstAction.ActionImage;
+					ActionBtn.GetComponent<Image> ().sprite = img;
 					ActionBtn.gameObject.SetActive (true);
+					img = ActionBtn.gameObject.GetComponent<Sprite> ();
+					img = player.GetComponent<Player> ().secondAction.ActionImage;
+					ActionBtn2.GetComponent<Image> ().sprite = img;
 					ActionBtn2.gameObject.SetActive (true);
 				}
 				if (plr && (!plr.moved || !plr.attacked || !plr.actionDone))
 					PassTurnBtn.gameObject.SetActive (true);
 			}
-			if (inpS == InputState.Nothing) {
+			/*if (inpS == InputState.Nothing) {
 				MoveBtn.gameObject.SetActive (false);
 				AttackBtn.gameObject.SetActive (false);
 				AttackBtn2.gameObject.SetActive (false);
 				PassTurnBtn.gameObject.SetActive (false);
-			}
+			}*/
 			if (inpS == InputState.Movement) {
 				MoveBtn.gameObject.SetActive (false);
 				AttackBtn.gameObject.SetActive (false);

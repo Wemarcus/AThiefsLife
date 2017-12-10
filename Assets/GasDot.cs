@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -35,4 +36,9 @@ public class GasDot : MonoBehaviour {
 		cooldown = cd;
 		damage = dmg;
 	}
+
+		public void OnDestroy(){
+			mh = FindObjectOfType<MapHandler> ();
+			mh.nextRoundEvent -= CoolDown;
+		}
 }

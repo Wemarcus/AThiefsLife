@@ -26,4 +26,8 @@ public class DamagePowerUp : MonoBehaviour {
 		damagePercentage = damagePerc;
 	}
 
+	public void OnDestroy(){
+		mh = FindObjectOfType<MapHandler> ();
+		mh.nextRoundEvent -= CoolDown;
+	}
 }

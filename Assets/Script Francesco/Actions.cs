@@ -19,7 +19,7 @@ public class Actions : MonoBehaviour {
 	public ActionsType type;
 	public int cooldown;
 	MapHandler mh; 
-	public Image ActionImage;
+	public Sprite ActionImage;
 
 	void Start(){
 		ResetCD ();

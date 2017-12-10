@@ -6,9 +6,10 @@ public class Frag : MonoBehaviour {
 
 	public int damage;
 	public int range;
-
+	private bool exploded;
 	// Use this for initialization
 	void Start () {
+		exploded = false;
 	}
 
 	public void SetBomb(int dmg,int rng){
@@ -19,6 +20,7 @@ public class Frag : MonoBehaviour {
 
 	void OnCollisionEnter(Collision collision){
 		Debug.Log ("collido");
+		if(!exploded){
 		List<GameObject> targetList = new List<GameObject>();
 		targetList.AddRange(GameObject.FindGameObjectsWithTag ("Enemy"));
 		targetList.AddRange(GameObject.FindGameObjectsWithTag("Player"));
@@ -31,15 +33,17 @@ public class Frag : MonoBehaviour {
 				}
 			}
 		Debug.Log ("targets in range :" + targetList.Count);
-		foreach (GameObject target in sortedList) {
-			Player p;
-			Enemy e;
-			if (target.GetComponent<Player> ()) {
-				p = target.GetComponent<Player> ();
-				p.DealDamage (damage);
-			} else if (target.GetComponent<Enemy> ()) {
-				e = target.GetComponent<Enemy> ();
-				e.DealDamage (damage);
+			foreach (GameObject target in sortedList) {
+				Player p;
+				Enemy e;
+				if (target.GetComponent<Player> ()) {
+					p = target.GetComponent<Player> ();
+					p.DealDamage (damage);
+				} else if (target.GetComponent<Enemy> ()) {
+					e = target.GetComponent<Enemy> ();
+					e.DealDamage (damage);
+				}
+				exploded = true;
 			}
 		}
         //Modifica Marco
