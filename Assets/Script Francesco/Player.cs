@@ -21,6 +21,7 @@ public class Player : MonoBehaviour {
 	public GameObject FirstWeaponPhs;
 	public List<GameObject> HitZone;
 	public bool isBoss;
+	public GameObject iconPrefab;
 
 	// Use this for initialization
 
@@ -50,6 +51,9 @@ public class Player : MonoBehaviour {
 			damage = (int)floatdamage;
 		}
 		currentHP -= damage;
+		if (currentHP < 0) {
+			currentHP = 0;
+		}
 		visualHP.text = currentHP.ToString();
 		if (currentHP <= 0) {
 			FindObjectOfType<MapHandler> ().players.Remove (this.gameObject);

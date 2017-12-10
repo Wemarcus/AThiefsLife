@@ -5,7 +5,7 @@ using UnityEngine;
 public class AIHandler : MonoBehaviour {
 
 	public GameState gs;
-	List<GameObject> enemyList;
+	public List<GameObject> enemyList;
 	public MapHandler mh;
 
 	void OnEnable(){

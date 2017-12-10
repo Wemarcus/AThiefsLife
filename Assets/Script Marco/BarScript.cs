@@ -38,6 +38,11 @@ public class BarScript : MonoBehaviour
         HandleBar();
     }
 
+	public void setValue(float value){
+		valueText.text = value.ToString();
+		fillAmount = Map(value, 0, MaxValue, 0, 1);
+	}
+
     private void HandleBar()
     {
         if (fillAmount != health.fillAmount)

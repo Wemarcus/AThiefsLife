@@ -4525,6 +4525,7 @@ MonoBehaviour:
   - {fileID: 1696854557006800}
   - {fileID: 1083937246053840}
   isBoss: 0
+  iconPrefab: {fileID: 1810647644970646, guid: 5e3d0e1969e0e2340a238fc64dc58f62, type: 2}
 --- !u!114 &114435092097434112
 MonoBehaviour:
   m_ObjectHideFlags: 1

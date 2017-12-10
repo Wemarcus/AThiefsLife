@@ -4793,6 +4793,7 @@ MonoBehaviour:
   - {fileID: 1723822733781884}
   - {fileID: 1759855156873530}
   isBoss: 0
+  iconPrefab: {fileID: 1998034107866412, guid: 7b7caa45ce248374cab681581775666d, type: 2}
 --- !u!114 &114682895975222318
 MonoBehaviour:
   m_ObjectHideFlags: 1

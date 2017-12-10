@@ -10,6 +10,9 @@ public class GridFunc : MonoBehaviour {
 			if (players.Count > 0) {
 				//Instantiate (players [0], block.transform);
 				GameObject newPlayer = Instantiate(players[0]);
+				GameObject icon = Instantiate( newPlayer.GetComponent<Player> ().iconPrefab,GameObject.Find("PortraitPanel").transform);
+				IconHandle iconH = icon.GetComponent<IconHandle> ();
+				iconH.LinkIcon (newPlayer);
 				newPlayer.transform.position = spawnpoint.transform.position;
 				Player plr = newPlayer.GetComponent<Player> ();
 				Grid.GridMath.SetPlayerTarget (newPlayer,block);
