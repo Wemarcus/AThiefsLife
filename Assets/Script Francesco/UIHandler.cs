@@ -103,7 +103,9 @@ public class UIHandler : MonoBehaviour {
 				if (plr && !plr.moved)
 					MoveBtn.gameObject.SetActive (true);
 				if (plr && !plr.attacked) {
+					AttackBtn.image = player.GetComponent<Player> ().firstWeapon.wpnImage;
 					AttackBtn.gameObject.SetActive (true);
+					AttackBtn2.image = player.GetComponent<Player> ().secondWeapon.wpnImage;
 					AttackBtn2.gameObject.SetActive (true);
 				}
 				if (plr && !plr.actionDone) {
