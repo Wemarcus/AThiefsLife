@@ -28,6 +28,9 @@ public class Enemy : MonoBehaviour {
 
 	public void DealDamage(int damage){
 		currentHP -= damage;
+		if (currentHP < 0) {
+			currentHP = 0;
+		}
 		visualHP.text = currentHP.ToString();
 		if (currentHP <= 0) {
 			MapHandler.FindObjectOfType<MapHandler>().targetList.Remove (this.gameObject);

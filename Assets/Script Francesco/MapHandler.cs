@@ -241,9 +241,19 @@ public class MapHandler : MonoBehaviour {
 	}
 
 	public void PassAllyTurn(){
+		/*ChangeInputState (InputState.Nothing);
+		ChangeState (GameState.EnemyTurn);
+		SelectPlayer (null);*/
+		StartCoroutine (Pass ());
+	}
+
+	private IEnumerator Pass(){
+		selectedPlayer = null;
+		ChangeInputState (InputState.Nothing);
+		yield return new WaitForSeconds (2f);
+		selectedPlayer = null;
 		ChangeInputState (InputState.Nothing);
 		ChangeState (GameState.EnemyTurn);
-		SelectPlayer (null);
 	}
 
 	public void PassPlayerTurn(){
@@ -290,7 +300,7 @@ public class MapHandler : MonoBehaviour {
 		}
 		BuildBullet (bullet, damage, BulletTag.friendly);
 		// Add velocity to the bullet
-		bullet.GetComponent<Rigidbody>().velocity = (enm.HitZone[rand].transform.position - starting.transform.position)* 0.3f;     
+		bullet.GetComponent<Rigidbody>().velocity = (enm.HitZone[rand].transform.position - starting.transform.position)* 1f;     
 	}
 
 	public void FireBulletToPlayer(GameObject target, GameObject starting, int damage){
@@ -302,7 +312,7 @@ public class MapHandler : MonoBehaviour {
 		GameObject bullet = (GameObject)Instantiate(enm.bulletPrefab,enm.shootPoint.transform.position,enm.shootPoint.transform.rotation);
 		BuildBullet (bullet, damage, BulletTag.foe);
 		// Add velocity to the bullet
-		bullet.GetComponent<Rigidbody>().velocity = (plr.HitZone[rand].transform.position - enm.shootPoint.transform.position)* 0.3f;    
+		bullet.GetComponent<Rigidbody>().velocity = (plr.HitZone[rand].transform.position - enm.shootPoint.transform.position)* 1f;    
 	}
 
 	public void BuildBullet(GameObject bullet, int damage, BulletTag bt){

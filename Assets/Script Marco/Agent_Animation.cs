@@ -119,6 +119,9 @@ public class Agent_Animation : MonoBehaviour {
 		if (FindObjectOfType<MapHandler> ().selectedPlayer == this.gameObject) {
 			FindObjectOfType<MapHandler> ().SelectPlayer(mh.players[0]);
 		}
+		if(FindObjectOfType<AIHandler>().enemyList.Contains(this.gameObject)){
+			FindObjectOfType<AIHandler> ().enemyList.Remove (this.gameObject);
+		}
         Destroy(this.gameObject);
     }
 
