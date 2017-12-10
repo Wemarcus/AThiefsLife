@@ -30,7 +30,8 @@ public class MapHandler : MonoBehaviour {
 
 	public bool PerformingAction;
 
-	public int turnCount;
+	public int turnCount = 1;
+	public int money;
 
 	public UnityEngine.UI.Text popUp;
 
@@ -51,6 +52,9 @@ public class MapHandler : MonoBehaviour {
 
 	public delegate void NextRound(int n);
 	public event NextRound nextRoundEvent;
+
+	public delegate void AddMoney(int n);
+	public event AddMoney addMoneyEvent;
 
 	// Use this for initialization
 	void Start () {
@@ -406,6 +410,13 @@ public class MapHandler : MonoBehaviour {
 		PerformingAction = b;
 		if (animationEvent != null) {
 			animationEvent (b);
+		}
+	}
+
+	public void StealMoney(int n){
+		money += n;
+		if (addMoneyEvent != null) {
+			addMoneyEvent (n);
 		}
 	}
 
