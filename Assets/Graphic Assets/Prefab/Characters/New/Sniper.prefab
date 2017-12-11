@@ -3014,7 +3014,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1753506187080716}
   m_LocalRotation: {x: -0, y: 0.9965674, z: -0, w: 0.08278536}
-  m_LocalPosition: {x: 38.162655, y: -0.019999979, z: 69.27527}
+  m_LocalPosition: {x: 43.63513, y: -0.019999973, z: 71.15331}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4612683838578132}
@@ -4657,8 +4657,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2aea279d7f517c42aa7c95c7f2a6558, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionName: 
-  description: 
+  actionName: Killer Instinct
+  description: 'If enemy hitted: headshot '
   type: 7
   cooldown: 0
   ActionImage: {fileID: 21300000, guid: af876242513bf3742a8f635e4f834e34, type: 3}
@@ -4810,8 +4810,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2aea279d7f517c42aa7c95c7f2a6558, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionName: 
-  description: 
+  actionName: Invisible
+  description: You're invisible for a turn
   type: 6
   cooldown: 0
   ActionImage: {fileID: 21300000, guid: 7ff7bf29d4d3c1349984ccef1f4654d8, type: 3}
@@ -4861,8 +4861,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bae2017c347714d459b9673fd9ea0d26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wpnName: 
-  wpnDescription: 
+  wpnName: Sniper Rifle
+  wpnDescription: 60 damage
   wpnType: 0
   damage: 60
   range: 30
@@ -4914,8 +4914,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bae2017c347714d459b9673fd9ea0d26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wpnName: 
-  wpnDescription: 
+  wpnName: Flash Grenade
+  wpnDescription: 'Characters in range: they can''t attack'
   wpnType: 1
   damage: 0
   range: 20
@@ -4923,7 +4923,7 @@ MonoBehaviour:
   wpnImage: {fileID: 21300000, guid: 58b3b6f61673c864d88985c4b29a116e, type: 3}
   selectedWpnImage: {fileID: 21300000, guid: 9733c0ffb258b5b419bdfb17dfef1bb6, type: 3}
   type: 2
-  cooldown: 3
+  cooldown: 2
   bombPrefab: {fileID: 1340657285197054, guid: 9c2a67cb0bdd6d342a7696b5a37efc95, type: 2}
   cdDuration: 1
 --- !u!114 &114723511401753424
