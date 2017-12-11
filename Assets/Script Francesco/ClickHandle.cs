@@ -141,7 +141,7 @@ public class ClickHandle : MonoBehaviour {
 				click += RevertMoveTo;
 				break;
 			}
-			if (hitted.tag == "Walkable" && (inpS == InputState.Decision || inpS == InputState.Attack)) {
+			if (hitted.tag == "Walkable" && (/*inpS == InputState.Decision ||*/ inpS == InputState.Attack)) {
 				click += SelectNothing;
 				break;
 			}

@@ -157,7 +157,7 @@ public class MapHandler : MonoBehaviour {
 	public void SelectNothing(GameObject block){
 		//SelectPlayer (null);
 		ChangeTarget (null);
-		ChangeInputState (InputState.Nothing);
+		ChangeInputState (InputState.Decision);
 	}
 
 	public void WeaponTarget(GameObject player, Weapon wpn){
@@ -324,7 +324,7 @@ public class MapHandler : MonoBehaviour {
 	public void HitEnemy(GameObject enemy){
 		if (selectedWeapon.wpnType == WeaponType.Single) {
 			HitSingleTarget (enemy);
-		}
+		}else
 		if(selectedWeapon.wpnType == WeaponType.AoE){
 			Debug.Log("AOE attack");
 			HitAoE (enemy);
@@ -390,6 +390,10 @@ public class MapHandler : MonoBehaviour {
 	}
 
 	public void ChangeInputState(InputState inpS){
+		if (inpS == InputState.Decision) {
+			selectedWeapon = null;
+			selectedAction = null;
+		}
 		inputS = inpS;
 		if (changeInputStateEvent != null)
 			changeInputStateEvent (inpS);

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum ActionsType{
 	HealSelf,
@@ -18,6 +19,7 @@ public class Actions : MonoBehaviour {
 	public ActionsType type;
 	public int cooldown;
 	MapHandler mh; 
+	public Sprite ActionImage;
 
 	void Start(){
 		ResetCD ();

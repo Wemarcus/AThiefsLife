@@ -32,4 +32,9 @@ public class Confusion : MonoBehaviour {
 			p.attacked = true;
 		}
 	}
+
+	public void OnDestroy(){
+		mh = FindObjectOfType<MapHandler> ();
+		mh.nextRoundEvent -= CoolDown;
+	}
 }

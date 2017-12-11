@@ -24,4 +24,9 @@ public class Shield : MonoBehaviour {
 		shieldPercentage = perc;
 		cooldown = cd;
 	}
+
+	public void OnDestroy(){
+		mh = FindObjectOfType<MapHandler> ();
+		mh.nextRoundEvent -= CoolDown;
+	}
 }

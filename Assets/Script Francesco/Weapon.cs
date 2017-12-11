@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum AoEType{
 	frag,
@@ -15,6 +16,7 @@ public class Weapon : MonoBehaviour {
 	public int damage;
 	public int range;
 	public GameObject bulletPrefab;
+	public Sprite wpnImage;
 
 	[Header("Aoe Setup(only if weapon type is aoe")]
 

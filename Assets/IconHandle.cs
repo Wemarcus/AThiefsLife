@@ -10,6 +10,9 @@ public class IconHandle : MonoBehaviour {
 	bool death;
 	public BarScript bs;
 	public Image selectedImg;
+	public Image currentHpBar;
+	public Image voidHpBar;
+	public Text hpTxt;
 	GameObject selectedPlayer;
 
 	// Use this for initialization
@@ -34,8 +37,14 @@ public class IconHandle : MonoBehaviour {
 		try{
 			if (player.gameObject && selectedPlayer == player.gameObject) {
 				selectedImg.enabled = true;
+				currentHpBar.color = new Color(1,1,1,1);
+				voidHpBar.color = new Color(1,1,1,1);
+				hpTxt.color = new Color(1,1,1,1);
 			} else {
 				selectedImg.enabled = false;
+				currentHpBar.color = new Color(1,1,1,0.3f);
+				voidHpBar.color = new Color(1,1,1,0.3f);
+				hpTxt.color = new Color(1,1,1,0.3f);
 				}
 		}catch(Exception e){
 			player = null;

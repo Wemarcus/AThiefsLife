@@ -5298,6 +5298,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 3
   cooldown: 0
+  ActionImage: {fileID: 21300000, guid: bdfa67cb714457e469ba36a9012801fb, type: 3}
 --- !u!114 &114156970711723110
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5403,6 +5404,7 @@ MonoBehaviour:
   damage: 40
   range: 20
   bulletPrefab: {fileID: 155826, guid: 0f41e8d90a6f5134f9d1fb9bcac7a543, type: 2}
+  wpnImage: {fileID: 21300000, guid: 61a4a4405b1a7054c86d23bb7903cac1, type: 3}
   type: 0
   cooldown: 2
   bombPrefab: {fileID: 1127507713346284, guid: d2821d013192baf4396fc4e9b4f4a62d, type: 2}
@@ -5615,6 +5617,7 @@ MonoBehaviour:
   damage: 40
   range: 20
   bulletPrefab: {fileID: 155826, guid: 0f41e8d90a6f5134f9d1fb9bcac7a543, type: 2}
+  wpnImage: {fileID: 21300000, guid: 6db9333a687eeca4288de22d69bcbe51, type: 3}
   type: 0
   cooldown: 0
   bombPrefab: {fileID: 0}
@@ -5647,6 +5650,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   cooldown: 0
+  ActionImage: {fileID: 21300000, guid: 6a84206b2d73d18498e24b9d24646137, type: 3}
 --- !u!114 &114986162395426432
 MonoBehaviour:
   m_ObjectHideFlags: 1

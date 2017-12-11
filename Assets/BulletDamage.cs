@@ -45,7 +45,7 @@ public class BulletDamage : MonoBehaviour {
 
     private void Update()
     {
-        //Destroy(this.gameObject, 3.0f);
+        Destroy(this.gameObject, 3.0f);
     }
 
     private void OnTriggerEnter(Collider other)
