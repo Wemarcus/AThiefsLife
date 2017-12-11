@@ -19,6 +19,7 @@ public class Enemy : MonoBehaviour {
 	public List<GameObject> HitZone;
 	public GameObject bulletPrefab;
 	public GameObject shootPoint;
+	public EnemyBarHandler bar;
 
 	public void Start(){
 		currentHP = maxHP;

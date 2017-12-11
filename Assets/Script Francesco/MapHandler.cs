@@ -135,10 +135,28 @@ public class MapHandler : MonoBehaviour {
 		Player plr = selectedPlayer.GetComponent<Player> ();
 		plr.moved = true;
 		ChangeInputState (InputState.Decision);
+		StartCoroutine(CheckDoneAndEndTurn(plr));
+		/*if (plr.IsDone ()) {
+			Grid.GridMath.RemovePlayerFromList (selectedPlayer, players);
+			SelectPlayer (null);
+			if(players.Count >0)
+				SelectPlayer (players [0]);
+			ChangeInputState (InputState.Decision);
+		}
+		if (CheckAllyEndTurn ()) {
+			ChangeState (GameState.EnemyTurn);
+			ChangeInputState (InputState.Nothing);
+		}*/
+	}
+
+	public IEnumerator CheckDoneAndEndTurn(Player plr){
+		yield return new WaitForSeconds (1.5f);
 		if (plr.IsDone ()) {
 			Grid.GridMath.RemovePlayerFromList (selectedPlayer, players);
 			SelectPlayer (null);
-			ChangeInputState (InputState.Nothing);
+			if(players.Count >0)
+				SelectPlayer (players [0]);
+			ChangeInputState (InputState.Decision);
 		}
 		if (CheckAllyEndTurn ()) {
 			ChangeState (GameState.EnemyTurn);
@@ -166,11 +184,11 @@ public class MapHandler : MonoBehaviour {
 			selectedWeapon = wpn;
 			TargetEnemy (player);
 		}
-		if (wpn.getWeaponType () == WeaponType.AoE && wpn.type != AoEType.c4 && wpn.cooldown >= 3) {
+		if (wpn.getWeaponType () == WeaponType.AoE && wpn.type != AoEType.c4 && wpn.cooldown > 2) {
 			selectedWeapon = wpn;
 			TargetEnemy (player);
 		} 
-		if (wpn.getWeaponType () == WeaponType.AoE && wpn.type == AoEType.c4 && wpn.cooldown >= 3) {
+		if (wpn.getWeaponType () == WeaponType.AoE && wpn.type == AoEType.c4 && wpn.cooldown > 2) {
 			selectedWeapon = wpn;
 			PlaceC4 (player, wpn);
 		} 
@@ -187,7 +205,7 @@ public class MapHandler : MonoBehaviour {
 
 	public void PlaceC4(GameObject player,Weapon wpn){
 		Player plr = selectedPlayer.GetComponent<Player> ();
-		if (wpn.cooldown >= 2) {
+		if (wpn.cooldown > 2) {
 			/*GameObject c4 = (GameObject)Instantiate (wpn.bombPrefab);
 		c4.transform.position = new Vector3 (player.transform.position.x, player.transform.position.y +0.1f, player.transform.position.z);
 		c4 compc4 = c4.GetComponent<c4> ();
@@ -203,15 +221,18 @@ public class MapHandler : MonoBehaviour {
 			}
 			ChangeTarget (null);
 			ChangeInputState (InputState.Decision);
-			if (plr.IsDone ()) {
+			StartCoroutine(CheckDoneAndEndTurn(plr));
+			/*if (plr.IsDone ()) {
 				Grid.GridMath.RemovePlayerFromList (selectedPlayer, players);
 				SelectPlayer (null);
-				ChangeInputState (InputState.Nothing);
+				if(players.Count >0)
+				SelectPlayer (players [0]);
+				ChangeInputState (InputState.Decision);
 			}
 			if (CheckAllyEndTurn ()) {
 				ChangeState (GameState.EnemyTurn);
 				ChangeInputState (InputState.Nothing);
-			}
+			}*/
 		}
 	}
 
@@ -353,15 +374,18 @@ public class MapHandler : MonoBehaviour {
 			}
 			ChangeTarget (null);
 			ChangeInputState (InputState.Decision);
-			if (plr.IsDone ()) {
+			StartCoroutine(CheckDoneAndEndTurn(plr));
+			/*if (plr.IsDone ()) {
 				Grid.GridMath.RemovePlayerFromList (selectedPlayer, players);
 				SelectPlayer (null);
-				ChangeInputState (InputState.Nothing);
+				if(players.Count >0)
+				SelectPlayer (players [0]);
+				ChangeInputState (InputState.Decision);
 			}
 			if (CheckAllyEndTurn ()) {
 				ChangeState (GameState.EnemyTurn);
 				ChangeInputState (InputState.Nothing);
-			}
+			}*/
 		}
 	}
 
@@ -372,15 +396,18 @@ public class MapHandler : MonoBehaviour {
 			plr.attacked = true;
 			ChangeTarget (null);
 			ChangeInputState (InputState.Decision);
-			if (plr.IsDone ()) {
+			StartCoroutine(CheckDoneAndEndTurn(plr));
+			/*if (plr.IsDone ()) {
 				Grid.GridMath.RemovePlayerFromList (selectedPlayer, players);
 				SelectPlayer (null);
-				ChangeInputState (InputState.Nothing);
+				if(players.Count >0)
+					SelectPlayer(players[0]);
+				ChangeInputState (InputState.Decision);
 			}
 			if (CheckAllyEndTurn ()) {
 				ChangeState (GameState.EnemyTurn);
 				ChangeInputState (InputState.Nothing);
-			}
+			}*/
 		}
 	}
 

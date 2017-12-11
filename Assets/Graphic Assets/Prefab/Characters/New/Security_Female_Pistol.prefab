@@ -549,6 +549,7 @@ GameObject:
   - component: {fileID: 114113764705409098}
   - component: {fileID: 114654916928616094}
   - component: {fileID: 114723082000511022}
+  - component: {fileID: 114022734925575386}
   m_Layer: 0
   m_Name: Enemy_Interface
   m_TagString: Untagged
@@ -3411,6 +3412,21 @@ TextMesh:
   m_Color:
     serializedVersion: 2
     rgba: 4278190080
+--- !u!114 &114022734925575386
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1316589737510614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccca782f4bc657544912422084bf2f60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 114951796780522752}
+  bs: {fileID: 114740839999564974}
+  selectedImg: {fileID: 114530755286222140}
+  hpTxt: {fileID: 114406608224049528}
 --- !u!114 &114054547722132092
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3878,6 +3894,7 @@ MonoBehaviour:
   - {fileID: 1228916395520026}
   bulletPrefab: {fileID: 155826, guid: 0f41e8d90a6f5134f9d1fb9bcac7a543, type: 2}
   shootPoint: {fileID: 1523460018992534}
+  bar: {fileID: 114022734925575386}
 --- !u!114 &114976202622850980
 MonoBehaviour:
   m_ObjectHideFlags: 1

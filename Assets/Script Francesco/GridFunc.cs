@@ -68,7 +68,8 @@ public class GridFunc : MonoBehaviour {
 					dist = Vector3.Distance(player.transform.position, enemy.transform.position);
 					if (hitted.gameObject == enemy && dist < range) {
 						hittableEnemies.Add (enemy);
-						//percentage = CalculateEnemyHitPercentage (plr, enm);
+						percentage = CalculateEnemyHitPercentage (plr, enm);
+						enm.bar.SetHitPercentage (percentage);
 						//Debug.Log(percentage);
 					}
 				}

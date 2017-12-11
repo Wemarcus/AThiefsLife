@@ -1460,6 +1460,7 @@ GameObject:
   - component: {fileID: 114141388994192120}
   - component: {fileID: 114770538495684526}
   - component: {fileID: 114597754452281228}
+  - component: {fileID: 114174070075234254}
   m_Layer: 0
   m_Name: Enemy_Interface
   m_TagString: Untagged
@@ -3500,6 +3501,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+--- !u!114 &114174070075234254
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1954275264790982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccca782f4bc657544912422084bf2f60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 114518470620738078}
+  bs: {fileID: 114114062397739864}
+  selectedImg: {fileID: 114487254618767554}
+  hpTxt: {fileID: 114594677461436944}
 --- !u!114 &114182350484476152
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3623,6 +3639,7 @@ MonoBehaviour:
   - {fileID: 1078510598502998}
   bulletPrefab: {fileID: 155826, guid: 0f41e8d90a6f5134f9d1fb9bcac7a543, type: 2}
   shootPoint: {fileID: 1904419265836934}
+  bar: {fileID: 114174070075234254}
 --- !u!114 &114594677461436944
 MonoBehaviour:
   m_ObjectHideFlags: 1
