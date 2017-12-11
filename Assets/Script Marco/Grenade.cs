@@ -141,4 +141,67 @@ public class Grenade : MonoBehaviour {
         }
 
     }
+
+    private void OnTriggerStay(Collider other)
+    {
+        explosionPos = transform.position;
+        colliders = Physics.OverlapSphere(explosionPos, radius);
+
+        if (GetComponent<c4>() != null)
+        {
+            if (!block && (other.tag == "Player" || other.tag == "Enemy") && GetComponent<c4>().cooldown > 1)
+            {
+                Debug.Log("La granata collide con: " + other.gameObject);
+
+                block = true;
+                smoke_effect.SetActive(true);
+
+                if (sound != null)
+                {
+                    sound.Play();
+                }
+
+                if (is_grenade || is_C4)
+                {
+                    foreach (Collider hit in colliders)
+                    {
+                        Debug.Log(hit.name);
+
+                        Rigidbody rb = hit.GetComponent<Rigidbody>();
+
+                        if (rb != null)
+                        {
+                            if (rb.tag == "Glass")
+                            {
+                                rb.useGravity = true;
+                                rb.isKinematic = false;
+                                rb.AddExplosionForce(power, explosionPos, radius, 3.0F);
+                            }
+                            else if (rb.tag != "Grenade")
+                            {
+                                rb.AddExplosionForce(power, explosionPos, radius, 3.0F);
+                            }
+                        }
+                    }
+                }
+
+                if (is_flash)
+                {
+                    Destroy(gameObject, 6.0f);
+                }
+                else if (is_smoke)
+                {
+                    Destroy(gameObject, 13.0f);
+                }
+                else if (is_grenade)
+                {
+                    Destroy(gameObject, 7.0f);
+                }
+                else if (is_C4)
+                {
+                    Destroy(gameObject, 4.0f);
+                }
+            }
+        }
+    }
 }
