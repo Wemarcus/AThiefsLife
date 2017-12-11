@@ -43,7 +43,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1013681406336740
 GameObject:
   m_ObjectHideFlags: 1
@@ -1793,7 +1793,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1334302927200002}
   m_LocalRotation: {x: -0, y: 0.9965674, z: -0, w: 0.08278536}
-  m_LocalPosition: {x: 43.270756, y: -0.019999975, z: 70.59836}
+  m_LocalPosition: {x: 47.04012, y: -0.019999972, z: 73.86409}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4241367036890990}
@@ -4688,7 +4688,6 @@ MonoBehaviour:
   secondWeapon: {fileID: 114179200417295582}
   firstAction: {fileID: 114312885797278726}
   secondAction: {fileID: 114338110522747610}
-  visualHP: {fileID: 102429428552920050}
   head: {fileID: 1827879806046092}
   playerBlock: {fileID: 0}
   ShootPoint: {fileID: 1271836330546206}
@@ -4700,6 +4699,9 @@ MonoBehaviour:
   - {fileID: 1171885416434058}
   isBoss: 0
   iconPrefab: {fileID: 1560876214062236, guid: 3e0555615d4bb0743b6eeea531e199ca, type: 2}
+  damagePopUpPrefab: {fileID: 1960116762310738, guid: a891c0d0ce4a8034a8ddb6cc26a0e920,
+    type: 2}
+  spawnPointDamagePopUpPrefab: {fileID: 1479844936718780}
 --- !u!114 &114617202110283704
 MonoBehaviour:
   m_ObjectHideFlags: 1
