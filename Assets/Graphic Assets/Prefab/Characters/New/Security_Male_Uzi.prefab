@@ -595,7 +595,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1469637392129846
 GameObject:
   m_ObjectHideFlags: 1
@@ -3659,7 +3659,6 @@ MonoBehaviour:
   playersTrg: []
   MoveSpots: []
   block: {fileID: 0}
-  visualHP: {fileID: 102856195337145654}
   head: {fileID: 1503940100739878}
   HitZone:
   - {fileID: 1503940100739878}
@@ -3669,6 +3668,9 @@ MonoBehaviour:
   bulletPrefab: {fileID: 155826, guid: 0f41e8d90a6f5134f9d1fb9bcac7a543, type: 2}
   shootPoint: {fileID: 1951282321197366}
   bar: {fileID: 114381093751309806}
+  damagePopUpPrefab: {fileID: 1896818840264442, guid: 61c9031438287c6458d661dfc0bbebfa,
+    type: 2}
+  spawnPointDamagePopUpPrefab: {fileID: 1373148946898740}
 --- !u!114 &114350553680439894
 MonoBehaviour:
   m_ObjectHideFlags: 1
