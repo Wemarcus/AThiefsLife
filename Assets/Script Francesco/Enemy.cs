@@ -119,7 +119,7 @@ public class Enemy : MonoBehaviour {
 			MoveSpot = sortedMoveSpots[Random.Range(0,sortedMoveSpots.Count-1)];
 			if(MoveSpot)
 				GridMath.MoveEnemyToBlock (this.gameObject, MoveSpot);
-		} else {
+		} else if(MoveSpots.Count >0){
 			MoveSpot = MoveSpots[Random.Range(0,MoveSpots.Count-1)];
 			if(MoveSpot)
 				GridMath.MoveEnemyToBlock (this.gameObject, MoveSpot);
@@ -177,7 +177,7 @@ public class Enemy : MonoBehaviour {
 				MoveSpot = sortedMoveSpots[Random.Range(0,sortedMoveSpots.Count-1)];
 				if(MoveSpot)
 					GridMath.MoveEnemyToBlock (this.gameObject, MoveSpot);
-			} else {
+			} else if(MoveSpots.Count >0){
 				MoveSpot = MoveSpots[Random.Range(0,MoveSpots.Count-1)];
 				if(MoveSpot)
 					GridMath.MoveEnemyToBlock (this.gameObject, MoveSpot);
@@ -208,7 +208,7 @@ public class Enemy : MonoBehaviour {
 				MoveSpot = sortedMoveSpots[Random.Range(0,sortedMoveSpots.Count-1)];
 				if(MoveSpot)
 					GridMath.MoveEnemyToBlock (this.gameObject, MoveSpot);
-			} else {
+			} else if(MoveSpots.Count >0){
 				MoveSpot = MoveSpots[Random.Range(0,MoveSpots.Count-1)];
 				if(MoveSpot)
 					GridMath.MoveEnemyToBlock (this.gameObject, MoveSpot);

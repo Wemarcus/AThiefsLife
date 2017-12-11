@@ -15,7 +15,7 @@ public class MainCamera : MonoBehaviour
 	double yMaxLimit = 89;
 	
 	double minZoom = 1;
-	double maxZoom = 100;
+	double maxZoom = 8;
 	
 	private double x = 0.0;
 	private double y = 0.0;

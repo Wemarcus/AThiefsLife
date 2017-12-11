@@ -45,9 +45,11 @@ public class ButtonDetailsHandler : MonoBehaviour {
 
 	public void OnMouseOverBtn(){
 		Debug.Log ("over");
-		popUp.SetActive (true);
-		PopUpDetails pud = popUp.GetComponent<PopUpDetails> ();
-		SetDescriptionAndCDText (pud);
+		if (mh.selectedPlayer != null) {
+			popUp.SetActive (true);
+			PopUpDetails pud = popUp.GetComponent<PopUpDetails> ();
+			SetDescriptionAndCDText (pud);
+		}
 	}
 
 	public void OnMouseExitBtn(){

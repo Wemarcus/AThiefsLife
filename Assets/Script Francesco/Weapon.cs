@@ -73,7 +73,7 @@ public class Weapon : MonoBehaviour {
 		yield return new WaitForSeconds (2f);
 		Enemy enm = enemy.GetComponent<Enemy> ();
 		GameObject bomb = (GameObject)Instantiate (bombPrefab);
-		bomb.transform.position = new Vector3 (enm.head.transform.position.x, enm.head.transform.position.y + 05f, enm.head.transform.position.z);
+		bomb.transform.position = new Vector3 (enm.head.transform.position.x, enm.head.transform.position.y + 0.5f, enm.head.transform.position.z);
 		Flash fh = bomb.AddComponent (typeof(Flash)) as Flash;
 		fh.SetBomb (range, cdDuration);
 	}
@@ -95,7 +95,7 @@ public class Weapon : MonoBehaviour {
 		yield return new WaitForSeconds (2f);
 		Enemy enm = enemy.GetComponent<Enemy> ();
 		GameObject bomb = (GameObject)Instantiate (bombPrefab);
-		bomb.transform.position = new Vector3 (enm.head.transform.position.x, enm.head.transform.position.y + 05f, enm.head.transform.position.z);
+		bomb.transform.position = new Vector3 (enm.head.transform.position.x, enm.head.transform.position.y + 0.5f, enm.head.transform.position.z);
 		Gas gs = bomb.AddComponent (typeof(Gas)) as Gas;
 		gs.SetBomb (damage, range, cdDuration);
 	}
@@ -117,7 +117,7 @@ public class Weapon : MonoBehaviour {
 		yield return new WaitForSeconds (2f);
 		Enemy enm = enemy.GetComponent<Enemy> ();
 		GameObject bomb = (GameObject)Instantiate (bombPrefab);
-		bomb.transform.position = new Vector3 (enm.head.transform.position.x, enm.head.transform.position.y + 05f, enm.head.transform.position.z);
+		bomb.transform.position = new Vector3 (enm.head.transform.position.x, enm.head.transform.position.y + 0.5f, enm.head.transform.position.z);
 		Frag frg = bomb.AddComponent (typeof(Frag)) as Frag;
 		frg.SetBomb (damage, range);
 	}

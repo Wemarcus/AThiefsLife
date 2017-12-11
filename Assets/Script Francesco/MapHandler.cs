@@ -393,7 +393,12 @@ public class MapHandler : MonoBehaviour {
 		if (CurrentTarget == enemy) {
 			Player plr = selectedPlayer.GetComponent<Player> ();
 			selectedWeapon.PerformAction (enemy);
-			plr.attacked = true;
+			if (selectedPlayer.GetComponent<DoubleAttack> ()) {
+				DoubleAttack da = selectedPlayer.GetComponent<DoubleAttack> ();
+				Destroy (da);
+			} else {
+				plr.attacked = true;
+			}
 			ChangeTarget (null);
 			ChangeInputState (InputState.Decision);
 			StartCoroutine(CheckDoneAndEndTurn(plr));

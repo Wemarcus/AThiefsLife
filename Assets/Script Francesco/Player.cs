@@ -50,10 +50,10 @@ public class Player : MonoBehaviour {
 			damage = (int)floatdamage;
 		}
 		currentHP -= damage;
-		GameObject pop = Instantiate (damagePopUpPrefab);
+		GameObject pop = Instantiate (damagePopUpPrefab,spawnPointDamagePopUpPrefab.transform);
 		DamageUI popui = pop.GetComponent<DamageUI> ();
 		popui.SetText (damage.ToString ());
-		pop.transform.position = spawnPointDamagePopUpPrefab.transform.position;
+		//pop.transform.position = spawnPointDamagePopUpPrefab.transform.position;
 		if (currentHP < 0) {
 			currentHP = 0;
 		}
