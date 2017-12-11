@@ -20,6 +20,7 @@ public class Actions : MonoBehaviour {
 	public string description;
 	public ActionsType type;
 	public int cooldown;
+	public int internalCD;
 	MapHandler mh; 
 	public Sprite ActionImage;
 	public Sprite SelectedActionImage;
@@ -31,32 +32,7 @@ public class Actions : MonoBehaviour {
 	}
 
 	void ResetCD(){
-		switch (type) {
-		case ActionsType.HealSelf:
-			cooldown = 2;
-			break;
-		case ActionsType.HealTeam:
-			cooldown = 3;
-			break;
-		case ActionsType.Shield:
-			cooldown = 2;
-			break;
-		case ActionsType.DoubleAttack:
-			cooldown = 3;
-			break;
-		case ActionsType.PowerUpDamageSelf:
-			cooldown = 2;
-			break;
-		case ActionsType.PowerUpDamageTeam:
-			cooldown = 3;
-			break;
-		case ActionsType.Hide:
-			cooldown = 3;
-			break;
-		case ActionsType.Killer:
-			cooldown = 4;
-			break;
-		}
+			internalCD = cooldown + 1;
 	}
 
 	public void PerformAction(GameObject player){
@@ -105,10 +81,10 @@ public class Actions : MonoBehaviour {
 
 	void HideSelf(GameObject player){
 		Player plr = player.GetComponent<Player> ();
-		if (cooldown > 3) {
+		if (internalCD > cooldown) {
 			Hide hd = player.AddComponent (typeof(Hide)) as Hide;
 			hd.SetCD (1);
-			cooldown = 0;
+			internalCD = 0;
 			plr.actionDone = true;
 			mh.ChangeInputState (InputState.Decision);
 			CheckIfPlayerIsDone (player);
@@ -117,10 +93,10 @@ public class Actions : MonoBehaviour {
 
 	void KillerSelf(GameObject player){
 		Player plr = player.GetComponent<Player> ();
-		if (cooldown > 4) {
+		if (internalCD > cooldown) {
 			Killer kl = player.AddComponent (typeof(Killer)) as Killer;
 			kl.SetCD (1);
-			cooldown = 0;
+			internalCD = 0;
 			plr.actionDone = true;
 			mh.ChangeInputState (InputState.Decision);
 			CheckIfPlayerIsDone (player);
@@ -128,7 +104,7 @@ public class Actions : MonoBehaviour {
 	}
 
 	void PowerUpDamageTeamSetup(GameObject player){
-		if (cooldown > 3) {
+		if (internalCD > cooldown) {
 			List<GameObject> pathList = Grid.GridMath.FindWalkPathInRangeWithPlayers (Grid.GridMath.GetPlayerBlock (player), Grid.GridMath.GetPlayerMoveRange (player));
 			Grid.GridMath.ActivateBlocksMesh (pathList);
 			mh.ChangeInputState (InputState.Abilty);
@@ -138,10 +114,10 @@ public class Actions : MonoBehaviour {
 
 	void PowerUpSelf(GameObject player){
 		Player plr = player.GetComponent<Player> ();
-		if (cooldown > 2) {
+		if (internalCD > cooldown) {
 			DamagePowerUp dp = player.AddComponent (typeof(DamagePowerUp)) as DamagePowerUp;
 			dp.SetDamageModifier (1, 30);
-			cooldown = 0;
+			internalCD = 0;
 			plr.actionDone = true;
 			mh.ChangeInputState (InputState.Decision);
 			CheckIfPlayerIsDone (player);
@@ -165,17 +141,17 @@ public class Actions : MonoBehaviour {
 		Grid.GridMath.DeactivateBlocksMesh (pathList);
 		Grid.GridMath.ResetDepth (pathList);
 		mh.selectedAction = null;
-		cooldown = 0;
+		internalCD = 0;
 		mh.ChangeInputState (InputState.Decision);
 		CheckIfPlayerIsDone (player);
 	}
 
 	void DoubleAttack(GameObject player){
 		Player plr = player.GetComponent<Player> ();
-		if (cooldown > 3) {
+		if (internalCD > cooldown) {
 			DoubleAttack da = player.AddComponent (typeof(DoubleAttack)) as DoubleAttack;
 			da.SetCD (1);
-			cooldown = 0;
+			internalCD = 0;
 			plr.actionDone = true;
 			mh.ChangeInputState (InputState.Decision);
 			CheckIfPlayerIsDone (player);
@@ -185,7 +161,7 @@ public class Actions : MonoBehaviour {
 	void HealSelf(GameObject player){
 		Player plr;
 		int healAmount;
-		if (cooldown > 2) {
+		if (internalCD > cooldown) {
 			plr = player.GetComponent<Player>();
 			healAmount = plr.maxHP / 2;
 			plr.Heal (healAmount);
@@ -197,7 +173,7 @@ public class Actions : MonoBehaviour {
 	}
 
 	void HealTeamSetup(GameObject player){
-		if (cooldown > 3) {
+		if (internalCD > cooldown) {
 			List<GameObject> pathList = Grid.GridMath.FindWalkPathInRangeWithPlayers (Grid.GridMath.GetPlayerBlock (player), Grid.GridMath.GetPlayerMoveRange (player));
 			Grid.GridMath.ActivateBlocksMesh (pathList);
 			mh.ChangeInputState (InputState.Abilty);
@@ -206,7 +182,7 @@ public class Actions : MonoBehaviour {
 	}
 
 	void ShieldSetup(GameObject player){
-		if (cooldown > 2) {
+		if (internalCD > cooldown) {
 			List<GameObject> pathList = Grid.GridMath.FindWalkPathInRangeWithPlayers (Grid.GridMath.GetPlayerBlock (player), Grid.GridMath.GetPlayerMoveRange (player));
 			Grid.GridMath.ActivateBlocksMesh (pathList);
 			mh.ChangeInputState (InputState.Abilty);
@@ -230,7 +206,7 @@ public class Actions : MonoBehaviour {
 		Grid.GridMath.DeactivateBlocksMesh (pathList);
 		Grid.GridMath.ResetDepth (pathList);
 		mh.selectedAction = null;
-		cooldown = 0;
+		internalCD = 0;
 		mh.ChangeInputState (InputState.Decision);
 		CheckIfPlayerIsDone (player);
 	}
@@ -253,14 +229,14 @@ public class Actions : MonoBehaviour {
 		Grid.GridMath.DeactivateBlocksMesh (pathList);
 		Grid.GridMath.ResetDepth (pathList);
 		mh.selectedAction = null;
-		cooldown = 0;
+		internalCD = 0;
 		mh.ChangeInputState (InputState.Decision);
 		CheckIfPlayerIsDone (player);
 	}
 
 
 	public void CoolDown(int n){
-		cooldown += 1;
+		internalCD += 1;
 	}
 
 	public void CheckIfPlayerIsDone(GameObject player){
