@@ -33,28 +33,28 @@ public class Actions : MonoBehaviour {
 	void ResetCD(){
 		switch (type) {
 		case ActionsType.HealSelf:
-			cooldown = 2;
+			cooldown = 3;
 			break;
 		case ActionsType.HealTeam:
-			cooldown = 2;
+			cooldown = 4;
 			break;
 		case ActionsType.Shield:
-			cooldown = 2;
+			cooldown = 3;
 			break;
 		case ActionsType.DoubleAttack:
-			cooldown = 2;
+			cooldown = 4;
 			break;
 		case ActionsType.PowerUpDamageSelf:
-			cooldown = 2;
+			cooldown = 3;
 			break;
 		case ActionsType.PowerUpDamageTeam:
-			cooldown = 2;
+			cooldown = 4;
 			break;
 		case ActionsType.Hide:
-			cooldown = 2;
+			cooldown = 4;
 			break;
 		case ActionsType.Killer:
-			cooldown = 2;
+			cooldown = 5;
 			break;
 		}
 	}
@@ -105,7 +105,7 @@ public class Actions : MonoBehaviour {
 
 	void HideSelf(GameObject player){
 		Player plr = player.GetComponent<Player> ();
-		if (cooldown >= 2) {
+		if (cooldown >= 4) {
 			Hide hd = player.AddComponent (typeof(Hide)) as Hide;
 			hd.SetCD (1);
 			cooldown = 0;
@@ -117,7 +117,7 @@ public class Actions : MonoBehaviour {
 
 	void KillerSelf(GameObject player){
 		Player plr = player.GetComponent<Player> ();
-		if (cooldown >= 2) {
+		if (cooldown >= 5) {
 			Killer kl = player.AddComponent (typeof(Killer)) as Killer;
 			kl.SetCD (1);
 			cooldown = 0;
@@ -128,7 +128,7 @@ public class Actions : MonoBehaviour {
 	}
 
 	void PowerUpDamageTeamSetup(GameObject player){
-		if (cooldown >= 2) {
+		if (cooldown >= 4) {
 			List<GameObject> pathList = Grid.GridMath.FindWalkPathInRangeWithPlayers (Grid.GridMath.GetPlayerBlock (player), Grid.GridMath.GetPlayerMoveRange (player));
 			Grid.GridMath.ActivateBlocksMesh (pathList);
 			mh.ChangeInputState (InputState.Abilty);
@@ -138,7 +138,7 @@ public class Actions : MonoBehaviour {
 
 	void PowerUpSelf(GameObject player){
 		Player plr = player.GetComponent<Player> ();
-		if (cooldown >= 2) {
+		if (cooldown >= 3) {
 			DamagePowerUp dp = player.AddComponent (typeof(DamagePowerUp)) as DamagePowerUp;
 			dp.SetDamageModifier (1, 30);
 			cooldown = 0;
@@ -172,7 +172,7 @@ public class Actions : MonoBehaviour {
 
 	void DoubleAttack(GameObject player){
 		Player plr = player.GetComponent<Player> ();
-		if (cooldown >= 2) {
+		if (cooldown >= 4) {
 			DoubleAttack da = player.AddComponent (typeof(DoubleAttack)) as DoubleAttack;
 			da.SetCD (1);
 			cooldown = 0;
@@ -185,7 +185,7 @@ public class Actions : MonoBehaviour {
 	void HealSelf(GameObject player){
 		Player plr;
 		int healAmount;
-		if (cooldown >= 2) {
+		if (cooldown >= 3) {
 			plr = player.GetComponent<Player>();
 			healAmount = plr.maxHP / 2;
 			plr.Heal (healAmount);
@@ -197,7 +197,7 @@ public class Actions : MonoBehaviour {
 	}
 
 	void HealTeamSetup(GameObject player){
-		if (cooldown >= 2) {
+		if (cooldown >= 4) {
 			List<GameObject> pathList = Grid.GridMath.FindWalkPathInRangeWithPlayers (Grid.GridMath.GetPlayerBlock (player), Grid.GridMath.GetPlayerMoveRange (player));
 			Grid.GridMath.ActivateBlocksMesh (pathList);
 			mh.ChangeInputState (InputState.Abilty);
@@ -206,7 +206,7 @@ public class Actions : MonoBehaviour {
 	}
 
 	void ShieldSetup(GameObject player){
-		if (cooldown >= 2) {
+		if (cooldown >= 3) {
 			List<GameObject> pathList = Grid.GridMath.FindWalkPathInRangeWithPlayers (Grid.GridMath.GetPlayerBlock (player), Grid.GridMath.GetPlayerMoveRange (player));
 			Grid.GridMath.ActivateBlocksMesh (pathList);
 			mh.ChangeInputState (InputState.Abilty);

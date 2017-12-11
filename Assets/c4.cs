@@ -8,7 +8,7 @@ public class c4 : MonoBehaviour {
 	public int cooldown = 0;
 	int damage;
 	int range;
-
+	bool exploded;
 	// Use this for initialization
 	void Start () {
 		mh = FindObjectOfType<MapHandler> ();
@@ -26,8 +26,9 @@ public class c4 : MonoBehaviour {
 
 	void OnTriggerEnter (Collider collider)
 	{
-		if (cooldown > 1) {
+		if (cooldown >= 1 && !exploded) {
 			Debug.Log ("collido");
+			exploded = true;
 			List<GameObject> targetList = new List<GameObject> ();
 			targetList.AddRange (GameObject.FindGameObjectsWithTag ("Enemy"));
 			targetList.AddRange (GameObject.FindGameObjectsWithTag ("Player"));
@@ -52,6 +53,39 @@ public class c4 : MonoBehaviour {
 				}
 			}
             //Modifica Marco
+			//Destroy (this.gameObject);
+		}
+	}
+
+	void OnTriggerStay (Collider collider)
+	{
+		if (cooldown >= 1 && !exploded) {
+			Debug.Log ("collido");
+			exploded = true;
+			List<GameObject> targetList = new List<GameObject> ();
+			targetList.AddRange (GameObject.FindGameObjectsWithTag ("Enemy"));
+			targetList.AddRange (GameObject.FindGameObjectsWithTag ("Player"));
+			List<GameObject> sortedList = new List<GameObject> ();
+			Debug.Log ("targets :" + targetList.Count);
+			foreach (GameObject go in targetList) {
+				float distancesqr = (this.transform.position - go.transform.position).sqrMagnitude;
+				if (distancesqr < range) {
+					sortedList.Add (go);
+				}
+			}
+			Debug.Log ("targets in range :" + targetList.Count);
+			foreach (GameObject target in sortedList) {
+				Player p;
+				Enemy e;
+				if (target.GetComponent<Player> ()) {
+					p = target.GetComponent<Player> ();
+					p.DealDamage (damage);
+				} else if (target.GetComponent<Enemy> ()) {
+					e = target.GetComponent<Enemy> ();
+					e.DealDamage (damage);
+				}
+			}
+			//Modifica Marco
 			//Destroy (this.gameObject);
 		}
 	}

@@ -162,53 +162,56 @@ public class MapHandler : MonoBehaviour {
 	}
 
 	public void WeaponTarget(GameObject player, Weapon wpn){
-		selectedWeapon = wpn;
-		if (wpn.getWeaponType() == WeaponType.Single)
-			TargetEnemy (player);
-		if (wpn.getWeaponType () == WeaponType.AoE && wpn.type != AoEType.c4) {
+		if (wpn.getWeaponType () == WeaponType.Single) {
+			selectedWeapon = wpn;
 			TargetEnemy (player);
 		}
-		if(wpn.getWeaponType() == WeaponType.AoE && wpn.type == AoEType.c4){
+		if (wpn.getWeaponType () == WeaponType.AoE && wpn.type != AoEType.c4 && wpn.cooldown >= 3) {
+			selectedWeapon = wpn;
+			TargetEnemy (player);
+		} 
+		if (wpn.getWeaponType () == WeaponType.AoE && wpn.type == AoEType.c4 && wpn.cooldown >= 3) {
+			selectedWeapon = wpn;
 			PlaceC4 (player, wpn);
-		}
+		} 
 	}
 
 	private IEnumerator PlaceC4Cor(Weapon wpn, GameObject player){
 		yield return new WaitForSeconds (2.0f);
-		if (wpn.cooldown > 2) {
 			wpn.cooldown = 0;
 			GameObject c4 = (GameObject)Instantiate (wpn.bombPrefab);
 			c4.transform.position = new Vector3 (player.transform.position.x, player.transform.position.y + 0.1f, player.transform.position.z);
 			c4 compc4 = c4.GetComponent<c4> ();
 			compc4.Setc4 (wpn.damage, wpn.range);
-		}
 	}
 
 	public void PlaceC4(GameObject player,Weapon wpn){
 		Player plr = selectedPlayer.GetComponent<Player> ();
-		/*GameObject c4 = (GameObject)Instantiate (wpn.bombPrefab);
+		if (wpn.cooldown >= 2) {
+			/*GameObject c4 = (GameObject)Instantiate (wpn.bombPrefab);
 		c4.transform.position = new Vector3 (player.transform.position.x, player.transform.position.y +0.1f, player.transform.position.z);
 		c4 compc4 = c4.GetComponent<c4> ();
 		compc4.Setc4 (wpn.damage, wpn.range);*/
-		Agent_Animation aa = plr.gameObject.GetComponent<Agent_Animation> ();
-		aa.grenade = true;
-		StartCoroutine(PlaceC4Cor(wpn,player));
-		if (selectedPlayer.GetComponent<DoubleAttack> ()) {
-			DoubleAttack da = selectedPlayer.GetComponent<DoubleAttack> ();
-			Destroy (da);
-		} else {
-			plr.attacked = true;
-		}
-		ChangeTarget (null);
-		ChangeInputState (InputState.Decision);
-		if (plr.IsDone ()) {
-			Grid.GridMath.RemovePlayerFromList (selectedPlayer, players);
-			SelectPlayer (null);
-			ChangeInputState (InputState.Nothing);
-		}
-		if (CheckAllyEndTurn ()) {
-			ChangeState (GameState.EnemyTurn);
-			ChangeInputState (InputState.Nothing);
+			Agent_Animation aa = plr.gameObject.GetComponent<Agent_Animation> ();
+			aa.grenade = true;
+			StartCoroutine (PlaceC4Cor (wpn, player));
+			if (selectedPlayer.GetComponent<DoubleAttack> ()) {
+				DoubleAttack da = selectedPlayer.GetComponent<DoubleAttack> ();
+				Destroy (da);
+			} else {
+				plr.attacked = true;
+			}
+			ChangeTarget (null);
+			ChangeInputState (InputState.Decision);
+			if (plr.IsDone ()) {
+				Grid.GridMath.RemovePlayerFromList (selectedPlayer, players);
+				SelectPlayer (null);
+				ChangeInputState (InputState.Nothing);
+			}
+			if (CheckAllyEndTurn ()) {
+				ChangeState (GameState.EnemyTurn);
+				ChangeInputState (InputState.Nothing);
+			}
 		}
 	}
 
