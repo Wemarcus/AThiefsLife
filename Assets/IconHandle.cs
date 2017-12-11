@@ -12,6 +12,7 @@ public class IconHandle : MonoBehaviour {
 	public Image selectedImg;
 	public Image currentHpBar;
 	public Image voidHpBar;
+	public Image DeathIcon;
 	public Text hpTxt;
 	GameObject selectedPlayer;
 
@@ -22,8 +23,14 @@ public class IconHandle : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (player) {
-			bs.setValue((float)player.currentHP);
+		if (!death) {
+			if (player) {
+				bs.setValue ((float)player.currentHP);
+			}
+			if (player.currentHP <= 0) {
+				death = true;
+				DeathIcon.gameObject.SetActive (true);
+			}
 		}
 	}
 
@@ -52,8 +59,10 @@ public class IconHandle : MonoBehaviour {
 	}
 
 	public void SelectPlayer(){
-		if (FindObjectOfType<MapHandler> ().players.Contains (player.gameObject) && FindObjectOfType<MapHandler>().gs == GameState.AllyTurn) {
-			FindObjectOfType<MapHandler> ().SelectPlayer (player.gameObject);
+		if (!death) {
+			if (FindObjectOfType<MapHandler> ().players.Contains (player.gameObject) && FindObjectOfType<MapHandler> ().gs == GameState.AllyTurn) {
+				FindObjectOfType<MapHandler> ().SelectPlayer (player.gameObject);
+			}
 		}
 	}
 }

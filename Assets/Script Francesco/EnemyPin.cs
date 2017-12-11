@@ -15,7 +15,7 @@ public class EnemyPin : MonoBehaviour {
 	public void SetupPin(GameObject enemy){
 		mh = FindObjectOfType<MapHandler> ();
 		currentEnemyMarked = enemy;
-		this.transform.position = new Vector3 (enemy.transform.position.x,enemy.transform.position.y+2,enemy.transform.position.z);
+		this.transform.position = new Vector3 (enemy.transform.position.x,enemy.transform.position.y+2.5f,enemy.transform.position.z);
 		this.gameObject.transform.parent = enemy.transform;
 	}
 

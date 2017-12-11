@@ -14,25 +14,27 @@ public class Enemy : MonoBehaviour {
 	public List<GameObject> playersTrg;
 	public List<GameObject> MoveSpots;
 	public GameObject block;
-	public TextMesh visualHP;
 	public GameObject head;
 	public List<GameObject> HitZone;
 	public GameObject bulletPrefab;
 	public GameObject shootPoint;
 	public EnemyBarHandler bar;
+	public GameObject damagePopUpPrefab;
+	public GameObject spawnPointDamagePopUpPrefab;
 
 	public void Start(){
 		currentHP = maxHP;
-		visualHP = this.GetComponentInChildren<TextMesh> ();
-		visualHP.text = currentHP.ToString ();
 	}
 
 	public void DealDamage(int damage){
 		currentHP -= damage;
+		GameObject pop = Instantiate (damagePopUpPrefab,spawnPointDamagePopUpPrefab.transform);
+		DamageUI popui = pop.GetComponent<DamageUI> ();
+		popui.SetText (damage.ToString ());
+		//pop.transform.position = spawnPointDamagePopUpPrefab.transform.position;
 		if (currentHP < 0) {
 			currentHP = 0;
 		}
-		visualHP.text = currentHP.ToString();
 		if (currentHP <= 0) {
 			MapHandler.FindObjectOfType<MapHandler>().targetList.Remove (this.gameObject);
 			GridMath.ChangeBlockType (GridMath.GetEnemyBlock(this.gameObject), BlockType.Walkable);

@@ -13,8 +13,8 @@ public class UIHandler : MonoBehaviour {
 	public MapHandler mh;
 	public bool enable = true;
 
-	public UnityEngine.UI.Text gameStateText;
-	public UnityEngine.UI.Text inputStateText;
+	//public UnityEngine.UI.Text gameStateText;
+	//public UnityEngine.UI.Text inputStateText;
 	public UnityEngine.UI.Text TurnText;
 
 	public UnityEngine.UI.Button MoveBtn;
@@ -38,13 +38,13 @@ public class UIHandler : MonoBehaviour {
 
 	public void ChangeState(GameState gameS){
 		gs = gameS;
-		gameStateText.text = gameS.ToString ();
+		//gameStateText.text = gameS.ToString ();
 		UpdateUI ();
 	}
 
 	public void ChangeInputState(InputState inptS){
 		inpS = inptS; 
-		inputStateText.text = inptS.ToString ();
+		//inputStateText.text = inptS.ToString ();
 		UpdateUI ();
 
 	}

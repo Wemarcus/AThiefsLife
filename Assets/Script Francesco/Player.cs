@@ -14,7 +14,6 @@ public class Player : MonoBehaviour {
 	public Weapon secondWeapon;
 	public Actions firstAction;
 	public Actions secondAction;
-	public TextMesh visualHP;
 	public GameObject head;
 	public GameObject playerBlock;
 	public GameObject ShootPoint;
@@ -22,13 +21,13 @@ public class Player : MonoBehaviour {
 	public List<GameObject> HitZone;
 	public bool isBoss;
 	public GameObject iconPrefab;
+	public GameObject damagePopUpPrefab;
+	public GameObject spawnPointDamagePopUpPrefab;
 
 	// Use this for initialization
 
 	void Start () {
 		currentHP = maxHP;
-		visualHP = this.GetComponentInChildren<TextMesh> ();
-		visualHP.text = currentHP.ToString();
 	}
 	
 	// Update is called once per frame
@@ -51,10 +50,13 @@ public class Player : MonoBehaviour {
 			damage = (int)floatdamage;
 		}
 		currentHP -= damage;
+		GameObject pop = Instantiate (damagePopUpPrefab);
+		DamageUI popui = pop.GetComponent<DamageUI> ();
+		popui.SetText (damage.ToString ());
+		pop.transform.position = spawnPointDamagePopUpPrefab.transform.position;
 		if (currentHP < 0) {
 			currentHP = 0;
 		}
-		visualHP.text = currentHP.ToString();
 		if (currentHP <= 0) {
 			FindObjectOfType<MapHandler> ().players.Remove (this.gameObject);
 			if (FindObjectOfType<MapHandler> ().players.Count <= 0 && FindObjectOfType<MapHandler>().gs == GameState.AllyTurn) {
@@ -71,7 +73,6 @@ public class Player : MonoBehaviour {
 		if (currentHP > maxHP) {
 			currentHP = maxHP;
 		}
-		visualHP.text = currentHP.ToString();
 	}
 
 	void OnCollisioneEnter(Collision collision)
