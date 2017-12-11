@@ -2009,7 +2009,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1142930533994384}
   m_LocalRotation: {x: -0, y: 0.9965674, z: -0, w: 0.08278536}
-  m_LocalPosition: {x: 41.432285, y: -0.019999973, z: 71.481155}
+  m_LocalPosition: {x: 38.065937, y: -0.019999972, z: 72.191284}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4700428152169588}
@@ -4462,8 +4462,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2aea279d7f517c42aa7c95c7f2a6558, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionName: 
-  description: 
+  actionName: Emergency Care
+  description: Recovers 50% of his life
   type: 0
   cooldown: 0
   ActionImage: {fileID: 21300000, guid: cea08805481c3984d9d076b506a2bd53, type: 3}
@@ -4634,8 +4634,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bae2017c347714d459b9673fd9ea0d26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wpnName: 
-  wpnDescription: 
+  wpnName: Pistol
+  wpnDescription: 25 damage
   wpnType: 0
   damage: 25
   range: 15
@@ -4702,8 +4702,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bae2017c347714d459b9673fd9ea0d26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wpnName: 
-  wpnDescription: 
+  wpnName: Smoke Grenade
+  wpnDescription: 'Characters in range: 35 damage for two turn'
   wpnType: 1
   damage: 35
   range: 20
@@ -4711,7 +4711,7 @@ MonoBehaviour:
   wpnImage: {fileID: 21300000, guid: 7997877caecffce498b3303e6aaa5d63, type: 3}
   selectedWpnImage: {fileID: 21300000, guid: 53a3d30d7006c2b4280b77b4c0c03031, type: 3}
   type: 1
-  cooldown: 3
+  cooldown: 2
   bombPrefab: {fileID: 1543882540386452, guid: ca282236e11fdef46904b9266ce130d5, type: 2}
   cdDuration: 1
 --- !u!114 &114649017943294622
@@ -4751,8 +4751,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2aea279d7f517c42aa7c95c7f2a6558, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionName: 
-  description: 
+  actionName: Team Emergency Care
+  description: 'Allies in range: they recover 30% of their life'
   type: 1
   cooldown: 0
   ActionImage: {fileID: 21300000, guid: 0f57163ea2b2de642970a5c7e678b67c, type: 3}

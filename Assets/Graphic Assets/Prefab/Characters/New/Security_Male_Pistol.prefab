@@ -3465,7 +3465,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8b6cd515ce360044abc3b321201d6a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lerpSpeed: 0
+  lerpSpeed: 2
   health: {fileID: 114646521234917726}
   valueText: {fileID: 114978436540970512}
 --- !u!114 &114141388994192120

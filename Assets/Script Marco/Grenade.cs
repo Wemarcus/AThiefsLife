@@ -29,7 +29,7 @@ public class Grenade : MonoBehaviour {
 
         if (GetComponent<c4>() != null)
         {
-            if (!block && (other.tag == "Player" || other.tag == "Enemy") && GetComponent<c4>().cooldown > 1)
+            if (!block && (other.tag == "Player" || other.tag == "Enemy") && GetComponent<c4>().cooldown >= 1)
             {
                 Debug.Log("La granata collide con: " + other.gameObject);
 
@@ -149,7 +149,7 @@ public class Grenade : MonoBehaviour {
 
         if (GetComponent<c4>() != null)
         {
-            if (!block && (other.tag == "Player" || other.tag == "Enemy") && GetComponent<c4>().cooldown > 1)
+            if (!block && (other.tag == "Player" || other.tag == "Enemy") && GetComponent<c4>().cooldown >= 1)
             {
                 Debug.Log("La granata collide con: " + other.gameObject);
 

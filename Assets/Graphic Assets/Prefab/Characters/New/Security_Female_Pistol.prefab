@@ -3802,7 +3802,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8b6cd515ce360044abc3b321201d6a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lerpSpeed: 0
+  lerpSpeed: 2
   health: {fileID: 114325800890349498}
   valueText: {fileID: 114716417822169658}
 --- !u!114 &114791206157674952
@@ -3849,7 +3849,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Security Female Uzi
+  m_Text: Security Female Pistol
 --- !u!114 &114912950209521500
 MonoBehaviour:
   m_ObjectHideFlags: 1
