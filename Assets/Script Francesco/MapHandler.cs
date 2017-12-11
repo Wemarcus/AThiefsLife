@@ -72,7 +72,7 @@ public class MapHandler : MonoBehaviour {
 		GridFunc.ShowSpawnPoints (grid);
 		ChangeState(GameState.Spawn);
 		ChangeInputState (InputState.Nothing);
-		NextTurn (0);
+		NextTurn (turnCount);
 	}
 
 	public IEnumerator EndAiTurn(){
@@ -114,14 +114,15 @@ public class MapHandler : MonoBehaviour {
 		//Grid.GridMath.RevertBlocksColour (pathList);
 		Grid.GridMath.DeactivateBlocksMesh (pathList);
 		//Grid.GridMath.RevertBlocksColour(Grid.GridMath.FindWalkPathInRange(Grid.GridMath.GetPlayerBlock(selectedPlayer),Grid.GridMath.GetPlayerMoveRange(selectedPlayer)));
-		ChangeInputState (InputState.Nothing);
+		ChangeInputState (InputState.Decision);
 	}
 
 	public void RevertAbility(GameObject player){
 		List<GameObject> pathList = Grid.GridMath.FindWalkPathInRangeWithPlayers(Grid.GridMath.GetPlayerBlock(selectedPlayer),Grid.GridMath.GetPlayerMoveRange(selectedPlayer));
 		Grid.GridMath.DeactivateBlocksMesh (pathList);
 		Grid.GridMath.ResetDepth (pathList);
-		ChangeInputState (InputState.Nothing);
+		selectedAction = null;
+		ChangeInputState (InputState.Decision);
 	}
 
 	public void MoveCurrentPlayerTo(GameObject block){
@@ -227,6 +228,7 @@ public class MapHandler : MonoBehaviour {
 			ChangeInputState (InputState.Attack);
 		} else {
 			StartCoroutine (MessagePopUp.MessagePopUp.ShowMessage ("There is any enemy in your line of sight", popUp));
+			selectedWeapon = null;
 		}
 	}
 

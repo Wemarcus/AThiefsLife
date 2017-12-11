@@ -17,6 +17,7 @@ public class Weapon : MonoBehaviour {
 	public int range;
 	public GameObject bulletPrefab;
 	public Sprite wpnImage;
+	public Sprite selectedWpnImage;
 
 	[Header("Aoe Setup(only if weapon type is aoe")]
 

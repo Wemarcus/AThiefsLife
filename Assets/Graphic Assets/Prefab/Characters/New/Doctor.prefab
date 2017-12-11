@@ -4430,6 +4430,8 @@ MonoBehaviour:
   type: 0
   cooldown: 0
   ActionImage: {fileID: 21300000, guid: cea08805481c3984d9d076b506a2bd53, type: 3}
+  SelectedActionImage: {fileID: 21300000, guid: bf4d5558b0b75a54eb140f50d12a4c8e,
+    type: 3}
 --- !u!114 &114174115715447356
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4573,6 +4575,7 @@ MonoBehaviour:
   range: 15
   bulletPrefab: {fileID: 155826, guid: 0f41e8d90a6f5134f9d1fb9bcac7a543, type: 2}
   wpnImage: {fileID: 21300000, guid: 27f74fb2a8f65f74abae52dee17d39e6, type: 3}
+  selectedWpnImage: {fileID: 21300000, guid: 66a9fbc4fae3a174c9af6a6e8e2986a4, type: 3}
   type: 0
   cooldown: 0
   bombPrefab: {fileID: 0}
@@ -4638,6 +4641,7 @@ MonoBehaviour:
   range: 20
   bulletPrefab: {fileID: 155826, guid: 0f41e8d90a6f5134f9d1fb9bcac7a543, type: 2}
   wpnImage: {fileID: 21300000, guid: 7997877caecffce498b3303e6aaa5d63, type: 3}
+  selectedWpnImage: {fileID: 21300000, guid: 53a3d30d7006c2b4280b77b4c0c03031, type: 3}
   type: 1
   cooldown: 2
   bombPrefab: {fileID: 1543882540386452, guid: ca282236e11fdef46904b9266ce130d5, type: 2}
@@ -4682,6 +4686,8 @@ MonoBehaviour:
   type: 1
   cooldown: 0
   ActionImage: {fileID: 21300000, guid: 0f57163ea2b2de642970a5c7e678b67c, type: 3}
+  SelectedActionImage: {fileID: 21300000, guid: fa9b4a00a31c7764fb92ce4e80341e56,
+    type: 3}
 --- !u!114 &114716228998304760
 MonoBehaviour:
   m_ObjectHideFlags: 1
