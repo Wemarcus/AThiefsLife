@@ -21,17 +21,18 @@ public class Weapon : MonoBehaviour {
 	public Sprite wpnImage;
 	public Sprite selectedWpnImage;
 
-	[Header("Aoe Setup(only if weapon type is aoe")]
+	[Header("Aoe Setup(only if weapon type is aoe)")]
 
 	public AoEType type;
 	public int cooldown;
+	public int internalCD;
 	MapHandler mh;
 	public GameObject bombPrefab;
 	public int cdDuration;
 
 	void Start(){
 		if(wpnType == WeaponType.AoE)
-		cooldown = 3;
+			internalCD = cooldown +1;
 		mh = FindObjectOfType<MapHandler> ();
 		mh.nextRoundEvent += CoolDown;
 	}
@@ -56,7 +57,7 @@ public class Weapon : MonoBehaviour {
 	}
 
 	public void Flash(GameObject enemy){
-			cooldown = 0;
+			internalCD = 0;
 			Debug.Log ("sono in flash");
 			Enemy enm = enemy.GetComponent<Enemy> ();
 			Player plr = FindObjectOfType<MapHandler> ().selectedPlayer.GetComponent<Player> ();
@@ -78,7 +79,7 @@ public class Weapon : MonoBehaviour {
 	}
 
 	public void Gas(GameObject enemy){
-			cooldown = 0;
+			internalCD = 0;
 			Debug.Log ("sono in gas");
 			Enemy enm = enemy.GetComponent<Enemy> ();
 			Player plr = FindObjectOfType<MapHandler> ().selectedPlayer.GetComponent<Player> ();
@@ -100,7 +101,7 @@ public class Weapon : MonoBehaviour {
 	}
 
 	public void Frag(GameObject enemy){
-			cooldown = 0;
+			internalCD = 0;
 			Debug.Log ("sono in frag");
 			Enemy enm = enemy.GetComponent<Enemy> ();
 			Player plr = FindObjectOfType<MapHandler> ().selectedPlayer.GetComponent<Player> ();
@@ -122,7 +123,7 @@ public class Weapon : MonoBehaviour {
 	}
 
 	public void CoolDown(int n){
-		cooldown += 1;
+		internalCD += 1;
 	}
 
 	public int getDamage(){

@@ -4541,6 +4541,7 @@ MonoBehaviour:
   selectedWpnImage: {fileID: 21300000, guid: 117c808dba5fae74d9f747413fd380c4, type: 3}
   type: 3
   cooldown: 2
+  internalCD: 0
   bombPrefab: {fileID: 1923195545495368, guid: 15e196a9d05462542b442cd85e997867, type: 2}
   cdDuration: 0
 --- !u!114 &114239066631734118
@@ -4588,7 +4589,8 @@ MonoBehaviour:
   actionName: Adrenaline Rush
   description: Sawed-off shotgun 30% higher attack this turn
   type: 4
-  cooldown: 0
+  cooldown: 2
+  internalCD: 0
   ActionImage: {fileID: 21300000, guid: 0c7e5f6a29cd96845ba4effd1c04d737, type: 3}
   SelectedActionImage: {fileID: 21300000, guid: 6e77c711c8fb66e48b59c136069d8e18,
     type: 3}
@@ -4606,7 +4608,8 @@ MonoBehaviour:
   actionName: Team Fury
   description: 'Allies in range: first attack 20% more powerful'
   type: 5
-  cooldown: 0
+  cooldown: 3
+  internalCD: 0
   ActionImage: {fileID: 21300000, guid: 3af5b9685e1854f4cb9c26385689eaf7, type: 3}
   SelectedActionImage: {fileID: 21300000, guid: ba28da31eeab9ef4483c433d545a4dec,
     type: 3}
@@ -4795,6 +4798,7 @@ MonoBehaviour:
   selectedWpnImage: {fileID: 21300000, guid: 0618c36f45c6a1d4da489e37d4191914, type: 3}
   type: 0
   cooldown: 0
+  internalCD: 0
   bombPrefab: {fileID: 0}
   cdDuration: 0
 --- !u!114 &114973158652402028

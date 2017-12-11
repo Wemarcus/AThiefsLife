@@ -184,11 +184,11 @@ public class MapHandler : MonoBehaviour {
 			selectedWeapon = wpn;
 			TargetEnemy (player);
 		}
-		if (wpn.getWeaponType () == WeaponType.AoE && wpn.type != AoEType.c4 && wpn.cooldown > 2) {
+		if (wpn.getWeaponType () == WeaponType.AoE && wpn.type != AoEType.c4 && wpn.internalCD > wpn.cooldown) {
 			selectedWeapon = wpn;
 			TargetEnemy (player);
 		} 
-		if (wpn.getWeaponType () == WeaponType.AoE && wpn.type == AoEType.c4 && wpn.cooldown > 2) {
+		if (wpn.getWeaponType () == WeaponType.AoE && wpn.type == AoEType.c4 && wpn.internalCD > wpn.cooldown) {
 			selectedWeapon = wpn;
 			PlaceC4 (player, wpn);
 		} 
@@ -196,7 +196,7 @@ public class MapHandler : MonoBehaviour {
 
 	private IEnumerator PlaceC4Cor(Weapon wpn, GameObject player){
 		yield return new WaitForSeconds (2.0f);
-			wpn.cooldown = 0;
+			wpn.internalCD = 0;
 			GameObject c4 = (GameObject)Instantiate (wpn.bombPrefab);
 			c4.transform.position = new Vector3 (player.transform.position.x, player.transform.position.y + 0.1f, player.transform.position.z);
 			c4 compc4 = c4.GetComponent<c4> ();
@@ -205,7 +205,7 @@ public class MapHandler : MonoBehaviour {
 
 	public void PlaceC4(GameObject player,Weapon wpn){
 		Player plr = selectedPlayer.GetComponent<Player> ();
-		if (wpn.cooldown > 2) {
+		if (wpn.internalCD > wpn.cooldown) {
 			/*GameObject c4 = (GameObject)Instantiate (wpn.bombPrefab);
 		c4.transform.position = new Vector3 (player.transform.position.x, player.transform.position.y +0.1f, player.transform.position.z);
 		c4 compc4 = c4.GetComponent<c4> ();

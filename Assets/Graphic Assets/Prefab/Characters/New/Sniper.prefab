@@ -4660,7 +4660,8 @@ MonoBehaviour:
   actionName: Killer Instinct
   description: 'If enemy hitted: headshot '
   type: 7
-  cooldown: 0
+  cooldown: 4
+  internalCD: 0
   ActionImage: {fileID: 21300000, guid: af876242513bf3742a8f635e4f834e34, type: 3}
   SelectedActionImage: {fileID: 21300000, guid: ad18021d6fc25bb42bfa883e0cf2a776,
     type: 3}
@@ -4813,7 +4814,8 @@ MonoBehaviour:
   actionName: Invisible
   description: You're invisible for a turn
   type: 6
-  cooldown: 0
+  cooldown: 3
+  internalCD: 0
   ActionImage: {fileID: 21300000, guid: 7ff7bf29d4d3c1349984ccef1f4654d8, type: 3}
   SelectedActionImage: {fileID: 21300000, guid: cc355b76e82486445b5909bd62850785,
     type: 3}
@@ -4871,6 +4873,7 @@ MonoBehaviour:
   selectedWpnImage: {fileID: 21300000, guid: 7cbb493c24bc1ad4faaf5e7f9f23f911, type: 3}
   type: 0
   cooldown: 0
+  internalCD: 0
   bombPrefab: {fileID: 0}
   cdDuration: 0
 --- !u!114 &114684528987426534
@@ -4924,6 +4927,7 @@ MonoBehaviour:
   selectedWpnImage: {fileID: 21300000, guid: 9733c0ffb258b5b419bdfb17dfef1bb6, type: 3}
   type: 2
   cooldown: 2
+  internalCD: 0
   bombPrefab: {fileID: 1340657285197054, guid: 9c2a67cb0bdd6d342a7696b5a37efc95, type: 2}
   cdDuration: 1
 --- !u!114 &114723511401753424

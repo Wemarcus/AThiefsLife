@@ -5334,7 +5334,8 @@ MonoBehaviour:
   actionName: Double Attack
   description: 'If active: you can use two attacks'
   type: 3
-  cooldown: 0
+  cooldown: 3
+  internalCD: 0
   ActionImage: {fileID: 21300000, guid: bdfa67cb714457e469ba36a9012801fb, type: 3}
   SelectedActionImage: {fileID: 21300000, guid: e893a2e0b6be19f4bbb899176ee723c6,
     type: 3}
@@ -5481,6 +5482,7 @@ MonoBehaviour:
   selectedWpnImage: {fileID: 21300000, guid: 440d52bd8d3202248a587de932aae013, type: 3}
   type: 0
   cooldown: 2
+  internalCD: 0
   bombPrefab: {fileID: 1127507713346284, guid: d2821d013192baf4396fc4e9b4f4a62d, type: 2}
   cdDuration: 0
 --- !u!114 &114317560513971612
@@ -5713,6 +5715,7 @@ MonoBehaviour:
   selectedWpnImage: {fileID: 21300000, guid: e26512e5bf009cb4f85d04e627554b80, type: 3}
   type: 0
   cooldown: 0
+  internalCD: 0
   bombPrefab: {fileID: 0}
   cdDuration: 0
 --- !u!114 &114802703746533202
@@ -5744,7 +5747,8 @@ MonoBehaviour:
   actionName: Shield Allies
   description: 'Allies in range: 30% damage reduction as shield'
   type: 2
-  cooldown: 0
+  cooldown: 2
+  internalCD: 0
   ActionImage: {fileID: 21300000, guid: 6a84206b2d73d18498e24b9d24646137, type: 3}
   SelectedActionImage: {fileID: 21300000, guid: f5e7074c05241bc4fa5eb78b9eb860e8,
     type: 3}

@@ -165,7 +165,7 @@ public class Actions : MonoBehaviour {
 			plr = player.GetComponent<Player>();
 			healAmount = plr.maxHP / 2;
 			plr.Heal (healAmount);
-			cooldown = 0;
+			internalCD = 0;
 			plr.actionDone = true;
 			mh.ChangeInputState (InputState.Decision);
 			CheckIfPlayerIsDone (player);
