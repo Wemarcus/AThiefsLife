@@ -24,6 +24,10 @@ public class UIHandler : MonoBehaviour {
 	public UnityEngine.UI.Button ActionBtn2;
 	public UnityEngine.UI.Button PassTurnBtn;
 
+	public GameObject buttonPanel;
+	public Sprite selectedMoveBtn;
+	public Sprite notselectedMoveBtn;
+
 	void OnEnable(){
 		mh.changeStateEvent += ChangeState;
 		mh.changeInputStateEvent += ChangeInputState;
@@ -62,69 +66,124 @@ public class UIHandler : MonoBehaviour {
 	}
 
 	public void OnClickMove(){
+		ResetPreviousAction ();
 		mh.ShowCurrentPlayerMovement (player);
 	}
 
 	public void OnClickAttack1(){ //TODO aggiustare typeofattack
+		ResetPreviousAction ();
 		Player plr = player.GetComponent<Player>();
 		mh.WeaponTarget (player,plr.firstWeapon);
+		UpdateUI ();
 	}
 
 	public void OnClickAttack2(){ //TODO aggiustare typeofattack
+		ResetPreviousAction ();
 		Player plr = player.GetComponent<Player>();
 		mh.WeaponTarget (player,plr.secondWeapon);
+		UpdateUI ();
 	}
 
 	public void OnClickAction1(){
+		ResetPreviousAction ();
 		Player plr = player.GetComponent<Player> ();
 		plr.firstAction.PerformAction (player);
+		UpdateUI ();
 	}
 
 	public void OnClickAction2(){
+		ResetPreviousAction ();
 		Player plr = player.GetComponent<Player> ();
 		plr.secondAction.PerformAction (player);
+		UpdateUI ();
 	}
 
 	public void OnClickPass(){
+		ResetPreviousAction ();
 		mh.PassAllyTurn ();
 	}
-		
-	private void UpdateUI(){
-		MoveBtn.gameObject.SetActive (false);
-		AttackBtn.gameObject.SetActive (false);
-		AttackBtn2.gameObject.SetActive (false);
-		ActionBtn.gameObject.SetActive (false);
-		ActionBtn2.gameObject.SetActive (false);
-		PassTurnBtn.gameObject.SetActive (false);
 
+	public void ResetPreviousAction(){
+		if (inpS == InputState.Attack) {
+			mh.SelectNothing (null);
+		}
+		if (inpS == InputState.Movement) {
+			mh.HideCurrentPlayerMovement ();
+		}
+		if (inpS == InputState.Abilty) {
+			mh.RevertAbility (player);
+		}
+	}
+
+	private void UpdateUI(){
+		MoveBtn.GetComponent<Button> ().interactable = false;
+		AttackBtn.GetComponent<Button> ().interactable = false;
+		AttackBtn2.GetComponent<Button> ().interactable = false;
+		ActionBtn.GetComponent<Button> ().interactable = false;
+		ActionBtn2.GetComponent<Button> ().interactable = false;
+		PassTurnBtn.GetComponent<Button> ().interactable = false;
+		if(gs != GameState.AllyTurn){
+			buttonPanel.SetActive (false);
+		}else{
+			buttonPanel.SetActive (true);
+		}
 		if (!animPerform) {
-			if (inpS == InputState.Decision && player != null) {
+			if ((inpS == InputState.Decision || inpS == InputState.Attack || inpS == InputState.Movement || inpS == InputState.Abilty) && player != null) {
 				Sprite img;
 				Player plr = player.GetComponent<Player> ();
+
+				MoveBtn.GetComponent<Image> ().sprite = notselectedMoveBtn;
+
+				img = AttackBtn.gameObject.GetComponent<Sprite> ();
+				img = player.GetComponent<Player> ().firstWeapon.wpnImage;
+				AttackBtn.GetComponent<Image> ().sprite = img;
+
+				img = AttackBtn2.gameObject.GetComponent<Sprite> ();
+				img = player.GetComponent<Player> ().secondWeapon.wpnImage;
+				AttackBtn2.GetComponent<Image> ().sprite = img;
+
+				img = ActionBtn.gameObject.GetComponent<Sprite> ();
+				img = player.GetComponent<Player> ().firstAction.ActionImage;
+				ActionBtn.GetComponent<Image> ().sprite = img;
+
+				img = ActionBtn.gameObject.GetComponent<Sprite> ();
+				img = player.GetComponent<Player> ().secondAction.ActionImage;
+				ActionBtn2.GetComponent<Image> ().sprite = img;
+
 				if (plr && !plr.moved)
-					MoveBtn.gameObject.SetActive (true);
-				if (plr && !plr.attacked) {
-					img = AttackBtn.gameObject.GetComponent<Sprite> ();
-					img = player.GetComponent<Player> ().firstWeapon.wpnImage;
-					AttackBtn.GetComponent<Image> ().sprite = img;
-					AttackBtn.gameObject.SetActive (true);
-					img = AttackBtn2.gameObject.GetComponent<Sprite> ();
-					img = player.GetComponent<Player> ().secondWeapon.wpnImage;
-					AttackBtn2.GetComponent<Image> ().sprite = img;
-					AttackBtn2.gameObject.SetActive (true);
+					MoveBtn.GetComponent<Button> ().interactable = true;
+				if (plr && !plr.attacked) {					
+					AttackBtn.GetComponent<Button> ().interactable = true;
+					AttackBtn2.GetComponent<Button> ().interactable = true;
 				}
 				if (plr && !plr.actionDone) {
-					img = ActionBtn.gameObject.GetComponent<Sprite> ();
-					img = player.GetComponent<Player> ().firstAction.ActionImage;
-					ActionBtn.GetComponent<Image> ().sprite = img;
-					ActionBtn.gameObject.SetActive (true);
-					img = ActionBtn.gameObject.GetComponent<Sprite> ();
-					img = player.GetComponent<Player> ().secondAction.ActionImage;
-					ActionBtn2.GetComponent<Image> ().sprite = img;
-					ActionBtn2.gameObject.SetActive (true);
+					ActionBtn.GetComponent<Button> ().interactable = true;
+					ActionBtn2.GetComponent<Button> ().interactable = true;
 				}
 				if (plr && (!plr.moved || !plr.attacked || !plr.actionDone))
-					PassTurnBtn.gameObject.SetActive (true);
+					PassTurnBtn.GetComponent<Button> ().interactable = true;
+			}
+			if (mh && player) {
+				Sprite img;
+				if (player.GetComponent<Player> ().firstWeapon == mh.selectedWeapon) {
+					img = AttackBtn.gameObject.GetComponent<Sprite> ();
+					img = player.GetComponent<Player> ().firstWeapon.selectedWpnImage;
+					AttackBtn.GetComponent<Image> ().sprite = img;
+				}  if (player.GetComponent<Player> ().secondWeapon == mh.selectedWeapon) {
+					img = AttackBtn2.gameObject.GetComponent<Sprite> ();
+					img = player.GetComponent<Player> ().secondWeapon.selectedWpnImage;
+					AttackBtn2.GetComponent<Image> ().sprite = img;
+				}  if (player.GetComponent<Player> ().firstAction == mh.selectedAction) {
+					img = ActionBtn.gameObject.GetComponent<Sprite> ();
+					img = player.GetComponent<Player> ().firstAction.SelectedActionImage;
+					ActionBtn.GetComponent<Image> ().sprite = img;
+				}  if (player.GetComponent<Player> ().secondAction == mh.selectedAction) {
+					img = ActionBtn2.gameObject.GetComponent<Sprite> ();
+					img = player.GetComponent<Player> ().secondAction.SelectedActionImage;
+					ActionBtn2.GetComponent<Image> ().sprite = img;
+				}  if (inpS == InputState.Movement) {
+					MoveBtn.GetComponent<Image> ().sprite = selectedMoveBtn;
+				}
 			}
 			/*if (inpS == InputState.Nothing) {
 				MoveBtn.gameObject.SetActive (false);
@@ -132,12 +191,12 @@ public class UIHandler : MonoBehaviour {
 				AttackBtn2.gameObject.SetActive (false);
 				PassTurnBtn.gameObject.SetActive (false);
 			}*/
-			if (inpS == InputState.Movement) {
+			/*if (inpS == InputState.Movement) {
 				MoveBtn.gameObject.SetActive (false);
 				AttackBtn.gameObject.SetActive (false);
 				AttackBtn2.gameObject.SetActive (false);
 				PassTurnBtn.gameObject.SetActive (false);
-			}
+			}*/
 		}
 	}
 
