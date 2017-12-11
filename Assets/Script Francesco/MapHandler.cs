@@ -175,10 +175,13 @@ public class MapHandler : MonoBehaviour {
 
 	private IEnumerator PlaceC4Cor(Weapon wpn, GameObject player){
 		yield return new WaitForSeconds (2.0f);
-		GameObject c4 = (GameObject)Instantiate (wpn.bombPrefab);
-		c4.transform.position = new Vector3 (player.transform.position.x, player.transform.position.y +0.1f, player.transform.position.z);
-		c4 compc4 = c4.GetComponent<c4> ();
-		compc4.Setc4 (wpn.damage, wpn.range);
+		if (wpn.cooldown > 2) {
+			wpn.cooldown = 0;
+			GameObject c4 = (GameObject)Instantiate (wpn.bombPrefab);
+			c4.transform.position = new Vector3 (player.transform.position.x, player.transform.position.y + 0.1f, player.transform.position.z);
+			c4 compc4 = c4.GetComponent<c4> ();
+			compc4.Setc4 (wpn.damage, wpn.range);
+		}
 	}
 
 	public void PlaceC4(GameObject player,Weapon wpn){

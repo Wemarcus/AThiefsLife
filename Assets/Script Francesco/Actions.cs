@@ -16,6 +16,8 @@ public enum ActionsType{
 
 public class Actions : MonoBehaviour {
 
+	public string actionName;
+	public string description;
 	public ActionsType type;
 	public int cooldown;
 	MapHandler mh; 

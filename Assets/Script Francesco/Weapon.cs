@@ -12,6 +12,8 @@ public enum AoEType{
 
 public class Weapon : MonoBehaviour {
 
+	public string wpnName;
+	public string wpnDescription;
 	public WeaponType wpnType;
 	public int damage;
 	public int range;
@@ -28,6 +30,7 @@ public class Weapon : MonoBehaviour {
 	public int cdDuration;
 
 	void Start(){
+		if(wpnType == WeaponType.AoE)
 		cooldown = 2;
 		mh = FindObjectOfType<MapHandler> ();
 		mh.nextRoundEvent += CoolDown;
@@ -53,61 +56,73 @@ public class Weapon : MonoBehaviour {
 	}
 
 	public void Flash(GameObject enemy){
-		Debug.Log ("sono in flash");
-		Enemy enm = enemy.GetComponent<Enemy> ();
-		Player plr = FindObjectOfType<MapHandler> ().selectedPlayer.GetComponent<Player> ();
-		Agent_Animation aa = plr.gameObject.GetComponent<Agent_Animation> ();
-		aa.grenade = true;
-		StartCoroutine (SpawnFlash (enemy));
-		/*GameObject bomb = (GameObject)Instantiate (bombPrefab, enm.head.transform);
+		if (cooldown > 2) {
+			cooldown = 0;
+			Debug.Log ("sono in flash");
+			Enemy enm = enemy.GetComponent<Enemy> ();
+			Player plr = FindObjectOfType<MapHandler> ().selectedPlayer.GetComponent<Player> ();
+			Agent_Animation aa = plr.gameObject.GetComponent<Agent_Animation> ();
+			aa.grenade = true;
+			StartCoroutine (SpawnFlash (enemy));
+			/*GameObject bomb = (GameObject)Instantiate (bombPrefab, enm.head.transform);
 		Flash fh = bomb.AddComponent (typeof(Flash)) as Flash;
 		fh.SetBomb (range, cdDuration);*/
+		}
 	}
 
 	private IEnumerator SpawnFlash(GameObject enemy){
 		yield return new WaitForSeconds (2f);
 		Enemy enm = enemy.GetComponent<Enemy> ();
-		GameObject bomb = (GameObject)Instantiate (bombPrefab, enm.head.transform);
+		GameObject bomb = (GameObject)Instantiate (bombPrefab);
+		bomb.transform.position = new Vector3 (enm.head.transform.position.x, enm.head.transform.position.y + 05f, enm.head.transform.position.z);
 		Flash fh = bomb.AddComponent (typeof(Flash)) as Flash;
 		fh.SetBomb (range, cdDuration);
 	}
 
 	public void Gas(GameObject enemy){
-		Debug.Log ("sono in gas");
-		Enemy enm = enemy.GetComponent<Enemy> ();
-		Player plr = FindObjectOfType<MapHandler> ().selectedPlayer.GetComponent<Player> ();
-		Agent_Animation aa = plr.gameObject.GetComponent<Agent_Animation> ();
-		aa.grenade = true;
-		StartCoroutine (SpawnGas (enemy));
-		/*GameObject bomb = (GameObject)Instantiate (bombPrefab, enm.head.transform);
+		if (cooldown > 2) {
+			cooldown = 0;
+			Debug.Log ("sono in gas");
+			Enemy enm = enemy.GetComponent<Enemy> ();
+			Player plr = FindObjectOfType<MapHandler> ().selectedPlayer.GetComponent<Player> ();
+			Agent_Animation aa = plr.gameObject.GetComponent<Agent_Animation> ();
+			aa.grenade = true;
+			StartCoroutine (SpawnGas (enemy));
+			/*GameObject bomb = (GameObject)Instantiate (bombPrefab, enm.head.transform);
 		Gas gs = bomb.AddComponent (typeof(Gas)) as Gas;
 		gs.SetBomb (damage, range, cdDuration);*/
+		}
 	}
 
 	private IEnumerator SpawnGas(GameObject enemy){
 		yield return new WaitForSeconds (2f);
 		Enemy enm = enemy.GetComponent<Enemy> ();
-		GameObject bomb = (GameObject)Instantiate (bombPrefab, enm.head.transform);
+		GameObject bomb = (GameObject)Instantiate (bombPrefab);
+		bomb.transform.position = new Vector3 (enm.head.transform.position.x, enm.head.transform.position.y + 05f, enm.head.transform.position.z);
 		Gas gs = bomb.AddComponent (typeof(Gas)) as Gas;
 		gs.SetBomb (damage, range, cdDuration);
 	}
 
 	public void Frag(GameObject enemy){
-		Debug.Log ("sono in frag");
-		Enemy enm = enemy.GetComponent<Enemy> ();
-		Player plr = FindObjectOfType<MapHandler> ().selectedPlayer.GetComponent<Player> ();
-		Agent_Animation aa = plr.gameObject.GetComponent<Agent_Animation> ();
-		aa.grenade = true;
-		StartCoroutine (SpawnFrag (enemy));
-		/*GameObject bomb = (GameObject)Instantiate (bombPrefab, enm.head.transform);
+		if (cooldown > 2) {
+			cooldown = 0;
+			Debug.Log ("sono in frag");
+			Enemy enm = enemy.GetComponent<Enemy> ();
+			Player plr = FindObjectOfType<MapHandler> ().selectedPlayer.GetComponent<Player> ();
+			Agent_Animation aa = plr.gameObject.GetComponent<Agent_Animation> ();
+			aa.grenade = true;
+			StartCoroutine (SpawnFrag (enemy));
+			/*GameObject bomb = (GameObject)Instantiate (bombPrefab, enm.head.transform);
 		Frag frg = bomb.AddComponent (typeof(Frag)) as Frag;
 		frg.SetBomb (damage, range);*/
+		}
 	}
 
 	private IEnumerator SpawnFrag(GameObject enemy){
 		yield return new WaitForSeconds (2f);
 		Enemy enm = enemy.GetComponent<Enemy> ();
-		GameObject bomb = (GameObject)Instantiate (bombPrefab, enm.head.transform);
+		GameObject bomb = (GameObject)Instantiate (bombPrefab);
+		bomb.transform.position = new Vector3 (enm.head.transform.position.x, enm.head.transform.position.y + 05f, enm.head.transform.position.z);
 		Frag frg = bomb.AddComponent (typeof(Frag)) as Frag;
 		frg.SetBomb (damage, range);
 	}
