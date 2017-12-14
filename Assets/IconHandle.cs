@@ -15,10 +15,14 @@ public class IconHandle : MonoBehaviour {
 	public Image DeathIcon;
 	public Text hpTxt;
 	GameObject selectedPlayer;
+	MapHandler mh;
+	InputState inpS;
 
 	// Use this for initialization
 	void Start () {
-		FindObjectOfType<MapHandler> ().selectPlayerEvent += SelectedPlayer;
+		mh = FindObjectOfType<MapHandler> ();
+		mh.selectPlayerEvent += SelectedPlayer;
+		mh.changeInputStateEvent += ChangeInputState;
 	}
 	
 	// Update is called once per frame
@@ -61,8 +65,25 @@ public class IconHandle : MonoBehaviour {
 	public void SelectPlayer(){
 		if (!death) {
 			if (FindObjectOfType<MapHandler> ().players.Contains (player.gameObject) && FindObjectOfType<MapHandler> ().gs == GameState.AllyTurn) {
+				ResetPreviousAction ();
 				FindObjectOfType<MapHandler> ().SelectPlayer (player.gameObject);
 			}
+		}
+	}
+
+	public void ChangeInputState(InputState inpts){
+		inpS = inpts;
+	}
+
+	public void ResetPreviousAction(){
+		if (inpS == InputState.Attack) {
+			mh.SelectNothing (null);
+		}
+		if (inpS == InputState.Movement) {
+			mh.HideCurrentPlayerMovement ();
+		}
+		if (inpS == InputState.Abilty) {
+			mh.RevertAbility (player.gameObject);
 		}
 	}
 }
