@@ -115,7 +115,7 @@ public class UIHandler : MonoBehaviour {
 		}
 	}
 
-	private void UpdateUI(){
+	public void UpdateUI(){
 		MoveBtn.GetComponent<Button> ().interactable = false;
 		AttackBtn.GetComponent<Button> ().interactable = false;
 		AttackBtn2.GetComponent<Button> ().interactable = false;
@@ -152,12 +152,16 @@ public class UIHandler : MonoBehaviour {
 
 				if (plr && !plr.moved)
 					MoveBtn.GetComponent<Button> ().interactable = true;
-				if (plr && !plr.attacked) {					
+				if (plr && !plr.attacked) {	
+					if(!plr.firstWeapon.IsOnCooldown())
 					AttackBtn.GetComponent<Button> ().interactable = true;
+					if(!plr.secondWeapon.IsOnCooldown())
 					AttackBtn2.GetComponent<Button> ().interactable = true;
 				}
 				if (plr && !plr.actionDone) {
+					if(!plr.firstAction.IsOnCoolDown())
 					ActionBtn.GetComponent<Button> ().interactable = true;
+					if(!plr.secondAction.IsOnCoolDown())
 					ActionBtn2.GetComponent<Button> ().interactable = true;
 				}
 				if (plr && (!plr.moved || !plr.attacked || !plr.actionDone))

@@ -53,6 +53,16 @@ public class Weapon : MonoBehaviour {
 		}
 	}
 
+	public bool IsOnCooldown(){
+		bool b;
+		if (internalCD <= cooldown) {
+			b = true;
+		} else {
+			b = false;
+		}
+		return b;
+	}
+
 	public void c4(){
 	}
 
@@ -124,6 +134,7 @@ public class Weapon : MonoBehaviour {
 
 	public void CoolDown(int n){
 		internalCD += 1;
+		FindObjectOfType<UIHandler> ().UpdateUI ();
 	}
 
 	public int getDamage(){

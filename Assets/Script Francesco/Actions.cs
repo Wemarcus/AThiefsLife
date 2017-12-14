@@ -33,6 +33,7 @@ public class Actions : MonoBehaviour {
 
 	void ResetCD(){
 			internalCD = cooldown + 1;
+		FindObjectOfType<UIHandler> ().UpdateUI ();
 	}
 
 	public void PerformAction(GameObject player){
@@ -243,9 +244,19 @@ public class Actions : MonoBehaviour {
 		internalCD += 1;
 	}
 
+	public bool IsOnCoolDown(){
+		bool b;
+		if (internalCD <= cooldown) {
+			b = true;
+		} else {
+			b = false;
+		}
+		return b;
+	}
+
 	public void CheckIfPlayerIsDone(GameObject player){
-		StartCoroutine(mh.CheckDoneAndEndTurn(player.GetComponent<Player>()));
-		/*Player plr = player.GetComponent<Player> ();
+		//StartCoroutine(mh.CheckDoneAndEndTurn(player.GetComponent<Player>()));
+		Player plr = player.GetComponent<Player> ();
 		if (plr.IsDone ()) {
 			Grid.GridMath.RemovePlayerFromList (mh.selectedPlayer, mh.players);
 			mh.SelectPlayer (null);
@@ -256,6 +267,6 @@ public class Actions : MonoBehaviour {
 		if (mh.CheckAllyEndTurn ()) {
 			mh.ChangeState (GameState.EnemyTurn);
 			mh.ChangeInputState (InputState.Nothing);
-		}*/
+		}
 	}
 }
