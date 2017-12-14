@@ -55,7 +55,7 @@ public class Weapon : MonoBehaviour {
 
 	public bool IsOnCooldown(){
 		bool b;
-		if (internalCD <= cooldown) {
+		if (internalCD <= cooldown && wpnType == WeaponType.AoE) {
 			b = true;
 		} else {
 			b = false;
