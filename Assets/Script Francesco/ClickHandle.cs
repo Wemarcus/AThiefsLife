@@ -42,10 +42,10 @@ public class ClickHandle : MonoBehaviour {
 			}
 		}
 		if (inpS == InputState.Attack && gs == GameState.AllyTurn) {
-			ChangeEnemyTarget ();
+			//ChangeEnemyTarget ();
 		}
 		if (inpS == InputState.Decision || inpS == InputState.Nothing && gs == GameState.AllyTurn) {
-			SwitchSelectedPlayer ();
+			//SwitchSelectedPlayer ();
 		}
 	}
 
