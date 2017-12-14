@@ -19,12 +19,12 @@ public class RunAwayEvent : MonoBehaviour {
 			foreach (GameObject block in blockListTrigger) {
 			n = block.GetComponent<Node> ();
 			if (n.player != null) {
-				p = n.player.GetComponent<Player> ();
-				if (p.isBoss) {
+				//p = n.player.GetComponent<Player> ();
+				//if (p.isBoss) {
 					//start event
 					Debug.Log("sto quittando");
 					Application.Quit ();
-				}
+				//}
 			}
 		}
 	}
