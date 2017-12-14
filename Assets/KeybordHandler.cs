@@ -26,7 +26,7 @@ public class KeybordHandler : MonoBehaviour {
 		if (inpS == InputState.Attack && gs == GameState.AllyTurn) {
 			ChangeEnemyTarget ();
 		}
-		if (inpS == InputState.Decision || inpS == InputState.Nothing || inpS == InputState.Abilty || inpS == InputState.Movement && gs == GameState.AllyTurn) {
+		if ((inpS == InputState.Decision || inpS == InputState.Nothing || inpS == InputState.Abilty || inpS == InputState.Movement) && gs == GameState.AllyTurn) {
 			SwitchSelectedPlayer ();
 
 		}
