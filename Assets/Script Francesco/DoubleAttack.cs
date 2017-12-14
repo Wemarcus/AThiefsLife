@@ -22,6 +22,7 @@ public class DoubleAttack : MonoBehaviour {
 
 	public void SetCD(int cd){
 		cooldown = cd;
+
 	}
 
 	public void OnDestroy(){

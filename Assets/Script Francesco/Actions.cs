@@ -149,12 +149,16 @@ public class Actions : MonoBehaviour {
 	void DoubleAttack(GameObject player){
 		Player plr = player.GetComponent<Player> ();
 		if (internalCD > cooldown) {
-			DoubleAttack da = player.AddComponent (typeof(DoubleAttack)) as DoubleAttack;
-			da.SetCD (1);
-			internalCD = 0;
-			plr.actionDone = true;
-			mh.ChangeInputState (InputState.Decision);
-			CheckIfPlayerIsDone (player);
+			if (plr.attacked == true) {
+				plr.attacked = false;
+			} else {
+				DoubleAttack da = player.AddComponent (typeof(DoubleAttack)) as DoubleAttack;
+				da.SetCD (1);
+			}
+				internalCD = 0;
+				plr.actionDone = true;
+				mh.ChangeInputState (InputState.Decision);
+				CheckIfPlayerIsDone (player);
 		}
 	}
 
