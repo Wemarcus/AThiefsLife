@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 64627210335646046}
   - component: {fileID: 54267231012770638}
   - component: {fileID: 114846886636112432}
+  - component: {fileID: 65518161001538796}
   m_Layer: 2
   m_Name: SM_Prop_Plant_28
   m_TagString: Props
@@ -114,6 +115,18 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 6281e0dd4ae0aed469b84232e9afbc68, type: 3}
+--- !u!65 &65518161001538796
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1199874526721856}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.6484536, y: 1.5136138, z: 0.8398154}
+  m_Center: {x: -0.0017617345, y: 0.7568069, z: 0.0018125772}
 --- !u!114 &114846886636112432
 MonoBehaviour:
   m_ObjectHideFlags: 1
