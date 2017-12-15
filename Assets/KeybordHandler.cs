@@ -73,8 +73,8 @@ public class KeybordHandler : MonoBehaviour {
 				mh.ChangeTarget(mh.targetList[mh.targetList.Count-1]);
 				Grid.GridMath.RotateCharacter (mh.selectedPlayer, mh.CurrentTarget);
 			}
-			EnemyPin enPin = Instantiate (mh.EnemyPin).GetComponent<EnemyPin> ();
-			enPin.SetupPin (mh.CurrentTarget);
+			//EnemyPin enPin = Instantiate (mh.EnemyPin).GetComponent<EnemyPin> ();
+			//enPin.SetupPin (mh.CurrentTarget);
 		}
 
 		if ((Input.GetKeyDown (KeyCode.RightArrow)|| Input.GetKeyDown(KeyCode.D)) && enable) {
@@ -89,8 +89,8 @@ public class KeybordHandler : MonoBehaviour {
 				mh.ChangeTarget(mh.targetList[0]);
 				Grid.GridMath.RotateCharacter (mh.selectedPlayer, mh.CurrentTarget);
 			}
-			EnemyPin enPin = Instantiate (mh.EnemyPin).GetComponent<EnemyPin> ();
-			enPin.SetupPin (mh.CurrentTarget);
+			//EnemyPin enPin = Instantiate (mh.EnemyPin).GetComponent<EnemyPin> ();
+			//enPin.SetupPin (mh.CurrentTarget);
 		}
 	}
 
