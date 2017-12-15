@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 65711429032157946}
   - component: {fileID: 82896369093544112}
   - component: {fileID: 114281050354440270}
+  - component: {fileID: 114141189532987116}
   m_Layer: 2
   m_Name: SM_Prop_TellerDesk_Barrier_Glass_10
   m_TagString: Glass
@@ -209,6 +210,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &114141189532987116
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1370469580512458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8cc37d9df931a4e842e8d5496ac486, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114281050354440270
 MonoBehaviour:
   m_ObjectHideFlags: 1

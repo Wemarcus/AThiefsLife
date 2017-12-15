@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 65143246415611034}
   - component: {fileID: 82592373394383294}
   - component: {fileID: 114175531270758946}
+  - component: {fileID: 114473638826390952}
   m_Layer: 2
   m_Name: SM_Prop_TellerDesk_Barrier_Glass_04
   m_TagString: Glass
@@ -221,6 +222,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tag_name: Bullet
+--- !u!114 &114473638826390952
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1506899206606464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8cc37d9df931a4e842e8d5496ac486, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114882956262878482
 MonoBehaviour:
   m_ObjectHideFlags: 1

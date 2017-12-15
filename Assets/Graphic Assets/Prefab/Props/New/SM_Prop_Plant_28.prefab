@@ -24,9 +24,9 @@ GameObject:
   - component: {fileID: 64627210335646046}
   - component: {fileID: 54267231012770638}
   - component: {fileID: 114846886636112432}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: SM_Prop_Plant_28
-  m_TagString: Untagged
+  m_TagString: Props
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
