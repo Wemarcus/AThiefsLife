@@ -1350,13 +1350,14 @@ GameObject:
   m_Component:
   - component: {fileID: 4740015833469690}
   - component: {fileID: 212567487039905640}
+  - component: {fileID: 114161488438572700}
   m_Layer: 2
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1967770247218214
 GameObject:
   m_ObjectHideFlags: 1
@@ -3493,6 +3494,18 @@ MonoBehaviour:
   eraseRenderer: 0
   originalLayer: 0
   originalMaterials: []
+--- !u!114 &114161488438572700
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1956709244539656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b96ce9860903fc4eaa20dcfea9aae15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentEnemyMarked: {fileID: 0}
 --- !u!114 &114215289414803310
 MonoBehaviour:
   m_ObjectHideFlags: 1
