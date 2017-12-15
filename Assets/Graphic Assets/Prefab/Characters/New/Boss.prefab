@@ -801,13 +801,14 @@ GameObject:
   m_Component:
   - component: {fileID: 4828034655496384}
   - component: {fileID: 212359896720607918}
+  - component: {fileID: 114981282585310624}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1504139924231544
 GameObject:
   m_ObjectHideFlags: 1
@@ -5754,6 +5755,17 @@ MonoBehaviour:
   ActionImage: {fileID: 21300000, guid: 6a84206b2d73d18498e24b9d24646137, type: 3}
   SelectedActionImage: {fileID: 21300000, guid: f5e7074c05241bc4fa5eb78b9eb860e8,
     type: 3}
+--- !u!114 &114981282585310624
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1500594768794260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7184e2b944599e478aa78ada9c658c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114986162395426432
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -23,8 +23,8 @@ public class MapHandler : MonoBehaviour {
 	public Weapon selectedWeapon;
 	public Actions selectedAction;
 
-	public GameObject PlayerPin;
-	public GameObject EnemyPin;
+	//public GameObject PlayerPin;
+	//public GameObject EnemyPin;
 
 	public GameObject CurrentTarget;
 
@@ -247,8 +247,8 @@ public class MapHandler : MonoBehaviour {
 		}*/
 		if (targetList.Count > 0) {
 			StartCoroutine (MessagePopUp.MessagePopUp.ShowMessage ("Choose an enemy to hit", popUp));
-			enPin = Instantiate (EnemyPin).GetComponent<EnemyPin> ();
-			enPin.SetupPin (targetList[0]);
+			//enPin = Instantiate (EnemyPin).GetComponent<EnemyPin> ();
+			//enPin.SetupPin (targetList[0]);
 			//CurrentTarget = (targetList [0]);
 			ChangeTarget(targetList[0]);
 			Grid.GridMath.RotateCharacter (selectedPlayer, targetList [0]);
@@ -440,7 +440,7 @@ public class MapHandler : MonoBehaviour {
 	}
 
 	public void SelectPlayer(GameObject player){
-		SpawnPin (player);
+		//SpawnPin (player);
 		selectedPlayer = player;
 		if (selectPlayerEvent != null)
 			selectPlayerEvent (player);
@@ -481,8 +481,8 @@ public class MapHandler : MonoBehaviour {
 			return false;
 	}
 		
-	public void SpawnPin(GameObject player){
+	/*public void SpawnPin(GameObject player){
 		if (player && player != selectedPlayer)
 			Instantiate (PlayerPin);
-	}
+	}*/
 }
