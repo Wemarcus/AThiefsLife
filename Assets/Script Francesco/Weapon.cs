@@ -150,13 +150,14 @@ public class Weapon : MonoBehaviour {
 	}
 
 	public int GetDamageWithBuff(){
+		int newDamage = damage;
 		Player plr = this.gameObject.GetComponentInParent<Player> ();
 		if (plr.gameObject.GetComponent<DamagePowerUp> ()) {
 			float damage2 = damage;
 			damage2 = damage2 / 100;
 			damage2 = damage2 * (100 + plr.gameObject.GetComponent<DamagePowerUp> ().damagePercentage);
-			damage = (int)damage2;
+			newDamage = (int)damage2;
 		}
-		return damage;
+		return newDamage;
 	}
 }
