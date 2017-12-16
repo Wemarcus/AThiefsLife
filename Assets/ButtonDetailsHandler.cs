@@ -61,7 +61,7 @@ public class ButtonDetailsHandler : MonoBehaviour {
 		switch (bt) {
 		case ButtonType.attack1:
 			pud.SetTitle (mh.selectedPlayer.GetComponent<Player>().firstWeapon.wpnName.ToString());
-			pud.SetDescription (mh.selectedPlayer.GetComponent<Player> ().firstWeapon.damage.ToString () + " Damage");
+			pud.SetDescription (mh.selectedPlayer.GetComponent<Player> ().firstWeapon.GetDamageWithBuff().ToString () + " Damage");
 			pud.SetCD (mh.selectedPlayer.GetComponent<Player> ().firstWeapon.cooldown);
 			break;
 		case ButtonType.attack2:
