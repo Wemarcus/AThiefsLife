@@ -37,13 +37,16 @@ public class GridFunc : MonoBehaviour {
 		}
 
 		public static List<GameObject> ResetPlayersActions(){
-			List<GameObject> players = Grid.GridMath.FindPlayers ();
+			//List<GameObject> players = Grid.GridMath.FindPlayers ();
+			List<GameObject> players = new List<GameObject>();
+			players.AddRange(FindObjectOfType<MapHandler>().playersOnMap);
 			Grid.GridMath.ResetPlayers (players);
 			return players;
 		}
 
 		public static List<GameObject> FindEnemyOnMap(GameObject[,] grid){
-			List<GameObject> list = GridMath.FindEnemies (); //GridMath.FindBlockType (grid, BlockType.Enemy);
+			//List<GameObject> list = GridMath.FindEnemies (); //GridMath.FindBlockType (grid, BlockType.Enemy);
+			List<GameObject> list = FindObjectOfType<MapHandler>().enemiesOnMap;
 			List<GameObject> enemyList = new List<GameObject> ();
 			foreach (GameObject enemy in list) {
 				enemyList.Add (enemy);//.transform.GetChild (0).gameObject);
@@ -64,7 +67,7 @@ public class GridFunc : MonoBehaviour {
 				Debug.DrawRay (plr.head.transform.position, (enm.head.transform.position - plr.head.transform.position).normalized, Color.red, 4f);
 				if (Physics.Raycast (plr.head.transform.position, (enm.head.transform.position - plr.head.transform.position).normalized, out hit)) {
 					hitted = hit.transform.gameObject;
-					Debug.Log (hitted.name);
+					//Debug.Log (hitted.name);
 					dist = Vector3.Distance(player.transform.position, enemy.transform.position);
 					if (hitted.gameObject == enemy && dist < range) {
 						hittableEnemies.Add (enemy);
@@ -75,6 +78,70 @@ public class GridFunc : MonoBehaviour {
 				}
 			}
 			return hittableEnemies;
+		}
+
+		public static List<GameObject> HittableEnemiesSortedByRange (GameObject player, List<GameObject> enemies, int range){
+			RaycastHit hit;
+			GameObject hitted;
+			List<GameObject> hittableEnemies = new List<GameObject> ();
+			Player plr = player.GetComponent<Player> ();
+			Enemy enm;
+			int percentage;
+			float dist;
+			foreach (GameObject enemy in enemies) {
+				enm = enemy.GetComponent<Enemy> ();
+				Debug.DrawRay (plr.head.transform.position, (enm.head.transform.position - plr.head.transform.position).normalized, Color.red, 4f);
+				if (Physics.Raycast (plr.head.transform.position, (enm.head.transform.position - plr.head.transform.position).normalized, out hit)) {
+					hitted = hit.transform.gameObject;
+					//Debug.Log (hitted.name);
+					dist = Vector3.Distance(player.transform.position, enemy.transform.position);
+					if (hitted.gameObject == enemy && dist < range) {
+						hittableEnemies.Add (enemy);
+						percentage = CalculateEnemyHitPercentage (plr, enm);
+						enm.bar.SetHitPercentage (percentage);
+						//Debug.Log(percentage);
+					}
+				}
+			}
+			hittableEnemies.Sort (CompareDistance);
+			return hittableEnemies;
+		}
+			
+
+		public static void LookNearestEnemy(GameObject player, List<GameObject> enemies, int range){
+			List<GameObject> enemyList = FindObjectOfType<MapHandler> ().enemiesOnMap;
+			enemyList = HittableEnemies(player,enemyList,player.GetComponent<Player>().firstWeapon.range);
+			Player plr = player.GetComponent<Player> ();
+			enemyList.Sort (plr.CompareDistance);
+			if (enemyList.Count > 0) {
+				GameObject target = enemyList [0];
+				GridMath.RotateCharacter (player, target);
+			}
+		}
+
+		public static void LookNearestPlayer(GameObject enemy, List<GameObject> players, int range){
+			List<GameObject> playerList = FindObjectOfType<MapHandler> ().playersOnMap;
+			playerList = HittablePlayers (enemy, playerList, range);
+			Enemy enm = enemy.GetComponent<Enemy> ();
+			playerList.Sort (enm.CompareDistance);
+			if (playerList.Count > 0) {
+				GameObject target = playerList [0];
+				GridMath.RotateCharacter (enemy, target);
+			}
+		}
+
+		public static int CompareDistance(GameObject a, GameObject b) { // TODO aggiustare
+			Enemy enemy_a = a.GetComponent<Enemy> ();
+			Enemy enemy_b = b.GetComponent<Enemy> ();
+			Player plr = FindObjectOfType<MapHandler> ().selectedPlayer.GetComponent<Player>();
+			float distance_a =  Vector3.Distance(plr.transform.position, enemy_a.transform.position);
+			float distance_b =  Vector3.Distance(plr.transform.position, enemy_b.transform.position);
+			if(distance_a >= distance_b) {
+				return 1;
+			}
+			else {
+				return -1;
+			}
 		}
 
 		public static int CalculateEnemyHitPercentage(Player player, Enemy enemy){
@@ -90,7 +157,7 @@ public class GridFunc : MonoBehaviour {
 						percentage += 100/enemy.HitZone.Count;
 				}
 			}
-			Debug.Log (percentage);
+			//Debug.Log (percentage);
 			return percentage;
 		}
 

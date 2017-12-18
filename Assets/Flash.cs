@@ -34,15 +34,15 @@ public class Flash : MonoBehaviour {
 			}
 			Debug.Log ("targets in range :" + targetList.Count);
 			foreach (GameObject target in sortedList) {
-				Player p;
-				Enemy e;
 				Confusion cf;
 				if (target.GetComponent<Player> ()) {
-					p = target.GetComponent<Player> ();
+					//Player p;
+					//p = target.GetComponent<Player> ();
 					cf = target.AddComponent (typeof(Confusion)) as Confusion;
 					cf.SetConfusionDuration (cooldown);
 				} else if (target.GetComponent<Enemy> ()) {
-					e = target.GetComponent<Enemy> ();
+					//Enemy e;
+					//e = target.GetComponent<Enemy> ();
 					cf = target.AddComponent (typeof(Confusion)) as Confusion;
 					cf.SetConfusionDuration (cooldown);
 				}

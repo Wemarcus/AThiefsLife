@@ -16,7 +16,7 @@ public class AIHandler : MonoBehaviour {
 		gs = gameS;
 		if (IsEnemyTurn ()) {
 			Debug.Log ("turno nemico");
-			enemyList = Grid.GridMath.FindEnemies ();
+			enemyList.AddRange(mh.enemiesOnMap);//Grid.GridMath.FindEnemies ();
 			//Enemy enem;
 			RunNextAI ();
 			/*foreach (GameObject enemy in enemyList) {

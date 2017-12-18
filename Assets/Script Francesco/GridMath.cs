@@ -139,12 +139,14 @@ public class GridMath : MonoBehaviour {
 			character.transform.LookAt (destination.transform);
 		}
 
+		[System.Obsolete("Use a list of players instead.")]
 		public static List<GameObject> FindPlayers(){
 			List<GameObject> players = new List<GameObject> ();
 			players = GameObject.FindGameObjectsWithTag("Player").ToList();
 			return players;
 		}
 
+		[System.Obsolete("Use a list of enemies instead.")]
 		public static List<GameObject> FindEnemies(){
 			List<GameObject> enemies = new List<GameObject> ();
 			enemies = GameObject.FindGameObjectsWithTag ("Enemy").ToList ();
@@ -158,6 +160,7 @@ public class GridMath : MonoBehaviour {
 			return flag;
 		}
 
+		[System.Obsolete("Use DepthVisitWalkable2 instead.")]
 		public static List<GameObject> DepthVisit(GameObject block, int depth, int currentDepth){
 			if (currentDepth == 0) {
 				Node thisNode = block.GetComponent<Node> ();
@@ -178,6 +181,7 @@ public class GridMath : MonoBehaviour {
 			return graph;
 		}
 
+		[System.Obsolete("Use DepthVisitWalkable2 instead.")]
 		public static List<GameObject> DepthVisitWalkable(GameObject block, int depth, int currentDepth){
 			if (currentDepth == 0) {
 				Node thisNode = block.GetComponent<Node> ();
@@ -204,7 +208,7 @@ public class GridMath : MonoBehaviour {
 				thisNode.visited = true;
 			}
 			List<GameObject> graph = new List<GameObject> ();
-			Node n = block.GetComponentInParent<Node> ();
+			//Node n = block.GetComponentInParent<Node> ();
 			graph = visitNeighbours (graph, block, depth, currentDepth + 1);
 			return graph;
 		}
@@ -230,7 +234,7 @@ public class GridMath : MonoBehaviour {
 				thisNode.visited = true;
 			}
 			List<GameObject> graph = new List<GameObject> ();
-			Node n = block.GetComponentInParent<Node> ();
+			//Node n = block.GetComponentInParent<Node> ();
 			graph = visitNeighboursWalkAndPlayers (graph, block, depth, currentDepth + 1);
 			return graph;
 		}
@@ -249,7 +253,7 @@ public class GridMath : MonoBehaviour {
 			}
 			return graph;
 		}
-
+			
 		public static List<GameObject> FindPathTo(GameObject block, int depth, int currentDepth, GameObject playerblock){//TODO da fare
 			//visita nodo, se è player, ritorna path
 			List<GameObject> graph = new List<GameObject>();
@@ -341,7 +345,7 @@ public class GridMath : MonoBehaviour {
 		}
 
 		public static void RemovePlayerFromBlock(GameObject player){
-			Player plr = player.GetComponent<Player>();
+			//Player plr = player.GetComponent<Player>();
 			GameObject block = GetPlayerBlock (player);
 			Node n = block.GetComponent<Node> ();
 			if(n)
@@ -349,7 +353,7 @@ public class GridMath : MonoBehaviour {
 		}
 
 		public static void SetBlockToPlayer(GameObject player, GameObject block){
-			Player plr = player.GetComponent<Player>();
+			//Player plr = player.GetComponent<Player>();
 			Node n = block.GetComponent<Node> ();
 			n.player = player;
 		}

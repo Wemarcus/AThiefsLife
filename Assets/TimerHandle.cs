@@ -7,12 +7,12 @@ public class TimerHandle : MonoBehaviour {
 
 	private Image yellowBar;
 	private Text turnText;
-	private ButtonType bt;
+	//private ButtonType bt;
 
 	void Start(){
 		yellowBar = this.gameObject.GetComponent<Image> ();
 		turnText = this.gameObject.GetComponentInChildren<Text> ();
-		bt = this.gameObject.GetComponentInParent<ButtonDetailsHandler>().bt;
+		//bt = this.gameObject.GetComponentInParent<ButtonDetailsHandler>().bt;
 	}
 
 	public void ShowCD(int turns){

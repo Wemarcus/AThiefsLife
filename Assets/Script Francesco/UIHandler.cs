@@ -170,7 +170,7 @@ public class UIHandler : MonoBehaviour {
 
 	public void LoadImages(){
 		Sprite img;
-		Player plr = player.GetComponent<Player> ();
+		//Player plr = player.GetComponent<Player> ();
 
 		MoveBtn.GetComponent<Image> ().sprite = notselectedMoveBtn;
 

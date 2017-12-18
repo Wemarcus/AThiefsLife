@@ -15,11 +15,11 @@ public class Node : MonoBehaviour {
 	public bool visited = false;
 	public int depth=0;
 	public bool isCover;
-	MapHandler mh;
+	//MapHandler mh;
 
 	// Use this for initialization
 	void Start () {
-		mh = FindObjectOfType<MapHandler> ();
+		//mh = FindObjectOfType<MapHandler> ();
 	}
 	
 	// Update is called once per frame

@@ -24,6 +24,14 @@ public class Enemy : MonoBehaviour {
 
 	public void Start(){
 		currentHP = maxHP;
+		if(!FindObjectOfType<MapHandler>().enemiesOnMap.Contains(this.gameObject))
+		FindObjectOfType<MapHandler> ().enemiesOnMap.Add (this.gameObject);
+	}
+
+	void OnEnable(){
+		FindObjectOfType<MapHandler> ().animationEvent += OnAnimationPerform;
+		if(!FindObjectOfType<MapHandler>().enemiesOnMap.Contains(this.gameObject))
+			FindObjectOfType<MapHandler> ().enemiesOnMap.Add (this.gameObject);
 	}
 
 	public void DealDamage(int damage){
@@ -64,7 +72,8 @@ public class Enemy : MonoBehaviour {
 	}
 
 	private void BasicAI(){
-		playersTrg = GridMath.FindPlayers ();
+		//playersTrg = GridMath.FindPlayers ();
+		playersTrg.AddRange(FindObjectOfType<MapHandler>().playersOnMap);
 		playersTrg = GridFunc.HittablePlayers (this.gameObject, playersTrg,range);
 		MoveSpots = GridMath.FindWalkPathInRange (block, moveRange);
 		//Debug.Log (MoveSpots.Count);
@@ -75,15 +84,15 @@ public class Enemy : MonoBehaviour {
 			target = playersTrg[Random.Range(0,playersTrg.Count)];
 			//FindObjectOfType<MapHandler> ().ProvideDamageToPlayer (target, damage);
 			FindObjectOfType<MapHandler>().FireBulletToPlayer(target,this.gameObject,damage);
-			Debug.Log ("sto colpendo:" + target.name); // calcolo del danno TODO
+			//Debug.Log ("sto colpendo:" + target.name); // calcolo del danno TODO
 			//then move
-			Debug.Log ("ho colpito:" + target.name + "ora mi muovo");
+			//Debug.Log ("ho colpito:" + target.name + "ora mi muovo");
 			MoveSpot = MoveSpots[Random.Range(0,MoveSpots.Count)];
 			if(MoveSpot)
 			GridMath.MoveEnemyToBlock (this.gameObject, MoveSpot);
 		} else {
 			// move
-			Debug.Log ("non potevo colpire nessuno, mi muovo");
+			//Debug.Log ("non potevo colpire nessuno, mi muovo");
 			MoveSpot = MoveSpots[Random.Range(0,MoveSpots.Count)];
 			if(MoveSpot)
 			GridMath.MoveEnemyToBlock (this.gameObject, MoveSpot);
@@ -91,10 +100,10 @@ public class Enemy : MonoBehaviour {
 			playersTrg = GridFunc.HittablePlayers(this.gameObject,playersTrg,range);
 			if (playersTrg.Count > 0 && !this.GetComponent<Confusion>()) {
 				target = playersTrg[Random.Range(0,playersTrg.Count)];
-				Debug.Log ("posso colpire:" + target.name);
+				//Debug.Log ("posso colpire:" + target.name);
 				//Hit
 				target = playersTrg[Random.Range(0,playersTrg.Count)];
-				Debug.Log ("sto colpendo:" + target.name); // calcolo del danno TODO
+				//Debug.Log ("sto colpendo:" + target.name); // calcolo del danno TODO
 				//FindObjectOfType<MapHandler> ().ProvideDamageToPlayer (target, damage);
 				FindObjectOfType<MapHandler>().FireBulletToPlayer(target,this.gameObject,damage);
 			}
@@ -139,7 +148,8 @@ public class Enemy : MonoBehaviour {
 	}
 
 	private IEnumerator BasicAICor(){
-		playersTrg = GridMath.FindPlayers ();
+		//playersTrg = GridMath.FindPlayers ();
+		playersTrg.AddRange(FindObjectOfType<MapHandler>().playersOnMap);
 		playersTrg = GridFunc.HittablePlayers (this.gameObject, playersTrg,range);
 		MoveSpots = GridMath.FindWalkPathInRange (block, moveRange);
 		//Debug.Log (MoveSpots.Count);
@@ -158,9 +168,9 @@ public class Enemy : MonoBehaviour {
 			yield return  new WaitForSeconds(0.5f);
 			FindObjectOfType<MapHandler>().FireBulletToPlayer(target,this.gameObject,damage);
 			yield return  new WaitForSeconds(1f);
-			Debug.Log ("sto colpendo:" + target.name); // calcolo del danno TODO
+			//Debug.Log ("sto colpendo:" + target.name); // calcolo del danno TODO
 			//then move
-			Debug.Log ("ho colpito:" + target.name + "ora mi muovo");
+			//Debug.Log ("ho colpito:" + target.name + "ora mi muovo");
 
 			while (FindObjectOfType<MapHandler> ().PerformingAction) {
 				yield return new WaitForSeconds(1f);
@@ -195,7 +205,7 @@ public class Enemy : MonoBehaviour {
 
 		} else {
 			// move
-			Debug.Log ("non potevo colpire nessuno, mi muovo");
+			//Debug.Log ("non potevo colpire nessuno, mi muovo");
 
 			List<GameObject> sortedMoveSpots = new List<GameObject> ();
 			Node n;
@@ -229,10 +239,10 @@ public class Enemy : MonoBehaviour {
 			playersTrg = GridFunc.HittablePlayers(this.gameObject,playersTrg,range);
 			if (playersTrg.Count > 0 && !this.GetComponent<Confusion>()) {
 				target = playersTrg[Random.Range(0,playersTrg.Count)];
-				Debug.Log ("posso colpire:" + target.name);
+				//Debug.Log ("posso colpire:" + target.name);
 				//Hit
 				target = playersTrg[Random.Range(0,playersTrg.Count)];
-				Debug.Log ("sto colpendo:" + target.name); // calcolo del danno TODO
+				//Debug.Log ("sto colpendo:" + target.name); // calcolo del danno TODO
 				//FindObjectOfType<MapHandler> ().ProvideDamageToPlayer (target, damage);
 				Grid.GridMath.RotateCharacter(this.gameObject,target);
 				yield return  new WaitForSeconds(0.5f);
@@ -245,5 +255,43 @@ public class Enemy : MonoBehaviour {
 		}*/
 		yield return new WaitForSeconds(1f);
 		FindObjectOfType<AIHandler>().RunNextAI();
+	}
+
+	public void OnAnimationPerform(bool b){
+		if (!b) {
+			StartCoroutine (LookPlayer ());
+		}
+	}
+
+	private IEnumerator LookPlayer(){
+		yield return new WaitForSeconds (0.3f);
+		Grid.GridFunc.LookNearestPlayer (this.gameObject, FindObjectOfType<MapHandler> ().playersOnMap, range);
+	}
+
+	public int CompareDistance(GameObject a, GameObject b) {
+		Player player_a = a.GetComponent<Player> ();
+		Player player_b = b.GetComponent<Player> ();
+		Enemy enm = this;
+		float distance_a =  Vector3.Distance(enm.transform.position, player_a.transform.position);
+		float distance_b =  Vector3.Distance(enm.transform.position, player_b.transform.position);
+		if(distance_a >= distance_b) {
+			return 1;
+		}
+		else {
+			return -1;
+		}
+	}
+
+
+	void OnDestroy(){
+		FindObjectOfType<MapHandler> ().animationEvent -= OnAnimationPerform;
+		if(FindObjectOfType<MapHandler>().enemiesOnMap.Contains(this.gameObject))
+		FindObjectOfType<MapHandler> ().enemiesOnMap.Remove (this.gameObject);
+	}
+
+	void OnDisable(){
+		FindObjectOfType<MapHandler> ().animationEvent -= OnAnimationPerform;
+		if(FindObjectOfType<MapHandler>().enemiesOnMap.Contains(this.gameObject))
+		FindObjectOfType<MapHandler> ().enemiesOnMap.Remove (this.gameObject);
 	}
 }

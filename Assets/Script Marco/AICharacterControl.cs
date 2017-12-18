@@ -28,7 +28,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			if (target != null) {
 				agent.SetDestination (target.position);
 				FindObjectOfType<MapHandler> ().AnimationPerforming (true);
-				Debug.Log ("avvia animazione");
+				//Debug.Log ("avvia animazione");
 			}
 			if (agent.remainingDistance > agent.stoppingDistance) {
 				character.Move (agent.desiredVelocity, false, false);
@@ -36,7 +36,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 				character.Move (Vector3.zero, false, false);
 			}
 			if (!agent.pathPending && agent.remainingDistance < 0.5f && target) { 
-				Debug.Log ("stoppa animazione");
+				//Debug.Log ("stoppa animazione");
 				FindObjectOfType<MapHandler> ().AnimationPerforming (false);
 				SetTarget (null);
 			}

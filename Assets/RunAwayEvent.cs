@@ -15,7 +15,7 @@ public class RunAwayEvent : MonoBehaviour {
 
 	void checkIfSomeoneIsOn(){
 		Node n;
-		Player p;
+		//Player p;
 			foreach (GameObject block in blockListTrigger) {
 			n = block.GetComponent<Node> ();
 			if (n.player != null) {

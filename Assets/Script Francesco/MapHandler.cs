@@ -35,6 +35,9 @@ public class MapHandler : MonoBehaviour {
 
 	public UnityEngine.UI.Text popUp;
 
+	public List<GameObject> enemiesOnMap;
+	public List<GameObject> playersOnMap;
+
 	public delegate void ChangeStateDelegate (GameState gState);
 	public event ChangeStateDelegate changeStateEvent;
 
@@ -238,9 +241,9 @@ public class MapHandler : MonoBehaviour {
 
 	public void TargetEnemy(GameObject player){
 		targetList = GridFunc.FindEnemyOnMap (grid);
-		targetList = GridFunc.HittableEnemies (player, targetList, selectedWeapon.range);
+		targetList = GridFunc.HittableEnemiesSortedByRange (player, targetList, selectedWeapon.range);
 		//Debug.Log (targetList.Count);
-		EnemyPin enPin;
+		//EnemyPin enPin;
 		/*foreach (GameObject enemy in targetList) {
 			enPin = Instantiate (EnemyPin).GetComponent<EnemyPin> ();
 			enPin.SetupPin (enemy);
@@ -362,7 +365,7 @@ public class MapHandler : MonoBehaviour {
 
 	public void HitSingleTarget(GameObject enemy){
 		if (CurrentTarget == enemy){//targetList.Contains (enemy)) {
-			Debug.Log ("hit");
+			//Debug.Log ("hit");
 			Player plr = selectedPlayer.GetComponent<Player> ();
 			//ProvideDamageToEnemy (enemy,selectedWeapon.getDamage());
 			FireBulletToEnemy(enemy,plr.ShootPoint,selectedWeapon.getDamage());
