@@ -265,7 +265,7 @@ public class Enemy : MonoBehaviour {
 
 	private IEnumerator LookPlayer(){
 		yield return new WaitForSeconds (0.3f);
-		Grid.GridFunc.LookNearestPlayer (this.gameObject, FindObjectOfType<MapHandler> ().playersOnMap, range);
+		//Grid.GridFunc.LookNearestPlayer (this.gameObject, FindObjectOfType<MapHandler> ().playersOnMap, range);
 	}
 
 	public int CompareDistance(GameObject a, GameObject b) {

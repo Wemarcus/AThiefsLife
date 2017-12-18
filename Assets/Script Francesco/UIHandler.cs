@@ -135,7 +135,8 @@ public class UIHandler : MonoBehaviour {
 	}
 
 	public void ReloadPlayerList(){
-		FindObjectOfType<MapHandler> ().players = Grid.GridMath.FindPlayers ();	
+		FindObjectOfType<MapHandler> ().players.Clear ();
+		FindObjectOfType<MapHandler> ().players.AddRange( FindObjectOfType<MapHandler> ().playersOnMap);
 	}
 
 	public void DeactivateAllButtons(){
