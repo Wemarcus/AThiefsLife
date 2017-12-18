@@ -69,7 +69,7 @@ public class Weapon : MonoBehaviour {
 	public void Flash(GameObject enemy){
 			internalCD = 0;
 			Debug.Log ("sono in flash");
-			Enemy enm = enemy.GetComponent<Enemy> ();
+			//Enemy enm = enemy.GetComponent<Enemy> ();
 			Player plr = FindObjectOfType<MapHandler> ().selectedPlayer.GetComponent<Player> ();
 			Agent_Animation aa = plr.gameObject.GetComponent<Agent_Animation> ();
 			aa.grenade = true;
@@ -91,7 +91,7 @@ public class Weapon : MonoBehaviour {
 	public void Gas(GameObject enemy){
 			internalCD = 0;
 			Debug.Log ("sono in gas");
-			Enemy enm = enemy.GetComponent<Enemy> ();
+			//Enemy enm = enemy.GetComponent<Enemy> ();
 			Player plr = FindObjectOfType<MapHandler> ().selectedPlayer.GetComponent<Player> ();
 			Agent_Animation aa = plr.gameObject.GetComponent<Agent_Animation> ();
 			aa.grenade = true;
@@ -113,7 +113,7 @@ public class Weapon : MonoBehaviour {
 	public void Frag(GameObject enemy){
 			internalCD = 0;
 			Debug.Log ("sono in frag");
-			Enemy enm = enemy.GetComponent<Enemy> ();
+			//Enemy enm = enemy.GetComponent<Enemy> ();
 			Player plr = FindObjectOfType<MapHandler> ().selectedPlayer.GetComponent<Player> ();
 			Agent_Animation aa = plr.gameObject.GetComponent<Agent_Animation> ();
 			aa.grenade = true;

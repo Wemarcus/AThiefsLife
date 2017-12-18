@@ -37,13 +37,16 @@ public class GridFunc : MonoBehaviour {
 		}
 
 		public static List<GameObject> ResetPlayersActions(){
-			List<GameObject> players = Grid.GridMath.FindPlayers ();
+			//List<GameObject> players = Grid.GridMath.FindPlayers ();
+			List<GameObject> players = new List<GameObject>();
+			players.AddRange(FindObjectOfType<MapHandler>().playersOnMap);
 			Grid.GridMath.ResetPlayers (players);
 			return players;
 		}
 
 		public static List<GameObject> FindEnemyOnMap(GameObject[,] grid){
-			List<GameObject> list = GridMath.FindEnemies (); //GridMath.FindBlockType (grid, BlockType.Enemy);
+			//List<GameObject> list = GridMath.FindEnemies (); //GridMath.FindBlockType (grid, BlockType.Enemy);
+			List<GameObject> list = FindObjectOfType<MapHandler>().enemiesOnMap;
 			List<GameObject> enemyList = new List<GameObject> ();
 			foreach (GameObject enemy in list) {
 				enemyList.Add (enemy);//.transform.GetChild (0).gameObject);
@@ -64,7 +67,7 @@ public class GridFunc : MonoBehaviour {
 				Debug.DrawRay (plr.head.transform.position, (enm.head.transform.position - plr.head.transform.position).normalized, Color.red, 4f);
 				if (Physics.Raycast (plr.head.transform.position, (enm.head.transform.position - plr.head.transform.position).normalized, out hit)) {
 					hitted = hit.transform.gameObject;
-					Debug.Log (hitted.name);
+					//Debug.Log (hitted.name);
 					dist = Vector3.Distance(player.transform.position, enemy.transform.position);
 					if (hitted.gameObject == enemy && dist < range) {
 						hittableEnemies.Add (enemy);
@@ -90,7 +93,7 @@ public class GridFunc : MonoBehaviour {
 				Debug.DrawRay (plr.head.transform.position, (enm.head.transform.position - plr.head.transform.position).normalized, Color.red, 4f);
 				if (Physics.Raycast (plr.head.transform.position, (enm.head.transform.position - plr.head.transform.position).normalized, out hit)) {
 					hitted = hit.transform.gameObject;
-					Debug.Log (hitted.name);
+					//Debug.Log (hitted.name);
 					dist = Vector3.Distance(player.transform.position, enemy.transform.position);
 					if (hitted.gameObject == enemy && dist < range) {
 						hittableEnemies.Add (enemy);
@@ -106,11 +109,24 @@ public class GridFunc : MonoBehaviour {
 			
 
 		public static void LookNearestEnemy(GameObject player, List<GameObject> enemies, int range){
-			List<GameObject> enemyList = GridMath.FindEnemies ();
-			enemyList.Sort (CompareDistance);
+			List<GameObject> enemyList = FindObjectOfType<MapHandler> ().enemiesOnMap;
+			enemyList = HittableEnemies(player,enemyList,player.GetComponent<Player>().firstWeapon.range);
+			Player plr = player.GetComponent<Player> ();
+			enemyList.Sort (plr.CompareDistance);
 			if (enemyList.Count > 0) {
 				GameObject target = enemyList [0];
 				GridMath.RotateCharacter (player, target);
+			}
+		}
+
+		public static void LookNearestPlayer(GameObject enemy, List<GameObject> players, int range){
+			List<GameObject> playerList = FindObjectOfType<MapHandler> ().playersOnMap;
+			playerList = HittablePlayers (enemy, playerList, range);
+			Enemy enm = enemy.GetComponent<Enemy> ();
+			playerList.Sort (enm.CompareDistance);
+			if (playerList.Count > 0) {
+				GameObject target = playerList [0];
+				GridMath.RotateCharacter (enemy, target);
 			}
 		}
 
@@ -141,7 +157,7 @@ public class GridFunc : MonoBehaviour {
 						percentage += 100/enemy.HitZone.Count;
 				}
 			}
-			Debug.Log (percentage);
+			//Debug.Log (percentage);
 			return percentage;
 		}
 

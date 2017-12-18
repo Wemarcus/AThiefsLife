@@ -6,7 +6,7 @@ public class MainCamera : MonoBehaviour
 	public Transform target;
 	public double distance = 50;
 	float scrollSpeed = 3;
-	float panSpeed = 0.5f;
+	//float panSpeed = 0.5f;
 	
 	double xSpeed = 250.0;
 	double ySpeed = 120.0;

@@ -34,6 +34,7 @@ public class IconHandle : MonoBehaviour {
 			if (player.currentHP <= 0) {
 				death = true;
 				DeathIcon.gameObject.SetActive (true);
+				selectedImg.enabled = false;
 			}
 		}
 	}

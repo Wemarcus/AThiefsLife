@@ -53,7 +53,7 @@ public class BulletDamage : MonoBehaviour {
         explosionPos = transform.position;
         colliders = Physics.OverlapSphere(explosionPos, radius);
 
-        Debug.Log("Il proiettile collide con :" + other.gameObject);
+        //Debug.Log("Il proiettile collide con :" + other.gameObject);
 
         switch (other.tag)
         {
@@ -130,7 +130,7 @@ public class BulletDamage : MonoBehaviour {
 
     void DealDamageToPlayer( GameObject playerTrg){
 		Player plr = playerTrg.GetComponent<Player> ();
-		MapHandler mh = FindObjectOfType<MapHandler> ();
+		//MapHandler mh = FindObjectOfType<MapHandler> ();
 		plr.DealDamage (damage);
 		/*if (plr.currentHP <= 0) {
 			mh.players.Clear ();
@@ -142,7 +142,7 @@ public class BulletDamage : MonoBehaviour {
 	void DealDamageToEnemy(GameObject enemy){
 		Enemy enm = enemy.GetComponent<Enemy> ();
 		enm.DealDamage (damage);
-		MapHandler mh = FindObjectOfType<MapHandler> ();
+		//MapHandler mh = FindObjectOfType<MapHandler> ();
 		/*if (enm.currentHP <= 0) {
 			mh.targetList.Remove (enemy);
 			Grid.GridMath.ChangeBlockType (Grid.GridMath.GetEnemyBlock (enemy), BlockType.Walkable);
