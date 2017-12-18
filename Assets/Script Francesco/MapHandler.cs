@@ -38,6 +38,8 @@ public class MapHandler : MonoBehaviour {
 	public List<GameObject> enemiesOnMap;
 	public List<GameObject> playersOnMap;
 
+	public List<GameObject> spawnPointsOnMap;
+
 	public delegate void ChangeStateDelegate (GameState gState);
 	public event ChangeStateDelegate changeStateEvent;
 

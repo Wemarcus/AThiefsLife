@@ -25,13 +25,13 @@ public class GridFunc : MonoBehaviour {
 		}
 
 		public static void HideSpawnPoints(GameObject[,] grid){
-			List<GameObject> spawns = Grid.GridMath.FindSpawnPoints (grid);
+			List<GameObject> spawns = FindObjectOfType<MapHandler> ().spawnPointsOnMap;//Grid.GridMath.FindSpawnPoints (grid);
 			Grid.GridMath.RevertBlocksColour (spawns);
 			Grid.GridMath.DeactivateBlocksMesh (spawns);
 		}
 
 		public static void ShowSpawnPoints(GameObject[,] grid){
-			List<GameObject> spawns = Grid.GridMath.FindSpawnPoints (grid);
+			List<GameObject> spawns = FindObjectOfType<MapHandler> ().spawnPointsOnMap; //Grid.GridMath.FindSpawnPoints (grid);
 			Grid.GridMath.ChangeBlocksColour (Color.blue, spawns);
 			Grid.GridMath.ActivateBlocksMesh (spawns);
 		}

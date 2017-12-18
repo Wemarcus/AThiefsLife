@@ -18,8 +18,11 @@ public class Node : MonoBehaviour {
 	//MapHandler mh;
 
 	// Use this for initialization
-	void Start () {
+	void OnEnable () {
 		//mh = FindObjectOfType<MapHandler> ();
+		if (AllySpawn) {
+			FindObjectOfType<MapHandler> ().spawnPointsOnMap.Add (this.gameObject);
+		}
 	}
 	
 	// Update is called once per frame

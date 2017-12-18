@@ -89,6 +89,7 @@ public class GridMath : MonoBehaviour {
 			return blocks;
 		}
 
+		[System.Obsolete("use the list of spawnPoints instead.")]
 		public static List<GameObject> FindSpawnPoints(GameObject[,] blockList){
 			List<GameObject> spawns = new List<GameObject> ();
 			foreach (GameObject i in blockList) {

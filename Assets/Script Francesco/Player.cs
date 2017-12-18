@@ -110,7 +110,7 @@ public class Player : MonoBehaviour {
 
 	private IEnumerator LookEnemy(){
 		yield return new WaitForSeconds (0.3f);
-		Grid.GridFunc.LookNearestEnemy (this.gameObject, FindObjectOfType<MapHandler> ().enemiesOnMap , this.firstWeapon.range);
+		//Grid.GridFunc.LookNearestEnemy (this.gameObject, FindObjectOfType<MapHandler> ().enemiesOnMap , this.firstWeapon.range);
 	}
 
 	public int CompareDistance(GameObject a, GameObject b) {
