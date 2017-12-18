@@ -24,6 +24,7 @@ public class Enemy : MonoBehaviour {
 
 	public void Start(){
 		currentHP = maxHP;
+		FindObjectOfType<MapHandler> ().enemiesOnMap.Add (this.gameObject);
 	}
 
 	public void DealDamage(int damage){
@@ -245,5 +246,9 @@ public class Enemy : MonoBehaviour {
 		}*/
 		yield return new WaitForSeconds(1f);
 		FindObjectOfType<AIHandler>().RunNextAI();
+	}
+
+	void OnDestroy(){
+		FindObjectOfType<MapHandler> ().enemiesOnMap.Remove (this.gameObject);
 	}
 }

@@ -29,7 +29,11 @@ public class Player : MonoBehaviour {
 	void Start () {
 		currentHP = maxHP;
 	}
-	
+
+	void OnEnable(){
+		FindObjectOfType<MapHandler> ().animationEvent += OnAnimationPerform;
+	}
+
 	// Update is called once per frame
 	void Update () {
 		
@@ -92,5 +96,15 @@ public class Player : MonoBehaviour {
 			return true;
 		else
 			return false;
+	}
+
+	public void OnAnimationPerform(bool b){
+		if (!b) {
+			//Grid.GridFunc.LookNearestEnemy (this.gameObject, FindObjectOfType<MapHandler> ().targetList, this.firstWeapon.range);
+		}
+	}
+
+	void OnDestroy(){
+		FindObjectOfType<MapHandler> ().animationEvent -= OnAnimationPerform;
 	}
 }
