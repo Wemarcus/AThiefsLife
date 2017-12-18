@@ -25,6 +25,7 @@ public class Agent_Animation : MonoBehaviour {
     private Animator agent;
     private float time;
     private MapHandler mh;
+    private bool block;
 
     private void Start()
     {
@@ -107,6 +108,17 @@ public class Agent_Animation : MonoBehaviour {
                 blood.SetActive(true);
                 time = 1.00f;
                 StartCoroutine(Blood(time));
+                break;
+
+            case "Grenade":
+                if (!block)
+                {
+                    block = true;
+                    agent.SetTrigger("HitReactionGrenade");
+                    blood.SetActive(true);
+                    time = 2.00f;
+                    StartCoroutine(Blood(time));
+                }
                 break;
         }
     }
@@ -216,6 +228,7 @@ public class Agent_Animation : MonoBehaviour {
     {
         yield return new WaitForSeconds(t);
         blood.SetActive(false);
+        block = false;
     }
 
 	private void SetTurnBool(GameState gs){
