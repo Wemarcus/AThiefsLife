@@ -17,6 +17,7 @@ public class Agent_Animation : MonoBehaviour {
     public GameObject sparks;
     public GameObject blood;
     public AudioSource sound;
+    public AudioSource sound_2;
     public bool is_sniper;
     public bool is_doctor;
     public bool is_tank;
@@ -111,13 +112,46 @@ public class Agent_Animation : MonoBehaviour {
                 break;
 
             case "Grenade":
-                if (!block)
+                if (other.gameObject.GetComponent<c4>() != null)
                 {
+                    if (!block && other.gameObject.GetComponent<c4>().cooldown >= 1)
+                    {
+                        Debug.Log("OntriggerEnterC4" + gameObject.name);
+                        block = true;
+                        agent.SetTrigger("HitReactionGrenade");
+                        blood.SetActive(true);
+                        time = 2.00f;
+                        StartCoroutine(Blood(time));
+                    }
+                } else if (!block && other.gameObject.GetComponent<c4>() == null)
+                {
+                    Debug.Log("OntriggerEnter" + gameObject.name);
                     block = true;
                     agent.SetTrigger("HitReactionGrenade");
                     blood.SetActive(true);
                     time = 2.00f;
                     StartCoroutine(Blood(time));
+                }
+                break;
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        switch (other.tag)
+        {
+            case "Grenade":
+                if (other.gameObject.GetComponent<c4>() != null)
+                {
+                    if (!block && other.gameObject.GetComponent<c4>().cooldown >= 1)
+                    {
+                        Debug.Log("OntriggerStay" + gameObject.name);
+                        block = true;
+                        agent.SetTrigger("HitReactionGrenade");
+                        blood.SetActive(true);
+                        time = 4.00f;
+                        StartCoroutine(Blood(time));
+                    }
                 }
                 break;
         }
@@ -139,6 +173,11 @@ public class Agent_Animation : MonoBehaviour {
 
     private IEnumerator Grenade(float t)
     {
+        if (!is_tank && sound_2 != null)
+        {
+            sound_2.PlayDelayed(1.50f);
+        }
+
         yield return new WaitForSeconds(t);
 
         if (is_tank)
