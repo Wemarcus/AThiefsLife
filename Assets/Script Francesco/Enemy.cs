@@ -29,7 +29,7 @@ public class Enemy : MonoBehaviour {
 	}
 
 	void OnEnable(){
-		FindObjectOfType<MapHandler> ().animationEvent += OnAnimationPerform;
+		//FindObjectOfType<MapHandler> ().animationEvent += OnAnimationPerform;
 		if(!FindObjectOfType<MapHandler>().enemiesOnMap.Contains(this.gameObject))
 			FindObjectOfType<MapHandler> ().enemiesOnMap.Add (this.gameObject);
 	}
@@ -143,6 +143,7 @@ public class Enemy : MonoBehaviour {
 			yield return  new WaitForSeconds(1f);
 		}
 		yield return new WaitForSeconds(1f);
+		LookNearestPlayer ();
 		FindObjectOfType<AIHandler>().RunNextAI();
 
 	}
@@ -254,18 +255,23 @@ public class Enemy : MonoBehaviour {
 			yield return null;
 		}*/
 		yield return new WaitForSeconds(1f);
+		LookNearestPlayer ();
 		FindObjectOfType<AIHandler>().RunNextAI();
 	}
 
-	public void OnAnimationPerform(bool b){
+	/*public void OnAnimationPerform(bool b){
 		if (!b) {
-			StartCoroutine (LookPlayer ());
+			//StartCoroutine (LookPlayer ());
 		}
+	}*/
+
+	public void LookNearestPlayer(){
+		StartCoroutine (LookPlayer ());
 	}
 
 	private IEnumerator LookPlayer(){
-		yield return new WaitForSeconds (0.3f);
-		//Grid.GridFunc.LookNearestPlayer (this.gameObject, FindObjectOfType<MapHandler> ().playersOnMap, range);
+		yield return new WaitForSeconds (0.8f);
+		Grid.GridFunc.LookNearestPlayer (this.gameObject, FindObjectOfType<MapHandler> ().playersOnMap, range);
 	}
 
 	public int CompareDistance(GameObject a, GameObject b) {
@@ -284,13 +290,13 @@ public class Enemy : MonoBehaviour {
 
 
 	void OnDestroy(){
-		FindObjectOfType<MapHandler> ().animationEvent -= OnAnimationPerform;
+		//FindObjectOfType<MapHandler> ().animationEvent -= OnAnimationPerform;
 		if(FindObjectOfType<MapHandler>().enemiesOnMap.Contains(this.gameObject))
 		FindObjectOfType<MapHandler> ().enemiesOnMap.Remove (this.gameObject);
 	}
 
 	void OnDisable(){
-		FindObjectOfType<MapHandler> ().animationEvent -= OnAnimationPerform;
+		//FindObjectOfType<MapHandler> ().animationEvent -= OnAnimationPerform;
 		if(FindObjectOfType<MapHandler>().enemiesOnMap.Contains(this.gameObject))
 		FindObjectOfType<MapHandler> ().enemiesOnMap.Remove (this.gameObject);
 	}

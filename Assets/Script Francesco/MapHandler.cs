@@ -157,6 +157,7 @@ public class MapHandler : MonoBehaviour {
 	public IEnumerator CheckDoneAndEndTurn(Player plr){
 		yield return new WaitForSeconds (1.5f);
 		if (plr.IsDone ()) {
+			plr.LookNearestEnemy ();
 			Grid.GridMath.RemovePlayerFromList (selectedPlayer, players);
 			SelectPlayer (null);
 			if(players.Count >0)
@@ -285,6 +286,11 @@ public class MapHandler : MonoBehaviour {
 		selectedPlayer = null;
 		ChangeInputState (InputState.Nothing);
 		yield return new WaitForSeconds (2f);
+		Player plr;
+		foreach (GameObject player in playersOnMap) {
+			plr = player.GetComponent<Player> ();
+			plr.LookNearestEnemy ();
+		}
 		selectedPlayer = null;
 		ChangeInputState (InputState.Nothing);
 		ChangeState (GameState.EnemyTurn);
