@@ -33,7 +33,7 @@ public class Player : MonoBehaviour {
 	}
 
 	void OnEnable(){
-		FindObjectOfType<MapHandler> ().animationEvent += OnAnimationPerform;
+		//FindObjectOfType<MapHandler> ().animationEvent += OnAnimationPerform;
 		if(!FindObjectOfType<MapHandler>().playersOnMap.Contains(this.gameObject))
 			FindObjectOfType<MapHandler> ().playersOnMap.Add (this.gameObject);
 	}
@@ -102,15 +102,19 @@ public class Player : MonoBehaviour {
 			return false;
 	}
 
-	public void OnAnimationPerform(bool b){
+	/*public void OnAnimationPerform(bool b){
 		if (!b) {
-			StartCoroutine (LookEnemy ());
+			//StartCoroutine (LookEnemy ());
 		}
+	}*/
+
+	public void LookNearestEnemy(){
+		StartCoroutine (LookEnemy ());
 	}
 
 	private IEnumerator LookEnemy(){
 		yield return new WaitForSeconds (0.3f);
-		//Grid.GridFunc.LookNearestEnemy (this.gameObject, FindObjectOfType<MapHandler> ().enemiesOnMap , this.firstWeapon.range);
+		Grid.GridFunc.LookNearestEnemy (this.gameObject, FindObjectOfType<MapHandler> ().enemiesOnMap , this.firstWeapon.range);
 	}
 
 	public int CompareDistance(GameObject a, GameObject b) {
@@ -128,13 +132,13 @@ public class Player : MonoBehaviour {
 	}
 
 	void OnDestroy(){
-		FindObjectOfType<MapHandler> ().animationEvent -= OnAnimationPerform;
+		//FindObjectOfType<MapHandler> ().animationEvent -= OnAnimationPerform;
 		if(FindObjectOfType<MapHandler>().playersOnMap.Contains(this.gameObject))
 			FindObjectOfType<MapHandler> ().playersOnMap.Remove (this.gameObject);
 	}
 
 	void OnDisable(){
-		FindObjectOfType<MapHandler> ().animationEvent -= OnAnimationPerform;
+		//FindObjectOfType<MapHandler> ().animationEvent -= OnAnimationPerform;
 		if(FindObjectOfType<MapHandler>().playersOnMap.Contains(this.gameObject))
 			FindObjectOfType<MapHandler> ().playersOnMap.Remove (this.gameObject);
 	}
