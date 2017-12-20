@@ -40,6 +40,8 @@ public class MapHandler : MonoBehaviour {
 
 	public List<GameObject> spawnPointsOnMap;
 
+	public ConfirmPanelHandler cph;
+
 	public delegate void ChangeStateDelegate (GameState gState);
 	public event ChangeStateDelegate changeStateEvent;
 
@@ -273,6 +275,10 @@ public class MapHandler : MonoBehaviour {
 			GridMath.ChangeBlockType (GridMath.GetPlayerBlock (playerTrg), BlockType.Walkable);
 			Destroy (playerTrg);
 		}*/
+	}
+
+	public void ClickSwitchTurn(){
+		cph.SwitchTurn ();
 	}
 
 	public void PassAllyTurn(){

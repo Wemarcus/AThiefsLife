@@ -100,7 +100,7 @@ public class UIHandler : MonoBehaviour {
 
 	public void OnClickPass(){
 		ResetPreviousAction ();
-		mh.PassAllyTurn ();
+		mh.ClickSwitchTurn ();
 	}
 
 	public void ResetPreviousAction(){
