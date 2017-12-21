@@ -22,10 +22,12 @@ public class Enemy : MonoBehaviour {
 	public GameObject damagePopUpPrefab;
 	public GameObject spawnPointDamagePopUpPrefab;
 
+	public GameObject nearestPlayer;
+
 	public void Start(){
 		currentHP = maxHP;
 		if(!FindObjectOfType<MapHandler>().enemiesOnMap.Contains(this.gameObject))
-		FindObjectOfType<MapHandler> ().enemiesOnMap.Add (this.gameObject);
+			FindObjectOfType<MapHandler> ().enemiesOnMap.Add (this.gameObject);
 	}
 
 	void OnEnable(){
@@ -68,7 +70,7 @@ public class Enemy : MonoBehaviour {
 		MoveSpots = GridMath.FindWalkPathInRange (block, moveRange);
 		MoveSpot = MoveSpots[Random.Range(0,MoveSpots.Count)];
 		if(MoveSpot)
-		GridMath.MoveEnemyToBlock (this.gameObject, MoveSpot);
+			GridMath.MoveEnemyToBlock (this.gameObject, MoveSpot);
 	}
 
 	private void BasicAI(){
@@ -89,13 +91,13 @@ public class Enemy : MonoBehaviour {
 			//Debug.Log ("ho colpito:" + target.name + "ora mi muovo");
 			MoveSpot = MoveSpots[Random.Range(0,MoveSpots.Count)];
 			if(MoveSpot)
-			GridMath.MoveEnemyToBlock (this.gameObject, MoveSpot);
+				GridMath.MoveEnemyToBlock (this.gameObject, MoveSpot);
 		} else {
 			// move
 			//Debug.Log ("non potevo colpire nessuno, mi muovo");
 			MoveSpot = MoveSpots[Random.Range(0,MoveSpots.Count)];
 			if(MoveSpot)
-			GridMath.MoveEnemyToBlock (this.gameObject, MoveSpot);
+				GridMath.MoveEnemyToBlock (this.gameObject, MoveSpot);
 			//try to hit
 			playersTrg = GridFunc.HittablePlayers(this.gameObject,playersTrg,range);
 			if (playersTrg.Count > 0 && !this.GetComponent<Confusion>()) {
@@ -114,7 +116,8 @@ public class Enemy : MonoBehaviour {
 		while (FindObjectOfType<MapHandler> ().PerformingAction) {
 			yield return new WaitForSeconds(1f);
 		}
-		GameObject MoveSpot;
+		Move ();
+		/*GameObject MoveSpot;
 		MoveSpots = GridMath.FindWalkPathInRange (block, moveRange);
 
 		List<GameObject> sortedMoveSpots = new List<GameObject> ();
@@ -133,12 +136,12 @@ public class Enemy : MonoBehaviour {
 			if(MoveSpot)
 				GridMath.MoveEnemyToBlock (this.gameObject, MoveSpot);
 			
-		}
+		}*/
 
 		/*MoveSpot = MoveSpots[Random.Range(0,MoveSpots.Count-1)];
 		if(MoveSpot)
 			GridMath.MoveEnemyToBlock (this.gameObject, MoveSpot);*/
-		
+
 		while (FindObjectOfType<MapHandler> ().PerformingAction) {
 			yield return  new WaitForSeconds(1f);
 		}
@@ -185,11 +188,21 @@ public class Enemy : MonoBehaviour {
 					sortedMoveSpots.Add (elem);
 			}
 			if (sortedMoveSpots.Count > 0) {
-				MoveSpot = sortedMoveSpots[Random.Range(0,sortedMoveSpots.Count-1)];
+				if (playerIsNear()) {
+					sortedMoveSpots = SortSpotsByNearestPlayer (sortedMoveSpots);
+					MoveSpot = sortedMoveSpots [0];
+				}else{
+					MoveSpot = sortedMoveSpots[Random.Range(0,sortedMoveSpots.Count-1)];
+				}
 				if(MoveSpot)
 					GridMath.MoveEnemyToBlock (this.gameObject, MoveSpot);
 			} else if(MoveSpots.Count >0){
-				MoveSpot = MoveSpots[Random.Range(0,MoveSpots.Count-1)];
+				if (playerIsNear()) {
+					MoveSpots = SortSpotsByNearestPlayer (MoveSpots);
+					MoveSpot = MoveSpots [0];
+				}else{
+					MoveSpot = MoveSpots[Random.Range(0,MoveSpots.Count-1)];
+				}
 				if(MoveSpot)
 					GridMath.MoveEnemyToBlock (this.gameObject, MoveSpot);
 
@@ -199,7 +212,7 @@ public class Enemy : MonoBehaviour {
 				GridMath.MoveEnemyToBlock (this.gameObject, MoveSpot);
 				yield return  new WaitForSeconds(1f);
 			}*/
-			
+
 			while (FindObjectOfType<MapHandler> ().PerformingAction) {
 				yield return  new WaitForSeconds(1f);
 			}
@@ -216,11 +229,21 @@ public class Enemy : MonoBehaviour {
 					sortedMoveSpots.Add (elem);
 			}
 			if (sortedMoveSpots.Count > 0) {
-				MoveSpot = sortedMoveSpots[Random.Range(0,sortedMoveSpots.Count-1)];
+				if (playerIsNear()) {
+					sortedMoveSpots = SortSpotsByNearestPlayer (sortedMoveSpots);
+					MoveSpot = sortedMoveSpots [0];
+				}else{
+					MoveSpot = sortedMoveSpots[Random.Range(0,sortedMoveSpots.Count-1)];
+				}
 				if(MoveSpot)
 					GridMath.MoveEnemyToBlock (this.gameObject, MoveSpot);
 			} else if(MoveSpots.Count >0){
-				MoveSpot = MoveSpots[Random.Range(0,MoveSpots.Count-1)];
+				if (playerIsNear()) {
+					MoveSpots = SortSpotsByNearestPlayer (MoveSpots);
+					MoveSpot = MoveSpots [0];
+				}else{
+					MoveSpot = MoveSpots[Random.Range(0,MoveSpots.Count-1)];
+				}
 				if(MoveSpot)
 					GridMath.MoveEnemyToBlock (this.gameObject, MoveSpot);
 
@@ -265,6 +288,58 @@ public class Enemy : MonoBehaviour {
 		}
 	}*/
 
+	private void Move(){
+		MoveSpots = GridMath.FindWalkPathInRange (block, moveRange);
+		List<GameObject> sortedMoveSpots = new List<GameObject> ();
+		Node n;
+		GameObject MoveSpot;
+		foreach (GameObject elem in MoveSpots) {
+			n = elem.GetComponent<Node> ();
+			if (n.isCover)
+				sortedMoveSpots.Add (elem);
+		}
+		if (sortedMoveSpots.Count > 0) {
+			if (playerIsNear()) {
+				sortedMoveSpots = SortSpotsByNearestPlayer (sortedMoveSpots);
+				MoveSpot = sortedMoveSpots [0];
+			}else{
+				MoveSpot = sortedMoveSpots[Random.Range(0,sortedMoveSpots.Count-1)];
+			}
+			if(MoveSpot)
+				GridMath.MoveEnemyToBlock (this.gameObject, MoveSpot);
+		} else if(MoveSpots.Count >0){
+			if (playerIsNear()) {
+				MoveSpots = SortSpotsByNearestPlayer (MoveSpots);
+				MoveSpot = MoveSpots [0];
+			}else{
+				MoveSpot = MoveSpots[Random.Range(0,MoveSpots.Count-1)];
+			}
+			if(MoveSpot)
+				GridMath.MoveEnemyToBlock (this.gameObject, MoveSpot);
+		}
+	}
+
+	private void Attack(){
+		GameObject target;
+		playersTrg = GridFunc.HittablePlayers(this.gameObject,playersTrg,range);
+		if (playersTrg.Count > 0 && !this.GetComponent<Confusion> ()) {
+			target = playersTrg [Random.Range (0, playersTrg.Count)];
+			//Debug.Log ("posso colpire:" + target.name);
+			//Hit
+			target = playersTrg [Random.Range (0, playersTrg.Count)];
+			//Debug.Log ("sto colpendo:" + target.name); // calcolo del danno TODO
+			//FindObjectOfType<MapHandler> ().ProvideDamageToPlayer (target, damage);
+			Fire (target);
+		}
+	}
+
+	private IEnumerator Fire(GameObject target){
+		Grid.GridMath.RotateCharacter (this.gameObject, target);
+		yield return  new WaitForSeconds (0.5f);
+		FindObjectOfType<MapHandler> ().FireBulletToPlayer (target, this.gameObject, damage);
+	}
+
+
 	public void LookNearestPlayer(){
 		StartCoroutine (LookPlayer ());
 	}
@@ -288,16 +363,56 @@ public class Enemy : MonoBehaviour {
 		}
 	}
 
+	public int CompareDistanceBetweenTiles(GameObject a, GameObject b) {
+		float distance_a =  Vector3.Distance(nearestPlayer.transform.position, a.transform.position);
+		float distance_b =  Vector3.Distance(nearestPlayer.transform.position, b.transform.position);
+		if(distance_a >= distance_b) {
+			return 1;
+		}
+		else {
+			return -1;
+		}
+	}
+
+	public GameObject GetNearestPlayer(){
+		List<GameObject> playerList = FindObjectOfType<MapHandler> ().playersOnMap;
+		playerList = GridFunc.HittablePlayers (this.gameObject, playerList, range);
+		playerList.Sort (CompareDistance);
+		if (playerList.Count > 0) {
+			return playerList [0];
+		} else {
+			return null;
+		}
+	}
+
+	public bool playerIsNear(){
+		List<GameObject> playerList = FindObjectOfType<MapHandler> ().playersOnMap;
+		playerList = GridFunc.HittablePlayers (this.gameObject, playerList, range);
+		playerList.Sort (CompareDistance);
+		if (playerList.Count > 0) {
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	public List<GameObject> SortSpotsByNearestPlayer(List<GameObject> spots){
+		nearestPlayer = GetNearestPlayer ();
+		if (nearestPlayer) {
+			spots.Sort (CompareDistanceBetweenTiles);
+		}
+		return spots;
+	}
 
 	void OnDestroy(){
 		//FindObjectOfType<MapHandler> ().animationEvent -= OnAnimationPerform;
 		if(FindObjectOfType<MapHandler>().enemiesOnMap.Contains(this.gameObject))
-		FindObjectOfType<MapHandler> ().enemiesOnMap.Remove (this.gameObject);
+			FindObjectOfType<MapHandler> ().enemiesOnMap.Remove (this.gameObject);
 	}
 
 	void OnDisable(){
 		//FindObjectOfType<MapHandler> ().animationEvent -= OnAnimationPerform;
 		if(FindObjectOfType<MapHandler>().enemiesOnMap.Contains(this.gameObject))
-		FindObjectOfType<MapHandler> ().enemiesOnMap.Remove (this.gameObject);
+			FindObjectOfType<MapHandler> ().enemiesOnMap.Remove (this.gameObject);
 	}
 }
