@@ -6,11 +6,14 @@ public class Hide : MonoBehaviour {
 
 	public int cooldown;
 	MapHandler mh;
+	Invisibility effect;
 
 	// Use this for initialization
 	void Start () {
 		mh = FindObjectOfType<MapHandler> ();
 		mh.nextRoundEvent += CoolDown;
+		effect = GetComponentInChildren<Invisibility> ();
+		effect.ActiveInvisibility ();
 	}
 
 	public void CoolDown(int n){
@@ -27,5 +30,6 @@ public class Hide : MonoBehaviour {
 	public void OnDestroy(){
 		mh = FindObjectOfType<MapHandler> ();
 		mh.nextRoundEvent -= CoolDown;
+		effect.DeactiveInvisibility ();
 	}
 }

@@ -78,6 +78,8 @@ public class Player : MonoBehaviour {
 
 	public void Heal(int heal){
 		currentHP += heal;
+		GameObject panel = transform.Find ("Ally_Interface").gameObject;
+		GameObject effect = Instantiate(Resources.Load("Heal", typeof(GameObject)),panel.transform) as GameObject;
 		if (currentHP > maxHP) {
 			currentHP = maxHP;
 		}

@@ -6,11 +6,14 @@ public class Killer : MonoBehaviour {
 
 	public int cooldown;
 	MapHandler mh;
+	GameObject effect;
 
 	// Use this for initialization
 	void Start () {
 		mh = FindObjectOfType<MapHandler> ();
 		mh.nextRoundEvent += CoolDown;
+		GameObject panel = transform.Find ("Effect_Interface").gameObject;
+		effect = Instantiate(Resources.Load("HeadShot", typeof(GameObject)),panel.transform) as GameObject;
 	}
 
 	public void CoolDown(int n){
@@ -27,6 +30,7 @@ public class Killer : MonoBehaviour {
 	public void OnDestroy(){
 		mh = FindObjectOfType<MapHandler> ();
 		mh.nextRoundEvent -= CoolDown;
+		Destroy (effect);
 	}
 
 }
