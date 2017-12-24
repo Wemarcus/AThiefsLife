@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ConfirmPanelHandler : MonoBehaviour {
 
 	public GameObject Popup;
-	public Text Paneltext;
+	//public Text Paneltext;
 
 	public delegate void ClickYesDelegate ();
 	public event ClickYesDelegate clickYesEvent;
@@ -32,7 +32,7 @@ public class ConfirmPanelHandler : MonoBehaviour {
 
 	public void SwitchTurn(){
 		Popup.SetActive (true);
-		Paneltext.text = "Switch turn to enemy?";
+		//Paneltext.text = "Switch turn to enemy?";
 		clickYesEvent = SwitchYes;
 		clickNoEvent = SwitchNo;
 	}
@@ -43,7 +43,7 @@ public class ConfirmPanelHandler : MonoBehaviour {
 	}
 
 	private void SwitchNo(){
-		Paneltext.text = "";
+		//Paneltext.text = "";
 		Popup.SetActive (false);
 	}
 }
