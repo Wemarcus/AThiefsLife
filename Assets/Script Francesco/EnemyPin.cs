@@ -12,11 +12,12 @@ public class EnemyPin : MonoBehaviour {
 
 	}
 
-	public void SetupPin(GameObject enemy){
+	public void SetupPin(GameObject enemy, Vector3 scale){
 		mh = FindObjectOfType<MapHandler> ();
 		currentEnemyMarked = enemy;
-		this.transform.position = new Vector3 (enemy.transform.position.x,enemy.transform.position.y+3f,enemy.transform.position.z);
+		this.transform.position = new Vector3 (enemy.transform.position.x,enemy.transform.position.y,enemy.transform.position.z);
 		this.gameObject.transform.parent = enemy.transform;
+		this.transform.localScale = scale;
 	}
 
 	// Update is called once per frame

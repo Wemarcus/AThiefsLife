@@ -194,7 +194,7 @@ public class MapHandler : MonoBehaviour {
 		}
 		if (wpn.getWeaponType () == WeaponType.AoE && wpn.type != AoEType.c4 && wpn.internalCD > wpn.cooldown) {
 			selectedWeapon = wpn;
-			TargetEnemy (player);
+			TargetEnemyAoE (player);
 		} 
 		if (wpn.getWeaponType () == WeaponType.AoE && wpn.type == AoEType.c4 && wpn.internalCD > wpn.cooldown) {
 			selectedWeapon = wpn;
@@ -258,6 +258,30 @@ public class MapHandler : MonoBehaviour {
 			//enPin = Instantiate (EnemyPin).GetComponent<EnemyPin> ();
 			//enPin.SetupPin (targetList[0]);
 			//CurrentTarget = (targetList [0]);
+			ChangeTarget(targetList[0]);
+			Grid.GridMath.RotateCharacter (selectedPlayer, targetList [0]);
+			ChangeInputState (InputState.Attack);
+		} else {
+			StartCoroutine (MessagePopUp.MessagePopUp.ShowMessage ("There is any enemy in your line of sight", popUp));
+			selectedWeapon = null;
+		}
+	}
+
+	public void TargetEnemyAoE(GameObject player){
+		targetList = GridFunc.FindEnemyOnMap (grid);
+		targetList = GridFunc.HittableEnemiesSortedByRange (player, targetList, selectedWeapon.range);
+		//Debug.Log (targetList.Count);
+		//EnemyPin enPin;
+		/*foreach (GameObject enemy in targetList) {
+			enPin = Instantiate (EnemyPin).GetComponent<EnemyPin> ();
+			enPin.SetupPin (enemy);
+		}*/
+		if (targetList.Count > 0) {
+			StartCoroutine (MessagePopUp.MessagePopUp.ShowMessage ("Choose an enemy to hit", popUp));
+			//enPin = Instantiate (EnemyPin).GetComponent<EnemyPin> ();
+			//enPin.SetupPin (targetList[0]);
+			//CurrentTarget = (targetList [0]);
+			GameObject grenadeRange = Instantiate(Resources.Load("GrenadeRange", typeof(GameObject))) as GameObject;
 			ChangeTarget(targetList[0]);
 			Grid.GridMath.RotateCharacter (selectedPlayer, targetList [0]);
 			ChangeInputState (InputState.Attack);
