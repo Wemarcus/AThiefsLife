@@ -7,11 +7,21 @@ public class DamagePowerUp : MonoBehaviour {
 	public int cooldown;
 	public int damagePercentage;
 	MapHandler mh;
+	GameObject effect;
 
 	// Use this for initialization
 	void Start () {
 		mh = FindObjectOfType<MapHandler> ();
 		mh.nextRoundEvent += CoolDown;
+		if (damagePercentage == 20) {
+			GameObject panel = transform.Find ("Effect_Interface").gameObject;
+			effect = Instantiate(Resources.Load("DamageTeam", typeof(GameObject)),panel.transform) as GameObject;
+		}
+		if (damagePercentage == 30) {
+			GameObject panel = transform.Find ("Effect_Interface").gameObject;
+			effect = Instantiate(Resources.Load("DamageSelf", typeof(GameObject)),panel.transform) as GameObject;
+		}
+
 	}
 
 	public void CoolDown(int n){
@@ -29,5 +39,6 @@ public class DamagePowerUp : MonoBehaviour {
 	public void OnDestroy(){
 		mh = FindObjectOfType<MapHandler> ();
 		mh.nextRoundEvent -= CoolDown;
+		Destroy (effect);
 	}
 }
