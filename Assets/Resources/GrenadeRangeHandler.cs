@@ -27,7 +27,7 @@ public class GrenadeRangeHandler : MonoBehaviour {
 			target = mh.CurrentTarget;
 			this.gameObject.transform.position = target.transform.position;
 		}
-		if (mh.CurrentTarget == null || mh.inputS != InputState.Attack) {
+		if (mh.CurrentTarget == null || mh.inputS != InputState.Attack || mh.selectedWeapon == null || mh.selectedWeapon.getWeaponType() != WeaponType.AoE) {
 			Destroy (this.gameObject);
 		}
 	}

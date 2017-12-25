@@ -226,7 +226,7 @@ public class Actions : MonoBehaviour {
 			if (n.player) {
 				p = n.player.GetComponent<Player>();
 				sh = p.gameObject.AddComponent(typeof(Shield)) as Shield;
-				sh.SetShield (30, 2);
+				sh.SetShield (30, 1);
 			}
 		}
 		p = player.GetComponent<Player> ();
