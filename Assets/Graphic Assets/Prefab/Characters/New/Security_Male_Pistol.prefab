@@ -3643,6 +3643,7 @@ MonoBehaviour:
   damagePopUpPrefab: {fileID: 1896818840264442, guid: 61c9031438287c6458d661dfc0bbebfa,
     type: 2}
   spawnPointDamagePopUpPrefab: {fileID: 1948262053163330}
+  nearestPlayer: {fileID: 0}
 --- !u!114 &114555252921865264
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3860,6 +3861,7 @@ MonoBehaviour:
   sparks: {fileID: 1112652359759048}
   blood: {fileID: 1726651412530956}
   sound: {fileID: 82544948369477176}
+  sound_2: {fileID: 0}
   is_sniper: 0
   is_doctor: 1
   is_tank: 0
@@ -21652,7 +21654,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &224009583766203400
 RectTransform:
