@@ -18,13 +18,19 @@ public class AIHandler : MonoBehaviour {
 			Debug.Log ("turno nemico");
 			enemyList.AddRange(mh.enemiesOnMap);//Grid.GridMath.FindEnemies ();
 			//Enemy enem;
-			RunNextAI ();
+			/////RunNextAI ();
+			StartCoroutine(RunNextAICor());
 			/*foreach (GameObject enemy in enemyList) {
 				enem = enemy.GetComponent<Enemy> ();
 				enem.RunAI ();
 			}
 			StartCoroutine(mh.EndAiTurn ());*/
 		}
+	}
+
+	IEnumerator RunNextAICor(){
+		yield return new WaitForSeconds(3f);
+		RunNextAI();
 	}
 
 	public void RunNextAI(){
