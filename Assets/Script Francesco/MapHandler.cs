@@ -76,9 +76,10 @@ public class MapHandler : MonoBehaviour {
 	}
 
 	void SetupSpawn(){
-		GridFunc.ShowSpawnPoints (grid);
+		//GridFunc.ShowSpawnPoints (grid);
 		ChangeState(GameState.Spawn);
 		ChangeInputState (InputState.Nothing);
+		SpawnPlayers ();
 		NextTurn (turnCount);
 	}
 
@@ -104,6 +105,22 @@ public class MapHandler : MonoBehaviour {
 			GridFunc.HideSpawnPoints (grid);
 			ChangeState(GameState.AllyTurn);
 		}
+	}
+
+	public void SpawnPlayers(){
+		List<GameObject> spawns = new List<GameObject> ();
+		spawns.AddRange (spawnPointsOnMap);
+		List<GameObject> playersToSpawn = new List<GameObject>();
+		playersToSpawn.AddRange (players);
+		foreach (GameObject player in playersToSpawn) {
+			GridFunc.SpawnFirstPlayer (players, spawns [0], spawnpoint);
+			spawns.Remove (spawns [0]);
+		}
+		players = GridFunc.ResetPlayersActions();
+		SelectPlayer (players [0]);
+		ChangeInputState (InputState.Decision);
+		GridFunc.HideSpawnPoints (grid);
+		ChangeState(GameState.AllyTurn);
 	}
 
 	public void ShowCurrentPlayerMovement(GameObject player){
