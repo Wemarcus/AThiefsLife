@@ -39,6 +39,7 @@ public class MapHandler : MonoBehaviour {
 	public List<GameObject> playersOnMap;
 
 	public List<GameObject> spawnPointsOnMap;
+	public List<GameObject> enemySpawnPointsOnMap;
 
 	public ConfirmPanelHandler cph;
 
