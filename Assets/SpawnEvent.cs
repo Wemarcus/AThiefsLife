@@ -5,21 +5,26 @@ using UnityEngine;
 public class SpawnEvent : MonoBehaviour {
 
 	public bool eventTriggered;
+	public bool done;
 	public List<GameObject> spawnPoints;
 	public List<GameObject> enemiesToSpawn;
 	public GameObject spawnpoint; 
 	private CaveauEvent ce;
+	public int cooldown;
 
 	void Start(){
 		ce = FindObjectOfType<CaveauEvent> ();
+		FindObjectOfType<MapHandler> ().nextRoundEvent += TurnPassed;
 	}
 
 	// Update is called once per frame
 	void Update () {
 		if (!eventTriggered && ce.EventTriggered && FindObjectOfType<MapHandler> ().gs == GameState.EnemyTurn) {
 			eventTriggered = true;
-			//call spawn func
-			SpawnFunc();
+		}
+		if (eventTriggered && cooldown <= 0 && !done) {
+			SpawnFunc ();
+			done = true;
 		}
 	}
 
@@ -43,5 +48,10 @@ public class SpawnEvent : MonoBehaviour {
 				spawnToUse.RemoveAt(0);
 			}
 		}
+	}
+
+	void TurnPassed(int n){
+		if(eventTriggered)
+			cooldown -= 1;
 	}
 }
