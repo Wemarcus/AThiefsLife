@@ -42,6 +42,9 @@ public class MapHandler : MonoBehaviour {
 
 	public ConfirmPanelHandler cph;
 
+	public int policemanKilled;
+	public int EmployedKilled;
+
 	public delegate void ChangeStateDelegate (GameState gState);
 	public event ChangeStateDelegate changeStateEvent;
 

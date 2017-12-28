@@ -75,6 +75,7 @@ public class Enemy : MonoBehaviour {
 
 	private void BasicAI(){
 		//playersTrg = GridMath.FindPlayers ();
+		playersTrg.Clear();
 		playersTrg.AddRange(FindObjectOfType<MapHandler>().playersOnMap);
 		playersTrg = GridFunc.HittablePlayers (this.gameObject, playersTrg,range);
 		MoveSpots = GridMath.FindWalkPathInRange (block, moveRange);
@@ -153,6 +154,7 @@ public class Enemy : MonoBehaviour {
 
 	private IEnumerator BasicAICor(){
 		//playersTrg = GridMath.FindPlayers ();
+		playersTrg.Clear();
 		playersTrg.AddRange(FindObjectOfType<MapHandler>().playersOnMap);
 		playersTrg = GridFunc.HittablePlayers (this.gameObject, playersTrg,range);
 		MoveSpots = GridMath.FindWalkPathInRange (block, moveRange);
@@ -408,6 +410,18 @@ public class Enemy : MonoBehaviour {
 		//FindObjectOfType<MapHandler> ().animationEvent -= OnAnimationPerform;
 		if(FindObjectOfType<MapHandler>().enemiesOnMap.Contains(this.gameObject))
 			FindObjectOfType<MapHandler> ().enemiesOnMap.Remove (this.gameObject);
+		if (FindObjectOfType<AIHandler> ().enemyList.Contains (this.gameObject)) {
+			if (FindObjectOfType<AIHandler> ().enemyList [0] == this.gameObject) {
+				FindObjectOfType<AIHandler> ().RunNextAI();
+			}
+			FindObjectOfType<AIHandler> ().enemyList.Remove (this.gameObject);
+		}
+		if (ait == AiType.basic) {
+			FindObjectOfType<MapHandler> ().policemanKilled += 1;
+		}
+		if (ait == AiType.onlymovement) {
+			FindObjectOfType<MapHandler> ().EmployedKilled += 1;
+		}
 	}
 
 	void OnDisable(){

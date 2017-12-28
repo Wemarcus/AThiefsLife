@@ -194,14 +194,17 @@ public class GridFunc : MonoBehaviour {
 			Player plr;
 			float dist;
 			foreach (GameObject player in players) {
+				//aggiungere controllo player vivo
+				if(player.GetComponent<Player>()){
 				plr = player.GetComponent<Player> ();
 				Debug.DrawRay (enm.head.transform.position, (plr.head.transform.position - enm.head.transform.position).normalized, Color.red, 4f);
-				if (Physics.Raycast (enm.head.transform.position, (plr.head.transform.position - enm.head.transform.position).normalized, out hit)) {
-					hitted = hit.transform.gameObject;
-					dist = Vector3.Distance(enemy.transform.position, player.transform.position);
-					Debug.Log (hitted.name);
-					if (hitted.gameObject == player && !hitted.GetComponent<Hide>() && dist < range)
-						hittablePlayers.Add (player);
+					if (Physics.Raycast (enm.head.transform.position, (plr.head.transform.position - enm.head.transform.position).normalized, out hit)) {
+						hitted = hit.transform.gameObject;
+						dist = Vector3.Distance (enemy.transform.position, player.transform.position);
+						Debug.Log (hitted.name);
+						if (hitted.gameObject == player && !hitted.GetComponent<Hide> () && dist < range)
+							hittablePlayers.Add (player);
+					}
 				}
 			}
 			return hittablePlayers;
