@@ -23,5 +23,18 @@ public class Glass : MonoBehaviour {
 
             Debug.Log("Collisione tra un Props ed un Glass");
         }
+
+        if (other.tag == "Enemy" && !block)
+        {
+            block = true;
+
+            rb.useGravity = true;
+            rb.isKinematic = false;
+            rb.AddForce(transform.right * 100, ForceMode.Acceleration);
+
+            Debug.Log("Collisione tra un agente della SWAT ed un Glass");
+
+            Destroy(gameObject, 4.0f);
+        }
     }
 }
