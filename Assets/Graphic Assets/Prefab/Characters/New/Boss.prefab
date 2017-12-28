@@ -5668,6 +5668,7 @@ MonoBehaviour:
   damagePopUpPrefab: {fileID: 1960116762310738, guid: a891c0d0ce4a8034a8ddb6cc26a0e920,
     type: 2}
   spawnPointDamagePopUpPrefab: {fileID: 1623237326660564}
+  portrait: {fileID: 1615239554838254, guid: ea2be495cae2fa949815f267613d3b1c, type: 2}
 --- !u!114 &114290914275444730
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5766,6 +5767,7 @@ MonoBehaviour:
   is_sniper: 0
   is_doctor: 0
   is_tank: 0
+  is_swat: 0
 --- !u!114 &114392043982617072
 MonoBehaviour:
   m_ObjectHideFlags: 1

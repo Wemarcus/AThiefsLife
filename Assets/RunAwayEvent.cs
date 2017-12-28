@@ -24,7 +24,7 @@ public class RunAwayEvent : MonoBehaviour {
 					//start event
 					Debug.Log("sto quittando");
 					//Application.Quit ();
-					esh.gameObject.SetActive(true);
+					esh.OnEnableEndStats();
 				}
 			}
 		}

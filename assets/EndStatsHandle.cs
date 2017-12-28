@@ -12,6 +12,8 @@ public class EndStatsHandle : MonoBehaviour {
 	public Text moneyRobbed;
 	MapHandler mh;
 	bool setted;
+	public List<GameObject> portraitList;
+	public GameObject endStats;
 
 	// Use this for initialization
 	void Start () {
@@ -21,12 +23,18 @@ public class EndStatsHandle : MonoBehaviour {
 		policemanKilled.text = mh.policemanKilled.ToString();
 		employedKilled.text = mh.EmployedKilled.ToString();
 		moneyRobbed.text = mh.money.ToString();
-		this.gameObject.SetActive (false);
+		endStats.gameObject.SetActive (false);
 		setted = true;
 	}
 
-	void OnEnable(){
+	public void OnEnableEndStats(){
 		if (setted) {
+			endStats.gameObject.SetActive (true);
+			foreach (GameObject portrait in portraitList) {
+				portrait.transform.SetParent (thiefContent.transform);
+			}
+			mh.ChangeState (GameState.End);
+			mh.ChangeInputState (InputState.Nothing);
 			//setto nome mappa
 			//setto icone ladri
 			policemanKilled.text = mh.policemanKilled.ToString();
