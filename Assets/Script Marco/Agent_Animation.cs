@@ -21,6 +21,7 @@ public class Agent_Animation : MonoBehaviour {
     public bool is_sniper;
     public bool is_doctor;
     public bool is_tank;
+    public bool is_swat;
 
     // Variabili utilizzate solo in questo script
     private Animator agent;
@@ -210,7 +211,7 @@ public class Agent_Animation : MonoBehaviour {
         {
             sound.enabled = true;
 
-            if (is_sniper || is_tank)
+            if (is_sniper || is_tank || is_swat)
             {
                 sound.PlayDelayed(1.0f);
             }
@@ -236,7 +237,7 @@ public class Agent_Animation : MonoBehaviour {
             {
                 yield return new WaitForSeconds(1.0f);
                 sparks.SetActive(false);
-            } else if (is_tank)
+            } else if (is_tank || is_swat)
             {
                 yield return new WaitForSeconds(0.5f);
                 sparks.SetActive(false);
@@ -252,7 +253,7 @@ public class Agent_Animation : MonoBehaviour {
             {
                 yield return new WaitForSeconds(1.0f);
                 sound.enabled = false;
-            } else if (is_tank)
+            } else if (is_tank || is_swat)
             {
                 yield return new WaitForSeconds(0.7f);
                 sound.enabled = false;
