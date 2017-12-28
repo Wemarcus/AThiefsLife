@@ -23,13 +23,16 @@ public class Player : MonoBehaviour {
 	public GameObject iconPrefab;
 	public GameObject damagePopUpPrefab;
 	public GameObject spawnPointDamagePopUpPrefab;
+	public GameObject portrait;
 
 	// Use this for initialization
 
 	void Start () {
 		currentHP = maxHP;
-		if(!FindObjectOfType<MapHandler>().playersOnMap.Contains(this.gameObject))
+		if (!FindObjectOfType<MapHandler> ().playersOnMap.Contains (this.gameObject)) {
 			FindObjectOfType<MapHandler> ().playersOnMap.Add (this.gameObject);
+			//FindObjectOfType<EndStatsHandle> ().portraitList.Add (portrait);
+		}
 	}
 
 	void OnEnable(){
@@ -135,13 +138,15 @@ public class Player : MonoBehaviour {
 
 	void OnDestroy(){
 		//FindObjectOfType<MapHandler> ().animationEvent -= OnAnimationPerform;
-		if(FindObjectOfType<MapHandler>().playersOnMap.Contains(this.gameObject))
+		if (FindObjectOfType<MapHandler> ().playersOnMap.Contains (this.gameObject)) {
 			FindObjectOfType<MapHandler> ().playersOnMap.Remove (this.gameObject);
+		}
 	}
 
 	void OnDisable(){
 		//FindObjectOfType<MapHandler> ().animationEvent -= OnAnimationPerform;
-		if(FindObjectOfType<MapHandler>().playersOnMap.Contains(this.gameObject))
+		if (FindObjectOfType<MapHandler> ().playersOnMap.Contains (this.gameObject)) {
 			FindObjectOfType<MapHandler> ().playersOnMap.Remove (this.gameObject);
+		}
 	}
 }

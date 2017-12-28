@@ -2,5 +2,6 @@
 	Init,
 	Spawn,
 	AllyTurn,
-	EnemyTurn
+	EnemyTurn,
+	End
 }

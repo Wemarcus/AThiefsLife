@@ -13,6 +13,12 @@ public class GridFunc : MonoBehaviour {
 				GameObject icon = Instantiate( newPlayer.GetComponent<Player> ().iconPrefab,GameObject.Find("PortraitPanel").transform);
 				IconHandle iconH = icon.GetComponent<IconHandle> ();
 				iconH.LinkIcon (newPlayer);
+
+				GameObject portrait = Instantiate (newPlayer.GetComponent<Player> ().portrait);
+				EndStatsPortrait port = portrait.GetComponent<EndStatsPortrait> ();
+				port.player = newPlayer.GetComponent<Player> ();
+				FindObjectOfType<EndStatsHandle> ().portraitList.Add (portrait);
+
 				newPlayer.transform.position = spawnpoint.transform.position;
 				Player plr = newPlayer.GetComponent<Player> ();
 				Grid.GridMath.SetPlayerTarget (newPlayer,block);
@@ -194,14 +200,17 @@ public class GridFunc : MonoBehaviour {
 			Player plr;
 			float dist;
 			foreach (GameObject player in players) {
+				//aggiungere controllo player vivo
+				if(player.GetComponent<Player>()){
 				plr = player.GetComponent<Player> ();
 				Debug.DrawRay (enm.head.transform.position, (plr.head.transform.position - enm.head.transform.position).normalized, Color.red, 4f);
-				if (Physics.Raycast (enm.head.transform.position, (plr.head.transform.position - enm.head.transform.position).normalized, out hit)) {
-					hitted = hit.transform.gameObject;
-					dist = Vector3.Distance(enemy.transform.position, player.transform.position);
-					Debug.Log (hitted.name);
-					if (hitted.gameObject == player && !hitted.GetComponent<Hide>() && dist < range)
-						hittablePlayers.Add (player);
+					if (Physics.Raycast (enm.head.transform.position, (plr.head.transform.position - enm.head.transform.position).normalized, out hit)) {
+						hitted = hit.transform.gameObject;
+						dist = Vector3.Distance (enemy.transform.position, player.transform.position);
+						Debug.Log (hitted.name);
+						if (hitted.gameObject == player && !hitted.GetComponent<Hide> () && dist < range)
+							hittablePlayers.Add (player);
+					}
 				}
 			}
 			return hittablePlayers;

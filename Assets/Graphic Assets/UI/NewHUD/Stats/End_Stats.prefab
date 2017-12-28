@@ -42,8 +42,9 @@ GameObject:
   - component: {fileID: 114598193477785878}
   - component: {fileID: 114991646460766366}
   - component: {fileID: 114635651456773934}
+  - component: {fileID: 114352621145877254}
   m_Layer: 5
-  m_Name: Doctor
+  m_Name: DoctorEndPortrait
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -97,8 +98,9 @@ GameObject:
   - component: {fileID: 114733367279921218}
   - component: {fileID: 114478642542824730}
   - component: {fileID: 114645384479022024}
+  - component: {fileID: 114286861545126186}
   m_Layer: 5
-  m_Name: Boss
+  m_Name: BossEndPortrait
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -186,8 +188,9 @@ GameObject:
   - component: {fileID: 114404525496204846}
   - component: {fileID: 114144180475018626}
   - component: {fileID: 114049318865032998}
+  - component: {fileID: 114348357607004070}
   m_Layer: 5
-  m_Name: Tank
+  m_Name: TankEndPortrait
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -257,6 +260,7 @@ GameObject:
   - component: {fileID: 224607905214283226}
   - component: {fileID: 222441017915547482}
   - component: {fileID: 114287865442796250}
+  - component: {fileID: 114464245164345450}
   m_Layer: 5
   m_Name: End_Stats
   m_TagString: Untagged
@@ -315,7 +319,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1743164181712834
 GameObject:
   m_ObjectHideFlags: 1
@@ -345,8 +349,9 @@ GameObject:
   - component: {fileID: 114280915773204206}
   - component: {fileID: 114192364568951236}
   - component: {fileID: 114238552798162828}
+  - component: {fileID: 114451987121847642}
   m_Layer: 5
-  m_Name: Sniper
+  m_Name: SniperEndPortrait
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -482,7 +487,7 @@ MonoBehaviour:
     m_BestFit: 1
     m_MinSize: 10
     m_MaxSize: 32
-    m_Alignment: 4
+    m_Alignment: 5
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -753,6 +758,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114286861545126186
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1307029180433850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd5608f4c92ce3e4a97224b1d9a8d9e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  death: {fileID: 114866450812875672}
 --- !u!114 &114287865442796250
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -794,6 +811,30 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.384}
   m_EffectDistance: {x: 2, y: -3}
   m_UseGraphicAlpha: 1
+--- !u!114 &114348357607004070
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1508105198349158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd5608f4c92ce3e4a97224b1d9a8d9e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  death: {fileID: 114702265832472234}
+--- !u!114 &114352621145877254
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1122572805835648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd5608f4c92ce3e4a97224b1d9a8d9e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  death: {fileID: 114232349725820874}
 --- !u!114 &114386320934611588
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -934,6 +975,18 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: DOCTOR
+--- !u!114 &114451987121847642
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1788048724240496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd5608f4c92ce3e4a97224b1d9a8d9e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  death: {fileID: 114252477749175292}
 --- !u!114 &114462106135827596
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -948,6 +1001,22 @@ MonoBehaviour:
   m_EffectColor: {r: 0.2509804, g: 0.2509804, b: 0.2509804, a: 1}
   m_EffectDistance: {x: 2, y: -2}
   m_UseGraphicAlpha: 1
+--- !u!114 &114464245164345450
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1702849961004422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d65cacd62e091ed4a8bd054e47d3c4f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapName: {fileID: 114568762018468082}
+  thiefContent: {fileID: 1516484689757352}
+  policemanKilled: {fileID: 114240724686559528}
+  employedKilled: {fileID: 114402694202330736}
+  moneyRobbed: {fileID: 114058522233879696}
 --- !u!114 &114478642542824730
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1306,7 +1375,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1740956348042954}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 

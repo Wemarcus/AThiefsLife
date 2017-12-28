@@ -5,7 +5,7 @@ using UnityEngine;
 public class RunAwayEvent : MonoBehaviour {
 
 	public List<GameObject> blockListTrigger;
-
+	public EndStatsHandle esh;
 	// Use this for initialization
 
 	// Update is called once per frame
@@ -15,16 +15,17 @@ public class RunAwayEvent : MonoBehaviour {
 
 	void checkIfSomeoneIsOn(){
 		Node n;
-		//Player p;
+		Player p;
 			foreach (GameObject block in blockListTrigger) {
 			n = block.GetComponent<Node> ();
 			if (n.player != null) {
-				//p = n.player.GetComponent<Player> ();
-				//if (p.isBoss) {
+				p = n.player.GetComponent<Player> ();
+				if (p.isBoss) {
 					//start event
 					Debug.Log("sto quittando");
-					Application.Quit ();
-				//}
+					//Application.Quit ();
+					esh.OnEnableEndStats();
+				}
 			}
 		}
 	}
