@@ -6,6 +6,7 @@ public class Sound : MonoBehaviour {
 
     public string tag_name;
     private AudioSource sound;
+    private bool block;
 
     private void Start()
     {
@@ -14,9 +15,18 @@ public class Sound : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == tag_name)
+        if (other.tag == tag_name && !block)
         {
+            block = true;
             sound.Play();
+
+            StartCoroutine(Time(3.0f));
         }
+    }
+
+    private IEnumerator Time(float t)
+    {
+        yield return new WaitForSeconds(t);
+        block = false;
     }
 }
