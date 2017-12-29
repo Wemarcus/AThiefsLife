@@ -424,6 +424,15 @@ public class MapHandler : MonoBehaviour {
 		bullet.GetComponent<Rigidbody>().velocity = (plr.HitZone[rand].transform.position - enm.shootPoint.transform.position)* 1f;    
 	}
 
+	public IEnumerator ThrowBombToPlayer(GameObject player, GameObject bombPrefab, int damage, int range, int cdDuration){
+		yield return new WaitForSeconds (2f);
+		Player plr = player.GetComponent<Player> ();
+		GameObject bomb = (GameObject)Instantiate (bombPrefab);
+		bomb.transform.position = new Vector3 (plr.head.transform.position.x, plr.head.transform.position.y + 0.5f, plr.head.transform.position.z);
+		Gas gs = bomb.AddComponent (typeof(Gas)) as Gas;
+		gs.SetBomb (damage, range, cdDuration);
+	}
+
 	public void BuildBullet(GameObject bullet, int damage, BulletTag bt){
 		BulletDamage bd = bullet.GetComponent<BulletDamage> ();
 		bd.damage = damage;
