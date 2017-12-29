@@ -9190,6 +9190,24 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5, y: 0, z: 5}
   m_Center: {x: -2.5, y: 0, z: 2.5}
+--- !u!1 &625083823 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1682412332911078, guid: 69209a86bcc902544beec78b06484eb9,
+    type: 2}
+  m_PrefabInternal: {fileID: 416893526}
+--- !u!114 &625083824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 625083823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccc46033ceded22418f06931ad6ffeab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  red: {fileID: 1512573685}
+  blue: {fileID: 2115622389}
 --- !u!1 &628497586 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1970224112945794, guid: 3372e963b7f41c4469be2676a53a4556,
@@ -31036,27 +31054,27 @@ Prefab:
     - target: {fileID: 224388531723153684, guid: 68d9eddc6f146214fbb69be40e5d8044,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -97.26672
       objectReference: {fileID: 0}
     - target: {fileID: 224542781559929432, guid: 68d9eddc6f146214fbb69be40e5d8044,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 182.01599
+      value: 97.26672
       objectReference: {fileID: 0}
     - target: {fileID: 224352983685602896, guid: 68d9eddc6f146214fbb69be40e5d8044,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 91.007996
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224955472691128518, guid: 68d9eddc6f146214fbb69be40e5d8044,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: -182.01599
+      value: -143.13751
       objectReference: {fileID: 0}
     - target: {fileID: 224388701290195888, guid: 68d9eddc6f146214fbb69be40e5d8044,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: -91.007996
+      value: -127.23334
       objectReference: {fileID: 0}
     - target: {fileID: 1693092689565386, guid: 68d9eddc6f146214fbb69be40e5d8044, type: 2}
       propertyPath: m_IsActive
@@ -38127,7 +38145,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 0.11724138, g: 0, b: 1, a: 1}
-  m_Intensity: 10
+  m_Intensity: 13
   m_Range: 2
   m_SpotAngle: 48
   m_CookieSize: 10

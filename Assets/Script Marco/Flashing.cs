@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class Flashing : MonoBehaviour {
 
-    
+    public Light red;
+    public Light blue;
 
 	// Use this for initialization
 	void Start () {
-		
+        red.enabled = true;
+        blue.enabled = false;
+        StartCoroutine(Flickering());
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+	private IEnumerator Flickering()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(0.5f);
+            red.enabled = !red.enabled;
+            blue.enabled = !blue.enabled;
+        }
+    }
 }
