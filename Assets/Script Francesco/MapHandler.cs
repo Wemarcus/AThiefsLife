@@ -13,7 +13,7 @@ public class MapHandler : MonoBehaviour {
 	public int ColumnH = 100;
 	public int RowH = 100;
 	//prefab players
-	public GameObject spawnpoint;
+	public List<GameObject> spawnpoints;
 	public List<GameObject> players;
 	public List<GameObject> targetList;
 	//Stato di gioco
@@ -45,6 +45,9 @@ public class MapHandler : MonoBehaviour {
 
 	public int policemanKilled;
 	public int EmployedKilled;
+
+	public bool pause;
+	public PauseMenu pm;
 
 	public delegate void ChangeStateDelegate (GameState gState);
 	public event ChangeStateDelegate changeStateEvent;
@@ -99,7 +102,8 @@ public class MapHandler : MonoBehaviour {
 	}
 
 	public void Spawn(GameObject block){
-		GridFunc.SpawnFirstPlayer (players, block,spawnpoint);
+		GridFunc.SpawnFirstPlayer (players, block,spawnpoints[0]);
+		spawnpoints.Remove (spawnpoints [0]);
 		if(players.Count <= 0) {
 			players = GridFunc.ResetPlayersActions();
 			if (players.Count > 0) {
@@ -111,14 +115,28 @@ public class MapHandler : MonoBehaviour {
 		}
 	}
 
+	public void SwitchPause(){
+		pause = !pause;
+		if (pause) {
+			pm.pauseMenu.SetActive (true);
+			Time.timeScale = 0;
+			AudioListener.pause = true;
+		} else {
+			Time.timeScale = 1;			
+			AudioListener.pause = false;
+			pm.pauseMenu.SetActive (false);
+		}
+	}
+
 	public void SpawnPlayers(){
 		List<GameObject> spawns = new List<GameObject> ();
 		spawns.AddRange (spawnPointsOnMap);
 		List<GameObject> playersToSpawn = new List<GameObject>();
 		playersToSpawn.AddRange (players);
 		foreach (GameObject player in playersToSpawn) {
-			GridFunc.SpawnFirstPlayer (players, spawns [0], spawnpoint);
+			GridFunc.SpawnFirstPlayer (players, spawns [0], spawnpoints[0]);
 			spawns.Remove (spawns [0]);
+			spawnpoints.Remove (spawnpoints [0]);
 		}
 		players = GridFunc.ResetPlayersActions();
 		SelectPlayer (players [0]);

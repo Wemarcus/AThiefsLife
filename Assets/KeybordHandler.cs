@@ -28,7 +28,9 @@ public class KeybordHandler : MonoBehaviour {
 		}
 		if ((inpS == InputState.Decision || inpS == InputState.Nothing || inpS == InputState.Abilty || inpS == InputState.Movement) && gs == GameState.AllyTurn) {
 			SwitchSelectedPlayer ();
-
+		}
+		if (Input.GetKeyDown (KeyCode.Escape)) {
+			mh.SwitchPause ();
 		}
 	}
 

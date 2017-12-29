@@ -8,7 +8,7 @@ public class SpawnEvent : MonoBehaviour {
 	public bool done;
 	public List<GameObject> spawnPoints;
 	public List<GameObject> enemiesToSpawn;
-	public GameObject spawnpoint; 
+	public List<GameObject> spawnpointTransf; 
 	private CaveauEvent ce;
 	public int cooldown;
 
@@ -44,8 +44,9 @@ public class SpawnEvent : MonoBehaviour {
 			foreach (GameObject enemy in enemiesToSpawn) {
 				//spawn enemy
 				Debug.Log("spawno");
-				Grid.GridFunc.SpawnEnemy(enemiesTemp,spawnToUse[0],spawnpoint);
+				Grid.GridFunc.SpawnEnemy(enemiesTemp,spawnToUse[0],spawnpointTransf[0]);
 				spawnToUse.RemoveAt(0);
+				spawnpointTransf.RemoveAt (0);
 			}
 		}
 	}
