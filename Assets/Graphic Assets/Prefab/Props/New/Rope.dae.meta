@@ -1,0 +1,168 @@
+fileFormatVersion: 2
+guid: 1e5d670bcb307834997f2f8073c08406
+timeCreated: 1514507912
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: group_0
+    100002: group_1
+    100004: group_1 1
+    100006: group_1 2
+    100008: group_1 3
+    100010: group_1 4
+    100012: group_1 5
+    100014: group_1 6
+    100016: group_1 7
+    100018: instance_0
+    100020: instance_1
+    100022: instance_2
+    100024: instance_3
+    100026: instance_4
+    100028: instance_5
+    100030: instance_6
+    100032: instance_7
+    100034: //RootNode
+    100036: Rope
+    100038: Rope 1
+    100040: Rope 2
+    100042: Rope 3
+    100044: Rope 4
+    100046: Rope 5
+    100048: Rope 6
+    100050: Rope 7
+    100052: skp_camera_Last_Saved_SketchUp_View
+    400000: group_0
+    400002: group_1
+    400004: group_1 1
+    400006: group_1 2
+    400008: group_1 3
+    400010: group_1 4
+    400012: group_1 5
+    400014: group_1 6
+    400016: group_1 7
+    400018: instance_0
+    400020: instance_1
+    400022: instance_2
+    400024: instance_3
+    400026: instance_4
+    400028: instance_5
+    400030: instance_6
+    400032: instance_7
+    400034: //RootNode
+    400036: Rope
+    400038: Rope 1
+    400040: Rope 2
+    400042: Rope 3
+    400044: Rope 4
+    400046: Rope 5
+    400048: Rope 6
+    400050: Rope 7
+    400052: skp_camera_Last_Saved_SketchUp_View
+    2000000: skp_camera_Last_Saved_SketchUp_View
+    2300000: group_1
+    2300002: group_1 1
+    2300004: group_1 2
+    2300006: group_1 3
+    2300008: group_1 4
+    2300010: group_1 5
+    2300012: group_1 6
+    2300014: group_1 7
+    3300000: group_1
+    3300002: group_1 1
+    3300004: group_1 2
+    3300006: group_1 3
+    3300008: group_1 4
+    3300010: group_1 5
+    3300012: group_1 6
+    3300014: group_1 7
+    4300000: group_1
+    9500000: //RootNode
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Color_E02
+    second: {fileID: 2100000, guid: d9a9767ed6a8173498c384682ed673b7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Vegetation_Grass_Original
+    second: {fileID: 2100000, guid: 874c7fd6f7d4a0641b81d7ccab49aa18, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
