@@ -11,6 +11,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         public ThirdPersonCharacter character { get; private set; } // the character we are controlling
         public Transform target;                                    // target to aim for
 
+        public bool floor;
+        private bool block;
 
         private void Start()
         {
@@ -26,26 +28,42 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         private void Update()
         {
 			if (target != null) {
-				agent.SetDestination (target.position);
-				FindObjectOfType<MapHandler> ().AnimationPerforming (true);
-				//Debug.Log ("avvia animazione");
-			}
-			if (agent.remainingDistance > agent.stoppingDistance) {
+                agent.enabled = true;
+                agent.SetDestination(target.position);
+                FindObjectOfType<MapHandler>().AnimationPerforming(true);
+            }
+
+            if (target != null && agent.remainingDistance > agent.stoppingDistance) {
 				character.Move (agent.desiredVelocity, false, false);
 			} else {
 				character.Move (Vector3.zero, false, false);
 			}
-			if (!agent.pathPending && agent.remainingDistance < 0.5f && target) { 
+
+			if (target && !agent.pathPending && agent.remainingDistance < 0.5f) { 
 				//Debug.Log ("stoppa animazione");
 				FindObjectOfType<MapHandler> ().AnimationPerforming (false);
 				SetTarget (null);
 			}
         }
 
-
         public void SetTarget(Transform target)
         {
             this.target = target;
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (!block)
+            {
+                switch (other.tag)
+                {
+                    case "Floor":
+                        floor = true;
+                        block = true;
+                        agent.enabled = false;
+                        break;
+                }
+            }
         }
     }
 }
