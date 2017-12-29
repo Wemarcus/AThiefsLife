@@ -181,7 +181,7 @@ public class Enemy : MonoBehaviour {
 			//FindObjectOfType<MapHandler> ().ProvideDamageToPlayer (target, damage);
 			Grid.GridMath.RotateCharacter(this.gameObject,target);
 			yield return  new WaitForSeconds(0.5f);
-			FindObjectOfType<MapHandler> ().ThrowBombToPlayer (target, bombPrefab, damage, bombRange, cdDuration);
+			FindObjectOfType<MapHandler> ().ThrowBombToPlayer (this.gameObject, target, bombPrefab, damage, bombRange, cdDuration);
 			//FindObjectOfType<MapHandler>().FireBulletToPlayer(target,this.gameObject,damage); //TODO
 			yield return  new WaitForSeconds(1f);
 			//Debug.Log ("sto colpendo:" + target.name); // calcolo del danno TODO
@@ -282,7 +282,7 @@ public class Enemy : MonoBehaviour {
 				//FindObjectOfType<MapHandler> ().ProvideDamageToPlayer (target, damage);
 				Grid.GridMath.RotateCharacter(this.gameObject,target);
 				yield return  new WaitForSeconds(0.5f);
-				FindObjectOfType<MapHandler> ().ThrowBombToPlayer (target, bombPrefab, damage, bombRange, cdDuration);
+				FindObjectOfType<MapHandler> ().ThrowBombToPlayer (this.gameObject, target, bombPrefab, damage, bombRange, cdDuration);
 				//FindObjectOfType<MapHandler>().FireBulletToPlayer(target,this.gameObject,damage); //TODO
 			}
 		}

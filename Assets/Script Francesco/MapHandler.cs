@@ -424,7 +424,13 @@ public class MapHandler : MonoBehaviour {
 		bullet.GetComponent<Rigidbody>().velocity = (plr.HitZone[rand].transform.position - enm.shootPoint.transform.position)* 1f;    
 	}
 
-	public IEnumerator ThrowBombToPlayer(GameObject player, GameObject bombPrefab, int damage, int range, int cdDuration){
+	public void ThrowBombToPlayer(GameObject enemy,GameObject player, GameObject bombPrefab, int damage, int range, int cdDuration){
+		Agent_Animation aa = enemy.gameObject.GetComponent<Agent_Animation> ();
+		aa.grenade = true;
+		StartCoroutine(ThrowBombToPlayerCor (player,bombPrefab,damage,range,cdDuration));
+	}
+
+	public IEnumerator ThrowBombToPlayerCor(GameObject player, GameObject bombPrefab, int damage, int range, int cdDuration){
 		yield return new WaitForSeconds (2f);
 		Player plr = player.GetComponent<Player> ();
 		GameObject bomb = (GameObject)Instantiate (bombPrefab);
