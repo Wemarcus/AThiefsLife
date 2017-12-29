@@ -46,6 +46,9 @@ public class MapHandler : MonoBehaviour {
 	public int policemanKilled;
 	public int EmployedKilled;
 
+	public bool pause;
+	public PauseMenu pm;
+
 	public delegate void ChangeStateDelegate (GameState gState);
 	public event ChangeStateDelegate changeStateEvent;
 
@@ -108,6 +111,17 @@ public class MapHandler : MonoBehaviour {
 			}
 			GridFunc.HideSpawnPoints (grid);
 			ChangeState(GameState.AllyTurn);
+		}
+	}
+
+	public void SwitchPause(){
+		pause = !pause;
+		if (pause) {
+			pm.pauseMenu.SetActive (true);
+			Time.timeScale = 0;
+		} else {
+			Time.timeScale = 1;
+			pm.pauseMenu.SetActive (false);
 		}
 	}
 
