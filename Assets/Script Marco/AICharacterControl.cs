@@ -27,23 +27,31 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
         private void Update()
         {
-			if (target != null) {
-                agent.enabled = true;
-                agent.SetDestination(target.position);
-                FindObjectOfType<MapHandler>().AnimationPerforming(true);
+            if (floor)
+            {
+                if (target != null)
+                {
+                    agent.enabled = true;
+                    agent.SetDestination(target.position);
+                    FindObjectOfType<MapHandler>().AnimationPerforming(true);
+                }
+
+                if (target != null && agent.remainingDistance > agent.stoppingDistance)
+                {
+                    character.Move(agent.desiredVelocity, false, false);
+                }
+                else
+                {
+                    character.Move(Vector3.zero, false, false);
+                }
+
+                if (target && !agent.pathPending && agent.remainingDistance < 0.5f)
+                {
+                    //Debug.Log ("stoppa animazione");
+                    FindObjectOfType<MapHandler>().AnimationPerforming(false);
+                    SetTarget(null);
+                }
             }
-
-            if (target != null && agent.remainingDistance > agent.stoppingDistance) {
-				character.Move (agent.desiredVelocity, false, false);
-			} else {
-				character.Move (Vector3.zero, false, false);
-			}
-
-			if (target && !agent.pathPending && agent.remainingDistance < 0.5f) { 
-				//Debug.Log ("stoppa animazione");
-				FindObjectOfType<MapHandler> ().AnimationPerforming (false);
-				SetTarget (null);
-			}
         }
 
         public void SetTarget(Transform target)
