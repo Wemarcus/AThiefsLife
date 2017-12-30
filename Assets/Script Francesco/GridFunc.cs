@@ -33,8 +33,8 @@ public class GridFunc : MonoBehaviour {
 		public static void SpawnEnemy(List<GameObject> enemies, GameObject block, GameObject spawnpoint){
 			if (enemies.Count > 0) {
 				//Instantiate (players [0], block.transform);
-				GameObject newEnemy = Instantiate(enemies[0]);
-				newEnemy.transform.position = spawnpoint.transform.position;
+				GameObject newEnemy = Instantiate(enemies[0],spawnpoint.transform);
+				//newEnemy.transform.position = spawnpoint.transform.position;
 				Enemy enm = newEnemy.GetComponent<Enemy> ();
 				enm.block = block;
 				UnityStandardAssets.Characters.ThirdPerson.AICharacterControl charcontrol = newEnemy.GetComponent<UnityStandardAssets.Characters.ThirdPerson.AICharacterControl> ();
