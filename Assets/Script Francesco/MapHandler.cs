@@ -49,6 +49,8 @@ public class MapHandler : MonoBehaviour {
 	public bool pause;
 	public PauseMenu pm;
 
+	public GameObject bossDeathPanel;
+
 	public delegate void ChangeStateDelegate (GameState gState);
 	public event ChangeStateDelegate changeStateEvent;
 
@@ -509,6 +511,15 @@ public class MapHandler : MonoBehaviour {
 				ChangeInputState (InputState.Nothing);
 			}*/
 		}
+	}
+
+	public void BossDeath(){
+		Time.timeScale = 0;
+		AudioListener.pause =false;
+		ChangeState (GameState.End);
+		ChangeInputState (InputState.Nothing);
+		bossDeathPanel.SetActive (true);
+
 	}
 
 	void SetupGrid(){
