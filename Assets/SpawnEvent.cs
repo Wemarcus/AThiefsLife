@@ -9,6 +9,7 @@ public class SpawnEvent : MonoBehaviour {
 	public List<GameObject> spawnPoints;
 	public List<GameObject> enemiesToSpawn;
 	public List<GameObject> spawnpointTransf; 
+	public List<GameObject> objectsToActivate;
 	private CaveauEvent ce;
 	public int cooldown;
 
@@ -21,6 +22,7 @@ public class SpawnEvent : MonoBehaviour {
 	void Update () {
 		if (!eventTriggered && ce.EventTriggered && FindObjectOfType<MapHandler> ().gs == GameState.EnemyTurn) {
 			eventTriggered = true;
+			ActivateObjects ();
 		}
 		if (eventTriggered && cooldown <= 0 && !done) {
 			SpawnFunc ();
@@ -54,5 +56,11 @@ public class SpawnEvent : MonoBehaviour {
 	void TurnPassed(int n){
 		if(eventTriggered)
 			cooldown -= 1;
+	}
+
+	void ActivateObjects(){
+		foreach (GameObject element in objectsToActivate) {
+			element.SetActive (true);
+		}
 	}
 }

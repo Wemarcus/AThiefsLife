@@ -40,16 +40,21 @@ public class Gas : MonoBehaviour {
 				Player p;
 				Enemy e;
 				GasDot gd;
+
 				if (target.GetComponent<Player> ()) {
 					p = target.GetComponent<Player> ();
-					p.DealDamage (damage);
-					gd = target.AddComponent (typeof(GasDot)) as GasDot;
-					gd.SetDamageOverTime (cooldown, damage);
+					if (!p.immuneToGas) {
+						p.DealDamage (damage);
+						gd = target.AddComponent (typeof(GasDot)) as GasDot;
+						gd.SetDamageOverTime (cooldown, damage);
+					}
 				} else if (target.GetComponent<Enemy> ()) {
 					e = target.GetComponent<Enemy> ();
-					e.DealDamage (damage);
-					gd = target.AddComponent (typeof(GasDot)) as GasDot;
-					gd.SetDamageOverTime (cooldown, damage);
+					if (!e.immuneToGas) {
+						e.DealDamage (damage);
+						gd = target.AddComponent (typeof(GasDot)) as GasDot;
+						gd.SetDamageOverTime (cooldown, damage);
+					}
 				}
 			}
 			exploded = true;

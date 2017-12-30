@@ -24,6 +24,7 @@ public class Player : MonoBehaviour {
 	public GameObject damagePopUpPrefab;
 	public GameObject spawnPointDamagePopUpPrefab;
 	public GameObject portrait;
+	public bool immuneToGas;
 
 	// Use this for initialization
 
@@ -140,6 +141,9 @@ public class Player : MonoBehaviour {
 		//FindObjectOfType<MapHandler> ().animationEvent -= OnAnimationPerform;
 		if (FindObjectOfType<MapHandler> ().playersOnMap.Contains (this.gameObject)) {
 			FindObjectOfType<MapHandler> ().playersOnMap.Remove (this.gameObject);
+			if (isBoss) {
+				FindObjectOfType<MapHandler> ().BossDeath ();
+			}
 		}
 	}
 
@@ -147,6 +151,9 @@ public class Player : MonoBehaviour {
 		//FindObjectOfType<MapHandler> ().animationEvent -= OnAnimationPerform;
 		if (FindObjectOfType<MapHandler> ().playersOnMap.Contains (this.gameObject)) {
 			FindObjectOfType<MapHandler> ().playersOnMap.Remove (this.gameObject);
+			if (isBoss) {
+				FindObjectOfType<MapHandler> ().BossDeath ();
+			}
 		}
 	}
 }

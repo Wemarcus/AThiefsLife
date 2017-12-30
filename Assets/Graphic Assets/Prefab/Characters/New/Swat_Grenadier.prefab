@@ -3720,6 +3720,7 @@ MonoBehaviour:
     type: 2}
   spawnPointDamagePopUpPrefab: {fileID: 1845428903301886}
   nearestPlayer: {fileID: 0}
+  immuneToGas: 1
   bombPrefab: {fileID: 1543882540386452, guid: ca282236e11fdef46904b9266ce130d5, type: 2}
   cdDuration: 1
   bombRange: 20
