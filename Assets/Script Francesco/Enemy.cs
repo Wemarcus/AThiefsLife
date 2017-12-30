@@ -24,6 +24,8 @@ public class Enemy : MonoBehaviour {
 
 	public GameObject nearestPlayer;
 
+	public bool immuneToGas;
+
 	[Header("Aoe Setup(only if weapon type is aoe)")]
 
 	public GameObject bombPrefab;

@@ -24,6 +24,7 @@ public class Player : MonoBehaviour {
 	public GameObject damagePopUpPrefab;
 	public GameObject spawnPointDamagePopUpPrefab;
 	public GameObject portrait;
+	public bool immuneToGas;
 
 	// Use this for initialization
 
