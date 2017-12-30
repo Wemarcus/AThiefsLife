@@ -2064,7 +2064,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1393327065243058}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.975, y: -0.68999994, z: -3.19}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4457400364495348}
@@ -3534,6 +3534,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  floor: 0
 --- !u!114 &114174070075234254
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3676,6 +3677,9 @@ MonoBehaviour:
     type: 2}
   spawnPointDamagePopUpPrefab: {fileID: 1948262053163330}
   nearestPlayer: {fileID: 0}
+  bombPrefab: {fileID: 0}
+  cdDuration: 0
+  bombRange: 0
 --- !u!114 &114555252921865264
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3897,6 +3901,7 @@ MonoBehaviour:
   is_sniper: 0
   is_doctor: 1
   is_tank: 0
+  is_swat: 0
 --- !u!114 &114944826837067618
 MonoBehaviour:
   m_ObjectHideFlags: 1
