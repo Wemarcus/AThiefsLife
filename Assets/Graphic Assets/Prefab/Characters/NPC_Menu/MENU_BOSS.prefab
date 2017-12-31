@@ -1866,16 +1866,7 @@ GameObject:
   - component: {fileID: 4754161398305698}
   - component: {fileID: 95436557168863156}
   - component: {fileID: 54825136065801082}
-  - component: {fileID: 195094243583172328}
   - component: {fileID: 136382065504434622}
-  - component: {fileID: 114479568811186770}
-  - component: {fileID: 114018768033011876}
-  - component: {fileID: 114541949426626574}
-  - component: {fileID: 114074613323322018}
-  - component: {fileID: 114674840269374702}
-  - component: {fileID: 114862648547455824}
-  - component: {fileID: 114578549910765548}
-  - component: {fileID: 114630096313893260}
   - component: {fileID: 114859951887341280}
   m_Layer: 0
   m_Name: MENU_BOSS
@@ -5608,19 +5599,6 @@ TextMesh:
   m_Color:
     serializedVersion: 2
     rgba: 4278190080
---- !u!114 &114018768033011876
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1938689893685126}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c5335f0882fe4d478883cc8c58ce906, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  floor: 1
 --- !u!114 &114040861835725626
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5662,42 +5640,6 @@ MonoBehaviour:
   eraseRenderer: 0
   originalLayer: 0
   originalMaterials: []
---- !u!114 &114074613323322018
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1938689893685126}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7acee2dd129481a469a9ef664c3f486f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveRange: 8
-  maxHP: 350
-  currentHP: 0
-  moved: 0
-  attacked: 0
-  actionDone: 0
-  firstWeapon: {fileID: 114674840269374702}
-  secondWeapon: {fileID: 114862648547455824}
-  firstAction: {fileID: 114578549910765548}
-  secondAction: {fileID: 114630096313893260}
-  head: {fileID: 1924444395124334}
-  playerBlock: {fileID: 0}
-  ShootPoint: {fileID: 1538688093577644}
-  FirstWeaponPhs: {fileID: 1307375726511330}
-  HitZone:
-  - {fileID: 1924444395124334}
-  - {fileID: 1226119386155478}
-  - {fileID: 1137128448817390}
-  - {fileID: 1819260460609796}
-  isBoss: 1
-  iconPrefab: {fileID: 1018909970008832, guid: 9b2aa6d370f928741b51e5c20779d9c3, type: 2}
-  damagePopUpPrefab: {fileID: 1960116762310738, guid: a891c0d0ce4a8034a8ddb6cc26a0e920,
-    type: 2}
-  spawnPointDamagePopUpPrefab: {fileID: 1634546029215702}
-  portrait: {fileID: 1615239554838254, guid: ea2be495cae2fa949815f267613d3b1c, type: 2}
 --- !u!114 &114096513199195728
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5796,25 +5738,6 @@ MonoBehaviour:
   eraseRenderer: 0
   originalLayer: 0
   originalMaterials: []
---- !u!114 &114479568811186770
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1938689893685126}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce7a80d520cacc042b5fe14f373d8173, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_MovingTurnSpeed: 360
-  m_StationaryTurnSpeed: 180
-  m_JumpPower: 6
-  m_GravityMultiplier: 2
-  m_RunCycleLegOffset: 0.2
-  m_MoveSpeedMultiplier: 1
-  m_AnimSpeedMultiplier: 1
-  m_GroundCheckDistance: 0.2
 --- !u!114 &114479758059070226
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5830,51 +5753,6 @@ MonoBehaviour:
   eraseRenderer: 0
   originalLayer: 0
   originalMaterials: []
---- !u!114 &114541949426626574
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1938689893685126}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1f7f93207f1c5942964254166784c3c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MyTurn: 0
-  firing: 0
-  grenade: 0
-  death: 0
-  cover: 0
-  Sphere: {fileID: 1266531737906896}
-  bullet: {fileID: 1441751639020848}
-  sparks: {fileID: 1786550854894334}
-  blood: {fileID: 1431241459933780}
-  sound: {fileID: 82278046633054984}
-  sound_2: {fileID: 82418326690739110}
-  is_sniper: 0
-  is_doctor: 0
-  is_tank: 0
-  is_swat: 0
---- !u!114 &114578549910765548
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1938689893685126}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2aea279d7f517c42aa7c95c7f2a6558, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actionName: Double Attack
-  description: 'If active: you can use two attacks'
-  type: 3
-  cooldown: 3
-  internalCD: 0
-  ActionImage: {fileID: 21300000, guid: bdfa67cb714457e469ba36a9012801fb, type: 3}
-  SelectedActionImage: {fileID: 21300000, guid: e893a2e0b6be19f4bbb899176ee723c6,
-    type: 3}
 --- !u!114 &114584491541147350
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5950,25 +5828,6 @@ MonoBehaviour:
   eraseRenderer: 0
   originalLayer: 0
   originalMaterials: []
---- !u!114 &114630096313893260
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1938689893685126}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2aea279d7f517c42aa7c95c7f2a6558, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actionName: Shield Allies
-  description: 'Allies in range: 30% damage reduction as shield'
-  type: 2
-  cooldown: 2
-  internalCD: 0
-  ActionImage: {fileID: 21300000, guid: 6a84206b2d73d18498e24b9d24646137, type: 3}
-  SelectedActionImage: {fileID: 21300000, guid: f5e7074c05241bc4fa5eb78b9eb860e8,
-    type: 3}
 --- !u!114 &114647371660128712
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5990,30 +5849,6 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 250
---- !u!114 &114674840269374702
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1938689893685126}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bae2017c347714d459b9673fd9ea0d26, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wpnName: Submachine Gun
-  wpnDescription: 40 damage
-  wpnType: 0
-  damage: 40
-  range: 20
-  bulletPrefab: {fileID: 155826, guid: 0f41e8d90a6f5134f9d1fb9bcac7a543, type: 2}
-  wpnImage: {fileID: 21300000, guid: 6db9333a687eeca4288de22d69bcbe51, type: 3}
-  selectedWpnImage: {fileID: 21300000, guid: e26512e5bf009cb4f85d04e627554b80, type: 3}
-  type: 0
-  cooldown: 0
-  internalCD: 0
-  bombPrefab: {fileID: 0}
-  cdDuration: 0
 --- !u!114 &114695547764373852
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6099,30 +5934,6 @@ MonoBehaviour:
   time: 37
   animation_name: Phone
   phone: {fileID: 1512434136372618}
---- !u!114 &114862648547455824
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1938689893685126}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bae2017c347714d459b9673fd9ea0d26, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wpnName: Explosive Grenade
-  wpnDescription: 'Characters in range: 50 damage'
-  wpnType: 1
-  damage: 50
-  range: 20
-  bulletPrefab: {fileID: 155826, guid: 0f41e8d90a6f5134f9d1fb9bcac7a543, type: 2}
-  wpnImage: {fileID: 21300000, guid: 61a4a4405b1a7054c86d23bb7903cac1, type: 3}
-  selectedWpnImage: {fileID: 21300000, guid: 440d52bd8d3202248a587de932aae013, type: 3}
-  type: 0
-  cooldown: 2
-  internalCD: 0
-  bombPrefab: {fileID: 1127507713346284, guid: d2821d013192baf4396fc4e9b4f4a62d, type: 2}
-  cdDuration: 0
 --- !u!114 &114900190431401632
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7130,27 +6941,6 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.0002593994, y: 82.350136, z: -5.5195208}
     m_Extent: {x: 102.45616, y: 92.952156, z: 28.350529}
   m_DirtyAABB: 0
---- !u!195 &195094243583172328
-NavMeshAgent:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1938689893685126}
-  m_Enabled: 0
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 1
-  m_Acceleration: 10
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0.2
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: -0.03
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!198 &198283209399157820
 ParticleSystem:
   m_ObjectHideFlags: 1
