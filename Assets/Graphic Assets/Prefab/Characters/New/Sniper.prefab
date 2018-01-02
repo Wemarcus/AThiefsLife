@@ -6505,7 +6505,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2aea279d7f517c42aa7c95c7f2a6558, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionName: Invisible
+  actionName: Invisibility
   description: You're invisible for a turn
   type: 6
   cooldown: 3
@@ -6564,6 +6564,7 @@ MonoBehaviour:
     type: 2}
   spawnPointDamagePopUpPrefab: {fileID: 1209887494201274}
   portrait: {fileID: 1464781513973676, guid: c8a52eb62e944fb498ac1b844611ee46, type: 2}
+  immuneToGas: 0
 --- !u!114 &114682895975222318
 MonoBehaviour:
   m_ObjectHideFlags: 1

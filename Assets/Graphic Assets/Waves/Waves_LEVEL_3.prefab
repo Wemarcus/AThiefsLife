@@ -512,6 +512,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  objectsToActivate:
+  - {fileID: 0}
   cooldown: 4
 --- !u!114 &114125264776941088
 MonoBehaviour:
@@ -539,6 +541,8 @@ MonoBehaviour:
   spawnpointTransf:
   - {fileID: 0}
   - {fileID: 0}
+  objectsToActivate:
+  - {fileID: 0}
   cooldown: 6
 --- !u!114 &114223567747931354
 MonoBehaviour:
@@ -565,6 +569,8 @@ MonoBehaviour:
   - {fileID: 1781104773330716, guid: 3fe9d9e624f38b3449baaa0a034c7ef3, type: 2}
   spawnpointTransf:
   - {fileID: 0}
+  - {fileID: 0}
+  objectsToActivate:
   - {fileID: 0}
   cooldown: 2
 --- !u!114 &114381469847405966
@@ -599,6 +605,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  objectsToActivate:
+  - {fileID: 0}
   cooldown: 6
 --- !u!114 &114510614352191702
 MonoBehaviour:
@@ -625,6 +633,8 @@ MonoBehaviour:
   - {fileID: 1835600789843276, guid: 88c5d87b5cff3504484134756161d096, type: 2}
   spawnpointTransf:
   - {fileID: 0}
+  - {fileID: 0}
+  objectsToActivate:
   - {fileID: 0}
   cooldown: 6
 --- !u!114 &114695040604852424
@@ -653,6 +663,8 @@ MonoBehaviour:
   spawnpointTransf:
   - {fileID: 0}
   - {fileID: 0}
+  objectsToActivate:
+  - {fileID: 0}
   cooldown: 2
 --- !u!114 &114803411158396212
 MonoBehaviour:
@@ -679,6 +691,8 @@ MonoBehaviour:
   - {fileID: 1823585234690016, guid: 39e083b48814e2b4280619d2a664775f, type: 2}
   spawnpointTransf:
   - {fileID: 0}
+  - {fileID: 0}
+  objectsToActivate:
   - {fileID: 0}
   cooldown: 2
 --- !u!114 &114906779333595060
@@ -711,4 +725,5 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  objectsToActivate: []
   cooldown: 6

@@ -242,6 +242,8 @@ MonoBehaviour:
   spawnpointTransf:
   - {fileID: 0}
   - {fileID: 0}
+  objectsToActivate:
+  - {fileID: 0}
   cooldown: 2
 --- !u!114 &114251860203745682
 MonoBehaviour:
@@ -269,6 +271,8 @@ MonoBehaviour:
   spawnpointTransf:
   - {fileID: 0}
   - {fileID: 0}
+  objectsToActivate:
+  - {fileID: 0}
   cooldown: 2
 --- !u!114 &114780531033974376
 MonoBehaviour:
@@ -295,5 +299,7 @@ MonoBehaviour:
   - {fileID: 1393327065243058, guid: 72c6c5358de12fb4390f9f19d3fc4993, type: 2}
   spawnpointTransf:
   - {fileID: 0}
+  - {fileID: 0}
+  objectsToActivate:
   - {fileID: 0}
   cooldown: 2
