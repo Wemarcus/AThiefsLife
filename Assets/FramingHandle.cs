@@ -18,12 +18,12 @@ public class FramingHandle : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(isFraming)
+		if(isFraming && currentCamera)
 		CheckCamera ();
 	}
 
 	private void CheckCamera(){
-		Debug.Log (currentCamera.name);
+		//Debug.Log (currentCamera.name);
 		RaycastHit hit;
 		//Ray ray = new Ray (currentCamera.transform.position, currentCamera.transform.position - target.transform.position);
 		Vector3 dir = (target.transform.position - currentCamera.transform.position);
@@ -31,6 +31,7 @@ public class FramingHandle : MonoBehaviour {
 			Transform objectHit = hit.transform;
 			Debug.Log (objectHit.name);
 			if (objectHit.gameObject != character) {
+				Debug.Log (objectHit.name + " in " + character.name);
 				SwitchCamera ();
 			}
 		}
@@ -43,6 +44,12 @@ public class FramingHandle : MonoBehaviour {
 		bool flag = false;
 		RaycastHit hit;
 		//Ray ray;
+		if (!currentCamera && cameras.Count > 0) {
+			currentCamera = cameras [0];
+			if (currentCamera.enabled == false) {
+				currentCamera.enabled = true;
+			}
+		}
 		foreach (Camera camera in cameras) {
 				if(!flag){
 				
@@ -51,15 +58,16 @@ public class FramingHandle : MonoBehaviour {
 				if (Physics.Raycast (camera.transform.position,dir, out hit)) {
 					Debug.DrawRay (camera.transform.position,dir, Color.red, 500f);
 					Transform objectHit = hit.transform;
-					Debug.Log (objectHit.name);
+					//Debug.Log (objectHit.name);
 					if (objectHit.gameObject == character) {
 						if (currentCamera) {
 							currentCamera.enabled = false;
 						}
 						Debug.Log ("cambio camera");
 						currentCamera = camera;
-						mainCamera.enabled = false;
 						camera.enabled = true;
+						if(mainCamera && mainCamera.enabled == true)
+						mainCamera.enabled = false;
 						flag = true;
 					}
 				}
@@ -69,7 +77,9 @@ public class FramingHandle : MonoBehaviour {
 
 	public void ReleaseCamera(){
 		isFraming = false;
+		if(mainCamera && mainCamera.enabled == false)
 		mainCamera.enabled = true;
+		if(currentCamera && currentCamera.enabled == true)
 		currentCamera.enabled = false;
 		currentCamera = null;
 	}
