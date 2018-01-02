@@ -13,7 +13,7 @@ public class FramingHandle : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		SwitchCamera ();
+		mainCamera = Camera.main;
 	}
 	
 	// Update is called once per frame
@@ -39,7 +39,7 @@ public class FramingHandle : MonoBehaviour {
 
 	public void SwitchCamera(){
 		isFraming = true;
-		mainCamera = Camera.current;
+		//mainCamera = Camera.main;
 		bool flag = false;
 		RaycastHit hit;
 		//Ray ray;
@@ -58,7 +58,7 @@ public class FramingHandle : MonoBehaviour {
 						}
 						Debug.Log ("cambio camera");
 						currentCamera = camera;
-						Camera.current.enabled = false;
+						mainCamera.enabled = false;
 						camera.enabled = true;
 						flag = true;
 					}
@@ -69,10 +69,9 @@ public class FramingHandle : MonoBehaviour {
 
 	public void ReleaseCamera(){
 		isFraming = false;
-		currentCamera.enabled = false;
 		mainCamera.enabled = true;
+		currentCamera.enabled = false;
 		currentCamera = null;
-		mainCamera = null;
 	}
 
 
