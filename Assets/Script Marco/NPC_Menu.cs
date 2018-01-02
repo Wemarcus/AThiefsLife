@@ -10,15 +10,22 @@ public class NPC_Menu : MonoBehaviour
 
     private Animator anim;
     private bool block = true;
+    private bool block_2;
 
-    void Start()
+    public void Start()
     {
         anim = GetComponent<Animator>();
-        if(phone != null)
+
+        if (phone != null)
         {
             phone.SetActive(false);
         }
-        StartCoroutine(Delay());
+
+        if (!block_2)
+        {
+            block_2 = true;
+            StartCoroutine(Delay());
+        }
     }
 
     void Update()
@@ -50,5 +57,6 @@ public class NPC_Menu : MonoBehaviour
     {
         yield return new WaitForSeconds(10.0f);
         block = false;
+        block_2 = false;
     }
 }

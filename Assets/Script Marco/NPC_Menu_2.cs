@@ -8,9 +8,10 @@ public class NPC_Menu_2 : MonoBehaviour {
 
     private Animator anim;
 
-    void Start()
+    public void Start()
     {
         anim = GetComponent<Animator>();
         anim.SetBool(animation_name, true);
     }
+
 }
