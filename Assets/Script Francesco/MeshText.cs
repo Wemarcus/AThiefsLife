@@ -11,7 +11,10 @@ public class MeshText : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		transform.LookAt (Camera.main.transform);	
-		transform.Rotate(Vector3.up - new Vector3(0,180,0));
+		if (Camera.current) {
+			Camera camera = Camera.current;
+			transform.LookAt (camera.transform);	
+			transform.Rotate (Vector3.up - new Vector3 (0, 180, 0));
+		}
 	}
 }

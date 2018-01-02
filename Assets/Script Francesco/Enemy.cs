@@ -62,6 +62,9 @@ public class Enemy : MonoBehaviour {
 	}
 
 	public void RunAI(){
+		if (GetComponentInChildren <FramingHandle>()) {
+			GetComponentInChildren<FramingHandle> ().SwitchCamera ();
+		}else
 		FindObjectOfType<MainCamera> ().target = this.head.transform;
 		switch (ait) {
 		case AiType.basic:
@@ -426,6 +429,9 @@ public class Enemy : MonoBehaviour {
 		}*/
 		yield return new WaitForSeconds(2f);
 		LookNearestPlayer ();
+		if (GetComponentInChildren<FramingHandle> ()) {
+			GetComponentInChildren<FramingHandle> ().ReleaseCamera ();
+		}
 		FindObjectOfType<AIHandler>().RunNextAI();
 	}
 
