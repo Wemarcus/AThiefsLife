@@ -9,6 +9,7 @@ public class FramingHandle : MonoBehaviour {
 	public GameObject character;
 	private Camera currentCamera;
 	private Camera mainCamera;
+	private bool isFraming;
 
 	// Use this for initialization
 	void Start () {
@@ -17,6 +18,7 @@ public class FramingHandle : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if(isFraming)
 		CheckCamera ();
 	}
 
@@ -36,6 +38,7 @@ public class FramingHandle : MonoBehaviour {
 	}
 
 	public void SwitchCamera(){
+		isFraming = true;
 		mainCamera = Camera.current;
 		bool flag = false;
 		RaycastHit hit;
@@ -65,6 +68,7 @@ public class FramingHandle : MonoBehaviour {
 	}
 
 	public void ReleaseCamera(){
+		isFraming = false;
 		currentCamera.enabled = false;
 		mainCamera.enabled = true;
 		currentCamera = null;
