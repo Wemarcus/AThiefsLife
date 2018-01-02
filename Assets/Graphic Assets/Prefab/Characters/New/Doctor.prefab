@@ -4768,6 +4768,7 @@ MonoBehaviour:
     type: 2}
   spawnPointDamagePopUpPrefab: {fileID: 1005445066561610}
   portrait: {fileID: 1938783541802496, guid: 0dddcfc8a56e31a4b8bb100ea450e603, type: 2}
+  immuneToGas: 0
 --- !u!114 &114352838942955566
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4895,7 +4896,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wpnName: Smoke Grenade
-  wpnDescription: 'Characters in range: 35 damage for two turn'
+  wpnDescription: 'Characters in range: 35 damage for two rounds'
   wpnType: 1
   damage: 35
   range: 20
