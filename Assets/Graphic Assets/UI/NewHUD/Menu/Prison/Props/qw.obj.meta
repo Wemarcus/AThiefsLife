@@ -1,0 +1,367 @@
+fileFormatVersion: 2
+guid: 27e33124b5936664395e983bed468c68
+timeCreated: 1514997610
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Box001
+    100002: Box002
+    100004: Box003
+    100006: Box004
+    100008: Box005
+    100010: Box006
+    100012: //RootNode
+    100014: Tube001
+    100016: Tube002
+    100018: Tube003
+    100020: Tube004
+    100022: Tube005
+    100024: Tube006
+    100026: Tube007
+    100028: Tube008
+    100030: Tube009
+    100032: Tube010
+    100034: Tube011
+    100036: Tube012
+    100038: Tube013
+    100040: Tube014
+    100042: Tube015
+    100044: Tube016
+    100046: Tube017
+    100048: Tube018
+    100050: Tube019
+    100052: Tube020
+    100054: Tube021
+    100056: Tube022
+    400000: Box001
+    400002: Box002
+    400004: Box003
+    400006: Box004
+    400008: Box005
+    400010: Box006
+    400012: //RootNode
+    400014: Tube001
+    400016: Tube002
+    400018: Tube003
+    400020: Tube004
+    400022: Tube005
+    400024: Tube006
+    400026: Tube007
+    400028: Tube008
+    400030: Tube009
+    400032: Tube010
+    400034: Tube011
+    400036: Tube012
+    400038: Tube013
+    400040: Tube014
+    400042: Tube015
+    400044: Tube016
+    400046: Tube017
+    400048: Tube018
+    400050: Tube019
+    400052: Tube020
+    400054: Tube021
+    400056: Tube022
+    2300000: Box001
+    2300002: Box002
+    2300004: Box003
+    2300006: Box004
+    2300008: Box005
+    2300010: Box006
+    2300012: Tube001
+    2300014: Tube002
+    2300016: Tube003
+    2300018: Tube004
+    2300020: Tube005
+    2300022: Tube006
+    2300024: Tube007
+    2300026: Tube008
+    2300028: Tube009
+    2300030: Tube010
+    2300032: Tube011
+    2300034: Tube012
+    2300036: Tube013
+    2300038: Tube014
+    2300040: Tube015
+    2300042: Tube016
+    2300044: Tube017
+    2300046: Tube018
+    2300048: Tube019
+    2300050: Tube020
+    2300052: Tube021
+    2300054: Tube022
+    3300000: Box001
+    3300002: Box002
+    3300004: Box003
+    3300006: Box004
+    3300008: Box005
+    3300010: Box006
+    3300012: Tube001
+    3300014: Tube002
+    3300016: Tube003
+    3300018: Tube004
+    3300020: Tube005
+    3300022: Tube006
+    3300024: Tube007
+    3300026: Tube008
+    3300028: Tube009
+    3300030: Tube010
+    3300032: Tube011
+    3300034: Tube012
+    3300036: Tube013
+    3300038: Tube014
+    3300040: Tube015
+    3300042: Tube016
+    3300044: Tube017
+    3300046: Tube018
+    3300048: Tube019
+    3300050: Tube020
+    3300052: Tube021
+    3300054: Tube022
+    4300000: Box001
+    4300002: Box002
+    4300004: Box003
+    4300006: Box004
+    4300008: Box005
+    4300010: Box006
+    4300012: Tube001
+    4300014: Tube002
+    4300016: Tube003
+    4300018: Tube004
+    4300020: Tube005
+    4300022: Tube006
+    4300024: Tube007
+    4300026: Tube008
+    4300028: Tube009
+    4300030: Tube010
+    4300032: Tube011
+    4300034: Tube012
+    4300036: Tube013
+    4300038: Tube014
+    4300040: Tube015
+    4300042: Tube016
+    4300044: Tube017
+    4300046: Tube018
+    4300048: Tube019
+    4300050: Tube020
+    4300052: Tube021
+    4300054: Tube022
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Box001Mat
+    second: {fileID: 2100000, guid: 47091c6339635374ab7fbddfb686cac8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Box002Mat
+    second: {fileID: 2100000, guid: d39654daa271c1e438742e4a65291a4d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Box003Mat
+    second: {fileID: 2100000, guid: 7e98eace11c04c1418add4a27b092b32, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Box004Mat
+    second: {fileID: 2100000, guid: a7259e72bc52d3e41acdbddfbce9f098, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Box005Mat
+    second: {fileID: 2100000, guid: 5c4b185c54dd240438d5a7cec1df8910, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Box006Mat
+    second: {fileID: 2100000, guid: 20b9308aa87489c41a1bd165d74917df, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tube001Mat
+    second: {fileID: 2100000, guid: fa3917ca3ce7d724b93aba361e3fc116, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tube002Mat
+    second: {fileID: 2100000, guid: 34b7b242860f83048bcf5dca97255306, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tube003Mat
+    second: {fileID: 2100000, guid: 85da20bb9be8dca42ac44594a8704150, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tube004Mat
+    second: {fileID: 2100000, guid: a74304933c40936488e0a0d6daea40f4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tube005Mat
+    second: {fileID: 2100000, guid: ac9e2ab263cace44d8802c62a2204e0f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tube006Mat
+    second: {fileID: 2100000, guid: d2b4bfbfd6059b24c842cd0dd2a90286, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tube007Mat
+    second: {fileID: 2100000, guid: ab7824d20f9b7c144b4c344e8d2d1ed6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tube008Mat
+    second: {fileID: 2100000, guid: 701654e7d92a447468fae8c698e6d61c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tube009Mat
+    second: {fileID: 2100000, guid: b3171a777f8aa38408fe00744674acf9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tube010Mat
+    second: {fileID: 2100000, guid: 956b65cc2aaceff42b742cc8efc0eb0d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tube011Mat
+    second: {fileID: 2100000, guid: 681a1b0a18c6aab40978dcb7dc67a4c1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tube012Mat
+    second: {fileID: 2100000, guid: d95d73fd5f7b1f646a6ee1c0172a633b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tube013Mat
+    second: {fileID: 2100000, guid: 723072f27b58cbd45a98e432204a062c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tube014Mat
+    second: {fileID: 2100000, guid: c5e06c618426b71469543160704c86c0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tube015Mat
+    second: {fileID: 2100000, guid: 7d96870b96ea50c4e94e9d26be315711, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tube016Mat
+    second: {fileID: 2100000, guid: 02fb4ff4bfd8ff64f829867c859c3cf4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tube017Mat
+    second: {fileID: 2100000, guid: e5d08e540990fac4f91b1826d7cbdae9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tube018Mat
+    second: {fileID: 2100000, guid: 369aa1a36949d8a4789c8c7de3fbf475, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tube019Mat
+    second: {fileID: 2100000, guid: 0c661d6bfd52e274c86a9341d6f81ca7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tube020Mat
+    second: {fileID: 2100000, guid: f0e71b5bdf0d1e74b8071257f1b5b485, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tube021Mat
+    second: {fileID: 2100000, guid: 2a145b58e305b1b438bddbc794c99c1c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tube022Mat
+    second: {fileID: 2100000, guid: 4883ca315d0f9d942ab1697fb56c5274, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
