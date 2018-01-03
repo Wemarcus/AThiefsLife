@@ -11,11 +11,11 @@ public class MainCamera : MonoBehaviour
 	double xSpeed = 250.0;
 	double ySpeed = 120.0;
 	
-	double yMinLimit = -89;
+	double yMinLimit = 0;
 	double yMaxLimit = 89;
 	
 	double minZoom = 1;
-	double maxZoom = 8;
+	double maxZoom = 9;
 	
 	private double x = 0.0;
 	private double y = 0.0;
