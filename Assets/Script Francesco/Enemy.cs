@@ -162,6 +162,9 @@ public class Enemy : MonoBehaviour {
 		}
 		yield return new WaitForSeconds(2f);
 		LookNearestPlayer ();
+		if (GetComponentInChildren<FramingHandle> ()) {
+			GetComponentInChildren<FramingHandle> ().ReleaseCamera ();
+		}
 		FindObjectOfType<AIHandler>().RunNextAI();
 
 	}
@@ -297,6 +300,9 @@ public class Enemy : MonoBehaviour {
 		}*/
 		yield return new WaitForSeconds(2f);
 		LookNearestPlayer ();
+		if (GetComponentInChildren<FramingHandle> ()) {
+			GetComponentInChildren<FramingHandle> ().ReleaseCamera ();
+		}
 		FindObjectOfType<AIHandler>().RunNextAI();
 	}
 
