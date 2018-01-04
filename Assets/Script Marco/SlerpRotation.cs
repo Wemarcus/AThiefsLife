@@ -24,5 +24,19 @@ public class SlerpRotation : MonoBehaviour {
         {
             Door.transform.eulerAngles = Vector3.Slerp(Door.transform.eulerAngles, openRot, Time.deltaTime * speed);
         }
+        else
+        {
+            Door.transform.eulerAngles = Vector3.Slerp(Door.transform.eulerAngles, defaultRot, Time.deltaTime * speed);
+        }
+    }
+
+    public void OpenDoor()
+    {
+        open = true;
+    }
+
+    public void CloseDoor()
+    {
+        open = false;
     }
 }
