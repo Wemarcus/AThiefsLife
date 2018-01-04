@@ -33,5 +33,9 @@ public class CurrentGame : MonoBehaviour {
 		employedKilled = 0;
 		robberies = 0;
 		arrested = 0;
+
+		foreach (Bank bank in banks) {
+			bank.securityLevel = 0;
+		}
 	}
 }

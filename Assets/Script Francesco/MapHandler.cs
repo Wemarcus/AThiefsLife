@@ -7,6 +7,7 @@ using MessagePopUp;
 /* classe che gestisce la partita e la griglia di gioco*/
 public class MapHandler : MonoBehaviour {
 
+	public Bank bankSettings;
 	// array 2D di nodi
 	public	GameObject[,] grid;
 	//dimensione array2D

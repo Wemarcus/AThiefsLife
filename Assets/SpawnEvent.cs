@@ -17,6 +17,9 @@ public class SpawnEvent : MonoBehaviour {
 	void Start(){
 		ce = FindObjectOfType<CaveauEvent> ();
 		FindObjectOfType<MapHandler> ().nextRoundEvent += TurnPassed;
+		if (difficultyLevel > FindObjectOfType<MapHandler> ().bankSettings.securityLevel) {
+			this.enabled = false;
+		}
 	}
 
 	// Update is called once per frame
@@ -63,5 +66,9 @@ public class SpawnEvent : MonoBehaviour {
 		foreach (GameObject element in objectsToActivate) {
 			element.SetActive (true);
 		}
+	}
+
+	void OnDisable(){
+		FindObjectOfType<MapHandler> ().nextRoundEvent -= TurnPassed;
 	}
 }

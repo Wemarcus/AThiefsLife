@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [CreateAssetMenu(menuName = "A Thief's Life/Bank")]
 public class Bank : ScriptableObject {
@@ -9,4 +10,18 @@ public class Bank : ScriptableObject {
 	public int securityLevel;
 	public string sceneName;
 
+
+	public void IncreaseBankSecurity(){
+		if (securityLevel < 3)
+			securityLevel++;
+	}
+
+	public void DecreaseBankSecurity(){
+		if (securityLevel > 0)
+			securityLevel--;
+	}
+
+	public void LoadLevel(){
+		SceneManager.LoadScene (sceneName, LoadSceneMode.Single);
+	}
 }
