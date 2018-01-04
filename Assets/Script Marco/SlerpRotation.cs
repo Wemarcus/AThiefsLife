@@ -4,6 +4,16 @@ using UnityEngine;
 
 public class SlerpRotation : MonoBehaviour {
 
+    // Script cambio menu
+    public GameObject cameraNew;
+    public GameObject cameraOld;
+    public GameObject backgroundOld;
+    public GameObject backgroundNew;
+    public GameObject menuOld;
+    public GameObject menuNew;
+    public GameObject npcNew;
+
+    // Script Rotazione Porta
     public GameObject Door;
     public float rotation; //rotazione della porta
     public float speed;
@@ -33,10 +43,28 @@ public class SlerpRotation : MonoBehaviour {
     public void OpenDoor()
     {
         open = true;
+
+        StartCoroutine(ChangeMenu());
     }
 
     public void CloseDoor()
     {
         open = false;
+    }
+
+    private IEnumerator ChangeMenu()
+    {
+        yield return new WaitForSeconds(8.0f);
+
+        CloseDoor();
+
+        //cambio menu
+        cameraNew.SetActive(true);
+        cameraOld.SetActive(false);
+        backgroundNew.SetActive(true);
+        backgroundOld.SetActive(false);
+        menuNew.SetActive(true);
+        menuOld.SetActive(false);
+        npcNew.SetActive(true);
     }
 }
