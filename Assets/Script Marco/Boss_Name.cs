@@ -16,6 +16,7 @@ public class Boss_Name : MonoBehaviour {
 
     public void SetName()
     {
-        carrier_name.text = boss_name.text;
+		CurrentGame.cg.StartNewGame ();
+		CurrentGame.cg.bossName = boss_name.text.ToString();
     }
 }

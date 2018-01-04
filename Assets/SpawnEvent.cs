@@ -12,6 +12,7 @@ public class SpawnEvent : MonoBehaviour {
 	public List<GameObject> objectsToActivate;
 	private CaveauEvent ce;
 	public int cooldown;
+	public int difficultyLevel;
 
 	void Start(){
 		ce = FindObjectOfType<CaveauEvent> ();
