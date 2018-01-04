@@ -24,4 +24,8 @@ public class Bank : ScriptableObject {
 	public void LoadLevel(){
 		SceneManager.LoadScene (sceneName, LoadSceneMode.Single);
 	}
+
+	public void Reset(){
+		securityLevel = 0;
+	}
 }

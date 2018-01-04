@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Grid;
 using MessagePopUp;
+using UnityEngine.SceneManagement;
 
 /* classe che gestisce la partita e la griglia di gioco*/
 public class MapHandler : MonoBehaviour {
@@ -522,6 +523,26 @@ public class MapHandler : MonoBehaviour {
 		bossDeathPanel.SetActive (true);
 
 	}
+
+	public void RunEnd(){
+		CurrentGame.cg.end.EndSetup (EndCases.Run);
+		CurrentGame.cg.UpdateStatsRun (money, policemanKilled, EmployedKilled);
+		SceneManager.LoadScene ("Menu", LoadSceneMode.Single);
+	}
+
+	public void DeathEnd(){
+		CurrentGame.cg.end.EndSetup (EndCases.Died);
+		CurrentGame.cg.UpdateStatsDied (policemanKilled, EmployedKilled);
+		SceneManager.LoadScene ("Menu", LoadSceneMode.Single);
+	}
+
+	public void SurrenderEnd(){
+		CurrentGame.cg.end.EndSetup (EndCases.Arrested);
+		CurrentGame.cg.UpdateStatsArrested (policemanKilled, EmployedKilled);
+		SceneManager.LoadScene ("Menu", LoadSceneMode.Single);
+	}
+
+
 
 	void SetupGrid(){
 		ChangeState(GameState.Init);

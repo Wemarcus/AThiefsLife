@@ -15,6 +15,8 @@ public class CurrentGame : MonoBehaviour {
 	public int arrested;
 	public List<Bank> banks;
 
+	public EndRobbery end;
+
 	// Use this for initialization
 	void Awake () {
 		if (cg == null) {
@@ -37,5 +39,24 @@ public class CurrentGame : MonoBehaviour {
 		foreach (Bank bank in banks) {
 			bank.securityLevel = 0;
 		}
+	}
+
+	public void UpdateStatsRun(int moneyAmount, int policemanKilledAmount, int employedKilledAmount){
+		age += 1;
+		money += moneyAmount;
+		policemanKilled += policemanKilledAmount;
+		employedKilled += employedKilledAmount;
+		robberies += 1;
+	}
+
+	public void UpdateStatsDied(int policemanKilledAmount, int employedKilledAmount){
+		policemanKilled += policemanKilledAmount;
+		employedKilled += employedKilledAmount;
+	}
+
+	public void UpdateStatsArrested(int policemanKilledAmount, int employedKilledAmount){
+		age += 1;
+		policemanKilled += policemanKilledAmount;
+		employedKilled += employedKilledAmount;
 	}
 }
