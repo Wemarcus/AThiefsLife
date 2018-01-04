@@ -567,25 +567,27 @@ public class Enemy : MonoBehaviour {
 
 	void OnDestroy(){
 		//FindObjectOfType<MapHandler> ().animationEvent -= OnAnimationPerform;
-		if(FindObjectOfType<MapHandler>().enemiesOnMap.Contains(this.gameObject))
+		if(FindObjectOfType<MapHandler>() && FindObjectOfType<MapHandler>().enemiesOnMap.Contains(this.gameObject))
 			FindObjectOfType<MapHandler> ().enemiesOnMap.Remove (this.gameObject);
-		if (FindObjectOfType<AIHandler> ().enemyList.Contains (this.gameObject)) {
+		if (FindObjectOfType<MapHandler>() && FindObjectOfType<AIHandler> ().enemyList.Contains (this.gameObject)) {
 			if (FindObjectOfType<AIHandler> ().enemyList [0] == this.gameObject) {
 				FindObjectOfType<AIHandler> ().RunNextAI();
 			}
 			FindObjectOfType<AIHandler> ().enemyList.Remove (this.gameObject);
 		}
-		if (ait == AiType.basic) {
-			FindObjectOfType<MapHandler> ().policemanKilled += 1;
-		}
-		if (ait == AiType.onlymovement) {
-			FindObjectOfType<MapHandler> ().EmployedKilled += 1;
+		if (FindObjectOfType<MapHandler> () && !CurrentGame.cg.end.robberyEnded) {
+			if (ait == AiType.basic) {
+				FindObjectOfType<MapHandler> ().policemanKilled += 1;
+			}
+			if (ait == AiType.onlymovement) {
+				FindObjectOfType<MapHandler> ().EmployedKilled += 1;
+			}
 		}
 	}
 
 	void OnDisable(){
 		//FindObjectOfType<MapHandler> ().animationEvent -= OnAnimationPerform;
-		if(FindObjectOfType<MapHandler>().enemiesOnMap.Contains(this.gameObject))
+		if(FindObjectOfType<MapHandler>() && FindObjectOfType<MapHandler>().enemiesOnMap.Contains(this.gameObject))
 			FindObjectOfType<MapHandler> ().enemiesOnMap.Remove (this.gameObject);
 	}
 }

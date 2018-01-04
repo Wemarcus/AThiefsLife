@@ -25,6 +25,7 @@ public class EnemyBarHandler : MonoBehaviour {
 	}
 
 	void OnDestroy(){
+		if(FindObjectOfType<MapHandler>())
 		FindObjectOfType<MapHandler>().changeInputStateEvent -= ChangeInputState;
 	}
 

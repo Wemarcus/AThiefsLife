@@ -139,7 +139,7 @@ public class Player : MonoBehaviour {
 
 	void OnDestroy(){
 		//FindObjectOfType<MapHandler> ().animationEvent -= OnAnimationPerform;
-		if (FindObjectOfType<MapHandler> ().playersOnMap.Contains (this.gameObject)) {
+		if (FindObjectOfType<MapHandler>() && FindObjectOfType<MapHandler> ().playersOnMap.Contains (this.gameObject)) {
 			FindObjectOfType<MapHandler> ().playersOnMap.Remove (this.gameObject);
 			if (isBoss) {
 				FindObjectOfType<MapHandler> ().BossDeath ();
@@ -149,7 +149,7 @@ public class Player : MonoBehaviour {
 
 	void OnDisable(){
 		//FindObjectOfType<MapHandler> ().animationEvent -= OnAnimationPerform;
-		if (FindObjectOfType<MapHandler> ().playersOnMap.Contains (this.gameObject)) {
+		if (FindObjectOfType<MapHandler>() && FindObjectOfType<MapHandler> ().playersOnMap.Contains (this.gameObject)) {
 			FindObjectOfType<MapHandler> ().playersOnMap.Remove (this.gameObject);
 			if (isBoss) {
 				FindObjectOfType<MapHandler> ().BossDeath ();
