@@ -13,3 +13,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   robberyEnded: 0
   endCase: 0
+  years: 5
+  caution: 50000

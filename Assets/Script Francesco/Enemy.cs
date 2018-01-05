@@ -62,18 +62,22 @@ public class Enemy : MonoBehaviour {
 	}
 
 	public void RunAI(){
-		if (GetComponentInChildren <FramingHandle>()) {
+		if (GetComponentInChildren <FramingHandle> ()) {
 			GetComponentInChildren<FramingHandle> ().SwitchCamera ();
-		}else
-		FindObjectOfType<MainCamera> ().target = this.head.transform;
+		} else if (FindObjectOfType <MainCamera>()) {
+			FindObjectOfType<MainCamera> ().target = this.head.transform;
+		}
 		switch (ait) {
 		case AiType.basic:
+			if(gameObject)
 			StartCoroutine( BasicAICor ());
 			break;
 		case AiType.onlymovement:
+			if(gameObject)
 			StartCoroutine( OnlyMovementAICor ());
 			break;
 		case AiType.bomb:
+			if(gameObject)
 			StartCoroutine (BombAICor ());
 			break;
 		}

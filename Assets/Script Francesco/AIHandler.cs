@@ -30,6 +30,7 @@ public class AIHandler : MonoBehaviour {
 
 	IEnumerator RunNextAICor(){
 		yield return new WaitForSeconds(3f);
+		if(IsEnemyTurn())
 		RunNextAI();
 	}
 
