@@ -61,4 +61,12 @@ public class CurrentGame : MonoBehaviour {
 		arrested += 1;
 		robberies += 1;
 	}
+
+	public void PayBail(int moneyToPay){
+		money -= moneyToPay;
+	}
+
+	public void ServeSentence(int yearsToServe){
+		age += yearsToServe;
+	}
 }

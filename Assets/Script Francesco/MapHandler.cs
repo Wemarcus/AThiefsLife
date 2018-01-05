@@ -540,10 +540,21 @@ public class MapHandler : MonoBehaviour {
 	public void SurrenderEnd(){
 		CurrentGame.cg.end.EndSetup (EndCases.Arrested);
 		bankSettings.IncreaseBankSecurity ();
+		CalculateDetention ();
 		CurrentGame.cg.UpdateStatsArrested (policemanKilled, EmployedKilled);
 		SceneManager.LoadScene ("Menu", LoadSceneMode.Single);
 	}
 
+	public void CalculateDetention(){
+		int y;
+		int c;
+
+		y = 5 + 5 * policemanKilled + 1 * EmployedKilled;
+		y += y * (CurrentGame.cg.arrested / 10);
+		c = 50000 + 100000 * policemanKilled + 10000 * EmployedKilled;
+		c += c * (CurrentGame.cg.arrested / 10);
+		CurrentGame.cg.end.ArrestedSetup (y, c);
+	}
 
 
 	void SetupGrid(){
