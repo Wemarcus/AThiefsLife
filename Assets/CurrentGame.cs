@@ -30,11 +30,11 @@ public class CurrentGame : MonoBehaviour {
 	public void StartNewGame(){
 		bossName = null;
 		age = 18;
-		money = 1000000;
-		policemanKilled = 2;
-		employedKilled = 2;
-		robberies = 2;
-		arrested = 1;
+		money = 0;
+		policemanKilled = 0;
+		employedKilled = 0;
+		robberies = 0;
+		arrested = 0;
 
 		foreach (Bank bank in banks) {
 			bank.securityLevel = 0;
@@ -58,5 +58,7 @@ public class CurrentGame : MonoBehaviour {
 		age += 1;
 		policemanKilled += policemanKilledAmount;
 		employedKilled += employedKilledAmount;
+		arrested += 1;
+		robberies += 1;
 	}
 }

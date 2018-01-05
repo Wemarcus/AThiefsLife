@@ -69,6 +69,7 @@ public class SpawnEvent : MonoBehaviour {
 	}
 
 	void OnDisable(){
+		if(FindObjectOfType<MapHandler>())
 		FindObjectOfType<MapHandler> ().nextRoundEvent -= TurnPassed;
 	}
 }
