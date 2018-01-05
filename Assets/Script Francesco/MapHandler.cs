@@ -532,6 +532,8 @@ public class MapHandler : MonoBehaviour {
 	}
 
 	public void DeathEnd(){
+		Time.timeScale = 1;
+		AudioListener.pause =true;
 		CurrentGame.cg.end.EndSetup (EndCases.Died);
 		CurrentGame.cg.UpdateStatsDied (policemanKilled, EmployedKilled);
 		SceneManager.LoadScene ("Menu", LoadSceneMode.Single);
