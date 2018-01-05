@@ -69,15 +69,15 @@ public class Enemy : MonoBehaviour {
 		}
 		switch (ait) {
 		case AiType.basic:
-			if(gameObject)
+			if(FindObjectOfType<MapHandler>() && FindObjectOfType<MapHandler>().gs == GameState.EnemyTurn && gameObject)
 			StartCoroutine( BasicAICor ());
 			break;
 		case AiType.onlymovement:
-			if(gameObject)
+			if(FindObjectOfType<MapHandler>() && FindObjectOfType<MapHandler>().gs == GameState.EnemyTurn && gameObject)
 			StartCoroutine( OnlyMovementAICor ());
 			break;
 		case AiType.bomb:
-			if(gameObject)
+			if(FindObjectOfType<MapHandler>() && FindObjectOfType<MapHandler>().gs == GameState.EnemyTurn && gameObject)
 			StartCoroutine (BombAICor ());
 			break;
 		}
