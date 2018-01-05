@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SlerpRotation : MonoBehaviour {
 
@@ -12,6 +13,12 @@ public class SlerpRotation : MonoBehaviour {
     public GameObject menuOld;
     public GameObject menuNew;
     public GameObject npcNew;
+
+    // Script riattivazione oggetti
+    public GameObject fakeBackground;
+    public GameObject escapeButton;
+    public GameObject sentenceButton;
+    public GameObject bailButton;
 
     // Script Rotazione Porta
     public GameObject Door;
@@ -58,7 +65,7 @@ public class SlerpRotation : MonoBehaviour {
 
         CloseDoor();
 
-        //cambio menu
+        // cambio menu
         cameraNew.SetActive(true);
         cameraOld.SetActive(false);
         backgroundNew.SetActive(true);
@@ -66,5 +73,11 @@ public class SlerpRotation : MonoBehaviour {
         menuNew.SetActive(true);
         menuOld.SetActive(false);
         npcNew.SetActive(true);
+
+        // riattivazioni varie
+        fakeBackground.SetActive(false);
+        escapeButton.GetComponent<Button>().interactable = true;
+        sentenceButton.GetComponent<Button>().interactable = true;
+        bailButton.GetComponent<Button>().interactable = true;
     }
 }
