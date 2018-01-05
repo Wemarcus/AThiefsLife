@@ -526,6 +526,7 @@ public class MapHandler : MonoBehaviour {
 
 	public void RunEnd(){
 		CurrentGame.cg.end.EndSetup (EndCases.Run);
+		bankSettings.IncreaseBankSecurity ();
 		CurrentGame.cg.UpdateStatsRun (money, policemanKilled, EmployedKilled);
 		SceneManager.LoadScene ("Menu", LoadSceneMode.Single);
 	}
@@ -538,6 +539,7 @@ public class MapHandler : MonoBehaviour {
 
 	public void SurrenderEnd(){
 		CurrentGame.cg.end.EndSetup (EndCases.Arrested);
+		bankSettings.IncreaseBankSecurity ();
 		CurrentGame.cg.UpdateStatsArrested (policemanKilled, EmployedKilled);
 		SceneManager.LoadScene ("Menu", LoadSceneMode.Single);
 	}

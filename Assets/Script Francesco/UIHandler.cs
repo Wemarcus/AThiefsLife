@@ -23,6 +23,7 @@ public class UIHandler : MonoBehaviour {
 	public UnityEngine.UI.Button ActionBtn;
 	public UnityEngine.UI.Button ActionBtn2;
 	public UnityEngine.UI.Button PassTurnBtn;
+	public UnityEngine.UI.Button SurrenderBtn;
 
 	public GameObject buttonPanel;
 	public Sprite selectedMoveBtn;
@@ -146,6 +147,7 @@ public class UIHandler : MonoBehaviour {
 		ActionBtn.GetComponent<Button> ().interactable = false;
 		ActionBtn2.GetComponent<Button> ().interactable = false;
 		PassTurnBtn.GetComponent<Button> ().interactable = false;
+		SurrenderBtn.GetComponent<Button> ().interactable = false;
 	}
 
 	public void LoadCD(){
@@ -209,8 +211,10 @@ public class UIHandler : MonoBehaviour {
 			if (!plr.secondAction.IsOnCoolDown ())
 				ActionBtn2.GetComponent<Button> ().interactable = true;
 		}
-		if (plr && (!plr.moved || !plr.attacked || !plr.actionDone))
+		if (plr && (!plr.moved || !plr.attacked || !plr.actionDone)) {
 			PassTurnBtn.GetComponent<Button> ().interactable = true;
+			SurrenderBtn.GetComponent<Button> ().interactable = true;
+		}
 	}
 	
 	public void LoadSelectedButton(){
