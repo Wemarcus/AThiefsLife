@@ -118,12 +118,12 @@ public class UIHandler : MonoBehaviour {
 
 	public void UpdateUI(){
 		DeactivateAllButtons ();
-		if(gs != GameState.AllyTurn){
+		if(FindObjectOfType<MapHandler>() && buttonPanel && gs != GameState.AllyTurn){
 			buttonPanel.SetActive (false);
-		}else{
+		}else if(FindObjectOfType <MapHandler>() && buttonPanel){
 			buttonPanel.SetActive (true);
 		}
-		if (!animPerform) {
+		if (!animPerform && FindObjectOfType<MapHandler>()) {
 			if ((inpS == InputState.Decision || inpS == InputState.Attack || inpS == InputState.Movement || inpS == InputState.Abilty) && player != null) {
 				LoadImages ();
 				SetButtonInteractible ();
