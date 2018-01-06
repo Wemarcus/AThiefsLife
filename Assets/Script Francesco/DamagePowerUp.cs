@@ -38,6 +38,7 @@ public class DamagePowerUp : MonoBehaviour {
 
 	public void OnDestroy(){
 		mh = FindObjectOfType<MapHandler> ();
+		if(mh)
 		mh.nextRoundEvent -= CoolDown;
 		Destroy (effect);
 	}

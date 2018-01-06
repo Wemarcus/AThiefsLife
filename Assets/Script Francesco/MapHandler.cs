@@ -520,6 +520,7 @@ public class MapHandler : MonoBehaviour {
 		AudioListener.pause =false;
 		ChangeState (GameState.End);
 		ChangeInputState (InputState.Nothing);
+		if(bossDeathPanel)
 		bossDeathPanel.SetActive (true);
 
 	}
@@ -540,6 +541,8 @@ public class MapHandler : MonoBehaviour {
 	}
 
 	public void SurrenderEnd(){
+		ChangeState (GameState.End);
+		ChangeInputState (InputState.Nothing);
 		CurrentGame.cg.end.EndSetup (EndCases.Arrested);
 		CalculateDetention ();
 		CurrentGame.cg.UpdateStatsArrested (policemanKilled, EmployedKilled);

@@ -29,6 +29,8 @@ public class Agent_Animation : MonoBehaviour {
     private MapHandler mh;
     private bool block;
 
+	private bool enable;
+
     private void Start()
     {
 		mh = FindObjectOfType<MapHandler> ();
@@ -272,26 +274,36 @@ public class Agent_Animation : MonoBehaviour {
     }
 
 	private void SetTurnBool(GameState gs){
-		if (gs == GameState.AllyTurn && gameObject.GetComponent<Player>()) {
-			MyTurn = true;
-		}
+		if (enable) {
+			if (gs == GameState.AllyTurn && gameObject.GetComponent<Player> ()) {
+				MyTurn = true;
+			}
 
-		if (gs == GameState.EnemyTurn && gameObject.GetComponent<Enemy> ()) {
-			MyTurn = true;
-		}
+			if (gs == GameState.EnemyTurn && gameObject.GetComponent<Enemy> ()) {
+				MyTurn = true;
+			}
 
-		if (gs == GameState.AllyTurn && gameObject.GetComponent<Enemy>()) {
-			MyTurn = false;
-		}
+			if (gs == GameState.AllyTurn && gameObject.GetComponent<Enemy> ()) {
+				MyTurn = false;
+			}
 
-		if (gs == GameState.EnemyTurn && gameObject.GetComponent<Player> ()) {
-			MyTurn = false;
+			if (gs == GameState.EnemyTurn && gameObject.GetComponent<Player> ()) {
+				MyTurn = false;
+			}
+			if (enable && gameObject.GetComponent<Player> () && Grid.GridMath.GetPlayerBlock (gameObject).GetComponent<Node> ()) {
+				cover = Grid.GridMath.GetPlayerBlock (gameObject).GetComponent<Node> ().isCover;
+			}
+			if (enable && gameObject.GetComponent<Enemy> () && Grid.GridMath.GetEnemyBlock (gameObject).GetComponent<Node> ()) {
+				cover = Grid.GridMath.GetEnemyBlock (gameObject).GetComponent<Node> ().isCover;
+			}
 		}
-		if(gameObject.GetComponent<Player>() && Grid.GridMath.GetPlayerBlock(gameObject).GetComponent<Node>()){
-			cover = Grid.GridMath.GetPlayerBlock (gameObject).GetComponent<Node>().isCover;
-		}
-		if(gameObject.GetComponent<Enemy>() && Grid.GridMath.GetEnemyBlock(gameObject).GetComponent<Node>()){
-			cover = Grid.GridMath.GetEnemyBlock (gameObject).GetComponent<Node>().isCover;
-		}
+	}
+
+	void OnDisable(){
+		enable = false;
+	}
+
+	void OnDestroy(){
+		enable = false;
 	}
 }
