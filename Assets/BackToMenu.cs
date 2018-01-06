@@ -35,6 +35,7 @@ public class BackToMenu : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		Time.timeScale = 1;
 		if (CurrentGame.cg.end.robberyEnded) {
 			switch (CurrentGame.cg.end.endCase) {
 			case EndCases.Null:
