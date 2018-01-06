@@ -141,13 +141,22 @@ public class UIHandler : MonoBehaviour {
 	}
 
 	public void DeactivateAllButtons(){
-		MoveBtn.GetComponent<Button> ().interactable = false;
-		AttackBtn.GetComponent<Button> ().interactable = false;
-		AttackBtn2.GetComponent<Button> ().interactable = false;
-		ActionBtn.GetComponent<Button> ().interactable = false;
-		ActionBtn2.GetComponent<Button> ().interactable = false;
-		PassTurnBtn.GetComponent<Button> ().interactable = false;
-		SurrenderBtn.GetComponent<Button> ().interactable = false;
+		if (FindObjectOfType<MapHandler> ()) {
+			if(MoveBtn && MoveBtn.GetComponent<Button>())
+			MoveBtn.GetComponent<Button> ().interactable = false;
+			if(AttackBtn && AttackBtn.GetComponent<Button>())
+			AttackBtn.GetComponent<Button> ().interactable = false;
+			if(AttackBtn2 && AttackBtn2.GetComponent<Button>())
+			AttackBtn2.GetComponent<Button> ().interactable = false;
+			if (ActionBtn && ActionBtn.GetComponent<Button>())
+			ActionBtn.GetComponent<Button> ().interactable = false;
+			if(ActionBtn2 && ActionBtn2.GetComponent<Button>())
+			ActionBtn2.GetComponent<Button> ().interactable = false;
+			if(PassTurnBtn && PassTurnBtn.GetComponent<Button>())
+			PassTurnBtn.GetComponent<Button> ().interactable = false;
+			if(SurrenderBtn && SurrenderBtn.GetComponent<Button>())
+			SurrenderBtn.GetComponent<Button> ().interactable = false;
+		}
 	}
 
 	public void LoadCD(){

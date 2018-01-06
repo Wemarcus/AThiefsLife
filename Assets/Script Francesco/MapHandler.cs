@@ -541,7 +541,6 @@ public class MapHandler : MonoBehaviour {
 
 	public void SurrenderEnd(){
 		CurrentGame.cg.end.EndSetup (EndCases.Arrested);
-		bankSettings.IncreaseBankSecurity ();
 		CalculateDetention ();
 		CurrentGame.cg.UpdateStatsArrested (policemanKilled, EmployedKilled);
 		SceneManager.LoadScene ("Menu", LoadSceneMode.Single);
