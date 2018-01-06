@@ -17,6 +17,8 @@ public class CurrentGame : MonoBehaviour {
 
 	public EndRobbery end;
 
+	bool full;
+
 	// Use this for initialization
 	void Awake () {
 		if (cg == null) {
@@ -35,9 +37,45 @@ public class CurrentGame : MonoBehaviour {
 		employedKilled = 0;
 		robberies = 0;
 		arrested = 0;
+		full = true;
 
 		foreach (Bank bank in banks) {
 			bank.securityLevel = 0;
+		}
+	}
+
+	public SerializableGame SerializeGame(){
+		SerializableGame sg = new SerializableGame ();
+		sg.banks = new List<int> ();
+		sg.bossName = bossName;
+		sg.age = age;
+		sg.money = money;
+		sg.policemanKilled = policemanKilled;
+		sg.employedKilled = employedKilled;
+		sg.robberies = robberies;
+		sg.arrested = arrested;
+		sg.full = full;
+		int count = banks.Count;
+		Debug.Log (count);
+		for (int i=0; count > i; i++ ) {
+			Debug.Log ("iterazione");
+			sg.banks.Add(banks[i].securityLevel);
+		}
+		return sg;
+	}
+
+	public void LoadGame(SerializableGame sg){
+		bossName = sg.bossName;
+		age = sg.age;
+		money = sg.money;
+		policemanKilled = sg.policemanKilled;
+		employedKilled = sg.employedKilled;
+		robberies = sg.robberies;
+		arrested = sg.arrested;
+		full = sg.full;
+		int count = banks.Count;
+		for (int i=0; count > i; i++ ) {
+			banks [i].securityLevel = sg.banks [i];
 		}
 	}
 

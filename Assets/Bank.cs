@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
 
 [CreateAssetMenu(menuName = "A Thief's Life/Bank")]
+[Serializable]
 public class Bank : ScriptableObject {
 
 	public string bankName;
