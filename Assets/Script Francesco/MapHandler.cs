@@ -516,13 +516,14 @@ public class MapHandler : MonoBehaviour {
 	}
 
 	public void BossDeath(){
+		if (bossDeathPanel) {
+			bossDeathPanel.SetActive (true);
+			bossDeathPanel.GetComponent<EndStatsHandle> ().OnEnableEndStats();
+		}
 		Time.timeScale = 0;
 		AudioListener.pause =false;
 		ChangeState (GameState.End);
 		ChangeInputState (InputState.Nothing);
-		if(bossDeathPanel)
-		bossDeathPanel.SetActive (true);
-
 	}
 
 	public void RunEnd(){

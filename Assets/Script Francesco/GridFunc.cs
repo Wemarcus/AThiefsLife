@@ -17,8 +17,12 @@ public class GridFunc : MonoBehaviour {
 				GameObject portrait = Instantiate (newPlayer.GetComponent<Player> ().portrait);
 				EndStatsPortrait port = portrait.GetComponent<EndStatsPortrait> ();
 				port.player = newPlayer.GetComponent<Player> ();
-				FindObjectOfType<EndStatsHandle> ().portraitList.Add (portrait);
-
+				//FindObjectOfType<EndStatsHandle> ().portraitList.Add (portrait);
+				List<EndStatsHandle> endstL = new List<EndStatsHandle>();
+				endstL.AddRange(FindObjectsOfType<EndStatsHandle>());
+				foreach (EndStatsHandle end in endstL) {
+					end.portraitList.Add (portrait);
+				}
 				newPlayer.transform.position = spawnpoint.transform.position;
 				Player plr = newPlayer.GetComponent<Player> ();
 				Grid.GridMath.SetPlayerTarget (newPlayer,block);
