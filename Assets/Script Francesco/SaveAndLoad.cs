@@ -50,21 +50,21 @@ public class SaveAndLoad : MonoBehaviour {
 		}
 	}
 		
-	public void SaveGame(int pos){
-		//cambia il salvataggio corrente di savelist e pusha il cambiamento
-		saveList[pos] = CurrentGame.cg.SerializeGame();
+	public void SaveGame(){
+		//marco qua devi fare il save
+		saveList[CurrentGame.cg.actualSlot] = CurrentGame.cg.SerializeGame();
 		SaveData ();
 	}
 		
-	public void LoadGame(int pos){
-		//carica il gioco e sovrascrivi current game + passa a menu di gioco
-		CurrentGame.cg.LoadGame(saveList[pos]);
+	public void LoadGame(){
+		//marco qua devi fare il load
+		CurrentGame.cg.LoadGame(saveList[CurrentGame.cg.actualSlot]);
 	}
 
-	public void DeleteGame(int pos){
-		//sostituisci un elemento di savelist e pusha il cambiamento
+	public void DeleteGame(){
+		//marco qua devi fare il delete
 		SerializableGame sg = new SerializableGame();
-		saveList [pos] = sg;
+		saveList [CurrentGame.cg.actualSlot] = sg;
 		SaveData ();
 	}
 
@@ -78,13 +78,13 @@ public class SaveAndLoad : MonoBehaviour {
 		if(saveList.Count>3)
 		GUI.Label (new Rect (10, 90, 200, 30), "Boss Name: " + saveList [3].bossName);
 		if (GUI.Button (new Rect (10, 320, 100, 30), "Save on slot 1")) {
-			SaveGame (0);
+			SaveGame ();
 		}
 		if (GUI.Button (new Rect (10, 360, 100, 30), "Delete on slot 1")) {
-			DeleteGame (0);
+			DeleteGame ();
 		}
 		if (GUI.Button (new Rect (10, 390, 100, 30), "Load on slot 1")) {
-			LoadGame (0);
+			LoadGame ();
 		}
 	}
 }

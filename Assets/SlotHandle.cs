@@ -30,4 +30,16 @@ public class SlotHandle : MonoBehaviour {
 	void SetSlotIndex(){
 		CurrentGame.cg.actualSlot = slotIndex;
 	}
+
+	public void clickToLoadAndDelete(){
+		if (SaveAndLoad.sal.saveList [slotIndex].full) {
+			//marco aggiungi qua (attiva pulsanti cancella e carica)
+			SetSlotIndex();
+		}
+	}
+
+	public void clickToSave(){
+		//marco aggiungi qua (attiva pulsante salva)
+		SetSlotIndex ();
+	}
 }
