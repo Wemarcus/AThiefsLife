@@ -14,6 +14,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         public bool floor;
         private bool block;
 
+		private bool moving;
+
         private void Start()
         {
             // get the components on the object we need ( should not be null due to require component so no need to check )
@@ -29,11 +31,12 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         {
             if (floor)
             {
-                if (target != null)
+				if (target != null && !moving)
                 {
                     agent.enabled = true;
                     agent.SetDestination(target.position);
                     FindObjectOfType<MapHandler>().AnimationPerforming(true);
+					moving = true;
                 }
 
                 if (target != null && agent.remainingDistance > agent.stoppingDistance)
@@ -50,6 +53,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                     //Debug.Log ("stoppa animazione");
                     FindObjectOfType<MapHandler>().AnimationPerforming(false);
                     SetTarget(null);
+					moving = false;
                 }
             }
         }
