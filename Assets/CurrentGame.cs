@@ -17,7 +17,9 @@ public class CurrentGame : MonoBehaviour {
 
 	public EndRobbery end;
 
-	bool full;
+	public bool full;
+
+	public int actualSlot;
 
 	// Use this for initialization
 	void Awake () {

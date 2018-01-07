@@ -9,7 +9,7 @@ public class SaveAndLoad : MonoBehaviour {
 
 	public static SaveAndLoad sal;
 
-	List<SerializableGame> saveList;
+	public List<SerializableGame> saveList;
 
 	void Awake () {
 		if (sal == null) {
@@ -23,10 +23,12 @@ public class SaveAndLoad : MonoBehaviour {
 	public void Start(){
 		saveList = new List<SerializableGame> ();
 		SerializableGame sg = new SerializableGame ();
+		sg.bossName = "Empty";
 		saveList.Add (sg);
 		saveList.Add (sg);
 		saveList.Add (sg);
 		saveList.Add (sg);
+		LoadData ();
 	}
 
 	public void SaveData(){
