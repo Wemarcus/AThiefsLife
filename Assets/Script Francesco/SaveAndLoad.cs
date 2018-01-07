@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
@@ -10,6 +11,32 @@ public class SaveAndLoad : MonoBehaviour {
 	public static SaveAndLoad sal;
 
 	public List<SerializableGame> saveList;
+
+    // Aggiunte marco delete
+    public GameObject back;
+    public GameObject delete_popup;
+    public GameObject fakebackground;
+
+    // Aggiunte marco load
+
+    public GameObject load_background;
+    public GameObject load_menu;
+    public GameObject camera_home;
+    public GameObject camera_carrier;
+    public GameObject npc_home;
+    public GameObject npc_carrier;
+    public GameObject carrier_background;
+    public GameObject carrier_menu;
+    public GameObject play_button;
+    public GameObject delete_button;
+    public GameObject boss;
+    public GameObject sniper;
+
+    // Aggiunte marco save
+    public GameObject save_menu;
+    public GameObject fake_background_2;
+    public GameObject back_button;
+    public GameObject save_button;
 
 	void Awake () {
 		if (sal == null) {
@@ -51,19 +78,41 @@ public class SaveAndLoad : MonoBehaviour {
 	}
 		
 	public void SaveGame(){
-		//marco qua devi fare il save
-		saveList[CurrentGame.cg.actualSlot] = CurrentGame.cg.SerializeGame();
+        // Aggiunta marco
+        fake_background_2.SetActive(true);
+        save_menu.SetActive(false);
+        back_button.GetComponent<Button>().interactable = true;
+        save_button.GetComponent<Button>().interactable = false;
+        //
+        saveList[CurrentGame.cg.actualSlot] = CurrentGame.cg.SerializeGame();
 		SaveData ();
 	}
 		
 	public void LoadGame(){
-		//marco qua devi fare il load
+        // Aggiunta marco
+        load_background.SetActive(false);
+        load_menu.SetActive(false);
+        camera_home.SetActive(false);
+        camera_carrier.SetActive(true);
+        npc_home.SetActive(false);
+        npc_carrier.SetActive(true);
+        carrier_background.SetActive(true);
+        carrier_menu.SetActive(true);
+        play_button.GetComponent<Button>().interactable = false;
+        delete_button.GetComponent<Button>().interactable = false;
+        boss.GetComponent<NPC_Menu>().Start();
+        sniper.GetComponent<NPC_Menu_2>().Start();
+        //
 		CurrentGame.cg.LoadGame(saveList[CurrentGame.cg.actualSlot]);
 	}
 
 	public void DeleteGame(){
-		//marco qua devi fare il delete
-		SerializableGame sg = new SerializableGame();
+        // Aggiunta marco
+        fakebackground.SetActive(true);
+        back.GetComponent<Button>().interactable = true;
+        delete_popup.SetActive(false);
+        //
+        SerializableGame sg = new SerializableGame();
 		saveList [CurrentGame.cg.actualSlot] = sg;
 		SaveData ();
 	}

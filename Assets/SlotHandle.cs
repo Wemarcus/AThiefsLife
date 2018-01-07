@@ -10,16 +10,24 @@ public class SlotHandle : MonoBehaviour {
 	public Text bossName;
 
 	public GameObject save;
+    public GameObject empty_container;
 	public Text age;
 	public Text patrimony;
 	public Text robberies;
 	public Text arrested;
 
+    // Aggiunte Marco
+    public GameObject fakebackground;
+    public GameObject delete;
+    public GameObject load;
+    public GameObject save_button;
+
 	// Use this for initialization
 	void OnEnable() {
 		bossName.text = SaveAndLoad.sal.saveList [slotIndex].bossName;
 		if (SaveAndLoad.sal.saveList [slotIndex].full) {
-			save.SetActive (true);
+			save.SetActive(true);
+            empty_container.SetActive(false);
 			age.text = SaveAndLoad.sal.saveList [slotIndex].age.ToString();
 			patrimony.text = SaveAndLoad.sal.saveList [slotIndex].money.ToString();
 			robberies.text = SaveAndLoad.sal.saveList [slotIndex].robberies.ToString();
@@ -33,13 +41,20 @@ public class SlotHandle : MonoBehaviour {
 
 	public void clickToLoadAndDelete(){
 		if (SaveAndLoad.sal.saveList [slotIndex].full) {
-			//marco aggiungi qua (attiva pulsanti cancella e carica)
-			SetSlotIndex();
+            // Aggiunte Marco
+            fakebackground.SetActive(false);
+            delete.GetComponent<Button>().interactable = true;
+            load.GetComponent<Button>().interactable = true;
+            //
+            SetSlotIndex();
 		}
 	}
 
 	public void clickToSave(){
-		//marco aggiungi qua (attiva pulsante salva)
+        // Aggiunte Marco
+        fakebackground.SetActive(false);
+        save_button.GetComponent<Button>().interactable = true;
+        //
 		SetSlotIndex ();
 	}
 }
