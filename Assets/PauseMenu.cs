@@ -18,7 +18,8 @@ public class PauseMenu : MonoBehaviour {
 	}
 	
 	public void ExitButton(){
-		Application.Quit ();
+		//Application.Quit ();
+        // Ritornare alla home del gioco
 	}
 
 	public void TutorialButton(){
