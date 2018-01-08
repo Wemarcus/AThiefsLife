@@ -17,7 +17,7 @@ public class SpawnEvent : MonoBehaviour {
 	void Start(){
 		ce = FindObjectOfType<CaveauEvent> ();
 		FindObjectOfType<MapHandler> ().nextRoundEvent += TurnPassed;
-		if (difficultyLevel > FindObjectOfType<MapHandler> ().bankSettings.securityLevel) {
+		if (difficultyLevel != FindObjectOfType<MapHandler> ().bankSettings.securityLevel) {
 			this.enabled = false;
 		}
 	}
