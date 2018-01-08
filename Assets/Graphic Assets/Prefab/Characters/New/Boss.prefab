@@ -5686,6 +5686,7 @@ MonoBehaviour:
     type: 2}
   spawnPointDamagePopUpPrefab: {fileID: 1623237326660564}
   portrait: {fileID: 1615239554838254, guid: ea2be495cae2fa949815f267613d3b1c, type: 2}
+  immuneToGas: 0
 --- !u!114 &114290914275444730
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7033,7 +7034,7 @@ NavMeshAgent:
   m_Height: 2
   m_BaseOffset: -0.03
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 0
 --- !u!198 &198034079886959838
 ParticleSystem:
   m_ObjectHideFlags: 1
