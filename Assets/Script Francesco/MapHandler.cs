@@ -306,7 +306,7 @@ public class MapHandler : MonoBehaviour {
 			Grid.GridMath.RotateCharacter (selectedPlayer, targetList [0]);
 			ChangeInputState (InputState.Attack);
 		} else {
-			StartCoroutine (MessagePopUp.MessagePopUp.ShowMessage ("There is any enemy in your line of sight", popUp));
+			StartCoroutine (MessagePopUp.MessagePopUp.ShowMessage ("There is no enemy in your line of sight", popUp));
 			selectedWeapon = null;
 		}
 	}
@@ -330,7 +330,7 @@ public class MapHandler : MonoBehaviour {
 			Grid.GridMath.RotateCharacter (selectedPlayer, targetList [0]);
 			ChangeInputState (InputState.Attack);
 		} else {
-			StartCoroutine (MessagePopUp.MessagePopUp.ShowMessage ("There is any enemy in your line of sight", popUp));
+			StartCoroutine (MessagePopUp.MessagePopUp.ShowMessage ("There is no enemy in your line of sight", popUp));
 			selectedWeapon = null;
 		}
 	}
