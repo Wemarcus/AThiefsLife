@@ -9,6 +9,7 @@ public class FramingHandle : MonoBehaviour {
 	public GameObject character;
 	private Camera currentCamera;
 	private Camera mainCamera;
+	public Camera attackCamera;
 	private bool isFraming;
 
 	// Use this for initialization
@@ -71,6 +72,25 @@ public class FramingHandle : MonoBehaviour {
 						flag = true;
 					}
 				}
+			}
+		}
+	}
+
+	public void LoadAttackCamera(){
+		RaycastHit hit;
+		Vector3 dir = (target.transform.position - attackCamera.transform.position);
+		if (Physics.Raycast (attackCamera.transform.position, dir, out hit)) {
+			Debug.DrawRay (attackCamera.transform.position, dir, Color.red, 500f);
+			Transform objectHit = hit.transform;
+			//Debug.Log (objectHit.name);
+			if (objectHit.gameObject == character) {
+				if (currentCamera) {
+					currentCamera.enabled = false;
+				}
+				currentCamera = attackCamera;
+				attackCamera.enabled = true;
+				if (mainCamera && mainCamera.enabled == true)
+					mainCamera.enabled = false;
 			}
 		}
 	}

@@ -49,9 +49,13 @@ public class MainCamera : MonoBehaviour
 		if (newTarget) {
 			enm = newTarget.GetComponent<Enemy> ();
 			target = enm.head.transform;
+			if(FindObjectOfType<CameraTestMarco>())
+			FindObjectOfType<CameraTestMarco> ().setcamera ();
 		} else {
 			mh = FindObjectOfType<MapHandler> ();
 			ChangeTargetWithPlayer (mh.selectedPlayer);
+			if(FindObjectOfType<CameraTestMarco>())
+			FindObjectOfType<CameraTestMarco> ().setcamera ();
 		}
 	}
 
@@ -60,6 +64,8 @@ public class MainCamera : MonoBehaviour
 		if(newTarget){
 			plr = newTarget.GetComponent<Player> ();
 			target = plr.head.transform;
+			if(FindObjectOfType<CameraTestMarco>())
+				FindObjectOfType<CameraTestMarco> ().setcamera ();
 		}
 	}
 
