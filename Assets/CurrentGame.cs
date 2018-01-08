@@ -19,7 +19,7 @@ public class CurrentGame : MonoBehaviour {
 
 	public bool full;
 
-	public int actualSlot;
+	public SlotHandle actualSlot;
 
 	// Use this for initialization
 	void Awake () {
