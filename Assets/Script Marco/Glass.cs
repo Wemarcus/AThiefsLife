@@ -36,5 +36,19 @@ public class Glass : MonoBehaviour {
 
             Destroy(gameObject, 4.0f);
         }
+
+        if (other.tag == "Floor")
+        {
+            Debug.Log("Collisione tra un Floor ed un Glass");
+
+            Destroy(gameObject, 10.0f);
+        }
+
+        if (other.tag == "Bullet")
+        {
+            Debug.Log("Collisione tra un Bullet ed un Glass");
+
+            Destroy(gameObject, 10.0f);
+        }
     }
 }
