@@ -129,6 +129,7 @@ public class MapHandler : MonoBehaviour {
 			Time.timeScale = 1;			
 			AudioListener.pause = false;
 			pm.pauseMenu.SetActive (false);
+			pm.DeactivateTutorial ();
 		}
 	}
 

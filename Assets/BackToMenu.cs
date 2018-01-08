@@ -36,6 +36,7 @@ public class BackToMenu : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		Time.timeScale = 1;
+		AudioListener.pause = false;
 		//SaveAndLoad.sal.LoadData ();
 		if (CurrentGame.cg.end.robberyEnded) {
 			switch (CurrentGame.cg.end.endCase) {
