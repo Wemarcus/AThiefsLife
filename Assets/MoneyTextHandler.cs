@@ -10,12 +10,12 @@ public class MoneyTextHandler : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		moneyText = this.gameObject.GetComponent<Text> ();
-		moneyText.text = FindObjectOfType<MapHandler> ().money.ToString() + " $";
+		moneyText.text = ServiceLibrary.ReturnDotOfInt(FindObjectOfType<MapHandler>().money);
 		FindObjectOfType<MapHandler> ().addMoneyEvent += UpdateMoney;
 
 	}
 
 	private void UpdateMoney(int n){
-		moneyText.text = FindObjectOfType<MapHandler> ().money.ToString () + " $";
+		moneyText.text = ServiceLibrary.ReturnDotOfInt(FindObjectOfType<MapHandler>().money);
 	}
 }

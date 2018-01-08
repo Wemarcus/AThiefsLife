@@ -16,7 +16,7 @@ public class MenuStatsHandle : MonoBehaviour {
 		age.text = CurrentGame.cg.age.ToString();
 		police.text = CurrentGame.cg.policemanKilled.ToString ();
 		employed.text = CurrentGame.cg.employedKilled.ToString ();
-		money.text = CurrentGame.cg.money.ToString () + " $";
+		money.text = ServiceLibrary.ReturnDotOfInt (CurrentGame.cg.money);
 		robbery.text = CurrentGame.cg.robberies.ToString ();
 		arrested.text = CurrentGame.cg.arrested.ToString ();
 	}

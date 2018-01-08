@@ -30,7 +30,7 @@ public class SlotHandle : MonoBehaviour {
 				save.SetActive (true);
 				empty_container.SetActive (false);
 				age.text = SaveAndLoad.sal.saveList [slotIndex].age.ToString ();
-				patrimony.text = SaveAndLoad.sal.saveList [slotIndex].money.ToString ();
+				patrimony.text =ServiceLibrary.ReturnDotOfInt(SaveAndLoad.sal.saveList [slotIndex].money);
 				robberies.text = SaveAndLoad.sal.saveList [slotIndex].robberies.ToString ();
 				arrested.text = SaveAndLoad.sal.saveList [slotIndex].arrested.ToString ();
 			} else {
