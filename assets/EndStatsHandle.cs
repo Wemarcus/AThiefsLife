@@ -28,9 +28,10 @@ public class EndStatsHandle : MonoBehaviour {
 	}
 
 	public void OnEnableEndStats(){
-		if (setted) {
+		if (setted && gameObject) {
 			endStats.gameObject.SetActive (true);
 			foreach (GameObject portrait in portraitList) {
+				if(portrait)
 				portrait.transform.SetParent (thiefContent.transform);
 			}
 			mh.ChangeState (GameState.End);
