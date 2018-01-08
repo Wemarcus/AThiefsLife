@@ -37,7 +37,6 @@ public class PauseMenu : MonoBehaviour {
 		if (mh.pause) {
 			pauseMenu.SetActive (true);
         } else {
-			pauseMenu.SetActive (false);
             tutorial_menu.SetActive(false);
             general_info_background.SetActive(true);
             general_info_button.SetActive(true);
@@ -61,7 +60,32 @@ public class PauseMenu : MonoBehaviour {
             exit_menu_button.SetActive(false);
         }
 	}
-	
+
+	public void DeactivateTutorial(){
+		pauseMenu.SetActive (false);
+		tutorial_menu.SetActive(false);
+		general_info_background.SetActive(true);
+		general_info_button.SetActive(true);
+		character_background.SetActive(false);
+		movement_background.SetActive(false);
+		attack_background.SetActive(false);
+		attack_2_background.SetActive(false);
+		action_background.SetActive(false);
+		action_2_background.SetActive(false);
+		rob_background.SetActive(false);
+		rob_2_background.SetActive(false);
+		rob_3_background.SetActive(false);
+		escape_background.SetActive(false);
+		escape_2_background.SetActive(false);
+		character_button.SetActive(false);
+		movement_button.SetActive(false);
+		attack_button.SetActive(false);
+		action_button.SetActive(false);
+		rob_button.SetActive(false);
+		escape_button.SetActive(false);
+		exit_menu_button.SetActive(false);
+	}
+
 	public void ExitButton(){
 		//Application.Quit ();
 		SceneManager.LoadScene("Menu",LoadSceneMode.Single);
