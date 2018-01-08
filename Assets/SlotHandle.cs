@@ -24,17 +24,19 @@ public class SlotHandle : MonoBehaviour {
 
 	// Use this for initialization
 	public void OnEnable() {
-		bossName.text = SaveAndLoad.sal.saveList [slotIndex].bossName;
-		if (SaveAndLoad.sal.saveList [slotIndex].full) {
-			save.SetActive (true);
-			empty_container.SetActive (false);
-			age.text = SaveAndLoad.sal.saveList [slotIndex].age.ToString ();
-			patrimony.text = SaveAndLoad.sal.saveList [slotIndex].money.ToString ();
-			robberies.text = SaveAndLoad.sal.saveList [slotIndex].robberies.ToString ();
-			arrested.text = SaveAndLoad.sal.saveList [slotIndex].arrested.ToString ();
-		} else {
-			save.SetActive (false);
-			empty_container.SetActive (true);
+		if (gameObject) {
+			bossName.text = SaveAndLoad.sal.saveList [slotIndex].bossName;
+			if (SaveAndLoad.sal.saveList [slotIndex].full) {
+				save.SetActive (true);
+				empty_container.SetActive (false);
+				age.text = SaveAndLoad.sal.saveList [slotIndex].age.ToString ();
+				patrimony.text = SaveAndLoad.sal.saveList [slotIndex].money.ToString ();
+				robberies.text = SaveAndLoad.sal.saveList [slotIndex].robberies.ToString ();
+				arrested.text = SaveAndLoad.sal.saveList [slotIndex].arrested.ToString ();
+			} else {
+				save.SetActive (false);
+				empty_container.SetActive (true);
+			}
 		}
 	}
 

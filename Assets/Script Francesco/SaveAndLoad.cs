@@ -82,10 +82,10 @@ public class SaveAndLoad : MonoBehaviour {
 		CurrentGame.cg.actualSlot.OnEnable ();
 		SaveData ();
 		// Aggiunta marco
-		fake_background_2.SetActive(true);
+		/*fake_background_2.SetActive(true);
 		save_menu.SetActive(false);
 		back_button.GetComponent<Button>().interactable = true;
-		save_button.GetComponent<Button>().interactable = false;
+		save_button.GetComponent<Button>().interactable = false;*/
 		//
 	}
 		
@@ -93,7 +93,7 @@ public class SaveAndLoad : MonoBehaviour {
 		CurrentGame.cg.LoadGame(saveList[CurrentGame.cg.actualSlot.slotIndex]);
 		CurrentGame.cg.actualSlot.OnEnable ();
 		// Aggiunta marco
-		load_background.SetActive(false);
+		/*load_background.SetActive(false);
 		load_menu.SetActive(false);
 		camera_home.SetActive(false);
 		camera_carrier.SetActive(true);
@@ -104,7 +104,7 @@ public class SaveAndLoad : MonoBehaviour {
 		play_button.GetComponent<Button>().interactable = false;
 		delete_button.GetComponent<Button>().interactable = false;
 		boss.GetComponent<NPC_Menu>().Start();
-		sniper.GetComponent<NPC_Menu_2>().Start();
+		sniper.GetComponent<NPC_Menu_2>().Start();*/
 		//
 	}
 
@@ -115,13 +115,13 @@ public class SaveAndLoad : MonoBehaviour {
 		SaveData ();
 		CurrentGame.cg.actualSlot.OnEnable ();
 		// Aggiunta marco
-		fakebackground.SetActive(true);
+		/*fakebackground.SetActive(true);
 		back.GetComponent<Button>().interactable = true;
-		delete_popup.SetActive(false);
+		delete_popup.SetActive(false);*/
 		//
 	}
 
-	void OnGUI(){
+	/*void OnGUI(){
 		if(saveList.Count>0)
 		GUI.Label (new Rect (10,30,200,30), "Boss Name: " + saveList [0].bossName);
 		if(saveList.Count>1)
@@ -139,7 +139,7 @@ public class SaveAndLoad : MonoBehaviour {
 		if (GUI.Button (new Rect (10, 390, 100, 30), "Load on slot 1")) {
 			LoadGame ();
 		}
-	}
+	}*/
 }
 
 [Serializable]
