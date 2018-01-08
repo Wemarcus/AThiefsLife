@@ -37,6 +37,7 @@ public class Agent_Animation : MonoBehaviour {
 		mh.changeStateEvent += SetTurnBool;
         agent = GetComponent<Animator>();
         MyTurn = true;
+		enable = true;
     }
 
     private void Update()
