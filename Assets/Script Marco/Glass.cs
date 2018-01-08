@@ -50,5 +50,12 @@ public class Glass : MonoBehaviour {
 
             Destroy(gameObject, 10.0f);
         }
+
+        if (other.tag == "Player")
+        {
+            Debug.Log("Collisione tra un Player ed un Glass");
+
+            Destroy(gameObject, 4.0f);
+        }
     }
 }
