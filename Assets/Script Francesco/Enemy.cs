@@ -164,7 +164,7 @@ public class Enemy : MonoBehaviour {
 		while (FindObjectOfType<MapHandler> ().PerformingAction) {
 			yield return  new WaitForSeconds(1f);
 		}
-		yield return new WaitForSeconds(2f);
+		yield return new WaitForSeconds(2.5f);
 		LookNearestPlayer ();
 		if (GetComponentInChildren<FramingHandle> ()) {
 			GetComponentInChildren<FramingHandle> ().ReleaseCamera ();
@@ -302,7 +302,7 @@ public class Enemy : MonoBehaviour {
 		/*while (FindObjectOfType<MapHandler> ().PerformingAction) {
 			yield return null;
 		}*/
-		yield return new WaitForSeconds(2f);
+		yield return new WaitForSeconds(2.5f);
 		LookNearestPlayer ();
 		if (GetComponentInChildren<FramingHandle> ()) {
 			GetComponentInChildren<FramingHandle> ().ReleaseCamera ();
@@ -437,7 +437,7 @@ public class Enemy : MonoBehaviour {
 		/*while (FindObjectOfType<MapHandler> ().PerformingAction) {
 			yield return null;
 		}*/
-		yield return new WaitForSeconds(2f);
+		yield return new WaitForSeconds(2.5f);
 		LookNearestPlayer ();
 		if (GetComponentInChildren<FramingHandle> ()) {
 			GetComponentInChildren<FramingHandle> ().ReleaseCamera ();

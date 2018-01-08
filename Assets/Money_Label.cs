@@ -10,6 +10,6 @@ public class Money_Label : MonoBehaviour {
 	// Use this for initialization
 	void OnEnable () {
 		moneyText = this.gameObject.GetComponent<Text> ();
-		moneyText.text = CurrentGame.cg.end.caution + " $ ?";
+		moneyText.text = ServiceLibrary.ReturnDotOfInt(CurrentGame.cg.money)+ " ?";
 	}
 }

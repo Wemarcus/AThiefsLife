@@ -22,7 +22,7 @@ public class EndStatsHandle : MonoBehaviour {
 		mh = FindObjectOfType<MapHandler> ();
 		policemanKilled.text = mh.policemanKilled.ToString();
 		employedKilled.text = mh.EmployedKilled.ToString();
-		moneyRobbed.text = mh.money.ToString();
+		moneyRobbed.text = ServiceLibrary.ReturnDotOfInt(mh.money);
 		endStats.gameObject.SetActive (false);
 		setted = true;
 	}
@@ -40,7 +40,7 @@ public class EndStatsHandle : MonoBehaviour {
 			//setto icone ladri
 			policemanKilled.text = mh.policemanKilled.ToString();
 			employedKilled.text = mh.EmployedKilled.ToString();
-			moneyRobbed.text = mh.money.ToString();
+			moneyRobbed.text = ServiceLibrary.ReturnDotOfInt(mh.money);
 		}
 	}
 }
