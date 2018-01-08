@@ -189,6 +189,9 @@ public class Enemy : MonoBehaviour {
 
 		if (playersTrg.Count > 0 && !this.GetComponent<Confusion>()) {
 			//hit
+			if (GetComponentInChildren <FramingHandle> ()) {
+				GetComponentInChildren<FramingHandle> ().LoadAttackCamera ();
+			}
 			target = playersTrg[Random.Range(0,playersTrg.Count)];
 			//FindObjectOfType<MapHandler> ().ProvideDamageToPlayer (target, damage);
 			Grid.GridMath.RotateCharacter(this.gameObject,target);
@@ -203,7 +206,9 @@ public class Enemy : MonoBehaviour {
 			while (FindObjectOfType<MapHandler> ().PerformingAction) {
 				yield return new WaitForSeconds(1f);
 			}
-
+			if (GetComponentInChildren <FramingHandle> ()) {
+				GetComponentInChildren<FramingHandle> ().SwitchCamera ();
+			}
 			List<GameObject> sortedMoveSpots = new List<GameObject> ();
 			Node n;
 			foreach (GameObject elem in MoveSpots) {
@@ -286,6 +291,9 @@ public class Enemy : MonoBehaviour {
 
 			playersTrg = GridFunc.HittablePlayers(this.gameObject,playersTrg,range);
 			if (playersTrg.Count > 0 && !this.GetComponent<Confusion>()) {
+				if (GetComponentInChildren <FramingHandle> ()) {
+					GetComponentInChildren<FramingHandle> ().LoadAttackCamera ();
+				}
 				target = playersTrg[Random.Range(0,playersTrg.Count)];
 				//Debug.Log ("posso colpire:" + target.name);
 				//Hit
@@ -325,6 +333,9 @@ public class Enemy : MonoBehaviour {
 		}
 
 		if (playersTrg.Count > 0 && !this.GetComponent<Confusion>()) {
+			if (GetComponentInChildren <FramingHandle> ()) {
+				GetComponentInChildren<FramingHandle> ().LoadAttackCamera ();
+			}
 			//hit
 			target = playersTrg[Random.Range(0,playersTrg.Count)];
 			//FindObjectOfType<MapHandler> ().ProvideDamageToPlayer (target, damage);
@@ -339,7 +350,9 @@ public class Enemy : MonoBehaviour {
 			while (FindObjectOfType<MapHandler> ().PerformingAction) {
 				yield return new WaitForSeconds(1f);
 			}
-
+			if (GetComponentInChildren <FramingHandle> ()) {
+				GetComponentInChildren<FramingHandle> ().SwitchCamera ();
+			}
 			List<GameObject> sortedMoveSpots = new List<GameObject> ();
 			Node n;
 			foreach (GameObject elem in MoveSpots) {
@@ -422,6 +435,9 @@ public class Enemy : MonoBehaviour {
 
 			playersTrg = GridFunc.HittablePlayers(this.gameObject,playersTrg,range);
 			if (playersTrg.Count > 0 && !this.GetComponent<Confusion>()) {
+				if (GetComponentInChildren <FramingHandle> ()) {
+					GetComponentInChildren<FramingHandle> ().LoadAttackCamera ();
+				}
 				target = playersTrg[Random.Range(0,playersTrg.Count)];
 				//Debug.Log ("posso colpire:" + target.name);
 				//Hit

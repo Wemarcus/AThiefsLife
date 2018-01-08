@@ -8,7 +8,11 @@ public class CameraTestMarco : MonoBehaviour {
     public GameObject virtual_camera;
 	
 	void Update () {
-        virtual_camera.GetComponent<MainCamera>().target = main_camera.GetComponent<MainCamera>().target;
-        GetComponent<Cinemachine.CinemachineVirtualCamera>().LookAt = virtual_camera.GetComponent<MainCamera>().target;
+
     }
+
+	public void setcamera(){
+		virtual_camera.GetComponent<MainCamera>().target = main_camera.GetComponent<MainCamera>().target;
+		GetComponent<Cinemachine.CinemachineVirtualCamera>().LookAt = virtual_camera.GetComponent<MainCamera>().target;
+	}
 }
