@@ -1,8 +1,3 @@
-/*
- * Meshinator
- * Copyright Mike Mahoney 2013
- */
-
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;

@@ -32,8 +32,7 @@ public class ThreadManager : MonoBehaviour
 	static void Initialize()
 	{
 		if (!initialized)
-		{
-		
+		{	
 			if(!Application.isPlaying)
 				return;
 			initialized = true;
