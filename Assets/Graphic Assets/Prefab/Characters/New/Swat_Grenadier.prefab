@@ -5471,6 +5471,7 @@ MonoBehaviour:
   - {fileID: 20628027747138612}
   target: {fileID: 1613224548696294}
   character: {fileID: 1613224548696294}
+  attackCamera: {fileID: 20914544101482952}
 --- !u!114 &114513167689984230
 MonoBehaviour:
   m_ObjectHideFlags: 1
