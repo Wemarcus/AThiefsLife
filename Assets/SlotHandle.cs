@@ -23,20 +23,25 @@ public class SlotHandle : MonoBehaviour {
     public GameObject save_button;
 
 	// Use this for initialization
-	void OnEnable() {
-		bossName.text = SaveAndLoad.sal.saveList [slotIndex].bossName;
-		if (SaveAndLoad.sal.saveList [slotIndex].full) {
-			save.SetActive(true);
-            empty_container.SetActive(false);
-			age.text = SaveAndLoad.sal.saveList [slotIndex].age.ToString();
-			patrimony.text = SaveAndLoad.sal.saveList [slotIndex].money.ToString();
-			robberies.text = SaveAndLoad.sal.saveList [slotIndex].robberies.ToString();
-			arrested.text = SaveAndLoad.sal.saveList [slotIndex].arrested.ToString();
+	public void OnEnable() {
+		if (gameObject) {
+			bossName.text = SaveAndLoad.sal.saveList [slotIndex].bossName;
+			if (SaveAndLoad.sal.saveList [slotIndex].full) {
+				save.SetActive (true);
+				empty_container.SetActive (false);
+				age.text = SaveAndLoad.sal.saveList [slotIndex].age.ToString ();
+				patrimony.text = SaveAndLoad.sal.saveList [slotIndex].money.ToString ();
+				robberies.text = SaveAndLoad.sal.saveList [slotIndex].robberies.ToString ();
+				arrested.text = SaveAndLoad.sal.saveList [slotIndex].arrested.ToString ();
+			} else {
+				save.SetActive (false);
+				empty_container.SetActive (true);
+			}
 		}
 	}
 
 	void SetSlotIndex(){
-		CurrentGame.cg.actualSlot = slotIndex;
+		CurrentGame.cg.actualSlot = this;
 	}
 
 	public void clickToLoadAndDelete(){
