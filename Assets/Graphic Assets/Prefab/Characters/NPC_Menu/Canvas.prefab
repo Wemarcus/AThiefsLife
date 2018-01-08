@@ -1242,6 +1242,7 @@ GameObject:
   - component: {fileID: 114081827012984578}
   - component: {fileID: 114273053541916804}
   - component: {fileID: 114207094649330720}
+  - component: {fileID: 114690686577497878}
   m_Layer: 5
   m_Name: YES
   m_TagString: Untagged
@@ -3580,6 +3581,7 @@ GameObject:
   - component: {fileID: 114887706464258462}
   - component: {fileID: 114744167494926620}
   - component: {fileID: 114608071207501404}
+  - component: {fileID: 114377600149675964}
   m_Layer: 5
   m_Name: YES
   m_TagString: Untagged
@@ -6037,6 +6039,7 @@ GameObject:
   - component: {fileID: 114673595887134306}
   - component: {fileID: 114869058998878372}
   - component: {fileID: 114907435761319562}
+  - component: {fileID: 114287082267570742}
   m_Layer: 5
   m_Name: Play_Button
   m_TagString: Untagged
@@ -19364,8 +19367,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 0}
-          m_MethodName: SaveGame
+        - m_Target: {fileID: 114690686577497878}
+          m_MethodName: OnClickSave
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -19855,6 +19858,29 @@ MonoBehaviour:
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
+--- !u!114 &114287082267570742
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1589085109327952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d012e927b63781a4297d13913919175b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  load_background: {fileID: 1006237626876390}
+  load_menu: {fileID: 1262213087034888}
+  camera_home: {fileID: 0}
+  camera_carrier: {fileID: 0}
+  npc_home: {fileID: 0}
+  npc_carrier: {fileID: 0}
+  carrier_background: {fileID: 1139039357542332}
+  carrier_menu: {fileID: 1306745741012390}
+  play_button: {fileID: 1589085109327952}
+  delete_button: {fileID: 1855841678209100}
+  boss: {fileID: 0}
+  sniper: {fileID: 0}
 --- !u!114 &114287267867705236
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -22299,6 +22325,20 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114377600149675964
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1356052749337136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d180bc181fdfca74493a70efabefeb60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  back: {fileID: 1250115909563424}
+  delete_popup: {fileID: 1724383026006816}
+  fakebackground: {fileID: 1970099556687178}
 --- !u!114 &114378852895440560
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -30316,8 +30356,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 0}
-          m_MethodName: DeleteGame
+        - m_Target: {fileID: 114377600149675964}
+          m_MethodName: OnClickDelete
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -33122,6 +33162,21 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114690686577497878
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1137031332501872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1be9bec66aa1312479bae1f0de45c4ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  save_menu: {fileID: 1886685031782626}
+  fake_background_2: {fileID: 1579341406664778}
+  back_button: {fileID: 1705273785829174}
+  save_button: {fileID: 1409374390408362}
 --- !u!114 &114691790837071842
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -40543,8 +40598,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 0}
-          m_MethodName: LoadGame
+        - m_Target: {fileID: 114287082267570742}
+          m_MethodName: OnClickLoad
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
