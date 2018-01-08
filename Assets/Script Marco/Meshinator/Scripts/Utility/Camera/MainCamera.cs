@@ -36,7 +36,11 @@ public class MainCamera : MonoBehaviour
 		
 		// Set clipping distances for 3D objects to save rendering time
 		float[] distances = new float[32];
-		gameObject.GetComponent<Camera>().layerCullDistances = distances;
+
+        if(gameObject.GetComponent<Camera>() != null)
+        {
+            gameObject.GetComponent<Camera>().layerCullDistances = distances;
+        }
 	}
 
 	void ChangeTargetWithEnemy(GameObject newTarget){
