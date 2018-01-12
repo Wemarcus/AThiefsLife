@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using System.Collections;
 
 namespace UnityStandardAssets.Characters.ThirdPerson
 {
@@ -15,6 +16,13 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         private bool block;
 
         private bool moving;
+
+        // variabili fittizie per il trailer
+        public GameObject trailerAI;
+        public GameObject drill;
+        public bool first = true;
+        public bool second = false;
+        public bool third = false;
 
         private void Start()
         {
@@ -51,6 +59,24 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                 {
                     SetTarget(null);
                     moving = false;
+
+                    if (first)
+                    {
+                        first = false;
+                        trailerAI.GetComponent<TrailerAI>().FirstAction(gameObject.name);
+                    }
+
+                    if (second)
+                    {
+                        second = false;
+                        trailerAI.GetComponent<TrailerAI>().SecondAction(gameObject.name);
+                    }
+
+                    if (third)
+                    {
+                        third = false;
+                        trailerAI.GetComponent<TrailerAI>().ThirdAction(gameObject.name);
+                    }
                 }
             }
         }
@@ -73,6 +99,27 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                         break;
                 }
             }
+
+            switch (other.tag)
+            {
+                case "Drill":
+                    StartCoroutine(OpenCaveau());
+                    break;
+            }
+        }
+
+        private IEnumerator OpenCaveau()
+        {
+            yield return new WaitForSeconds(0.5f);
+            drill.SetActive(true);
+
+            if(gameObject.name == "Tank")
+            {
+                transform.LookAt(drill.transform);
+            }
+
+            yield return new WaitForSeconds(7.0f);
+            trailerAI.GetComponent<TrailerAI>().FourthAction();
         }
     }
 }
