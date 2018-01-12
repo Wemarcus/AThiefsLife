@@ -4914,7 +4914,7 @@ MonoBehaviour:
   wpnDescription: 55 damage
   wpnType: 0
   damage: 55
-  range: 15
+  range: 12
   bulletPrefab: {fileID: 155826, guid: 0f41e8d90a6f5134f9d1fb9bcac7a543, type: 2}
   wpnImage: {fileID: 21300000, guid: c46a5270ee772ce499ad5ffab63d8b83, type: 3}
   selectedWpnImage: {fileID: 21300000, guid: 0618c36f45c6a1d4da489e37d4191914, type: 3}
