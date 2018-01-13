@@ -8,6 +8,8 @@ public class AgentAnimationTrailer : MonoBehaviour {
     public bool firing; // utilizzata per sparare con l'arma primaria
     public bool grenade; // utilizzata per lanciare la bomba
     public bool death; // utilizzata per morire
+    public bool blooding; // utilizzata per dissanguamento
+    public bool steal; // utilizzata per derubare
 
     // Variabili da settare nell'inspector
     public GameObject bullet;
@@ -23,7 +25,6 @@ public class AgentAnimationTrailer : MonoBehaviour {
     // Variabili utilizzate solo in questo script
     private Animator agent;
     private float time;
-    private bool block;
 
     private bool enable;
 
@@ -76,13 +77,41 @@ public class AgentAnimationTrailer : MonoBehaviour {
 
             StartCoroutine(Grenade(time));
         }
+
+        if (blooding)
+        {
+            blooding = false;
+            time = 1.0f;
+            StartCoroutine(Blood(time));
+        }
+
+        if (steal)
+        {
+            steal = false;
+            if (is_sniper)
+            {
+                time = 6.0f;
+            }
+            else
+            {
+                time = 8.0f;
+            }
+            StartCoroutine(Stealing(time));
+        }
     }
 
-    private IEnumerator Blood(float t)
+    public IEnumerator Stealing(float t)
     {
+        agent.SetBool("Steal", true);
+        yield return new WaitForSeconds(t);
+        agent.SetBool("Steal", false);
+    }
+
+    public IEnumerator Blood(float t)
+    {
+        blood.SetActive(true);
         yield return new WaitForSeconds(t);
         blood.SetActive(false);
-        block = false;
     }
 
     private IEnumerator Grenade(float t)
