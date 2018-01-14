@@ -36,6 +36,7 @@ public class TrailerAI : MonoBehaviour
     public GameObject old_light;
     public GameObject new_light;
     public GameObject[] end_screen;
+    public GameObject soundtrack;
 
     private bool first_block;
     private bool second_block;
@@ -390,6 +391,8 @@ public class TrailerAI : MonoBehaviour
         if (!fifth_block)
         {
             fifth_block = true;
+
+            soundtrack.GetComponent<SoundtrackVolume>().FadeSound();
 
             StartCoroutine(Grenade_2());
         }
