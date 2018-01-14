@@ -10,8 +10,10 @@ public class AgentAnimationTrailer : MonoBehaviour {
     public bool death; // utilizzata per morire
     public bool blooding; // utilizzata per dissanguamento
     public bool steal; // utilizzata per derubare
+    public bool arrested; // utilizzata per arresto
 
     // Variabili da settare nell'inspector
+    public GameObject trailerAI;
     public GameObject bullet;
     public GameObject sparks;
     public GameObject blood;
@@ -25,6 +27,7 @@ public class AgentAnimationTrailer : MonoBehaviour {
     // Variabili utilizzate solo in questo script
     private Animator agent;
     private float time;
+    private bool block;
 
     private bool enable;
 
@@ -97,6 +100,45 @@ public class AgentAnimationTrailer : MonoBehaviour {
                 time = 8.0f;
             }
             StartCoroutine(Stealing(time));
+        }
+
+        if (arrested)
+        {
+            arrested = false;
+            time = 1.0f;
+            StartCoroutine(Arrested(time));
+        }
+    }
+
+    public IEnumerator Arrested(float t)
+    {
+        yield return new WaitForSeconds(t);
+        agent.SetBool("Arrested", true);
+        yield return new WaitForSeconds(t);
+
+        if (is_doctor)
+        {
+            trailerAI.GetComponent<TrailerAI>().weapon[3].GetComponent<Rigidbody>().useGravity = true;
+            trailerAI.GetComponent<TrailerAI>().weapon[3].GetComponent<Rigidbody>().isKinematic = false;
+            trailerAI.GetComponent<TrailerAI>().weapon[3].GetComponent<MeshCollider>().isTrigger = false;
+        }
+        else if (is_sniper)
+        {
+            trailerAI.GetComponent<TrailerAI>().weapon[1].GetComponent<Rigidbody>().useGravity = true;
+            trailerAI.GetComponent<TrailerAI>().weapon[1].GetComponent<Rigidbody>().isKinematic = false;
+            trailerAI.GetComponent<TrailerAI>().weapon[1].GetComponent<MeshCollider>().isTrigger = false;
+        }
+        else if (is_tank)
+        {
+            trailerAI.GetComponent<TrailerAI>().weapon[2].GetComponent<Rigidbody>().useGravity = true;
+            trailerAI.GetComponent<TrailerAI>().weapon[2].GetComponent<Rigidbody>().isKinematic = false;
+            trailerAI.GetComponent<TrailerAI>().weapon[2].GetComponent<MeshCollider>().isTrigger = false;
+        }
+        else
+        {
+            trailerAI.GetComponent<TrailerAI>().weapon[0].GetComponent<Rigidbody>().useGravity = true;
+            trailerAI.GetComponent<TrailerAI>().weapon[0].GetComponent<Rigidbody>().isKinematic = false;
+            trailerAI.GetComponent<TrailerAI>().weapon[0].GetComponent<MeshCollider>().isTrigger = false;
         }
     }
 
@@ -204,6 +246,22 @@ public class AgentAnimationTrailer : MonoBehaviour {
             {
                 sound.enabled = false;
             }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        switch (other.tag)
+        {
+            case "Grenade":
+                if (!block)
+                {
+                    Debug.Log("OntriggerEnter" + gameObject.name);
+                    block = true;
+                    agent.SetBool("Arrested", false);
+                    agent.SetTrigger("HitReactionGrenade");
+                }
+                break;
         }
     }
 }

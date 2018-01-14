@@ -37,6 +37,11 @@ public class EscapeTrailer : MonoBehaviour {
             swat_2 = Instantiate(prefab[2], position[5]);
             swat_3 = Instantiate(prefab[2], position[6]);
             swat_4 = Instantiate(prefab[2], position[7]);
+
+            swat_1.GetComponent<UnityStandardAssets.Characters.ThirdPerson.AICharacterControlTrailer>().SetTarget(target[4]);
+            swat_2.GetComponent<UnityStandardAssets.Characters.ThirdPerson.AICharacterControlTrailer>().SetTarget(target[5]);
+            swat_3.GetComponent<UnityStandardAssets.Characters.ThirdPerson.AICharacterControlTrailer>().SetTarget(target[6]);
+            swat_4.GetComponent<UnityStandardAssets.Characters.ThirdPerson.AICharacterControlTrailer>().SetTarget(target[7]);
         }
     }
 

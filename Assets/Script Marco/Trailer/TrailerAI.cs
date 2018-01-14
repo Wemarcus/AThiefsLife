@@ -25,11 +25,27 @@ public class TrailerAI : MonoBehaviour
     public GameObject[] enemies_car;
     public GameObject helicopter;
     public GameObject escape_point;
+    public GameObject[] smoke_grenade;
+    public GameObject dissolvence;
+    public GameObject camera_prison;
+    public GameObject prison;
+    public GameObject npc_prison;
+    public GameObject caveau;
+    public GameObject plant;
+    public GameObject mainCamera;
+    public GameObject old_light;
+    public GameObject new_light;
+    public GameObject[] end_screen;
 
     private bool first_block;
     private bool second_block;
     private bool third_block;
     private bool fourth_block;
+    private bool fifth_block;
+    private bool lock_1;
+    private bool lock_2;
+    private bool lock_3;
+    private bool lock_4;
 
     void Start()
     {
@@ -324,29 +340,98 @@ public class TrailerAI : MonoBehaviour
         switch (name)
         {
             case "Boss":
-                boss.transform.LookAt(employee.transform);
+                if (!lock_1)
+                {
+                    lock_1 = true;
+                    boss.transform.LookAt(employee.transform);
+                    boss.GetComponent<AgentAnimationTrailer>().arrested = true;
+                }
                 break;
 
             case "Sniper":
-                sniper.transform.LookAt(employee.transform);
+                if (!lock_2)
+                {
+                    lock_2 = true;
+                    sniper.transform.LookAt(employee.transform);
+                    sniper.GetComponent<AgentAnimationTrailer>().arrested = true;
+                }
                 break;
 
             case "Tank":
-                tank.transform.LookAt(employee.transform);
+                if (!lock_3)
+                {
+                    lock_3 = true;
+                    tank.transform.LookAt(employee.transform);
+                    tank.GetComponent<AgentAnimationTrailer>().arrested = true;
+                }
                 break;
 
             case "Doctor":
-                doctor.transform.LookAt(employee.transform);
+                if (!lock_4)
+                {
+                    lock_4 = true;
+                    doctor.transform.LookAt(employee.transform);
+                    doctor.GetComponent<AgentAnimationTrailer>().arrested = true;
+                }
                 break;
         }
+    }
 
-        if(escape_point.GetComponent<EscapeTrailer>().swat_1 != null)
+    public void NinthAction()
+    {
+        if (escape_point.GetComponent<EscapeTrailer>().swat_1 != null)
         {
-            escape_point.GetComponent<EscapeTrailer>().swat_1.transform.LookAt(boss.transform);
-            escape_point.GetComponent<EscapeTrailer>().swat_2.transform.LookAt(doctor.transform);
-            escape_point.GetComponent<EscapeTrailer>().swat_3.transform.LookAt(tank.transform);
-            escape_point.GetComponent<EscapeTrailer>().swat_4.transform.LookAt(sniper.transform);
-
+            escape_point.GetComponent<EscapeTrailer>().swat_1.transform.LookAt(tank.transform);
+            escape_point.GetComponent<EscapeTrailer>().swat_2.transform.LookAt(sniper.transform);
+            escape_point.GetComponent<EscapeTrailer>().swat_3.transform.LookAt(doctor.transform);
+            escape_point.GetComponent<EscapeTrailer>().swat_4.transform.LookAt(boss.transform);
         }
+
+        if (!fifth_block)
+        {
+            fifth_block = true;
+
+            StartCoroutine(Grenade_2());
+        }
+    }
+
+    private IEnumerator Grenade_2()
+    {
+        yield return new WaitForSeconds(0.5f);
+        escape_point.GetComponent<EscapeTrailer>().swat_1.GetComponent<AgentAnimationTrailer>().grenade = true;
+        escape_point.GetComponent<EscapeTrailer>().swat_2.GetComponent<AgentAnimationTrailer>().grenade = true;
+        escape_point.GetComponent<EscapeTrailer>().swat_3.GetComponent<AgentAnimationTrailer>().grenade = true;
+        escape_point.GetComponent<EscapeTrailer>().swat_4.GetComponent<AgentAnimationTrailer>().grenade = true;
+
+        yield return new WaitForSeconds(1.8f);
+        smoke_grenade[0].SetActive(true);
+        smoke_grenade[1].SetActive(true);
+        smoke_grenade[2].SetActive(true);
+        smoke_grenade[3].SetActive(true);
+        smoke_grenade[4].SetActive(true);
+        smoke_grenade[5].SetActive(true);
+        smoke_grenade[6].SetActive(true);
+
+        yield return new WaitForSeconds(2f);
+        dissolvence.SetActive(true);
+
+        yield return new WaitForSeconds(2f);
+        old_light.SetActive(false);
+        new_light.SetActive(true);
+        caveau.SetActive(false);
+        prison.SetActive(true);
+        npc_prison.SetActive(true);
+        camera_prison.SetActive(true);
+        plant.SetActive(false);
+        drill.SetActive(false);
+        mainCamera.SetActive(false);
+        dissolvence.GetComponent<Fade>().FadeTrailer();
+
+        yield return new WaitForSeconds(4f);
+        new_light.SetActive(false);
+        end_screen[0].SetActive(true);
+        end_screen[1].SetActive(true);
+        end_screen[2].SetActive(true);
+        end_screen[3].SetActive(true);
     }
 }

@@ -28,6 +28,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         public bool fifth = false;
         public bool seventh = false;
         public bool eighth = false;
+        public bool is_swat = false;
 
         private void Start()
         {
@@ -100,6 +101,12 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                         eighth = false;
                         trailerAI.GetComponent<TrailerAI>().EighthAction(gameObject.name);
                     }
+
+                    if (is_swat)
+                    {
+                        is_swat = false;
+                        GameObject.Find("Ally").GetComponent<TrailerAI>().NinthAction();
+                    }
                 }
             }
         }
@@ -141,7 +148,10 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             {
                 block_3 = true;
                 yield return new WaitForSeconds(0.5f);
-                drill.SetActive(true);
+                if(drill != null)
+                {
+                    drill.SetActive(true);
+                }
 
                 if (gameObject.name == "Tank")
                 {
@@ -149,7 +159,10 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                 }
 
                 yield return new WaitForSeconds(7.0f);
-                trailerAI.GetComponent<TrailerAI>().FourthAction();
+                if(trailerAI != null)
+                {
+                    trailerAI.GetComponent<TrailerAI>().FourthAction();
+                }
             }
         }
     }
