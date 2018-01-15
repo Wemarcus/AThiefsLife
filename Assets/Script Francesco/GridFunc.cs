@@ -113,7 +113,9 @@ public class GridFunc : MonoBehaviour {
 			Enemy enm;
 			int percentage;
 			float dist;
+			DynamicLayerHandler dlh = FindObjectOfType<DynamicLayerHandler> ();
 			foreach (GameObject enemy in enemies) {
+				dlh.ChangeLayerType (2);
 				enm = enemy.GetComponent<Enemy> ();
 				Debug.DrawRay (plr.head.transform.position, (enm.head.transform.position - plr.head.transform.position).normalized, Color.red, 4f);
 				if (Physics.Raycast (plr.head.transform.position, (enm.head.transform.position - plr.head.transform.position).normalized, out hit)) {
@@ -122,12 +124,15 @@ public class GridFunc : MonoBehaviour {
 					dist = Vector3.Distance(player.transform.position, enemy.transform.position);
 					if (hitted.gameObject == enemy && dist < range) {
 						hittableEnemies.Add (enemy);
+						dlh.ChangeLayerType (0);
+						GridMath.RotateCharacter (player, enemy);
 						percentage = CalculateEnemyHitPercentage (plr, enm);
 						enm.bar.SetHitPercentage (percentage);
 						//Debug.Log(percentage);
 					}
 				}
 			}
+			dlh.ChangeLayerType (2);
 			hittableEnemies.Sort (CompareDistance);
 			return hittableEnemies;
 		}
