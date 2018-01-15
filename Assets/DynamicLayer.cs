@@ -12,6 +12,6 @@ public class DynamicLayer : MonoBehaviour {
 	}
 	
 	public void ChangeLayer(int i){
-		dlh.gameObject.layer = i;
+		gameObject.layer = i;
 	}
 }

@@ -115,7 +115,7 @@ public class GridFunc : MonoBehaviour {
 			float dist;
 			DynamicLayerHandler dlh = FindObjectOfType<DynamicLayerHandler> ();
 			foreach (GameObject enemy in enemies) {
-				dlh.ChangeLayerType (2);
+				//dlh.ChangeLayerType (2);
 				enm = enemy.GetComponent<Enemy> ();
 				Debug.DrawRay (plr.head.transform.position, (enm.head.transform.position - plr.head.transform.position).normalized, Color.red, 4f);
 				if (Physics.Raycast (plr.head.transform.position, (enm.head.transform.position - plr.head.transform.position).normalized, out hit)) {
@@ -132,7 +132,7 @@ public class GridFunc : MonoBehaviour {
 					}
 				}
 			}
-			dlh.ChangeLayerType (2);
+			//dlh.ChangeLayerType (2);
 			hittableEnemies.Sort (CompareDistance);
 			return hittableEnemies;
 		}

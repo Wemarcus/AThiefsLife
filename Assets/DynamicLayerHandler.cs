@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class DynamicLayerHandler : MonoBehaviour {
 
-	List<DynamicLayer> objectList;
+	public List<DynamicLayer> objectList;
+
+	void Awake(){
+		objectList = new List<DynamicLayer> ();
+	}
 
 	public void ChangeLayerType(int i){
 		foreach (DynamicLayer obj in objectList) {
