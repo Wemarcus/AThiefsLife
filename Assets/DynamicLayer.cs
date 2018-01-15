@@ -14,4 +14,14 @@ public class DynamicLayer : MonoBehaviour {
 	public void ChangeLayer(int i){
 		gameObject.layer = i;
 	}
+
+	void OnDestroy(){
+		if (dlh && dlh.objectList.Contains (this))
+			dlh.objectList.Remove (this);
+	}
+
+	void OnDisable(){
+		if (dlh && dlh.objectList.Contains (this))
+			dlh.objectList.Remove (this);
+	}
 }
