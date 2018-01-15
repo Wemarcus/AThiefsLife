@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using System.Collections;
 
 namespace UnityStandardAssets.Characters.ThirdPerson
 {
@@ -13,8 +14,21 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
         public bool floor;
         private bool block;
+        private bool block_2;
+        private bool block_3;
 
         private bool moving;
+
+        // variabili fittizie per il trailer
+        public GameObject trailerAI;
+        public GameObject drill;
+        public bool first = true;
+        public bool second = false;
+        public bool third = false;
+        public bool fifth = false;
+        public bool seventh = false;
+        public bool eighth = false;
+        public bool is_swat = false;
 
         private void Start()
         {
@@ -51,6 +65,48 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                 {
                     SetTarget(null);
                     moving = false;
+
+                    if (first)
+                    {
+                        first = false;
+                        trailerAI.GetComponent<TrailerAI>().FirstAction(gameObject.name);
+                    }
+
+                    if (second)
+                    {
+                        second = false;
+                        trailerAI.GetComponent<TrailerAI>().SecondAction(gameObject.name);
+                    }
+
+                    if (third)
+                    {
+                        third = false;
+                        trailerAI.GetComponent<TrailerAI>().ThirdAction(gameObject.name);
+                    }
+
+                    if (fifth)
+                    {
+                        fifth = false;
+                        trailerAI.GetComponent<TrailerAI>().FifthAction(gameObject.name);
+                    }
+
+                    if (seventh)
+                    {
+                        seventh = false;
+                        trailerAI.GetComponent<TrailerAI>().SeventhAction();
+                    }
+
+                    if (eighth)
+                    {
+                        eighth = false;
+                        trailerAI.GetComponent<TrailerAI>().EighthAction(gameObject.name);
+                    }
+
+                    if (is_swat)
+                    {
+                        is_swat = false;
+                        GameObject.Find("Ally").GetComponent<TrailerAI>().NinthAction();
+                    }
                 }
             }
         }
@@ -71,6 +127,41 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                         block = true;
                         agent.enabled = false;
                         break;
+                }
+            }
+
+            if (!block_2)
+            {
+                switch (other.tag)
+                {
+                    case "Drill":
+                        block_2 = true;
+                        StartCoroutine(OpenCaveau());
+                        break;
+                }
+            }
+        }
+
+        private IEnumerator OpenCaveau()
+        {
+            if (!block_3)
+            {
+                block_3 = true;
+                yield return new WaitForSeconds(0.5f);
+                if(drill != null)
+                {
+                    drill.SetActive(true);
+                }
+
+                if (gameObject.name == "Tank")
+                {
+                    transform.LookAt(drill.transform);
+                }
+
+                yield return new WaitForSeconds(7.0f);
+                if(trailerAI != null)
+                {
+                    trailerAI.GetComponent<TrailerAI>().FourthAction();
                 }
             }
         }
