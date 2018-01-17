@@ -531,7 +531,8 @@ public class MapHandler : MonoBehaviour {
 		CurrentGame.cg.end.EndSetup (EndCases.Run);
 		bankSettings.IncreaseBankSecurity ();
 		CurrentGame.cg.UpdateStatsRun (money, policemanKilled, EmployedKilled);
-		SceneManager.LoadScene ("Menu", LoadSceneMode.Single);
+		LoadSceneNum (0);
+		//SceneManager.LoadScene ("Menu", LoadSceneMode.Single);
 	}
 
 	public void DeathEnd(){
@@ -539,7 +540,8 @@ public class MapHandler : MonoBehaviour {
 		AudioListener.pause =true;
 		CurrentGame.cg.end.EndSetup (EndCases.Died);
 		CurrentGame.cg.UpdateStatsDied (policemanKilled, EmployedKilled);
-		SceneManager.LoadScene ("Menu", LoadSceneMode.Single);
+		LoadSceneNum (0);
+		//SceneManager.LoadScene ("Menu", LoadSceneMode.Single);
 	}
 
 	public void SurrenderEnd(){
@@ -548,7 +550,16 @@ public class MapHandler : MonoBehaviour {
 		CurrentGame.cg.end.EndSetup (EndCases.Arrested);
 		CalculateDetention ();
 		CurrentGame.cg.UpdateStatsArrested (policemanKilled, EmployedKilled);
-		SceneManager.LoadScene ("Menu", LoadSceneMode.Single);
+		LoadSceneNum (0);
+		//SceneManager.LoadScene ("Menu", LoadSceneMode.Single);
+	}
+
+	public void LoadSceneNum(int num){
+		if (num < 0 || num >= SceneManager.sceneCountInBuildSettings) {
+			Debug.Log ("error in scene number");
+			return;
+		}
+		LoadingScreenManager.LoadScene (num);
 	}
 
 	public void CalculateDetention(){

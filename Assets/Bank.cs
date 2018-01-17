@@ -11,7 +11,7 @@ public class Bank : ScriptableObject {
 	public string bankName;
 	public int securityLevel;
 	public string sceneName;
-
+	public int sceneNum;
 
 	public void IncreaseBankSecurity(){
 		if (securityLevel < 3)
@@ -24,7 +24,8 @@ public class Bank : ScriptableObject {
 	}
 
 	public void LoadLevel(){
-		SceneManager.LoadScene (sceneName, LoadSceneMode.Single);
+		//SceneManager.LoadScene (sceneName, LoadSceneMode.Single);
+		LoadingScreenManager.LoadScene(sceneNum);
 	}
 
 	public void Reset(){
