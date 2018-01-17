@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4130532040775168}
   - component: {fileID: 114563767734710290}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cameras
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 81972299180062632}
   - component: {fileID: 114519908760210382}
   - component: {fileID: 114010415117316024}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: AttackCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4670370252828666}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4434472438645308}
   - component: {fileID: 20807682648088912}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Outline Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4140402901999584}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Ankle_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4079125712319000}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Eyes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,7 +117,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4467771355642842}
   - component: {fileID: 137472298091081892}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Character_Female_SuitVest_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 224697759686489750}
   - component: {fileID: 222408405781028516}
   - component: {fileID: 114694552833468490}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Text_Value
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,7 +149,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4455482450585260}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Shoulder_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -167,7 +167,7 @@ GameObject:
   - component: {fileID: 23077545339623646}
   - component: {fileID: 102837778396301618}
   - component: {fileID: 114861440043464958}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: hp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -182,7 +182,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4964658787001860}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Elbow_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -197,7 +197,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4765942167024340}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Thumb_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -212,7 +212,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4734727643542798}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Hand_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -229,7 +229,7 @@ GameObject:
   - component: {fileID: 4155394575373024}
   - component: {fileID: 198019211091586540}
   - component: {fileID: 199542959879972614}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GunShot_Sparks_FX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -246,7 +246,7 @@ GameObject:
   - component: {fileID: 4366977659219554}
   - component: {fileID: 33150011244527610}
   - component: {fileID: 23326920497971682}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Item_Pouch_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -261,7 +261,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4693562664283002}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Finger_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -277,7 +277,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224767277168732322}
   - component: {fileID: 222621868124310720}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -292,7 +292,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4306112379762532}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Finger_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -312,7 +312,7 @@ GameObject:
   - component: {fileID: 81573507715794322}
   - component: {fileID: 114420367893388544}
   - component: {fileID: 114005828303236358}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DX_Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -329,7 +329,7 @@ GameObject:
   - component: {fileID: 4201285154412652}
   - component: {fileID: 33147472742124272}
   - component: {fileID: 23979571103878654}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Item_Mallet_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -344,7 +344,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4562237216197384}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Finger_02 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -364,7 +364,7 @@ GameObject:
   - component: {fileID: 81827973744377152}
   - component: {fileID: 114404447098034612}
   - component: {fileID: 114251640828833072}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SX_Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -380,7 +380,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4137792709515320}
   - component: {fileID: 20220603732916280}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Outline Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -395,7 +395,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4238661610120376}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Finger_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -410,7 +410,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4576639131996686}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Ball_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -425,7 +425,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4855524063661390}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Thumb_02 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -440,7 +440,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4540084427068358}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Spine_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -455,7 +455,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4615504866090408}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: IndexFinger_01 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -470,7 +470,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4216669658554722}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LowerLeg_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -486,7 +486,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4241341780559578}
   - component: {fileID: 20980979163791296}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Outline Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -504,7 +504,7 @@ GameObject:
   - component: {fileID: 33339602555139390}
   - component: {fileID: 23660294064539334}
   - component: {fileID: 114516097024323326}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Wep_Shotgun_Trigger_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -524,7 +524,7 @@ GameObject:
   - component: {fileID: 81213680489516380}
   - component: {fileID: 114066685343413634}
   - component: {fileID: 114590281722878634}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ZoomFrontalCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -539,7 +539,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4236967200776650}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LowerLeg_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -555,7 +555,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4138969198681442}
   - component: {fileID: 20711408180583526}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Outline Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -571,7 +571,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4780507676028756}
   - component: {fileID: 137687235235167640}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Item_Duffel_Bag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -589,7 +589,7 @@ GameObject:
   - component: {fileID: 33598351677201318}
   - component: {fileID: 23308263363930296}
   - component: {fileID: 114134655671294148}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Item_Swat_Glass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -606,7 +606,7 @@ GameObject:
   - component: {fileID: 4638805684554244}
   - component: {fileID: 33301342653532052}
   - component: {fileID: 23784106096587140}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Item_Wrench_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -622,7 +622,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4170404809042042}
   - component: {fileID: 137503649784616468}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Character_Male_FBI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -639,7 +639,7 @@ GameObject:
   - component: {fileID: 4421559448521646}
   - component: {fileID: 33152059480019372}
   - component: {fileID: 23072980768330620}
-  m_Layer: 2
+  m_Layer: 9
   m_Name: SM_Wep_Grenade_Pin_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -655,7 +655,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4392440436015972}
   - component: {fileID: 20784598747021036}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Outline Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -670,7 +670,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4014493929769062}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Hips
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -687,7 +687,7 @@ GameObject:
   - component: {fileID: 4525149050375536}
   - component: {fileID: 33367888920320474}
   - component: {fileID: 23883485357099986}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Item_Wirecutter_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -706,7 +706,7 @@ GameObject:
   - component: {fileID: 114541087901242120}
   - component: {fileID: 114843912359195088}
   - component: {fileID: 114167172342661824}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Background_Health_Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -722,7 +722,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224813043824540732}
   - component: {fileID: 222093481882929780}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -738,7 +738,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4502904917599270}
   - component: {fileID: 137188416458231698}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Character_Female_FBI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -754,7 +754,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4272586284742980}
   - component: {fileID: 20379576180405290}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Outline Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -770,7 +770,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4828650337791914}
   - component: {fileID: 20230466838778038}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Outline Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -788,7 +788,7 @@ GameObject:
   - component: {fileID: 33388844388970692}
   - component: {fileID: 23857149716315046}
   - component: {fileID: 114971797397395832}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Item_Rope_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -805,7 +805,7 @@ GameObject:
   - component: {fileID: 4731877157997644}
   - component: {fileID: 33050159319247598}
   - component: {fileID: 23415409594049842}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Item_Hacksaw_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -823,7 +823,7 @@ GameObject:
   - component: {fileID: 33410800703826160}
   - component: {fileID: 23949706786903996}
   - component: {fileID: 114902610128618810}
-  m_Layer: 2
+  m_Layer: 9
   m_Name: Grenade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -838,7 +838,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4726576921989800}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Ball_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -853,7 +853,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4398956194582614}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -870,7 +870,7 @@ GameObject:
   - component: {fileID: 224484156763514224}
   - component: {fileID: 222254164532358850}
   - component: {fileID: 114632184867747444}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Hit_Value
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -886,7 +886,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4350983050983872}
   - component: {fileID: 137486376740513496}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Character_Male_Overall_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -903,7 +903,7 @@ GameObject:
   - component: {fileID: 4094762653005054}
   - component: {fileID: 137068709306616604}
   - component: {fileID: 114713999588764982}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Character_Male_SWAT_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -918,7 +918,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4479473029929570}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Shoulder_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -933,7 +933,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4146620198111964}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: IndexFinger_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -948,7 +948,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4424269157601944}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: IndexFinger_04 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -963,7 +963,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4868914422040160}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Toes_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -978,7 +978,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4302681118426398}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Clavicle_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -993,7 +993,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4079093401094474}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Finger_01 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1008,7 +1008,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4954882043208040}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: IndexFinger_02 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1023,7 +1023,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4670998955388068}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Thumb_03 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1039,7 +1039,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4707231717352622}
   - component: {fileID: 20772743024715848}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Outline Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1054,7 +1054,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4585993799714740}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Thumb_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1069,7 +1069,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4795381587283924}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Neck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1087,7 +1087,7 @@ GameObject:
   - component: {fileID: 33280264635248448}
   - component: {fileID: 23692323561255572}
   - component: {fileID: 114156133189825576}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Wep_Shotgun_Slide_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1103,7 +1103,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4833627474567798}
   - component: {fileID: 20549558655392558}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Outline Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1118,7 +1118,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4319184058801164}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Eyebrows
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1133,7 +1133,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4848059750869812}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: IndexFinger_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1151,7 +1151,7 @@ GameObject:
   - component: {fileID: 33568504960682092}
   - component: {fileID: 135664968679009234}
   - component: {fileID: 23221391984807094}
-  m_Layer: 2
+  m_Layer: 9
   m_Name: Sphere_to_Crouching
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1166,7 +1166,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4650456519680618}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Spine_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1186,7 +1186,7 @@ GameObject:
   - component: {fileID: 114966020833671128}
   - component: {fileID: 114017603220025630}
   - component: {fileID: 114354002387447632}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy_Interface
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1201,7 +1201,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4124667222500334}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: UpperLeg_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1216,7 +1216,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4000231527295484}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Thumb_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1231,7 +1231,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4467253879982430}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Finger_04 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1251,7 +1251,7 @@ GameObject:
   - component: {fileID: 81070380012068848}
   - component: {fileID: 114397850178063634}
   - component: {fileID: 114930580879919158}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ZoomBackCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1268,7 +1268,7 @@ GameObject:
   - component: {fileID: 4383747597410650}
   - component: {fileID: 198083764433013098}
   - component: {fileID: 199511358749215906}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GunShot_Smoke_FX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1285,7 +1285,7 @@ GameObject:
   - component: {fileID: 4388094875888448}
   - component: {fileID: 33180124947581522}
   - component: {fileID: 23509121809287812}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Item_ZipTies_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1301,7 +1301,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4381644570655482}
   - component: {fileID: 137829178189578232}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Character_Male_SuitVest_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1317,7 +1317,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4098088908275274}
   - component: {fileID: 20901010796240796}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Outline Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1333,7 +1333,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4826093015336520}
   - component: {fileID: 20781663879081520}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Outline Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1349,7 +1349,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4428597664662708}
   - component: {fileID: 20561164598813478}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Outline Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1364,7 +1364,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4425757124738982}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: IndexFinger_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1379,7 +1379,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4588077219794366}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Spine_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1394,7 +1394,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4544812889159892}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: IndexFinger_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1409,7 +1409,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4354649874017552}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Ankle_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1427,7 +1427,7 @@ GameObject:
   - component: {fileID: 33547470260687250}
   - component: {fileID: 23379234584519338}
   - component: {fileID: 114400479894219948}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Wep_Shotgun_Pump_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1442,7 +1442,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4027864864050654}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Hand_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1460,7 +1460,7 @@ GameObject:
   - component: {fileID: 222428828145513262}
   - component: {fileID: 114782218863484414}
   - component: {fileID: 114053768176518122}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Name_Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1475,7 +1475,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4008895157464016}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Finger_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1490,7 +1490,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224964335848091486}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy_Interface
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1505,7 +1505,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4680515295473646}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Toes_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1521,7 +1521,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4679198548997286}
   - component: {fileID: 20195163277168374}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Outline Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1537,7 +1537,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4487879351124548}
   - component: {fileID: 137828053811709152}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Character_Female_Overall_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1557,7 +1557,7 @@ GameObject:
   - component: {fileID: 81630609216494604}
   - component: {fileID: 114357890092114228}
   - component: {fileID: 114544473752014516}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FrontalCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1580,7 +1580,7 @@ GameObject:
   - component: {fileID: 114044078324356632}
   - component: {fileID: 114514541644842534}
   - component: {fileID: 114015492704658572}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Swat_Gun
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -1597,7 +1597,7 @@ GameObject:
   - component: {fileID: 4996604846132300}
   - component: {fileID: 198000908098018716}
   - component: {fileID: 199950422866697306}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BloodSplat_FX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1612,7 +1612,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4188893206253090}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: UpperLeg_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1629,7 +1629,7 @@ GameObject:
   - component: {fileID: 4419292847027648}
   - component: {fileID: 33595817669015356}
   - component: {fileID: 23618174459355540}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Item_Handcuffs_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1644,7 +1644,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4144815843118262}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Elbow_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1661,7 +1661,7 @@ GameObject:
   - component: {fileID: 224472514108694174}
   - component: {fileID: 222511023530335532}
   - component: {fileID: 114872294682526960}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Health_Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1677,7 +1677,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4595126425131656}
   - component: {fileID: 137192255269277622}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Character_Female_Shirt_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1692,7 +1692,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4458792360011646}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Thumb_01 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1709,7 +1709,7 @@ GameObject:
   - component: {fileID: 4746183073765124}
   - component: {fileID: 33754536153997908}
   - component: {fileID: 23869660549392468}
-  m_Layer: 2
+  m_Layer: 9
   m_Name: SM_Wep_Grenade_Clip_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1725,7 +1725,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4020036439377360}
   - component: {fileID: 137210490068179900}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Character_Male_Shirt_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1740,7 +1740,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4817606724167278}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Finger_03 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1757,7 +1757,7 @@ GameObject:
   - component: {fileID: 4110613404037238}
   - component: {fileID: 33337786259312044}
   - component: {fileID: 23924846566956746}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Item_WalkieTalkie_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1775,7 +1775,7 @@ GameObject:
   - component: {fileID: 222716345329323396}
   - component: {fileID: 114907933153037392}
   - component: {fileID: 114673601161405462}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Hit_Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1790,7 +1790,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4558376697143618}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: IndexFinger_03 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1805,7 +1805,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4117899343268462}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Clavicle_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1825,7 +1825,7 @@ GameObject:
   - component: {fileID: 81665257779442922}
   - component: {fileID: 114531599429234774}
   - component: {fileID: 114888586504061234}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: StandardCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1840,7 +1840,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4610469132331262}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Shoot_Point_SWAT_Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1859,7 +1859,7 @@ GameObject:
   - component: {fileID: 23386058491964544}
   - component: {fileID: 82204019709267288}
   - component: {fileID: 114726510102675142}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Wep_Shotgun_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1875,7 +1875,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4952014265573984}
   - component: {fileID: 20191269715532822}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Outline Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1891,7 +1891,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4210632482018588}
   - component: {fileID: 212273838251823428}
-  m_Layer: 2
+  m_Layer: 9
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
