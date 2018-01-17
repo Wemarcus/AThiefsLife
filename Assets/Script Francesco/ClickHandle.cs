@@ -15,12 +15,15 @@ public class ClickHandle : MonoBehaviour {
 	public GameObject player;
 	public MapHandler mh;
 	public bool enable = true;
+	int layerMask;
 
 	// Use this for initialization
 	void OnEnable () {
 		mh.changeStateEvent += ChangeState;
 		mh.changeInputStateEvent += ChangeInputState;
 		mh.selectPlayerEvent += ChangeSelectedPlayer;
+		layerMask = 1 << 0;
+		layerMask = ~layerMask;
 	}
 		
 	// Update is called once per frame
@@ -34,7 +37,7 @@ public class ClickHandle : MonoBehaviour {
 			RaycastHit hit; 
 			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition); 
 			GameObject hitted;
-			if (Physics.Raycast (ray, out hit, 100.0f)) {
+			if (Physics.Raycast (ray, out hit, 100.0f,layerMask)) {
 				//StartCoroutine(ScaleMe(hit.transform));
 				hitted = hit.transform.gameObject;
 				BuildClickDelegate (hitted);
