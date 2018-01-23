@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class reinforcements_Camera : MonoBehaviour {
 
-    public void CameraActivate()
+	public void CameraActivate()
     {
         if(GetComponent<Cinematic>() != null)
         {
             GetComponent<Cinemachine.CinemachineVirtualCamera>().enabled = true;
             GetComponent<Cinematic>().isRunning = true;
-            FakeCamera();
+			StartCoroutine(FakeCamera());
         }
     }
 
-    private IEnumerator FakeCamera()
+	private IEnumerator FakeCamera()
     {
         yield return new WaitForSeconds(5.0f);
         GetComponent<Cinemachine.CinemachineVirtualCamera>().enabled = false;

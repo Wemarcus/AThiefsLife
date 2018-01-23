@@ -14,6 +14,10 @@ public class SpawnEvent : MonoBehaviour {
 	public int cooldown;
 	public int difficultyLevel;
 	public reinforcements_Camera rc;
+	public bool block;
+	public List<SpawnEvent> associatedSpawn;
+
+	public Canvas cv;
 
 	void Start(){
 		ce = FindObjectOfType<CaveauEvent> ();
@@ -25,19 +29,30 @@ public class SpawnEvent : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (!eventTriggered && ce.EventTriggered && FindObjectOfType<MapHandler> ().gs == GameState.EnemyTurn) {
-			eventTriggered = true;
-			ActivateObjects ();
-		}
-		if (eventTriggered && cooldown <= 0 && !done && FindObjectOfType<MapHandler>().cinematic == false) {
-			SpawnFunc ();
-			done = true;
+		if (!block) {
+			if (!eventTriggered && ce.EventTriggered && FindObjectOfType<MapHandler> ().gs == GameState.EnemyTurn) {
+				eventTriggered = true;
+				ActivateObjects ();
+			}
+			if (eventTriggered && cooldown <= 0 && !done && FindObjectOfType<MapHandler> ().cinematic == false) {
+				FindObjectOfType<MapHandler> ().cinematic = true;
+				SpawnFunc ();
+				done = true;
+			}
 		}
 	}
 
 	void SpawnFunc(){
 		if(rc)
 		rc.CameraActivate ();
+		if (cv) {
+			GameObject popUp = Instantiate (Resources.Load ("Turn_Feedback_Reinforcements", typeof(GameObject)), cv.transform) as GameObject;
+		}
+		if (associatedSpawn.Count > 0) {
+			foreach (SpawnEvent se in associatedSpawn) {
+				se.SpawnFunc ();
+			}
+		}
 		List<GameObject> spawnToUse = new List<GameObject>();
 		List<GameObject> enemiesTemp = new List<GameObject> ();
 		enemiesTemp.AddRange (enemiesToSpawn);
