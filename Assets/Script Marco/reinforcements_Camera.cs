@@ -6,14 +6,19 @@ public class reinforcements_Camera : MonoBehaviour {
 
     public void CameraActivate()
     {
-        GetComponent<Cinemachine.CinemachineVirtualCamera>().enabled = true;
-        FakeCamera();
+        if(GetComponent<Cinematic>() != null)
+        {
+            GetComponent<Cinemachine.CinemachineVirtualCamera>().enabled = true;
+            GetComponent<Cinematic>().isRunning = true;
+            FakeCamera();
+        }
     }
 
     private IEnumerator FakeCamera()
     {
         yield return new WaitForSeconds(5.0f);
         GetComponent<Cinemachine.CinemachineVirtualCamera>().enabled = false;
+        GetComponent<Cinematic>().isRunning = false;
     }
 
 }
