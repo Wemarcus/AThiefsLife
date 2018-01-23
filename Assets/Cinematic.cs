@@ -32,7 +32,6 @@ public class Cinematic : MonoBehaviour {
 	void SetCinematic(){
 		cinematicSet = true;
 		uh.gameObject.SetActive (false);
-		mh.inputS = InputState.Nothing;
 		lastState = mh.gs;
 		mh.ChangeState (GameState.Cinematic);
 	}

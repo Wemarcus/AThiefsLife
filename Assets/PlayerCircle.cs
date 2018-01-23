@@ -17,10 +17,10 @@ public class PlayerCircle : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (mh.selectedPlayer == null || mh.selectedPlayer != currentPlayerMarked) {
+		if ((mh.selectedPlayer == null || mh.selectedPlayer != currentPlayerMarked) || mh.gs == GameState.Cinematic) {
 			sr.enabled = false;
 		}
-		if (mh.selectedPlayer != null && mh.selectedPlayer == currentPlayerMarked) {
+		if ((mh.selectedPlayer != null && mh.selectedPlayer == currentPlayerMarked) && mh.gs == GameState.AllyTurn) {
 			sr.enabled = true;
 		}
 	}
