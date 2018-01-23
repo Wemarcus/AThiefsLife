@@ -332,6 +332,7 @@ GameObject:
   - component: {fileID: 114301679517204254}
   - component: {fileID: 114093738320838436}
   - component: {fileID: 114964898945360540}
+  - component: {fileID: 114606784128922654}
   m_Layer: 9
   m_Name: Boss
   m_TagString: Player
@@ -4094,7 +4095,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 60d108c1758e69f4b9a274acaffda3f2, type: 2}
+  - {fileID: 2100000, guid: f07558081ba176b4b88be973ba9034af, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4162,7 +4163,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 60d108c1758e69f4b9a274acaffda3f2, type: 2}
+  - {fileID: 2100000, guid: f07558081ba176b4b88be973ba9034af, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4570,7 +4571,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 60d108c1758e69f4b9a274acaffda3f2, type: 2}
+  - {fileID: 2100000, guid: f07558081ba176b4b88be973ba9034af, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5661,7 +5662,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7acee2dd129481a469a9ef664c3f486f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveRange: 8
+  moveRange: 9
   maxHP: 350
   currentHP: 0
   moved: 0
@@ -5912,6 +5913,21 @@ MonoBehaviour:
   eraseRenderer: 0
   originalLayer: 0
   originalMaterials: []
+--- !u!114 &114606784128922654
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1195218664010720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50620c5cc73ea1549bccbe913d528220, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  age: 18
+  hair: {fileID: 1937331480093700}
+  beard: {fileID: 1147314579261450}
+  eyebrows: {fileID: 1320825031337492}
 --- !u!114 &114607590498025514
 MonoBehaviour:
   m_ObjectHideFlags: 1
