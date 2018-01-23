@@ -12,8 +12,9 @@ public class Aging : MonoBehaviour {
     private Player player;
 
     void Start () {
-        if ((player = GetComponent<Player>()) != null)
+		if ((player = GetComponent<Player>()) != null && FindObjectOfType<CurrentGame>())
         {
+			age = FindObjectOfType<CurrentGame> ().age;
             SetBossColor();
         }
     }
