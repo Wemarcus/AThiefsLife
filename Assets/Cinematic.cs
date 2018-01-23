@@ -31,6 +31,7 @@ public class Cinematic : MonoBehaviour {
 
 	void SetCinematic(){
 		cinematicSet = true;
+		mh.cinematic = true;
 		uh.gameObject.SetActive (false);
 		lastState = mh.gs;
 		mh.ChangeState (GameState.Cinematic);
@@ -38,6 +39,7 @@ public class Cinematic : MonoBehaviour {
 
 	void ResetCinematic(){
 		cinematicSet = false;
+		mh.cinematic = false;
 		uh.gameObject.SetActive (true);
 		mh.ChangeState (lastState);
 	}

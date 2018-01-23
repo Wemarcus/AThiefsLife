@@ -13,6 +13,7 @@ public class SpawnEvent : MonoBehaviour {
 	private CaveauEvent ce;
 	public int cooldown;
 	public int difficultyLevel;
+	public reinforcements_Camera rc;
 
 	void Start(){
 		ce = FindObjectOfType<CaveauEvent> ();
@@ -28,13 +29,15 @@ public class SpawnEvent : MonoBehaviour {
 			eventTriggered = true;
 			ActivateObjects ();
 		}
-		if (eventTriggered && cooldown <= 0 && !done) {
+		if (eventTriggered && cooldown <= 0 && !done && FindObjectOfType<MapHandler>().cinematic == false) {
 			SpawnFunc ();
 			done = true;
 		}
 	}
 
 	void SpawnFunc(){
+		if(rc)
+		rc.CameraActivate ();
 		List<GameObject> spawnToUse = new List<GameObject>();
 		List<GameObject> enemiesTemp = new List<GameObject> ();
 		enemiesTemp.AddRange (enemiesToSpawn);

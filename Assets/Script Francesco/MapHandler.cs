@@ -53,6 +53,8 @@ public class MapHandler : MonoBehaviour {
 
 	public GameObject bossDeathPanel;
 
+	public bool cinematic;
+
 	public delegate void ChangeStateDelegate (GameState gState);
 	public event ChangeStateDelegate changeStateEvent;
 
