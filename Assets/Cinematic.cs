@@ -23,9 +23,9 @@ public class Cinematic : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (isRunning && !cinematicSet) {
-			//setta cinematica
+            SetCinematic();
 		} else if (!isRunning && cinematicSet) {
-			//resetta cinematica
+            ResetCinematic();
 		}
 	}
 
