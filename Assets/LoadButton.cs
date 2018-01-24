@@ -31,5 +31,6 @@ public class LoadButton : MonoBehaviour {
 		delete_button.GetComponent<Button>().interactable = false;
 		boss.GetComponent<NPC_Menu>().Start();
 		sniper.GetComponent<NPC_Menu_2>().Start();
+        boss.GetComponent<AgingMenu>().SetBossColor();
 	}
 }

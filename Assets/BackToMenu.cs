@@ -33,6 +33,10 @@ public class BackToMenu : MonoBehaviour {
     public GameObject robberiesButton;
     public GameObject saveButton;
 
+    // Boss
+    public GameObject boss_carrier;
+    public GameObject boss_prison;
+
 	// Use this for initialization
 	void Start () {
 		Time.timeScale = 1;
@@ -62,7 +66,8 @@ public class BackToMenu : MonoBehaviour {
 
                     Boss_Carrier_Home.GetComponent<NPC_Menu>().Start();
                     Sniper_Carrier_Home.GetComponent<NPC_Menu_2>().Start();
-				break;
+                    boss_carrier.GetComponent<AgingMenu>().SetBossColor();
+                    break;
 
 			case EndCases.Arrested:
                     cameraHome.SetActive(false);
@@ -83,6 +88,7 @@ public class BackToMenu : MonoBehaviour {
 
                     Boss_Carrier_Home.GetComponent<NPC_Menu>().Start();
                     Sniper_Carrier_Home.GetComponent<NPC_Menu_2>().Start();
+                    boss_prison.GetComponent<AgingMenu>().SetBossColor();
                     break;
 
 			case EndCases.Died:
