@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class LoadingManagerImage : MonoBehaviour {
 
-	// Use this for initialization
+    public GameObject[] background;
+    public GameObject[] tips;
+    int index;
+
 	void Start () {
-		
-	}
+        index = Random.Range(0, background.Length);
+
+        background[index].SetActive(true);
+        tips[index].SetActive(true);
+    }
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }
