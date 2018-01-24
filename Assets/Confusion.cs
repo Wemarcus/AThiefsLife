@@ -6,11 +6,17 @@ public class Confusion : MonoBehaviour {
 
 	public int cooldown;
 	MapHandler mh;
+	GameObject effect;
 
 	// Use this for initialization
 	void Start () {
 		mh = FindObjectOfType<MapHandler> ();
 		mh.nextRoundEvent += CoolDown;
+		GameObject panel = transform.Find ("Enemy_Interface/Enemy_Interface/DX").gameObject;
+		if (panel.transform.childCount > 0) {
+			panel = transform.Find ("Enemy_Interface/Enemy_Interface/SX").gameObject;
+		}
+		effect = Instantiate(Resources.Load("Flash", typeof(GameObject)),panel.transform) as GameObject;
 	}
 
 	public void CoolDown(int n){
@@ -35,6 +41,7 @@ public class Confusion : MonoBehaviour {
 
 	public void OnDestroy(){
 		mh = FindObjectOfType<MapHandler> ();
+		if(mh)
 		mh.nextRoundEvent -= CoolDown;
 	}
 }

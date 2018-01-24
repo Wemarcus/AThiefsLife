@@ -15,6 +15,12 @@ public class EnemySpeed : MonoBehaviour {
 		mh.changeStateEvent += OnTurnPass;
 	}
 
+	void OnEnable(){
+		if (mh) {
+			mh.changeStateEvent += OnTurnPass;
+		}
+	}
+
 	public void FastForward()
     {
 		fast = true;

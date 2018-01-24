@@ -185,7 +185,7 @@ MonoBehaviour:
   waitOnLoadEnd: 0.25
   fadeDuration: 0.25
   loadSceneMode: 0
-  loadThreadPriority: 0
+  loadThreadPriority: 4
   audioListener: {fileID: 0}
 --- !u!114 &240888266
 MonoBehaviour:

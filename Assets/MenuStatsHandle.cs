@@ -13,11 +13,19 @@ public class MenuStatsHandle : MonoBehaviour {
 	public Text arrested;
 
 	void OnEnable(){
-		age.text = CurrentGame.cg.age.ToString();
-		police.text = CurrentGame.cg.policemanKilled.ToString ();
-		employed.text = CurrentGame.cg.employedKilled.ToString ();
-		money.text = ServiceLibrary.ReturnDotOfInt (CurrentGame.cg.money);
-		robbery.text = CurrentGame.cg.robberies.ToString ();
-		arrested.text = CurrentGame.cg.arrested.ToString ();
+		if (CurrentGame.cg != null) {
+			if(age != null)
+			age.text = CurrentGame.cg.age.ToString ();
+			if(police != null)
+			police.text = CurrentGame.cg.policemanKilled.ToString ();
+			if(employed != null)
+			employed.text = CurrentGame.cg.employedKilled.ToString ();
+			if(money != null)
+			money.text = ServiceLibrary.ReturnDotOfInt (CurrentGame.cg.money);
+			if(robbery != null)
+			robbery.text = CurrentGame.cg.robberies.ToString ();
+			if(arrested != null)
+			arrested.text = CurrentGame.cg.arrested.ToString ();
+		}
 	}
 }

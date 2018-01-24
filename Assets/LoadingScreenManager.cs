@@ -40,8 +40,11 @@ public class LoadingScreenManager : MonoBehaviour {
 	}
 
 	void Start() {
-		if (sceneToLoad < 0)
+		if (sceneToLoad < 0) {
+			Debug.Log ("sto ritornando, nessuna scena da loddare");
 			return;
+
+		}
 
 		fadeOverlay.gameObject.SetActive(true); // Making sure it's on so that we can crossfade Alpha
 		currentScene = SceneManager.GetActiveScene();
@@ -60,6 +63,7 @@ public class LoadingScreenManager : MonoBehaviour {
 
 		// operation does not auto-activate scene, so it's stuck at 0.9
 		while (DoneLoading() == false) {
+			Debug.Log ("carico...");
 			yield return null;
 
 			if (Mathf.Approximately(operation.progress, lastProgress) == false) {
@@ -80,7 +84,7 @@ public class LoadingScreenManager : MonoBehaviour {
 		yield return new WaitForSeconds(fadeDuration);
 
 		if (loadSceneMode == LoadSceneMode.Additive)
-			SceneManager.UnloadScene(currentScene.name);
+			SceneManager.UnloadSceneAsync(currentScene.name);
 		else
 			operation.allowSceneActivation = true;
 	}
@@ -90,8 +94,8 @@ public class LoadingScreenManager : MonoBehaviour {
 		operation = SceneManager.LoadSceneAsync(levelNum, loadSceneMode);
 
 
-		if (loadSceneMode == LoadSceneMode.Single)
-			operation.allowSceneActivation = false;
+		/*if (loadSceneMode == LoadSceneMode.Single)
+			operation.allowSceneActivation = false;*/
 	}
 
 	private bool DoneLoading() {

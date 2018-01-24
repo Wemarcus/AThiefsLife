@@ -291,10 +291,10 @@ public class Agent_Animation : MonoBehaviour {
 			if (gs == GameState.EnemyTurn && gameObject.GetComponent<Player> ()) {
 				MyTurn = false;
 			}
-			if (enable && gameObject.GetComponent<Player> () && Grid.GridMath.GetPlayerBlock (gameObject).GetComponent<Node> ()) {
+			if (enable && gameObject != null && gameObject.GetComponent<Player> () != null && Grid.GridMath.GetPlayerBlock (gameObject).GetComponent<Node> () != null) {
 				cover = Grid.GridMath.GetPlayerBlock (gameObject).GetComponent<Node> ().isCover;
 			}
-			if (enable && gameObject.GetComponent<Enemy> () && Grid.GridMath.GetEnemyBlock (gameObject).GetComponent<Node> ()) {
+			if (enable && gameObject != null && gameObject.GetComponent<Enemy> () != null && Grid.GridMath.GetEnemyBlock (gameObject).GetComponent<Node> () != null) {
 				cover = Grid.GridMath.GetEnemyBlock (gameObject).GetComponent<Node> ().isCover;
 			}
 		}

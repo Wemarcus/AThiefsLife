@@ -9,7 +9,11 @@ public class Boss_Name_Label : MonoBehaviour {
 
 	// Use this for initialization
 	void OnEnable () {
-		bossNameTxt = this.GetComponent<Text> ();
-		bossNameTxt.text = CurrentGame.cg.bossName;
+		if (CurrentGame.cg != null) {
+			bossNameTxt = this.GetComponent<Text> ();
+			if (bossNameTxt != null) {
+				bossNameTxt.text = CurrentGame.cg.bossName;
+			}
+		}
 	}
 }
