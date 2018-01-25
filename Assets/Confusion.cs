@@ -43,5 +43,7 @@ public class Confusion : MonoBehaviour {
 		mh = FindObjectOfType<MapHandler> ();
 		if(mh)
 		mh.nextRoundEvent -= CoolDown;
+		Destroy (effect);
+
 	}
 }

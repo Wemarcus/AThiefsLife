@@ -47,5 +47,6 @@ public class GasDot : MonoBehaviour {
 			mh = FindObjectOfType<MapHandler> ();
 		if(mh)
 			mh.nextRoundEvent -= CoolDown;
+		Destroy (effect);
 		}
 }
