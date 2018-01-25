@@ -262,7 +262,7 @@ public class Actions : MonoBehaviour {
 			mh.SelectPlayer (null);
 			if(mh.players.Count >0)
 			mh.SelectPlayer(mh.players[0]);
-			mh.ChangeInputState (InputState.Nothing);
+			mh.ChangeInputState (InputState.Decision);
 		}
 		if (mh.CheckAllyEndTurn ()) {
 			mh.ChangeState (GameState.EnemyTurn);

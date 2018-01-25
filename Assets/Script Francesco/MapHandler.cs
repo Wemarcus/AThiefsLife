@@ -206,7 +206,7 @@ public class MapHandler : MonoBehaviour {
 		yield return new WaitForSeconds (1.5f);
 		if (plr.IsDone ()) {
 			plr.LookNearestEnemy ();
-			Grid.GridMath.RemovePlayerFromList (selectedPlayer, players);
+			Grid.GridMath.RemovePlayerFromList (plr.gameObject, players);
 			SelectPlayer (null);
 			if(players.Count >0)
 				SelectPlayer (players [0]);
