@@ -1,7 +1,7 @@
 **A Thief's Life**
 ===================
 
-![Main logo](https://imgur.com/a/1KgWHtZ)
+![Main logo](https://imgur.com/T2NDL6n)
 
 <i class="icon-info"></i> :information_source: **Description**
 -------------
