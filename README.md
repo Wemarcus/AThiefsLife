@@ -21,7 +21,7 @@ A Thief’s Life offers a gameplay based on the classic mechanics of a turn-base
 <i class="icon-video"></i> :movie_camera: **Trailer**
 -------------
 
-[![Click here to see A Thief's Life trailer](https://www.youtube.com/watch?v=cp82INw8yNE)](https://www.photobox.co.uk/my/photo/full?photo_id=500905089143)
+[![Click here to see A Thief's Life trailer](https://www.youtube.com/watch?v=cp82INw8yNE)](https://i.imgur.com/ViicVG3.png)
 
 > **Note:**
 
