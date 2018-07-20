@@ -1,8 +1,7 @@
 **A Thief's Life**
 ===================
 
-![Main logo](https://imgur.com/T2NDL6n)
-<blockquote class="imgur-embed-pub" lang="en" data-id="T2NDL6n"><a href="//imgur.com/T2NDL6n"></a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
+![Main logo](https://img.itch.zone/aW1hZ2UvMjI4NzYzLzEwODI0NDkucG5n/315x250%23c/YfLAxz.png)
 
 <i class="icon-info"></i> :information_source: **Description**
 -------------
