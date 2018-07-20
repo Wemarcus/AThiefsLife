@@ -1,8 +1,6 @@
 **A Thief's Life**
 ===================
 
-![Main logo](https://img.itch.zone/aW1hZ2UvMjI4NzYzLzEwODI0NDkucG5n/315x250%23c/YfLAxz.png)
-
 <i class="icon-info"></i> :information_source: **Description**
 -------------
 
