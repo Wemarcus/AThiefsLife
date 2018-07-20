@@ -10,6 +10,8 @@ A Thief’s Life is a turn-based tactical role-playing game with an isometric vi
 
 The fate of this boss is in your hands, he can become the richest boss ever, or just a prisoner in the famous Talsan City prison. 
 
+https://img.itch.zone/aW1hZ2UvMjI4NzYzLzEwODI0NzQucG5n/original/4BF3M%2F.png
+
 A Thief’s Life offers a gameplay based on the classic mechanics of a turn-based tactical role-playing games, where game modes change according to context, that is:
 
 - team management: where you can choose team members and enhance their skills.
