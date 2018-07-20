@@ -22,6 +22,7 @@ A Thief’s Life offers a gameplay based on the classic mechanics of a turn-base
 -------------
 
 [Cinematic](https://www.youtube.com/watch?v=cp82INw8yNE)
+
 [Gameplay](https://www.youtube.com/watch?v=T1BGsw9Sq1E&t)
 
 <i class="icon-download"></i> :floppy_disk: **Downloads**
